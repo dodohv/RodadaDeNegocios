@@ -1,10 +1,24 @@
 import { Link } from 'react-router-dom';
 import {FloatingLabel, Form,Container,Row, Col, Card ,Table  } from 'react-bootstrap'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 const Configurador = () => {
 
-    const [reuniao, setreuniao] = useState('');
+    const [reuniao, setreuniao] = useState('Nenhum');
+    const [tipoApresentacao, setTipoApresentacao] = useState('Nenhum');
+    const [numPart, setNumPart] = useState('0');
+    const [tempoPartMin, setTempoPartMin] = useState('00');
+    const [tempoPartSeg, setTempoPartSeg] = useState('00');
+    const [IntervIndivMin, setIntervIndivMin] = useState('00');
+    const [IntervIndivSeg, setIntervIndivSeg] = useState('00');
+    const [IntervGrupoMin, setIntervGrupoMin] = useState('00');
+    const [IntervGrupoSeg, setIntervGrupoSeg] = useState('00');
+    const [NumMesas, setNumMesas] = useState('0');
+    const [tempoTotal, setTempoTotal] = useState('00:00');
+    const [idioma, setIdioma] = useState('');
+    const [imgEsquerda, setImgEsquerda] = useState('');
+    const [imgDireita, setImgDireita] = useState('');
+
 
 return ( 
         <Container className='configurador'>
@@ -30,9 +44,10 @@ return (
                                 <Col xs={8} md={6}>
                                     <Card.Text>
                                         {/* <input className="input-card" />    */}
-                                        <FloatingLabel className="input-card" controlId="floatingInputGrid" label="Nome da Reunião">
-                                            <Form.Control type="email" placeholder="name@example.com" />
-                                        </FloatingLabel> 
+                                                <Form.Control type="email" placeholder="Exemplo: Rodada dia 15/09"  
+                                                value ={reuniao}
+                                                onChange={(e) => setreuniao(e.target.value)}
+                                                />
                                     </Card.Text>
                                 </Col>
                             </Row>
@@ -45,14 +60,13 @@ return (
                                 <Col xs={8} md={6}>
                                     <Card.Text >
                                   
-                                        <FloatingLabel className="input-card"  controlId="floatingSelect" label="Tipo de Apresentação">
-                                            <Form.Select aria-label="Floating label select example">
-                                             
+                                            <Form.Select aria-label="Floating label select example"
+                                            value = {tipoApresentacao}
+                                            onChange={(e) => setTipoApresentacao(e.target.value)}
+                                            >
                                                 <option value="1">Grupo</option>
                                                 <option value="2">Individual</option>
-
                                             </Form.Select>
-                                        </FloatingLabel>
                                     </Card.Text>
                                 </Col>
                             </Row>
@@ -64,15 +78,14 @@ return (
                                 </Col>
                                 <Col xs={8} md={6}>
                                     <Card.Text >
-                                    <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
-                                     
+                                            <Form.Select aria-label="Floating label select example"
+                                            value = {numPart}
+                                            onChange={(e) => setNumPart(e.target.value)}
+                                            >
                                                 <option value="1">9</option>
                                                 <option value="2">10</option>
                                                 <option value="3">300</option>
-
                                             </Form.Select>
-                                        </FloatingLabel>
                                     </Card.Text>
                                 </Col>
                             </Row>
@@ -83,13 +96,13 @@ return (
                                     </Card.Text>
                                 </Col>
                                 <Col xs={8} md={6}>
-                                    <Card.Text >
-                                        
+                                    <Card.Text >    
                                     <Row>
                                         <Col xs={4} md={4}>
-                                        <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
- 
+                                                <Form.Select aria-label="Floating label select example"
+                                                value = {tempoPartMin}
+                                                onChange={(e) => setTempoPartMin(e.target.value)}
+                                                >
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -97,17 +110,17 @@ return (
                                                 <option value="56">56</option>
                                                 <option value="57">57</option>
                                                 <option value="58">58</option>
-                                                <option value="59">59</option>
-                                                
+                                                <option value="59">59</option>                    
                                             </Form.Select>
-                                        </FloatingLabel>  
                                         </Col >
                                         <Col xs={2} md={2}>
                                         <p className="text-card-p"> min</p>
                                         </Col>
                                         <Col xs={4} md={4}>
-                                        <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
+                                           <Form.Select aria-label="Floating label select example"
+                                           
+                                           onChange={(e) => setTempoPartSeg(e.target.value)}
+                                           >
                                                 <option value="0">0</option>
                                                 <option value="5">5</option>
                                                 <option value="10">10</option>
@@ -121,7 +134,6 @@ return (
                                                 <option value="50">50</option>
                                                 <option value="55">55</option>
                                             </Form.Select>
-                                        </FloatingLabel>  
                                         </Col>
                                         <Col xs={2} md={2}>
                                         <p className="text-card-p"> seg</p>
@@ -140,9 +152,9 @@ return (
                                     <Card.Text >
                                     <Row>
                                         <Col xs={4} md={4}>
-                                        <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
- 
+                                            <Form.Select aria-label="Floating label select example"
+                                            onChange={(e) => setIntervIndivMin(e.target.value)}
+                                            >
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -151,16 +163,15 @@ return (
                                                 <option value="57">57</option>
                                                 <option value="58">58</option>
                                                 <option value="59">59</option>
-                                                
                                             </Form.Select>
-                                        </FloatingLabel>  
                                         </Col >
                                         <Col xs={2} md={2}>
                                         <p className="text-card-p"> min</p>
                                         </Col>
                                         <Col xs={4} md={4}>
-                                        <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
+                                            <Form.Select aria-label="Floating label select example"
+                                            onChange={(e) => setIntervIndivSeg(e.target.value)}
+                                            >
                                                 <option value="0">0</option>
                                                 <option value="5">5</option>
                                                 <option value="10">10</option>
@@ -174,7 +185,6 @@ return (
                                                 <option value="50">50</option>
                                                 <option value="55">55</option>
                                             </Form.Select>
-                                        </FloatingLabel>  
                                         </Col>
                                         <Col xs={2} md={2}>
                                         <p className="text-card-p"> seg</p>
@@ -193,9 +203,9 @@ return (
                                     <Card.Text >
                                     <Row>
                                         <Col xs={4} md={4}>
-                                        <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
- 
+                                            <Form.Select aria-label="Floating label select example"
+                                            onChange={(e) => setIntervGrupoMin(e.target.value)}
+                                            >
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -204,16 +214,15 @@ return (
                                                 <option value="57">57</option>
                                                 <option value="58">58</option>
                                                 <option value="59">59</option>
-                                                
                                             </Form.Select>
-                                        </FloatingLabel>  
                                         </Col >
                                         <Col xs={2} md={2}>
                                         <p className="text-card-p"> min</p>
                                         </Col>
                                         <Col xs={4} md={4}>
-                                        <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
+                                            <Form.Select aria-label="Floating label select example"
+                                            onChange={(e) => setIntervGrupoSeg(e.target.value)}
+                                            >
                                                 <option value="0">0</option>
                                                 <option value="5">5</option>
                                                 <option value="10">10</option>
@@ -227,7 +236,6 @@ return (
                                                 <option value="50">50</option>
                                                 <option value="55">55</option>
                                             </Form.Select>
-                                        </FloatingLabel>  
                                         </Col>
                                         <Col xs={2} md={2}>
                                         <p className="text-card-p"> seg</p>
@@ -246,9 +254,9 @@ return (
                                     <Card.Text >
                                     <Row>
                                         <Col xs={4} md={4}>
-                                        <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
- 
+                                            <Form.Select aria-label="Floating label select example"
+                                            onChange={(e) => setNumMesas(e.target.value)}
+                                            >
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -256,13 +264,11 @@ return (
                                                 <option value="56">56</option>
                                                 <option value="57">57</option>
                                                 <option value="58">58</option>
-                                                <option value="59">59</option>
-                                                
+                                                <option value="59">59</option>    
                                             </Form.Select>
-                                        </FloatingLabel>  
                                         </Col >
                                         <Col xs={2} md={2}>
-                                        <p className="text-card-p"> <BsFillPeopleFill/></p>
+                                        <p className="text-card"> <BsFillPeopleFill/></p>
                                         </Col>
                                         <Col xs={6} md={6}>
                                         
@@ -281,15 +287,9 @@ return (
                                     </Card.Text>
                                 </Col>
                                 <Col xs={8} md={6}>
-                                    <Card.Text >
-                                    <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
-                                                <option>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </Form.Select>
-                                        </FloatingLabel>  
+                                    <Card.Text className="text-card" >
+                                    <p className="text-card"> <BsClockHistory/>  {tempoTotal} </p>
+
                                     </Card.Text>
                                 </Col>
                             </Row>
@@ -301,15 +301,12 @@ return (
                                 </Col>
                                 <Col xs={8} md={6}>
                                     <Card.Text >
-                                    <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
-                                                <option>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </Form.Select>
-                                        </FloatingLabel>   
-                                    </Card.Text>
+                                            <Form.Control type="file" 
+                                            onChange={(e) => setImgDireita(e.target.value)}
+                                            >
+
+                                            </Form.Control>
+                                        </Card.Text>
                                 </Col>
                             </Row>
                             <Row className='row-card'>
@@ -320,14 +317,11 @@ return (
                                 </Col>
                                 <Col xs={8} md={6}>
                                     <Card.Text >
-                                    <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
-                                            <Form.Select aria-label="Floating label select example">
-                                                <option>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </Form.Select>
-                                        </FloatingLabel>   
+                                    <Form.Control type="file"
+                                    onChange={(e) => setImgEsquerda(e.target.value)}
+                                    >
+
+                                    </Form.Control>
                                     </Card.Text>
                                 </Col>
                             </Row>
@@ -339,14 +333,11 @@ return (
                                 </Col>
                                 <Col xs={8} md={6}>
                                     <Card.Text >
-                                    <FloatingLabel className="input-card"  controlId="floatingSelect" label="">
                                             <Form.Select aria-label="Floating label select example">
-                                                <option>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option value="1">Português</option>
+                                                <option value="2">Espanhol</option>
+                                                <option value="3">Inglês</option>
                                             </Form.Select>
-                                        </FloatingLabel>   
                                     </Card.Text>
                                 </Col>
                             </Row>
@@ -373,9 +364,13 @@ return (
       <tbody>
         <tr>
           <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>3</td>
+          <td>{reuniao}</td>
+          <td>{tipoApresentacao}</td>
+          <td>{numPart}</td>
+          <td>{tempoPartMin}:{tempoPartSeg}</td>
+          <td>{IntervGrupoMin}:{IntervGrupoSeg}</td>
+          <td> {NumMesas} </td>
+          <td> {tempoTotal} </td>
         </tr>
         <tr>
           <td>2</td>
@@ -388,6 +383,69 @@ return (
           <td colSpan={2}>Larry the Bird</td>
           <td>49</td>
         </tr>
+{/* 
+        const [tempoPartMin, setTempoPartMin] = useState('00');
+    const [tempoPartSeg, setTempoPartSeg] = useState('00');
+    const [IntervIndivMin, setIntervIndivMin] = useState('00');
+    const [IntervIndivSeg, setIntervIndivSeg] = useState('00');
+    const [IntervGrupoMin, setIntervGrupoMin] = useState('00');
+    const [IntervGrupoSeg, setIntervGrupoSeg] = useState('00'); 
+        const [NumMesas, setNumMesas] = useState('0');
+    const [tempoTotal, setTempoTotal] = useState('00:00');
+    */}
+        <tr>
+            <td>1</td>
+            <td>{reuniao}</td>
+            <td>{tipoApresentacao}</td>
+            <td>{numPart}</td>
+        {   tempoPartMin.length == 1 && 
+            tempoPartSeg.length == 1 
+            ?         
+                <td>0{tempoPartMin}:0{tempoPartSeg}</td> 
+            :
+            tempoPartMin.length == 2 && 
+            tempoPartSeg.length == 1 
+            ?
+                <td>{tempoPartMin}:0{tempoPartSeg}</td>
+            :
+            tempoPartMin.length == 1 && 
+            tempoPartSeg.length == 2
+            ?
+                <td>0{tempoPartMin}:{tempoPartSeg}</td>
+            :
+            tempoPartMin.length == 1
+            ?                  
+                <td>0{tempoPartMin}:{tempoPartSeg}</td>
+            :
+                <td>{tempoPartMin}:{tempoPartSeg}</td>
+        }                          
+
+        {   
+            IntervGrupoMin.length == 1  && 
+            IntervGrupoSeg.length == 1
+            ?          
+                <td>0{IntervGrupoMin}:0{IntervGrupoSeg}</td>
+            :
+            IntervGrupoMin.length == 2 && 
+            IntervGrupoSeg.length == 1
+            ?                
+                <td>{IntervGrupoMin}:0{IntervGrupoSeg}</td>
+            :
+            IntervGrupoMin.length ==  1 && 
+            IntervGrupoSeg.length == 2
+            ?
+                <td>0{IntervGrupoMin}:{IntervGrupoSeg}</td>
+            :                    
+            IntervGrupoMin.length == 1 
+            ?
+                <td>0{IntervGrupoMin}:{IntervGrupoSeg}</td>
+            :
+                <td>{IntervGrupoMin}:{IntervGrupoSeg}</td>
+        }          
+            <td>{NumMesas}</td>
+            <td>{tempoTotal}</td>
+        </tr>
+
       </tbody>
     </Table>
 
