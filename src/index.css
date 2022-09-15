@@ -14,7 +14,13 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+.links{
+  position:fixed;
+  width: auto;
+  top:10px;
+  left:12%
 
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -70,8 +76,8 @@ button:focus-visible {
 }
 
 .configurador {
-  top:'20px';
-  position:'relative';
+  top:50px;
+  position:relative;
    width:'100%';
   
 }

@@ -14,12 +14,7 @@ function App() {
 
       <Router>
     <div className="App">
-        <div style={{
-          position:'fixed',
-          width: 'auto',
-          top:'10px',
-          left:"12%"
-          }}>
+        <div >
             <Navbar />
         </div>
       <div className="content">

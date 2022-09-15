@@ -4,8 +4,8 @@ import {useState, useEffect} from 'react'
 import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 const Configurador = () => {
 
-    const [reuniao, setreuniao] = useState('Nenhum');
-    const [tipoApresentacao, setTipoApresentacao] = useState('Nenhum');
+    const [reuniao, setreuniao] = useState('');
+    const [tipoApresentacao, setTipoApresentacao] = useState('');
     const [numPart, setNumPart] = useState('0');
     const [tempoPartMin, setTempoPartMin] = useState('00');
     const [tempoPartSeg, setTempoPartSeg] = useState('00');
@@ -118,7 +118,7 @@ return (
                                         </Col>
                                         <Col xs={4} md={4}>
                                            <Form.Select aria-label="Floating label select example"
-                                           
+                                           value = {tempoPartSeg}
                                            onChange={(e) => setTempoPartSeg(e.target.value)}
                                            >
                                                 <option value="0">0</option>
@@ -153,6 +153,7 @@ return (
                                     <Row>
                                         <Col xs={4} md={4}>
                                             <Form.Select aria-label="Floating label select example"
+                                            value = {IntervIndivMin}
                                             onChange={(e) => setIntervIndivMin(e.target.value)}
                                             >
                                                 <option value="1">1</option>
@@ -170,6 +171,7 @@ return (
                                         </Col>
                                         <Col xs={4} md={4}>
                                             <Form.Select aria-label="Floating label select example"
+                                            value = {IntervIndivSeg}
                                             onChange={(e) => setIntervIndivSeg(e.target.value)}
                                             >
                                                 <option value="0">0</option>
@@ -204,6 +206,7 @@ return (
                                     <Row>
                                         <Col xs={4} md={4}>
                                             <Form.Select aria-label="Floating label select example"
+                                            value ={IntervGrupoMin}
                                             onChange={(e) => setIntervGrupoMin(e.target.value)}
                                             >
                                                 <option value="1">1</option>
@@ -221,6 +224,7 @@ return (
                                         </Col>
                                         <Col xs={4} md={4}>
                                             <Form.Select aria-label="Floating label select example"
+                                            value = {IntervGrupoSeg}
                                             onChange={(e) => setIntervGrupoSeg(e.target.value)}
                                             >
                                                 <option value="0">0</option>
@@ -255,6 +259,7 @@ return (
                                     <Row>
                                         <Col xs={4} md={4}>
                                             <Form.Select aria-label="Floating label select example"
+                                            value = {NumMesas}
                                             onChange={(e) => setNumMesas(e.target.value)}
                                             >
                                                 <option value="1">1</option>
@@ -302,6 +307,7 @@ return (
                                 <Col xs={8} md={6}>
                                     <Card.Text >
                                             <Form.Control type="file" 
+                                            value = {imgDireita}
                                             onChange={(e) => setImgDireita(e.target.value)}
                                             >
 
@@ -318,6 +324,7 @@ return (
                                 <Col xs={8} md={6}>
                                     <Card.Text >
                                     <Form.Control type="file"
+                                    value = {imgEsquerda}
                                     onChange={(e) => setImgEsquerda(e.target.value)}
                                     >
 
@@ -333,7 +340,10 @@ return (
                                 </Col>
                                 <Col xs={8} md={6}>
                                     <Card.Text >
-                                            <Form.Select aria-label="Floating label select example">
+                                            <Form.Select aria-label="Floating label select example"
+                                            value = {idioma}
+                                            onChange={(e) => setIdioma(e.target.value)}
+                                            >
                                                 <option value="1">Português</option>
                                                 <option value="2">Espanhol</option>
                                                 <option value="3">Inglês</option>
@@ -373,15 +383,24 @@ return (
           <td> {tempoTotal} </td>
         </tr>
         <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>40</td>
+        <td>2</td>
+          <td>{reuniao}</td>
+          <td>{tipoApresentacao}</td>
+          <td>{numPart}</td>
+          <td>{tempoPartMin}:{tempoPartSeg}</td>
+          <td>{IntervGrupoMin}:{IntervGrupoSeg}</td>
+          <td> {NumMesas} </td>
+          <td> {tempoTotal} </td>
         </tr>
         <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>49</td>
+        <td>3</td>
+          <td>{reuniao}</td>
+          <td>{tipoApresentacao}</td>
+          <td>{numPart}</td>
+          <td>{tempoPartMin}:{tempoPartSeg}</td>
+          <td>{IntervGrupoMin}:{IntervGrupoSeg}</td>
+          <td> {NumMesas} </td>
+          <td> {tempoTotal} </td>
         </tr>
 {/* 
         const [tempoPartMin, setTempoPartMin] = useState('00');
