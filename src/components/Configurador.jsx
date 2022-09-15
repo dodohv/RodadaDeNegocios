@@ -402,16 +402,6 @@ return (
           <td> {NumMesas} </td>
           <td> {tempoTotal} </td>
         </tr>
-{/* 
-        const [tempoPartMin, setTempoPartMin] = useState('00');
-    const [tempoPartSeg, setTempoPartSeg] = useState('00');
-    const [IntervIndivMin, setIntervIndivMin] = useState('00');
-    const [IntervIndivSeg, setIntervIndivSeg] = useState('00');
-    const [IntervGrupoMin, setIntervGrupoMin] = useState('00');
-    const [IntervGrupoSeg, setIntervGrupoSeg] = useState('00'); 
-        const [NumMesas, setNumMesas] = useState('0');
-    const [tempoTotal, setTempoTotal] = useState('00:00');
-    */}
         <tr>
             <td>1</td>
             <td>{reuniao}</td>
