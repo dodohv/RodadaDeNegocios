@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     return (
         <nav className = "navbar">
-            <h3>Rodada de Negócios</h3>
             <div className="links">
                 <Link to="/" style={{
                     color:"white",
