@@ -36,7 +36,7 @@ const Navbar = () => {
                     padding: '5px',
                     marginLeft:'10px'
                 }}> Gerador</Link>
-                <Link to="/gerador/:id" style={{
+                <Link to="/book" style={{
                     color:"white",
                     backgroundColor: "#264653",
                     borderRadius: "5px",

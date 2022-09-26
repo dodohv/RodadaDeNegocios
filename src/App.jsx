@@ -6,11 +6,9 @@ import Configurador from './components/Configurador'
 import GeradorEtiquetas from './components/GeradorEtiquetas'
 import ApresentacaoGrupo from './components/ApresentacaoGrupo'
 import Home from './components/Home'
-import AddEdit from './AddEdit'
-import View from './View'
-import TestFirebase from './components/TestFirebase'
 import NaoEncontrado from './components/NaoEncontrado'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import AddBook from './components/AddBook'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -28,14 +26,8 @@ function App() {
           <Route path="/gerador">
           <GeradorEtiquetas />
           </Route>
-          <Route path="/add">
-          <AddEdit />
-          </Route>
-          <Route path="/update/:id">
-          <TestFirebase />
-          </Route>
-          <Route path="/view/:id">
-          <View />
+          <Route path="/book">
+          <AddBook />
           </Route>
           <Route path="/novogrupo">
           <ApresentacaoGrupo />

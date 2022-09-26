@@ -2,13 +2,13 @@
 import { Link } from 'react-router-dom';
 import {FloatingLabel, Form,Container,Row, Col, Card ,Table,Button  } from 'react-bootstrap'
 import {useState, useEffect, useRef} from 'react'
-import moment from 'moment'
+
 import NotificationSound from "../assets/counter.wav";
 
 import {BsClockHistory, BsFillPeopleFill, BsPeople, BsPlayCircle, BsPauseCircle, BsArrowLeftCircle} from 'react-icons/bs'
 const ApresentacaoGrupo = () => {
     const audioPlayer = useRef(null);
-    const [datadeHj,setDatadeHj] = useState(moment(Date()).format("L"))
+    const [datadeHj,setDatadeHj] = useState("");
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(true);
     const [time, setTime] = useState(0);
