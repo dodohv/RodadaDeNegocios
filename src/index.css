@@ -14,6 +14,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+.borderrow{
+  border-bottom: 1px solid #1a1a1a;
+  width: 90%;
+  margin-left:5%;
+  text-align: center;
+}
 .links{
   position:fixed;
   width: auto;
@@ -41,6 +47,7 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  
 }
 
 button {
@@ -76,9 +83,9 @@ button:focus-visible {
 }
 
 .configurador {
-  top:'20px';
-  position:'relative';
-   width:'100%';
+  top:10px;
+  position:relative;
+   width:auto;
   
 }
 .row-card{
@@ -92,10 +99,47 @@ button:focus-visible {
   justify-content:flex-start;
   
 }
+.mini{
+  font-size: 9px;
+  font-style:oblique
+}
+.medio{
+  font-size: 11px;
+  font-style:oblique
+  
+}
+.grande{
+  font-size: 13px;
+  font-style:oblique
+  
+}
+.timernovo{
+  font-size: 30px;
+}
+.botão:hover{
+  font-size: 28px;
+  color:#535bf2
+}
+.botão{
+  font-size: 28px;
+  cursor: pointer;
+}
+.botãoReverso:hover{
+  font-size: 28px;
+  transform: rotate(180deg);
+  cursor: pointer;
+  color:#535bf2
+}
+.botãoReverso{
+  font-size: 28px;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
 .text-card-p{
   margin-left: -15px;
   text-align: left;
   padding-top: 0px;
+  
 }
 .hr-card-p{
   margin-left: -15px;
