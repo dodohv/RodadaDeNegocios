@@ -7,6 +7,7 @@ import GeradorEtiquetas from './components/GeradorEtiquetas'
 import ApresentacaoGrupo from './components/ApresentacaoGrupo'
 import Home from './components/Home'
 import NaoEncontrado from './components/NaoEncontrado'
+import ConfiguradorView from './components/ConfigurarView'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Book from './components/Book'
 function App() {
@@ -21,7 +22,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/configurador">
-          <Configurador />
+          <ConfiguradorView />
           </Route>
           <Route path="/gerador">
           <GeradorEtiquetas />

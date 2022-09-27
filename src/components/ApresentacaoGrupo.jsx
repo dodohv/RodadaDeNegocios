@@ -1,13 +1,14 @@
 
 import { Link } from 'react-router-dom';
 import {FloatingLabel, Form,Container,Row, Col, Card ,Table,Button  } from 'react-bootstrap'
-import {useState, useEffect, useRef} from 'react'
-
+import {useState, useEffect, useRef} from "react"
+import NegocioDataService from "../services/negocio.services"
 import NotificationSound from "../assets/counter.wav";
-
 import {BsClockHistory, BsFillPeopleFill, BsPeople, BsPlayCircle, BsPauseCircle, BsArrowLeftCircle} from 'react-icons/bs'
+
 const ApresentacaoGrupo = () => {
     const audioPlayer = useRef(null);
+    const [negocios, setNegocios] = useState([]);
     const [datadeHj,setDatadeHj] = useState("");
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(true);
@@ -17,11 +18,13 @@ const ApresentacaoGrupo = () => {
     const [apresentacaoCount, setApresentacaoCount] = useState('');
     const [tempo,setTempo] = useState('00');
     const [intTempo, setIntTempo] = useState(0);
+    const [contador, setContador] = useState(1);
     const Ref = useRef(null);
     const [timer,setTimer] = useState('00:00:00')
+    const [ iteracao, setIteracao] = useState(1)
     function playAudio() {
         audioPlayer.current.play();
-      }
+    }
     const handleStart = () => {
         setIsActive(true);
         setIsPaused(false);
@@ -29,16 +32,20 @@ const ApresentacaoGrupo = () => {
     const handlePause = () => {
         setIsPaused(!isPaused);
       };
-
       useEffect(() => {
-        console.log(isActive)
+        getNegocios();
+/*         console.log(isActive)
         if (isActive ===true) {
             console.log('1 useEffect clearTimer')
-            clearTimer(getDeadTime());
-            
-        }
-
+            clearTimer(getDeadTime()); 
+        }*/
     }, []);
+ 
+    const getNegocios = async () => {
+        const data = await NegocioDataService.getAllNegocios();
+        console.log(data.docs);
+        setNegocios(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    };
     const getDeadTime = () => {
         console.log('1 getDeadTime')
         let deadline = new Date();
@@ -80,23 +87,37 @@ const ApresentacaoGrupo = () => {
         };
         
     }
-  
     const onClickReset = () => {
         console.log('1 onClickReset')
         clearTimer(getDeadTime());
     }
+    const database = [
+        {
+            contador: 20
+        }
+    ]
 
     return (  
-        
-           <Card bg={'outline-primary'} style={{width:'1000px'}} > 
+        <>
+        <div>
+            <button
+            variant="dark edit"
+            onClick={getNegocios}
+            >Atualizar</button>
+        </div>
+
+        {negocios.slice().map((doc, index) => {
+            return (
+
+           <Card  key={doc.id} style={{width:'1000px'}} > 
             <Row xs={1} md={12} className="">
-                <Col xs={12} md={12}>
+                <Col xs={12} md={12} >
                     <div>
-                        <h3>RODADA DE NEGOCIOS DA ROTARY 2 3 4 54- {datadeHj}</h3>
-                    </div>
+                        <h3>{doc.reuniao}</h3>
+                           </div>
                 </Col>
             </Row>
-            <Row>
+        <Row>
         <Col xs={4} md={4}>
             <Row xs={12} md={12} style={{marginLeft:'0px'}}>
                 <Col xs={6} md={6} style={{ textAlign: 'start'}}>
@@ -105,7 +126,7 @@ const ApresentacaoGrupo = () => {
                     </Card.Text>
                 </Col>
                 <Col xs={3} md={3}> 
-                    <Button className="mini">
+                    <Button variant="danger"  className="mini">
                         Anterior
                     </Button>
                 </Col>
@@ -118,7 +139,7 @@ const ApresentacaoGrupo = () => {
             <Row xs={12} md={12} style={{marginLeft:'0px'}}>
                 <Col xs={6} md={6}>
                     <Card.Text className="text-card medio">
-                        Apresentação 1/8
+                        Apresentação 1/ {doc.numMesas}
                     </Card.Text>         
                 </Col>
                 <Col xs={3} md={3}> 
@@ -228,7 +249,39 @@ const ApresentacaoGrupo = () => {
             </Card.Text>
         </Col>
 
-      </Row>
+        </Row>
+        
+     {database.map((contar, index) => {
+        return(
+            <Row xs={12} md={12} className="borderrow grande">
+            <Col xs={2} md={2}>
+    
+            <Card.Text className="text-card ">
+                Mesa 1
+            </Card.Text>
+            </Col>
+            <Col xs={10} md={10}>
+                
+{/*             { 1 < contar.contador
+
+            ?
+                
+            <Card.Text className="text-card ">
+                
+            </Card.Text>
+            : 
+                           
+            <Card.Text className="text-card ">
+                Teste 
+            </Card.Text>
+
+
+            } */}
+            </Col>
+          </Row>
+
+        )
+     })}
       <Row xs={12} md={12} className="borderrow grande">
         <Col xs={2} md={2}>
 
@@ -328,9 +381,278 @@ const ApresentacaoGrupo = () => {
         </Col>
       </Row>
 
-</Card>
-       
+            </Card>
+                   )
+                })}
+{negocios.slice(1,2).map((doc, index) => {
+            return (
 
+
+           <Card bg={'outline-primary'} key={doc.id} style={{width:'1000px'}} > 
+            <Row xs={1} md={12} className="">
+                <Col xs={12} md={12} >
+                    <div>
+                        <h3>{doc.reuniao}</h3>
+                           </div>
+                </Col>
+            </Row>
+        <Row>
+        <Col xs={4} md={4}>
+            <Row xs={12} md={12} style={{marginLeft:'0px'}}>
+                <Col xs={6} md={6} style={{ textAlign: 'start'}}>
+                    <Card.Text className="text-card medio">
+                      Reuniao 1/8          
+                    </Card.Text>
+                </Col>
+                <Col xs={3} md={3}> 
+                    <Button className="mini">
+                        Anterior
+                    </Button>
+                </Col>
+                <Col xs={3} md={3}> 
+                    <Button className="mini">
+                        Próximo
+                    </Button>
+                </Col>
+            </Row>
+            <Row xs={12} md={12} style={{marginLeft:'0px'}}>
+                <Col xs={6} md={6}>
+                    <Card.Text className="text-card medio">
+                        Apresentação 1/ {doc.numMesas}
+                    </Card.Text>         
+                </Col>
+                <Col xs={3} md={3}> 
+                    <Button className="mini">
+                        Anterior
+                    </Button>
+                </Col>
+                <Col xs={3} md={3}> 
+                    <Button className="mini">
+                        Próximo
+                    </Button>
+                </Col>
+            </Row>
+        </Col>
+        <Col xs={3} md={3}>
+            <Row xs={12} md={12}>
+
+        <p className="timernovo">{timer}</p>
+            </Row>
+            <Row xs={12} md={12}>
+                <Col xs={4} md={4} className="mini">
+                    
+                        <BsPlayCircle className="botão" onClick ={onClickReset}/>
+                  
+                    <p>
+                        Continuar
+                    </p>
+                </Col>
+                <Col xs={4} md={4} className="mini">
+                    <BsPauseCircle className="botão" onClick ={handleStart}/>
+                    <p>
+                        Pausar
+                    </p>
+
+                </Col>
+                <Col xs={4} md={4} className="mini">
+                    {isActive ? 
+                    <div>
+
+                        <BsPlayCircle className="botãoReverso" onClick ={handlePause} />
+                        <p>
+                        Reiniciar
+                    </p>
+
+                    </div>
+                    
+                    :
+                    <div>
+             <BsPlayCircle className="botãoReverso" onClick={playAudio} />
+             <audio ref={audioPlayer} src={NotificationSound} />
+                        <p>
+                        Voltar
+                    </p>
+
+                    </div>
+                    }      
+                </Col>
+            </Row>
+            <Row xs={12} md={12}>
+                <Col xs={4} md={4} className="medio">
+                    <Form.Check             
+                    />
+                </Col>
+                <Col xs={6} md={6} className="medio" >
+                    <p>Manual</p>
+                </Col>
+           
+    </Row>
+        </Col>
+        <Col xs={3} md={3} style={{ textAlign: 'start'}} >
+        <Card.Text className="text-card medio">
+            Tempo Programado:
+        
+        </Card.Text>
+        <Card.Text className="text-card medio">
+            Tempo Decorrido:
+        </Card.Text>
+        <Card.Text className="text-card medio">
+            Apresentação Individual:
+        </Card.Text>
+        <Card.Text className="text-card medio">
+            Intervalo Individual:
+        </Card.Text>
+        <Card.Text className="text-card medio">
+            Intervalo da Reunião:
+        </Card.Text>
+        </Col>
+        <Col xs={2} md={2} className="medio">
+            <Card.Text className="text-card">
+                00:00:00
+            </Card.Text>
+            
+            <Card.Text className="text-card">
+                00:00:00
+            </Card.Text>
+            
+            <Card.Text className="text-card">
+                00:00:00
+            </Card.Text>
+            
+            <Card.Text className="text-card">
+                00:00:00
+            </Card.Text>
+            
+            <Card.Text className="text-card">
+                00:00:00
+            </Card.Text>
+        </Col>
+
+        </Row>
+        
+     {database.map((contar, index) => {
+        return(
+            <Row xs={12} md={12} className="borderrow grande">
+            <Col xs={2} md={2}>
+    
+            <Card.Text className="text-card ">
+                Mesa 1
+            </Card.Text>
+            </Col>
+            <Col xs={10} md={10}>
+                
+
+            </Col>
+          </Row>
+
+        )
+     })}
+      <Row xs={12} md={12} className="borderrow grande">
+        <Col xs={2} md={2}>
+
+        <Card.Text className="text-card ">
+            Mesa 1
+        </Card.Text>
+        </Col>
+        <Col xs={10} md={10}>
+
+        <Card.Text className="text-card ">
+            1-2-3-4-5-6-7
+        </Card.Text>
+        </Col>
+      </Row>
+      <Row xs={12} md={12} className="borderrow grande">
+        <Col xs={2} md={2}>
+
+        <Card.Text className="text-card ">
+            Mesa 2
+        </Card.Text>
+        </Col>
+        <Col xs={10} md={10}>
+
+        <Card.Text className="text-card ">
+            8-9-10-11-12-13-14
+        </Card.Text>
+        </Col>
+      </Row>
+      <Row xs={12} md={12} className="borderrow grande" >
+        <Col xs={2} md={2}>
+
+        <Card.Text className="text-card " >
+            Mesa 3
+        </Card.Text>
+        </Col>
+        <Col xs={10} md={10}>
+
+        <Card.Text className="text-card ">
+            15-16-17-18-19-20-21
+        </Card.Text>
+        </Col>
+      </Row>
+      <Row xs={12} md={12} className="borderrow grande">
+        <Col xs={2} md={2}>
+
+        <Card.Text className="text-card ">
+            Mesa 4
+        </Card.Text>
+        </Col>
+        <Col xs={10} md={10}>
+
+        <Card.Text className="text-card ">
+            22-23-24-25-26-27-28
+        </Card.Text>
+        </Col>
+      </Row>
+      <Row xs={12} md={12} className="borderrow grande">
+        <Col xs={2} md={2}>
+
+        <Card.Text className="text-card">
+            Mesa 5
+        </Card.Text>
+        </Col>
+        <Col xs={10} md={10}>
+
+        <Card.Text className="text-card">
+            29-30-31-32
+        </Card.Text>
+        </Col>
+      </Row>
+      <Row xs={12} md={12} className="borderrow grande">
+        <Col xs={2} md={2}>
+
+        <Card.Text className="text-card">
+            Mesa 6
+        </Card.Text>
+        </Col>
+        <Col xs={10} md={10}>
+
+        <Card.Text className="text-card">
+           
+        </Card.Text>
+        </Col>
+      </Row>
+      <Row xs={12} md={12} className="borderrow grande">
+        <Col xs={2} md={2}>
+
+        <Card.Text className="text-card">
+            Mesa 7
+        </Card.Text>
+        </Col>
+        <Col xs={10} md={10}>
+
+        <Card.Text className="text-card ">
+           
+        </Card.Text>
+        </Col>
+      </Row>
+
+            </Card>
+                   )
+                })}
+
+
+        
+    </>
         
    );
 }

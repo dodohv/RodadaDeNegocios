@@ -1,8 +1,11 @@
 import {db} from "../firebase-config";
 
-import {collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import {collection, query, where, collectionGroup, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
+
+
 
 const negocioCollectionRef = collection(db, "negocios");
+
 
 class NegocioDataService {
     addNegocios = (newNegocio) => {
@@ -14,11 +17,11 @@ class NegocioDataService {
         return updateDoc(negocioDoc, updateNegocio);
     };
 
-    deleteBook = (id) => {
+    deleteNegocio = (id) => {
         const negocioDoc = doc(db, "negocios", id);
         return deleteDoc(negocioDoc);
     };
-
+    
     getAllNegocios = () => {
         return getDocs(negocioCollectionRef);
     };
@@ -27,6 +30,7 @@ class NegocioDataService {
         const negocioDoc = doc(db, "negocios", id);
         return getDoc(negocioDoc);
     }
+
 
 
 }

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import {FloatingLabel, Form,Container,Row, Col, Card ,Table  } from 'react-bootstrap'
+import {Form, Alert, InputGroup, Button, ButtonGroup, FloatingLabel,Container,Row, Col, Card ,Table  } from 'react-bootstrap'
 import  React, {useState, useEffect} from 'react'
 import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
- 
+import NegocioDataService from "../services/negocio.services"
 
-const Configurador = () => {
+const Configurador = ({id, setNegocioId}) => {
 
     const [reuniao, setReuniao] = useState('');
     const [grupo, setGrupo] = useState('');
@@ -14,22 +14,123 @@ const Configurador = () => {
     const [intIndMin, setIntIndMin]= useState('');
     const [intIndSeg, setIntIndSeg]= useState('');
     const [intGrupMin, setIntGrupMin]= useState('');
-    const [intGrupSeg, SetIntGrupSeg] = useState('');
+    const [intGrupSeg, setIntGrupSeg] = useState('');
     const [numMesas, setNumMesas] = useState(0);
     const [partMesa,setPartMesa] = useState(0);
     const [tempoTotal, setTempoTotal] = useState("00:00:00");
     const [imgDireita, setImgDireita] = useState('');
-    const [imgEsquerda, SetImgEsquerda] = useState('');
+    const [imgEsquerda, etImgEsquerda] = useState('');
     const [idioma, setIdioma] = useState('');
+    const [message, setMessage] = useState({error: false, msg: ""});
 
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        setMessage("");
+        if(reuniao === "" || grupo === "" || participantes === "" || tempoPartMin === "" || tempoPartSeg === "") {
+            setMessage({error: true, msg: "Todos os campos são obrigatórios!"});    
+            return;
+        }
+        const newNegocio = {
+            reuniao,
+            grupo,
+            participantes,
+            tempoPartMin,
+            tempoPartSeg,
+            intIndMin,
+            intIndSeg,
+            intGrupMin,
+            intGrupSeg,
+            numMesas,
+            partMesa,
+            tempoTotal,
+            imgDireita,
+            imgEsquerda,
+            idioma
+        }
+        console.log(newNegocio)
+        try {
+            if(id !== undefined && id !== "") {
+                await NegocioDataService.updateNegocio(id, newNegocio);
+                setNegocioId("");
+                setMessage({error: false, msg: "Atualizado com sucesso"});
+            }
+            else {
+                await NegocioDataService.addNegocios(newNegocio);
+                setMessage({error: false, msg: "Nova Rodada de Negócios gerada!"});
+            }
 
+        } catch(err) {
+            setMessage({error: true, msg:err.message})
+        }
+        setReuniao("");
+        setGrupo("");
+        setParticipantes("");
+        setTempoPartMin("");
+        setTempoPartSeg("");
+        setIntGrupMin("");
+        setIntGrupSeg("");
+        setIntIndMin("");
+        setIntIndSeg("");
+        setNumMesas("");
+        setPartMesa("");
+        setTempoTotal("");
+        setImgDireita("");
+        setImgEsquerda("");
+        setIdioma("");
+    };
+        const editHandler = async(e) => {
+            setMessage("");
+            try{
+                const docSnap = await NegocioDataService.getNegocio(id);
+                console.log("O Registro é: ", docSnap.data());
+                setReuniao(docSnap.data().reuniao)
+                setGrupo(docSnap.data().grupo);
+                setParticipantes(docSnap.data().participantes);
+                setTempoPartMin(docSnap.data().tempoPartMin);
+                setTempoPartSeg(docSnap.data().tempoPartSeg);
+                setIntGrupMin(docSnap.data().intGrupMin);
+                setIntGrupSeg(docSnap.data().intGrupSeg);
+                setIntIndMin(docSnap.data().intIndMin);
+                setIntIndSeg(docSnap.data().intIndSeg);
+                setNumMesas(docSnap.data().numMesas);
+                setPartMesa(docSnap.data().partMesa);
+                setTempoTotal(docSnap.data().tempoTotal);
+                setImgDireita(docSnap.data().imgDireita);
+                setImgEsquerda(docSnap.data().imgEsquerda);
+                setIdioma(docSnap.data().idioma);
+
+            }
+            catch (err) {   
+                setMessage({error: true, msg: err.message});
+            }
+        }
+        
+        useEffect( () => {
+            console.log("O id está aqui: ", id)
+            if(id !== undefined && id !== "") {
+                editHandler();
+            }
+        },[id])
 
     return ( 
+        <div>
+        {message?.msg && (
+        <Alert 
+            variant={ message?.error ? "danger": "success"} 
+            dismissible 
+            onClose={() => setMessage("")}
+        > 
+            {message?.msg}
+        </Alert> 
+        )}
+
+
         <Container className='configurador'>
      
             <Link to="/" >
                 <button> Voltar para Inicio</button>
             </Link>
+        <Form onSubmit= {handleSubmit}>
             <Row xs={1} md={12} className="g-4">
             <Col xs={12}>
                 <Card bg={'outline-primary'} >
@@ -48,8 +149,8 @@ const Configurador = () => {
                                         {/* <input className="input-card" />    */}
                                            <Form.Control value={reuniao} 
                                            onChange={(e) => setReuniao(e.target.value)}
-                                           className="input-card" type="email" placeholder="name@example.com" />
-                                       
+                                           className="input-card" type="text" placeholder="Rodada de Negocios dia dd/mm/yyyy" />
+
                                     </Card.Text>
                                 </Col>
                             </Row>
@@ -178,7 +279,7 @@ const Configurador = () => {
                                         </Col>
                                         <Col xs={4} md={4}>
                                            <Form.Select value={intIndSeg}  
-                                            onChange={(e) => SetIntIndSeg(e.target.value)}
+                                            onChange={(e) => setIntIndSeg(e.target.value)}
                                            className="input-card-se" aria-label="Floating label select example">
                                                 <option value="0">0</option>
                                                 <option value="5">5</option>
@@ -212,7 +313,7 @@ const Configurador = () => {
                                     <Row>
                                         <Col xs={4} md={4}>
                                            <Form.Select value={intGrupMin}
-                                            onChange={(e) => setintGrupMin(e.target.value)} 
+                                            onChange={(e) => setIntGrupMin(e.target.value)} 
                                            
                                            className="input-card-se" aria-label="Floating label select example">
  
@@ -363,80 +464,22 @@ const Configurador = () => {
                                     </Card.Text>
                                 </Col>
                             </Row>
-                     
+                            <Row className='row-card'>
+                                <Col xs={4} md={4}>
+                                <Button variant="primary" type="submit">
+                                    Salvar
+                                </Button>
+                                </Col>
+                                
+                            </Row>
                     </Card.Body>
                 </Card>
             </Col>
             </Row>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                    <th>#</th>
-                    <th>Nome Rodada</th>
-                    <th>Tipo de Apresentação</th>
-                    <th>Nº Participantes</th>
-                    <th><BsClockHistory/> Participante</th>
-                    <th><BsClockHistory/>Intervalo</th>
-                    <th>Qtd Mesas</th>
-                    <th>Part Mesa</th>
-                    <th>Tempo Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>{reuniao}</td>
-                        <td>{grupo}</td>
-                        <td>{participantes}</td>
-                        {tempoPartMin.length == 1  && tempoPartSeg.length == 1
-                            ?          
-                        <td>0{tempoPartMin}:0{tempoPartSeg}</td>
-                            :
-                            tempoPartMin.length == 2 && tempoPartSeg.length == 1
-                                ?
-                                <td>{tempoPartMin}:0{tempoPartSeg}</td>
-                                :
-                                tempoPartMin.length == 1 && tempoPartSeg.length == 2
-                                    ?
-
-                                    <td>0{tempoPartMin}:{tempoPartSeg}</td>
-                                    :
-                                    tempoPartMin.length == 1
-                                        ?
-                                        <td>0{tempoPartMin}:{tempoPartSeg}</td>
-                                        :
-                                        <td>{tempoPartMin}:{tempoPartSeg}</td>
-                        }                          
-                        {intGrupMin.length == 1  && intGrupSeg.length == 1
-                                    ?          
-                                <td>0{intGrupMin}:0{intGrupSeg}</td>
-                                    :
-                                    intGrupMin.length == 2 && intGrupSeg.length == 1
-                                        ?
-                                        <td>{intGrupMin}:0{intGrupSeg}</td>
-                                        :
-                                        intGrupMin.length == 1 && intGrupSeg.length == 2
-                                            ?
-
-                                            <td>0{intGrupMin}:{intGrupSeg}</td>
-                                            :
-                                            intGrupMin.length == 1 
-                                                ?
-                                                <td>0{intGrupMin}:{intGrupSeg}</td>
-                                                :
-                                                <td>{intGrupMin}:{intGrupSeg}</td>
-                        }          
-                        <td>{numMesas}</td>
-                        <td>
-                        {partMesa}
-
-                        </td>
-                        <td>{tempoTotal}</td>
-                    </tr>
-                </tbody>
-            </Table>
+        </Form>
         </Container>
+        </div>
      );
 }
  
-export default Configurador;
+export default Configurador
