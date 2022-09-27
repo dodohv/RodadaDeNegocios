@@ -9,7 +9,7 @@ class BookDataService {
         return addDoc(bookCollectionRef, newBook);
     };
 
-    updateBook = (id, updatedBook) => {
+    updateBook = (id, updateBook) => {
         const bookDoc = doc(db, "books", id);
         return updateDoc(bookDoc, updateBook);
     };

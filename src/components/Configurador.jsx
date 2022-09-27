@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import {FloatingLabel, Form,Container,Row, Col, Card ,Table  } from 'react-bootstrap'
-import {useState, useEffect} from 'react'
+import  React, {useState, useEffect} from 'react'
 import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
  
 
@@ -13,7 +13,7 @@ const Configurador = () => {
     const [tempoPartSeg, setTempoPartSeg]= useState(0);
     const [intIndMin, setIntIndMin]= useState('');
     const [intIndSeg, setIntIndSeg]= useState('');
-    const [inGrupMin, setInGrupMin]= useState('');
+    const [intGrupMin, setIntGrupMin]= useState('');
     const [intGrupSeg, SetIntGrupSeg] = useState('');
     const [numMesas, setNumMesas] = useState(0);
     const [partMesa,setPartMesa] = useState(0);
@@ -211,8 +211,8 @@ const Configurador = () => {
                                     <Card.Text >
                                     <Row>
                                         <Col xs={4} md={4}>
-                                           <Form.Select value={inGrupMin}
-                                            onChange={(e) => setInGrupMin(e.target.value)} 
+                                           <Form.Select value={intGrupMin}
+                                            onChange={(e) => setintGrupMin(e.target.value)} 
                                            
                                            className="input-card-se" aria-label="Floating label select example">
  
@@ -407,24 +407,24 @@ const Configurador = () => {
                                         :
                                         <td>{tempoPartMin}:{tempoPartSeg}</td>
                         }                          
-                        {inGrupMin.length == 1  && intGrupSeg.length == 1
+                        {intGrupMin.length == 1  && intGrupSeg.length == 1
                                     ?          
-                                <td>0{inGrupMin}:0{intGrupSeg}</td>
+                                <td>0{intGrupMin}:0{intGrupSeg}</td>
                                     :
-                                    inGrupMin.length == 2 && intGrupSeg.length == 1
+                                    intGrupMin.length == 2 && intGrupSeg.length == 1
                                         ?
-                                        <td>{inGrupMin}:0{intGrupSeg}</td>
+                                        <td>{intGrupMin}:0{intGrupSeg}</td>
                                         :
-                                        inGrupMin.length == 1 && intGrupSeg.length == 2
+                                        intGrupMin.length == 1 && intGrupSeg.length == 2
                                             ?
 
-                                            <td>0{inGrupMin}:{intGrupSeg}</td>
+                                            <td>0{intGrupMin}:{intGrupSeg}</td>
                                             :
-                                            inGrupMin.length == 1 
+                                            intGrupMin.length == 1 
                                                 ?
-                                                <td>0{inGrupMin}:{intGrupSeg}</td>
+                                                <td>0{intGrupMin}:{intGrupSeg}</td>
                                                 :
-                                                <td>{inGrupMin}:{intGrupSeg}</td>
+                                                <td>{intGrupMin}:{intGrupSeg}</td>
                         }          
                         <td>{numMesas}</td>
                         <td>

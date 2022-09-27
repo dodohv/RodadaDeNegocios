@@ -8,7 +8,7 @@ import ApresentacaoGrupo from './components/ApresentacaoGrupo'
 import Home from './components/Home'
 import NaoEncontrado from './components/NaoEncontrado'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import AddBook from './components/AddBook'
+import Book from './components/Book'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -27,7 +27,7 @@ function App() {
           <GeradorEtiquetas />
           </Route>
           <Route path="/book">
-          <AddBook />
+          <Book />
           </Route>
           <Route path="/novogrupo">
           <ApresentacaoGrupo />

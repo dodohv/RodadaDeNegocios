@@ -190,7 +190,7 @@ const ApresentacaoGrupo = () => {
         </Col>
         <Col xs={3} md={3} style={{ textAlign: 'start'}} >
         <Card.Text className="text-card medio">
-            Nome da Reunião:
+            Tempo Programado:
         
         </Card.Text>
         <Card.Text className="text-card medio">
