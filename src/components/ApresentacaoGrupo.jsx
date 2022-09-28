@@ -106,7 +106,7 @@ const ApresentacaoGrupo = () => {
             >Atualizar</button>
         </div>
 
-        {negocios.slice().map((doc, index) => {
+        {negocios.slice(-1).map((doc, index) => {
             return (
 
            <Card  key={doc.id} style={{width:'1000px'}} > 
@@ -384,7 +384,7 @@ const ApresentacaoGrupo = () => {
             </Card>
                    )
                 })}
-{negocios.slice(1,2).map((doc, index) => {
+{/* {negocios.slice(1,2).map((doc, index) => {
             return (
 
 
@@ -648,7 +648,7 @@ const ApresentacaoGrupo = () => {
 
             </Card>
                    )
-                })}
+                })} */}
 
 
         
