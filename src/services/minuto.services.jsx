@@ -8,7 +8,7 @@ const minutoCollectionRef = collection(db, "minutos");
 
 
 class MinutoDataService {
-    addNMinuto = (newMinuto) => {
+    addMinutos = (newMinuto) => {
         return addDoc(minutoCollectionRef, newMinuto);
     };
 
@@ -22,7 +22,7 @@ class MinutoDataService {
         return deleteDoc(minutoDoc);
     };
     
-    getAllMinuto = () => {
+    getAllMinutos = () => {
         return getDocs(minutoCollectionRef);
     };
 
