@@ -126,8 +126,8 @@ const Configurador = ({id, setNegocioId}) => {
         }
         
         useEffect( () => {
-            // getPartics();
-            // getMinutos();
+             getPartics();
+             getMinutos();
             console.log("O id está aqui: ", id)
             if(id !== undefined && id !== "") {
                 editHandler();
