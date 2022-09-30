@@ -4,10 +4,12 @@ import  React, {useState, useEffect} from 'react'
 import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 import NegocioDataService from "../services/negocio.services"
 import MinutoDataService from "../services/minuto.services"
+import ParticipanteDataService from "../services/participante.service"
 
 
 const Configurador = ({id, setNegocioId}) => {
     const [minutos, setMinutos] = useState([]);
+    const [partics, setPartics] = useState([]);
     const [reuniao, setReuniao] = useState('');
     const [grupo, setGrupo] = useState('');
     const [participantes, setParticipantes] = useState(0);
@@ -26,6 +28,11 @@ const Configurador = ({id, setNegocioId}) => {
     const [message, setMessage] = useState({error: false, msg: ""});
 
 
+    const getPartics = async () => {
+        const data = await ParticipanteDataService.getAllParticipantes();
+        console.log(data.docs);
+        setPartics(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    }
 
     const getMinutos = async () => {
         const data = await MinutoDataService.getAllMinutos();
@@ -119,7 +126,8 @@ const Configurador = ({id, setNegocioId}) => {
         }
         
         useEffect( () => {
-            getMinutos();
+            // getPartics();
+            // getMinutos();
             console.log("O id está aqui: ", id)
             if(id !== undefined && id !== "") {
                 editHandler();
@@ -197,13 +205,13 @@ const Configurador = ({id, setNegocioId}) => {
                                             <Form.Select value={participantes} 
                                             onChange={(e) => setParticipantes(e.target.value)}
                                              className="input-card" aria-label="Floating label select example">
-                                     
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                                <option value="300">300</option>
-
+                                             {partics.map((doc, index) => {
+                                                return(
+                                                    <option value={index}>{doc.idParticipante}</option>
+                                                )
+                                             })};
+                                                
                                             </Form.Select>
-                                       
                                     </Card.Text>
                                 </Col>
                             </Row>
@@ -215,11 +223,6 @@ const Configurador = ({id, setNegocioId}) => {
                                 </Col>
                                 <Col xs={8} md={6}>
                                     <Card.Text >
-
-                                    <Row>
-                                        <pre>{JSON.stringify(minutos, undefined,2)}</pre>
-                                    </Row>
-
                                     <Row>
                                         <Col xs={4} md={4}>
                                             <Form.Select value={tempoPartMin}  

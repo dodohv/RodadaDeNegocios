@@ -97,7 +97,7 @@ const ApresentacaoGrupo = () => {
             contador: 20
         }
     ]
-
+    
     return (  
         <>
         <div>

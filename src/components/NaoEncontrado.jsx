@@ -1,10 +1,32 @@
 
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Card,Table } from 'react-bootstrap'
-import {useState} from 'react'
+import { Container, Row, Col, Card,Table, Button } from 'react-bootstrap'
+import {useState, useEffect} from 'react'
+import NegocioDataService from "../services/negocio.services"
+
+
 const NaoEncontrado = () => {
 const [reuniao, setreuniao] = useState('');
+const [negocios, setNegocios] = useState([]);
 
+
+const getNegocios = async () => {
+  const data = await NegocioDataService.getAllNegocios();
+  console.log(data.docs);
+  setNegocios(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+};
+
+const deleteHandler = async(id) => {
+  await NegocioDataService.deleteNegocio(id);
+  getNegocios();
+}
+
+
+useEffect(() => {
+  
+getNegocios();
+
+ }, []);
     return ( 
         <div>
             <h2> 404, Página não encontrada!</h2>
@@ -59,201 +81,82 @@ const [reuniao, setreuniao] = useState('');
           <th>Intervalo</th>
           <th>Qtd Mesas</th>
           <th>Pt Mesas</th>
-          
           <th>Tempo Total</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>10</td>
-        <td>1:30</td>
-        <td>3:00</td>
-        <td>5</td>
-        <td>2</td>
-        <td>37:30</td>
-        
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>2</td> 
-          <td>2</td>
-          <td>14</td>
-          <td>1:30</td>
-          <td>3:00</td>
-          <td>5</td>
-          <td>~3</td>
-          <td>00:45:00</td>
 
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>2</td> 
-          <td>2</td>
-          <td>14</td>
-          <td>1:30</td>
-          <td>3:00</td>
-          <td>7</td>
-          <td>2</td>
-          <td>00:31:30</td>
+      {negocios.map((doc, index) => {
+        return(
+            <tr key={doc.id}>
+              <td>{index+1}</td>
+              <td>{doc.reuniao}</td>
+              <td>{doc.grupo}</td>
+              <td>{doc.participantes}</td>
+              {doc.tempoPartMin.length == 1  && doc.tempoPartSeg.length == 1
+                                ?          
+                                <td>0{doc.tempoPartMin}:0{doc.tempoPartSeg}</td>
+                                    :
+                                    doc.tempoPartMin.length == 2 && doc.tempoPartSeg.length == 1
+                                        ?
+                                        <td>{doc.tempoPartMin}:0{doc.tempoPartSeg}</td>
+                                        :
+                                        doc.tempoPartMin.length == 1 && doc.tempoPartSeg.length == 2
+                                            ?
 
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>3</td> 
-          <td>3</td>
-          <td>15</td>
-          <td>1:30</td>
-          <td>3:00</td>
-          <td>5</td>
-          <td>3</td>
-          <td>00:45:00</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>3</td> 
-          <td>3</td>
-          <td>15</td>
-          <td>1:30</td>
-          <td>3:00</td>
-          <td>7</td>
-          <td>~3</td>
-          <td>01:03:00</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>4</td> 
-          <td>4</td>
-          <td>16</td>
-          <td>1:30</td>
-          <td>3:00</td>
-          <td>5</td>
-          <td>~4</td>
-          <td>00:52:30</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>4</td> 
-          <td>4</td>
-          <td>16</td>
-          <td>1:30</td>
-          <td>3:00</td>
-          <td>7</td>
-          <td>~3</td>
-          <td>01:03:00</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>4</td> 
-          <td>4</td>
-          <td>4</td>
-          <td>4</td>
-          <td>4</td>
-          <td>4</td>
-          <td>4</td>
+                                            <td>0{doc.tempoPartMin}:{doc.tempoPartSeg}</td>
+                                            :
+                                            doc.tempoPartMin.length == 1
+                                                ?
+                                                <td>0{doc.tempoPartMin}:{doc.tempoPartSeg}</td>
+                                                :
+                                                <td>{doc.tempoPartMin}:{doc.tempoPartSeg}</td>
+                                }        
+                                {doc.intGrupMin.length == 1  && doc.intGrupSeg.length == 1
+                                    ?          
+                                <td>0{doc.intGrupMin}:0{doc.intGrupSeg}</td>
+                                    :
+                                    doc.intGrupMin.length == 2 && doc.intGrupSeg.length == 1
+                                        ?
+                                        <td>{doc.intGrupMin}:0{doc.intGrupSeg}</td>
+                                        :
+                                        doc.intGrupMin.length == 1 && doc.intGrupSeg.length == 2
+                                            ?
 
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>5</td> 
-          <td>5</td>
-          <td>5</td>
-          <td>5</td>
-          <td>5</td>
-          <td>5</td>
-          <td>5</td>
+                                            <td>0{doc.intGrupMin}:{doc.intGrupSeg}</td>
+                                            :
+                                            doc.intGrupMin.length == 1 
+                                                ?
+                                                <td>0{doc.intGrupMin}:{doc.intGrupSeg}</td>
+                                                :
+                                                <td>{doc.intGrupMin}:{doc.intGrupSeg}</td>
+                                }  
+                                <td>{doc.numMesas}</td>
+                                <td>{doc.partMesa}</td>
+                                <td>{doc.tempoTotal}</td>
+                                <td>
+                                    <Button
+                                    variant="secondary"
+                                    className="edit"
+                                    onClick={(e) => getNegocioId(doc.id)}
+                                    >
+                                        Editar
+                                    </Button>
+                                    <Button
+                                    variant="danger"
+                                    className="delete"
+                                    onClick={(e) => deleteHandler(doc.id)}
+                                    >
+                                        Deletar
+                                    </Button>
+                                </td>
 
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>6</td> 
-          <td>6</td>
-          <td>6</td>
-          <td>6</td>
-          <td>6</td>
-          <td>6</td>
-          <td>6</td>
 
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>7</td> 
-          <td>7</td>
-          <td>7</td>
-          <td>7</td>
-          <td>7</td>
-          <td>7</td>
-          <td>7</td>
+            </tr>
+        )
+      })}
 
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>8</td> 
-          <td>8</td>
-          <td>8</td>
-          <td>8</td>
-          <td>8</td>
-          <td>8</td>
-          <td>8</td>
-
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>9</td> 
-          <td>9</td>
-          <td>9</td>
-          <td>9</td>
-          <td>9</td>
-          <td>9</td>
-          <td>9</td>
-
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>10</td> 
-          <td>10</td>
-          <td>10</td>
-          <td>10</td>
-          <td>10</td>
-          <td>10</td>
-          <td>10</td>
-
-        </tr>
-        <tr>
-          <td>11</td>
-          <td>11</td> 
-          <td>11</td>
-          <td>11</td>
-          <td>11</td>
-          <td>11</td>
-          <td>11</td>
-          <td>11</td>
-
-        </tr>
-        <tr>
-          <td>12</td>
-          <td>12</td> 
-          <td>12</td>
-          <td>12</td>
-          <td>12</td>
-          <td>12</td>
-          <td>12</td>
-          <td>12</td>
-
-        </tr>
-        <tr>
-          <td>13</td>
-          <td>13</td> 
-          <td>13</td>
-          <td>13</td>
-          <td>13</td>
-          <td>13</td>
-          <td>13</td>
-          <td>13</td>
-
-        </tr>
       </tbody>
     </Table>
  

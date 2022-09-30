@@ -99,13 +99,6 @@ const ConfiguradorList = ({getNegocioId}) => {
                                 <td>{doc.tempoTotal}</td>
                                 <td>
                                     <Button
-                                    variant="secondary"
-                                    className="edit"
-                                    onClick={(e) => getNegocioId(doc.id)}
-                                    >
-                                        Editar
-                                    </Button>
-                                    <Button
                                     variant="danger"
                                     className="delete"
                                     onClick={(e) => deleteHandler(doc.id)}
