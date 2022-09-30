@@ -3,9 +3,11 @@ import {Form, Alert, InputGroup, Button, ButtonGroup, FloatingLabel,Container,Ro
 import  React, {useState, useEffect} from 'react'
 import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 import NegocioDataService from "../services/negocio.services"
+import MinutoDataService from "../services/minuto.services"
+
 
 const Configurador = ({id, setNegocioId}) => {
-
+    const [minutos, setMinutos] = useState([]);
     const [reuniao, setReuniao] = useState('');
     const [grupo, setGrupo] = useState('');
     const [participantes, setParticipantes] = useState(0);
@@ -22,6 +24,17 @@ const Configurador = ({id, setNegocioId}) => {
     const [imgEsquerda, etImgEsquerda] = useState('');
     const [idioma, setIdioma] = useState('');
     const [message, setMessage] = useState({error: false, msg: ""});
+
+
+
+    const getMinutos = async () => {
+        const data = await MinutoDataService.getAllMinutos();
+        console.log(data.docs);
+        setMinutos(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    };
+    // useEffect(() => {
+    //     getMinutos();
+    // }, []);
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -106,6 +119,7 @@ const Configurador = ({id, setNegocioId}) => {
         }
         
         useEffect( () => {
+            getMinutos();
             console.log("O id está aqui: ", id)
             if(id !== undefined && id !== "") {
                 editHandler();
@@ -201,21 +215,22 @@ const Configurador = ({id, setNegocioId}) => {
                                 </Col>
                                 <Col xs={8} md={6}>
                                     <Card.Text >
-                                        
+
+                                    <Row>
+                                        <pre>{JSON.stringify(minutos, undefined,2)}</pre>
+                                    </Row>
+
                                     <Row>
                                         <Col xs={4} md={4}>
                                             <Form.Select value={tempoPartMin}  
                                             onChange={(e) => setTempoPartMin(e.target.value)}
                                             className="input-card-se" aria-label="Floating label select example">
+                                            {minutos.map((doc, index) => {
+                                                return (
+                                                <option value={index}>{doc.minuto}</option>
+                                                )
+                                            })};
 
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="55">55</option>
-                                                <option value="56">56</option>
-                                                <option value="57">57</option>
-                                                <option value="58">58</option>
-                                                <option value="59">59</option>
                                                 
                                             </Form.Select>
                                         
@@ -227,19 +242,11 @@ const Configurador = ({id, setNegocioId}) => {
                                             <Form.Select value={tempoPartSeg} 
                                             onChange={(e) => setTempoPartSeg(e.target.value)}
                                             className="input-card-se" aria-label="Floating label select example">
-                                                <option value="0">0</option>
-                                                <option value="5">5</option>
-                                                <option value="10">10</option>
-                                                <option value="15">15</option>
-                                                <option defaultChecked value="20">20</option>
-                                                <option value="25">25</option>
-                                                <option value="30">30</option>                                                
-                                                <option value="35">35</option>
-                                                <option value="40">40</option>
-                                                <option value="45">45</option>
-                                                <option value="50">50</option>
-                                                <option value="55">55</option>
-                                            </Form.Select>
+                                            {minutos.map((doc, index) => {
+                                                return (
+                                                <option value={index}>{doc.minuto}</option>
+                                                )
+                                            })};                                            </Form.Select>
                                         </Col>
                                         <Col xs={2} md={2}>
                                         <p className="hr-card-p"> seg</p>
@@ -261,15 +268,11 @@ const Configurador = ({id, setNegocioId}) => {
                                             <Form.Select value={intIndMin}
                                             onChange={(e) => setIntIndMin(e.target.value)}
                                             className="input-card-se" aria-label="Floating label select example">
- 
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="55">55</option>
-                                                <option value="56">56</option>
-                                                <option value="57">57</option>
-                                                <option value="58">58</option>
-                                                <option value="59">59</option>
+                                            {minutos.map((doc, index) => {
+                                                return (
+                                                <option value={index}>{doc.minuto}</option>
+                                                )
+                                            })}; 
                                                 
                                             </Form.Select>
                                         
@@ -281,19 +284,12 @@ const Configurador = ({id, setNegocioId}) => {
                                            <Form.Select value={intIndSeg}  
                                             onChange={(e) => setIntIndSeg(e.target.value)}
                                            className="input-card-se" aria-label="Floating label select example">
-                                                <option value="0">0</option>
-                                                <option value="5">5</option>
-                                                <option value="10">10</option>
-                                                <option value="15">15</option>
-                                                <option defaultChecked value="20">20</option>
-                                                <option value="25">25</option>
-                                                <option value="30">30</option>                                                
-                                                <option value="35">35</option>
-                                                <option value="40">40</option>
-                                                <option value="45">45</option>
-                                                <option value="50">50</option>
-                                                <option value="55">55</option>
-                                            </Form.Select>
+                                            {minutos.map((doc, index) => {
+                                                return (
+                                                <option value={index}>{doc.minuto}</option>
+                                                )
+                                            })};                                            
+                                                                                            </Form.Select>
                                         </Col>
                                         <Col xs={2} md={2}>
                                         <p className="hr-card-p"> seg</p>
@@ -316,15 +312,11 @@ const Configurador = ({id, setNegocioId}) => {
                                             onChange={(e) => setIntGrupMin(e.target.value)} 
                                            
                                            className="input-card-se" aria-label="Floating label select example">
- 
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="55">55</option>
-                                                <option value="56">56</option>
-                                                <option value="57">57</option>
-                                                <option value="58">58</option>
-                                                <option value="59">59</option>
+                                             {minutos.map((doc, index) => {
+                                                return (
+                                                <option value={index}>{doc.minuto}</option>
+                                                )
+                                            })};
                                                 
                                             </Form.Select>
                                         
@@ -337,19 +329,12 @@ const Configurador = ({id, setNegocioId}) => {
                                             onChange={(e) => SetIntGrupSeg(e.target.value)}
                                             
                                             className="input-card-se" aria-label="Floating label select example">
-                                                <option value="0">0</option>
-                                                <option value="5">5</option>
-                                                <option value="10">10</option>
-                                                <option value="15">15</option>
-                                                <option defaultChecked value="20">20</option>
-                                                <option value="25">25</option>
-                                                <option value="30">30</option>                                                
-                                                <option value="35">35</option>
-                                                <option value="40">40</option>
-                                                <option value="45">45</option>
-                                                <option value="50">50</option>
-                                                <option value="55">55</option>
-                                            </Form.Select>
+                                            {minutos.map((doc, index) => {
+                                                return (
+                                                <option value={index}>{doc.minuto}</option>
+                                                )
+                                            })};                                              
+                                                                                            </Form.Select>
                                        
                                         </Col>
                                         <Col xs={2} md={2}>
