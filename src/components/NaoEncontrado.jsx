@@ -1,8 +1,9 @@
-
+//how to use a data.map in const functions in react js?
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card,Table, Button } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 import NegocioDataService from "../services/negocio.services"
+import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 
 
 const NaoEncontrado = () => {
@@ -77,9 +78,9 @@ getNegocios();
           <th>Nome Rodada</th>
           <th>Tipo de Apresentação</th>
           <th>Nº Participantes</th>
-          <th>Participante</th>
-          <th>Intervalo</th>
-          <th>Qtd Mesas</th>
+          <th><BsClockHistory/> Participante</th>
+                    <th><BsClockHistory/>Intervalo</th>
+                    <th>Qtd Mesas</th>
           <th>Pt Mesas</th>
           <th>Tempo Total</th>
           <th>Ações</th>

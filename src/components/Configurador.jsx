@@ -8,6 +8,7 @@ import ParticipanteDataService from "../services/participante.service"
 
 
 const Configurador = ({id, setNegocioId}) => {
+
     const [minutos, setMinutos] = useState([]);
     const [partics, setPartics] = useState([]);
     const [reuniao, setReuniao] = useState('');
@@ -15,28 +16,33 @@ const Configurador = ({id, setNegocioId}) => {
     const [participantes, setParticipantes] = useState(0);
     const [tempoPartMin, setTempoPartMin]= useState(0);
     const [tempoPartSeg, setTempoPartSeg]= useState(0);
-    const [intIndMin, setIntIndMin]= useState('');
-    const [intIndSeg, setIntIndSeg]= useState('');
-    const [intGrupMin, setIntGrupMin]= useState('');
-    const [intGrupSeg, setIntGrupSeg] = useState('');
+    const [intIndMin, setIntIndMin]= useState(0);
+    const [intIndSeg, setIntIndSeg]= useState(0);
+    const [intGrupMin, setIntGrupMin]= useState(0);
+    const [intGrupSeg, setIntGrupSeg] = useState(0);
     const [numMesas, setNumMesas] = useState(0);
     const [partMesa,setPartMesa] = useState(0);
     const [tempoTotal, setTempoTotal] = useState("00:00:00");
     const [imgDireita, setImgDireita] = useState('');
-    const [imgEsquerda, etImgEsquerda] = useState('');
+    const [imgEsquerda, setImgEsquerda] = useState('');
     const [idioma, setIdioma] = useState('');
     const [message, setMessage] = useState({error: false, msg: ""});
-
+    const [dataRodada, setDataRodada] = useState(Date.now());
+    
+    
+    const [auxiliar,setAuxiliar] = useState('');
+    
+    
 
     const getPartics = async () => {
         const data = await ParticipanteDataService.getAllParticipantes();
-        console.log(data.docs);
+        
         setPartics(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     }
 
     const getMinutos = async () => {
         const data = await MinutoDataService.getAllMinutos();
-        console.log(data.docs);
+        
         setMinutos(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     };
     // useEffect(() => {
@@ -65,7 +71,8 @@ const Configurador = ({id, setNegocioId}) => {
             tempoTotal,
             imgDireita,
             imgEsquerda,
-            idioma
+            idioma,
+            dataRodada
         }
         console.log(newNegocio)
         try {
@@ -97,6 +104,7 @@ const Configurador = ({id, setNegocioId}) => {
         setImgDireita("");
         setImgEsquerda("");
         setIdioma("");
+        setDataRodada("");
     };
         const editHandler = async(e) => {
             setMessage("");
@@ -118,6 +126,7 @@ const Configurador = ({id, setNegocioId}) => {
                 setImgDireita(docSnap.data().imgDireita);
                 setImgEsquerda(docSnap.data().imgEsquerda);
                 setIdioma(docSnap.data().idioma);
+                setDataRodada(docSnap.data().dataRodada);
 
             }
             catch (err) {   
@@ -126,7 +135,9 @@ const Configurador = ({id, setNegocioId}) => {
         }
         
         useEffect( () => {
-             getPartics();
+            
+            
+            getPartics();
              getMinutos();
             console.log("O id está aqui: ", id)
             if(id !== undefined && id !== "") {
@@ -203,7 +214,7 @@ const Configurador = ({id, setNegocioId}) => {
                                 <Col xs={8} md={6}>
                                     <Card.Text >
                                             <Form.Select value={participantes} 
-                                            onChange={(e) => setParticipantes(e.target.value)}
+                                            onChange={(e) => setParticipantes(e.target.value) }
                                              className="input-card" aria-label="Floating label select example">
                                              {partics.map((doc, index) => {
                                                 return(
@@ -230,7 +241,7 @@ const Configurador = ({id, setNegocioId}) => {
                                             className="input-card-se" aria-label="Floating label select example">
                                             {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={index}>{doc.minuto}</option>
+                                                <option value={doc.id}>{doc.minuto}</option>
                                                 )
                                             })};
 
@@ -247,7 +258,7 @@ const Configurador = ({id, setNegocioId}) => {
                                             className="input-card-se" aria-label="Floating label select example">
                                             {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={index}>{doc.minuto}</option>
+                                                <option value={doc.id}>{doc.minuto}</option>
                                                 )
                                             })};                                            </Form.Select>
                                         </Col>
@@ -273,7 +284,7 @@ const Configurador = ({id, setNegocioId}) => {
                                             className="input-card-se" aria-label="Floating label select example">
                                             {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={index}>{doc.minuto}</option>
+                                                <option value={doc.id}>{doc.minuto}</option>
                                                 )
                                             })}; 
                                                 
@@ -289,7 +300,7 @@ const Configurador = ({id, setNegocioId}) => {
                                            className="input-card-se" aria-label="Floating label select example">
                                             {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={index}>{doc.minuto}</option>
+                                                <option value={doc.id}>{doc.minuto}</option>
                                                 )
                                             })};                                            
                                                                                             </Form.Select>
@@ -317,7 +328,7 @@ const Configurador = ({id, setNegocioId}) => {
                                            className="input-card-se" aria-label="Floating label select example">
                                              {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={index}>{doc.minuto}</option>
+                                                <option value={doc.id}>{doc.minuto}</option>
                                                 )
                                             })};
                                                 
@@ -329,12 +340,12 @@ const Configurador = ({id, setNegocioId}) => {
                                         </Col>
                                         <Col xs={4} md={4}>
                                             <Form.Select value={intGrupSeg}  
-                                            onChange={(e) => SetIntGrupSeg(e.target.value)}
+                                            onChange={(e) => setIntGrupSeg(e.target.value)}
                                             
                                             className="input-card-se" aria-label="Floating label select example">
                                             {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={index}>{doc.minuto}</option>
+                                                <option value={doc.id}>{doc.minuto}</option>
                                                 )
                                             })};                                              
                                                                                             </Form.Select>

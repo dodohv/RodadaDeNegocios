@@ -6,39 +6,98 @@ import NegocioDataService from "../services/negocio.services"
 import NotificationSound from "../assets/counter.wav";
 import {BsClockHistory, BsFillPeopleFill, BsPeople, BsPlayCircle, BsPauseCircle, BsArrowLeftCircle} from 'react-icons/bs'
 
+import Test from '../components/test'
 const ApresentacaoGrupo = () => {
+
+    const [pause, setPause] = useState(true);
+    const [disableButton, setDisableButton] = useState(false);
+    const [manual, setManual] = useState(true);
+    const [leftright, setLeftRight] = useState(false);
+    const [secondsLeft, setSecondsLeft] = useState(0);
+    const [minutesLeft, setMinutesLeft] = useState(0);
     const audioPlayer = useRef(null);
     const [negocios, setNegocios] = useState([]);
     const [datadeHj,setDatadeHj] = useState("");
-    const [isActive, setIsActive] = useState(false);
-    const [isPaused, setIsPaused] = useState(true);
-    const [time, setTime] = useState(0);
     const [reuniaocount, setReuniaoCount] = useState('');
     const [reuniaototal, setReuniaoTotal] = useState('');
     const [apresentacaoCount, setApresentacaoCount] = useState('');
-    const [tempo,setTempo] = useState('00');
-    const [intTempo, setIntTempo] = useState(0);
-    const [contador, setContador] = useState(1);
+    const [newSeconds, setNewSeconds] = useState(0);
+    const [newMinutes, setNewMinutes] = useState(0);
     const Ref = useRef(null);
-    const [timer,setTimer] = useState('00:00:00')
-    const [ iteracao, setIteracao] = useState(1)
+
+    const resetTime = (myminute, mysecond) => {
+        setNewSeconds(mysecond);
+        setNewMinutes(myminute);
+    
+    }
+    const resetTimer = () => {
+        clearInterval(timer2.current);
+        timer2.current= undefined;
+        setSecondsLeft(newSeconds);
+        setMinutesLeft(newMinutes);
+      }
+
     function playAudio() {
         audioPlayer.current.play();
     }
-    const handleStart = () => {
-        setIsActive(true);
-        setIsPaused(false);
-    };
-    const handlePause = () => {
-        setIsPaused(!isPaused);
+      
+      const timer2 = () => {
+        var countdown = setInterval(() => {
+
+
+            if (minutesLeft == 0 && secondsLeft == 0 && pause != true ) {
+                playAudio()
+                pauseTimer() 
+            }
+
+            if (secondsLeft < 1 && minutesLeft > 0 && pause != true) {
+                console.log(secondsLeft)
+                setMinutesLeft((min) => min - 1);
+                setSecondsLeft(59);
+            }
+          if (secondsLeft <= 0) {
+            clearInterval(countdown);
+            return;
+          }
+    
+          if (pause === true) {
+            
+            clearInterval(countdown);
+            return;
+          }
+    
+          setSecondsLeft((sec) => sec - 1);
+        }, 1000);
+        if (secondsLeft.toString().length == 1 ) {
+            setSecondsLeft("0" + secondsLeft.toString())
+            
+        } else {
+        setSecondsLeft(secondsLeft.toString())
+        
+        } 
+  
+        return () => {
+          clearInterval(countdown);
+        };
       };
+      const enableTimerButton = () => {
+        setManual((manual) => !manual);
+        setDisableButton((disable) => !disable);
+
+      }
+
+      const stopleftright = () => {
+        setLeftRight((leftright) => !leftright )
+      }
+      const pauseTimer = () => {
+        setPause((pause) => !pause);
+      };
+      useEffect(timer2, [ minutesLeft,secondsLeft, pause]);
+
       useEffect(() => {
+
         getNegocios();
-/*         console.log(isActive)
-        if (isActive ===true) {
-            console.log('1 useEffect clearTimer')
-            clearTimer(getDeadTime()); 
-        }*/
+
     }, []);
     
 
@@ -46,58 +105,16 @@ const ApresentacaoGrupo = () => {
         const data = await NegocioDataService.getAllNegocios();
         console.log(data.docs);
         setNegocios(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+
     };
-    const getDeadTime = () => {
-        console.log('1 getDeadTime')
-        let deadline = new Date();
-        
-        deadline.setSeconds(deadline.getSeconds() + 40);
-        return deadline;
-    }
-    const clearTimer = (e) => {
-        console.log('1 clearTimer')
-        setTimer('00:00:40');
-        
-        if (Ref.current) clearInterval(Ref.current);
-        const id = setInterval(() => {
-            startTimer(e);
-        }, 1000)
-        Ref.current = id;
-    }
-    const startTimer = (e) => {
-        console.log('1 startTimer')
-        let { total, hours, minutes, seconds } 
-                    = getTimeRemaining(e);
-        if (total >= 0) {
-            setTimer(
-                (hours > 9 ? hours : '0' + hours) + ':' +
-                (minutes > 9 ? minutes : '0' + minutes) + ':' + 
-                (seconds > 9 ? seconds : '0' + seconds)
-            )
-        }
-    }
-    const getTimeRemaining = (e) => {
-        console.log('1 getTimeRemaining')
-        const total = Date.parse(e) - Date.parse(new Date());
-        const seconds = Math.floor((total / 1000) % 60);
-        const minutes = Math.floor((total / 1000 / 60) % 60);
-        const hours = Math.floor((total / 1000 / 60 / 60) % 24);
-        
-        return {
-            total, hours, minutes, seconds
-        };
-        
-    }
-    const onClickReset = () => {
-        console.log('1 onClickReset')
-        clearTimer(getDeadTime());
-    }
+
+
+
     const database = [
         {
             contador: 20
         }
     ]
-    
     return (  
         <>
         <div>
@@ -110,7 +127,22 @@ const ApresentacaoGrupo = () => {
         {negocios.slice(-1).map((doc, index) => {
             return (
 
-           <Card  key={doc.id} style={{width:'1000px'}} > 
+           <Card  key={doc.id} style={{width:'1000px'}} 
+           onLoadedData ={() =>
+                {
+            setMinutesLeft(doc.tempoPartMin) 
+            ;
+            setNewSeconds(doc.tempoPartSeg)
+            ;
+            stopleftright
+            ;
+            setSecondsLeft(doc.tempoPartSeg) 
+            
+            setNewMinutes(doc.tempoPartMin)
+        }
+        } 
+           
+           > 
             <Row xs={1} md={12} className="">
                 <Col xs={12} md={12} >
                     <div>
@@ -123,33 +155,93 @@ const ApresentacaoGrupo = () => {
             <Row xs={12} md={12} style={{marginLeft:'0px'}}>
                 <Col xs={6} md={6} style={{ textAlign: 'start'}}>
                     <Card.Text className="text-card medio">
-                      Reuniao 1/8          
+                      Reuniao 1/{doc.numMesas}          
                     </Card.Text>
                 </Col>
                 <Col xs={3} md={3}> 
-                    <Button variant="danger"  className="mini">
+                    <Button 
+                    onClick ={() => {
+                        setMinutesLeft(doc.intGrupMin) 
+                        ; 
+                        setSecondsLeft(doc.intGrupSeg)
+                        ;
+                        stopleftright
+                        ;
+                        setNewSeconds(doc.intGrupSeg)
+                        ;
+                        setNewMinutes(doc.intGrupMin)
+                        } 
+                    }
+                    
+                    variant="outline-secondary"  
+                    className="mini">
                         Anterior
                     </Button>
                 </Col>
                 <Col xs={3} md={3}> 
-                    <Button className="mini">
+                    <Button 
+                   onClick ={() => {
+                    setMinutesLeft(doc.tempoPartMin) 
+                    ; 
+                    setSecondsLeft(doc.tempoPartSeg)
+                    ;
+                    stopleftright
+                    ;
+                    setNewSeconds(doc.tempoPartSeg)
+                    ;
+                    setNewMinutes(doc.tempoPartMin)
+                    } 
+                }
+                     
+                    variant="outline-secondary" 
+                    className="mini">
                         Próximo
                     </Button>
                 </Col>
             </Row>
             <Row xs={12} md={12} style={{marginLeft:'0px'}}>
-                <Col xs={6} md={6}>
+                <Col xs={6} md={6} style={{ textAlign: 'start'}}>
                     <Card.Text className="text-card medio">
-                        Apresentação 1/ {doc.numMesas}
+                        Apresentação 1/ {doc.partMesa}
                     </Card.Text>         
                 </Col>
                 <Col xs={3} md={3}> 
-                    <Button className="mini">
+                    <Button 
+                    onClick ={() => {
+                    setMinutesLeft(doc.intGrupMin) 
+                    ; 
+                    setSecondsLeft(doc.intGrupSeg)
+                    ;
+                    stopleftright
+                    ;
+                    setNewSeconds(doc.intGrupSeg)
+                    ;
+                    setNewMinutes(doc.intGrupMin)       
+                    } 
+                }
+                    variant="outline-secondary" 
+                    className="mini">
                         Anterior
                     </Button>
                 </Col>
                 <Col xs={3} md={3}> 
-                    <Button className="mini">
+                    <Button 
+                    onClick ={() => {
+                        setMinutesLeft(doc.tempoPartMin) 
+                        ; 
+                        setSecondsLeft(doc.tempoPartSeg)
+                        ;
+                        stopleftright
+                        ;
+                        setNewSeconds(doc.tempoPartSeg)
+                        ;
+                        setNewMinutes(doc.tempoPartMin)
+                    
+                    } 
+                    }
+                    
+                    variant="outline-secondary" 
+                    className="mini">
                         Próximo
                     </Button>
                 </Col>
@@ -157,54 +249,72 @@ const ApresentacaoGrupo = () => {
         </Col>
         <Col xs={3} md={3}>
             <Row xs={12} md={12}>
+    
+      <span>TIMER</span>
+      <span></span>
+      <p className="timernovo">
+        0:{ minutesLeft.toString().length == 1 ? 
+         "0" + minutesLeft
+        : 
+         minutesLeft 
+        }
+        :
+        { secondsLeft.toString.lenght == 1 ?
+        "0" + secondsLeft  
+        : 
+        secondsLeft  
+        }
+      </p>
+        {pause ? 
+        <Col xs={4} md={4} className="mini">                    
+        <BsPlayCircle className="botão" onClick={pauseTimer} /> 
+        <p>
+        Pausar
+        </p>
+        </Col>
+        : 
+        <Col xs={4} md={4} className="mini">
+        <BsPauseCircle className="botão" onClick={pauseTimer} />
+        <p>
+        Iniciar
+        </p>
+        </Col>
+        }
+        <Col xs={4} md={4} className="mini">
+        {disableButton == true ?
+        <>
+        <BsPlayCircle 
+        className="botãoReverso"
+        onClick =  {resetTimer  } 
+        disabled= {disableButton}
+        />
+        <p>
+        Reiniciar
+        </p>
+        </>
+        :
+        <>
+        <BsPlayCircle 
+        className="botãoReversoDisabled"
+        
+        disabled= {disableButton}
+        />
+        <p>
+        Reiniciar
+        </p>
+        </>
+        }
+           
+        <audio ref={audioPlayer} src={NotificationSound} />
+        </Col>
 
-        <p className="timernovo">{timer}</p>
-            </Row>
-            <Row xs={12} md={12}>
-                <Col xs={4} md={4} className="mini">
-                    
-                        <BsPlayCircle className="botão" onClick ={onClickReset}/>
-                  
-                    <p>
-                        Continuar
-                    </p>
-                </Col>
-                <Col xs={4} md={4} className="mini">
-                    <BsPauseCircle className="botão" onClick ={handleStart}/>
-                    <p>
-                        Pausar
-                    </p>
-
-                </Col>
-                <Col xs={4} md={4} className="mini">
-                    {isActive ? 
-                    <div>
-
-                        <BsPlayCircle className="botãoReverso" onClick ={handlePause} />
-                        <p>
-                        Reiniciar
-                    </p>
-
-                    </div>
-                    
-                    :
-                    <div>
-             <BsPlayCircle className="botãoReverso" onClick={playAudio} />
-             <audio ref={audioPlayer} src={NotificationSound} />
-                        <p>
-                        Voltar
-                    </p>
-
-                    </div>
-                    }      
-                </Col>
-            </Row>
-            <Row xs={12} md={12}>
-                <Col xs={4} md={4} className="medio">
-                    <Form.Check             
+    </Row>
+    <Row xs={12} md={12}>
+                <Col xs={1} md={1} className="medio">
+                    <Form.Check  onClick={enableTimerButton}           
                     />
                 </Col>
-                <Col xs={6} md={6} className="medio" >
+                <Col xs={4} md={4} className="medio" >
                     <p>Manual</p>
                 </Col>
            

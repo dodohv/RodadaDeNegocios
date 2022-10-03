@@ -118,22 +118,34 @@ button:focus-visible {
 }
 .botão:hover{
   font-size: 28px;
-  color:#535bf2
+  color:#474cab
 }
 .botão{
   font-size: 28px;
   cursor: pointer;
+  color:#535bf2
 }
 .botãoReverso:hover{
   font-size: 28px;
   transform: rotate(180deg);
   cursor: pointer;
-  color:#535bf2
+  color:#474cab
 }
 .botãoReverso{
   font-size: 28px;
   transform: rotate(180deg);
   cursor: pointer;
+  color:#535bf2
+}
+.botãoReversoDisabled:hover{
+  font-size: 28px;
+  transform: rotate(180deg);
+  color:#a6a6aa
+}
+.botãoReversoDisabled{
+  font-size: 28px;
+  transform: rotate(180deg);
+  color:#a6a6aa
 }
 .text-card-p{
   margin-left: -15px;
