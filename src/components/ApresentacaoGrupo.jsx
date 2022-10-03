@@ -5,9 +5,12 @@ import {useState, useEffect, useRef} from "react"
 import NegocioDataService from "../services/negocio.services"
 import NotificationSound from "../assets/counter.wav";
 import {BsClockHistory, BsFillPeopleFill, BsPeople, BsPlayCircle, BsPauseCircle, BsArrowLeftCircle} from 'react-icons/bs'
-
+import MinutoDataService from "../services/minuto.services"
 import Test from '../components/test'
 const ApresentacaoGrupo = () => {
+
+    
+    const [minutos, setMinutos] = useState([]);
 
     const [pause, setPause] = useState(true);
     const [disableButton, setDisableButton] = useState(false);
@@ -47,7 +50,8 @@ const ApresentacaoGrupo = () => {
 
             if (minutesLeft == 0 && secondsLeft == 0 && pause != true ) {
                 playAudio()
-                pauseTimer() 
+                pauseTimer()
+
             }
 
             if (secondsLeft < 1 && minutesLeft > 0 && pause != true) {
@@ -88,6 +92,7 @@ const ApresentacaoGrupo = () => {
 
       const stopleftright = () => {
         setLeftRight((leftright) => !leftright )
+        console.log("Test")
       }
       const pauseTimer = () => {
         setPause((pause) => !pause);
@@ -95,7 +100,7 @@ const ApresentacaoGrupo = () => {
       useEffect(timer2, [ minutesLeft,secondsLeft, pause]);
 
       useEffect(() => {
-
+        getMinutos();
         getNegocios();
 
     }, []);
@@ -107,7 +112,11 @@ const ApresentacaoGrupo = () => {
         setNegocios(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
 
     };
-
+    const getMinutos = async () => {
+        const data = await MinutoDataService.getAllMinutos();
+        
+        setMinutos(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    };
 
 
     const database = [
@@ -117,34 +126,27 @@ const ApresentacaoGrupo = () => {
     ]
     return (  
         <>
-        <div>
-            <button
-            variant="dark edit"
-            onClick={getNegocios}
-            >Atualizar</button>
-        </div>
-
         {negocios.slice(-1).map((doc, index) => {
             return (
 
-           <Card  key={doc.id} style={{width:'1000px'}} 
+           <Card  key={index} style={{width:'1000px'}} 
            onLoadedData ={() =>
                 {
-            setMinutesLeft(doc.tempoPartMin) 
-            ;
-            setNewSeconds(doc.tempoPartSeg)
-            ;
-            stopleftright
-            ;
-            setSecondsLeft(doc.tempoPartSeg) 
-            
-            setNewMinutes(doc.tempoPartMin)
+                setMinutesLeft(doc.tempoPartMin) 
+                ;
+                setNewSeconds(doc.tempoPartSeg)
+                ;
+                stopleftright
+                ;
+                setSecondsLeft(doc.tempoPartSeg) 
+                ;
+                setNewMinutes(doc.tempoPartMin)
         }
         } 
            
            > 
             <Row xs={1} md={12} className="">
-                <Col xs={12} md={12} >
+                <Col xs={12} md={12} style={{ marginLeft: '10px' , textAlign: 'start'}}>
                     <div>
                         <h3>{doc.reuniao}</h3>
                            </div>
@@ -265,21 +267,40 @@ const ApresentacaoGrupo = () => {
         secondsLeft  
         }
       </p>
-        {pause ? 
-        <Col xs={4} md={4} className="mini">                    
-        <BsPlayCircle className="botão" onClick={pauseTimer} /> 
+      <Col xs={4} md={4} className="mini">
+      <BsPlayCircle className="botão" onClick={pauseTimer} /> 
+      <p>Continuar</p>
+      </Col>
+
+        {disableButton == true ?
+        <Col xs={4} md={4} className="mini">
+            {pause ?    
+            <>
+            <BsPlayCircle className="botão" onClick={pauseTimer} /> 
+           <p>
+           Pausar
+           </p>
+           </>
+            : 
+            <>  
+            <BsPauseCircle className="botão" onClick={pauseTimer} />
+            <p>
+            Iniciar
+            </p>
+            </>
+            }   
+        
+        </Col>
+        :
+        <Col xs={4} md={4} className="mini">   
+        <BsPauseCircle className="botãoReversoDisabled"   disabled= {disableButton} />
         <p>
         Pausar
         </p>
         </Col>
-        : 
-        <Col xs={4} md={4} className="mini">
-        <BsPauseCircle className="botão" onClick={pauseTimer} />
-        <p>
-        Iniciar
-        </p>
-        </Col>
+        
         }
+       
         <Col xs={4} md={4} className="mini">
         {disableButton == true ?
         <>
@@ -362,9 +383,45 @@ const ApresentacaoGrupo = () => {
 
         </Row>
         
+            <Row xs={12} md={12} className="borderrow grande">
+                {minutos.slice(1,5 +1).map((doc3, index3) => {
+                    return(
+                        <>
+                        <Col xs={1} md={1} className="mesas">
+                            
+                        <Card.Text className="text-card ">{doc3.minuto} - </Card.Text>
+                        </Col>
+                        </>
+                    )
+                })}
+        
+            </Row>
+        
+        <Row xs={12} md={12} className="borderrow grande">
+        
+        
+
+        {minutos.slice(1, (1 + parseInt(doc.participantes)) ).map((doc2, index2) => {
+            return(
+                <>
+                
+                <Col xs={1} md={1} key ={doc2.minuto} className="mesas">
+                    <Card.Text className="text-card ">{doc2.minuto} - </Card.Text>
+                </Col>
+                </>
+            )
+
+        })
+
+        }
+                        <Col xs={4} md={4}  className="mesas">
+                    
+                </Col>
+         </Row>
      {database.map((contar, index) => {
         return(
             <Row xs={12} md={12} className="borderrow grande">
+            
             <Col xs={2} md={2}>
     
             <Card.Text className="text-card ">
@@ -393,6 +450,7 @@ const ApresentacaoGrupo = () => {
 
         )
      })}
+
       <Row xs={12} md={12} className="borderrow grande">
         <Col xs={2} md={2}>
 
@@ -494,7 +552,8 @@ const ApresentacaoGrupo = () => {
 
             </Card>
                    )
-                })}
+        
+        })}
 {/* {negocios.slice(1,2).map((doc, index) => {
             return (
 

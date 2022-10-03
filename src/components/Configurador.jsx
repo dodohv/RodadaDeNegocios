@@ -160,9 +160,6 @@ const Configurador = ({id, setNegocioId}) => {
 
         <Container className='configurador'>
      
-            <Link to="/" >
-                <button> Voltar para Inicio</button>
-            </Link>
         <Form onSubmit= {handleSubmit}>
             <Row xs={1} md={12} className="g-4">
             <Col xs={12}>
@@ -348,7 +345,7 @@ const Configurador = ({id, setNegocioId}) => {
                                                 <option value={doc.id}>{doc.minuto}</option>
                                                 )
                                             })};                                              
-                                                                                            </Form.Select>
+                                            </Form.Select>
                                        
                                         </Col>
                                         <Col xs={2} md={2}>
@@ -468,6 +465,13 @@ const Configurador = ({id, setNegocioId}) => {
                                 <Button variant="primary" type="submit">
                                     Salvar
                                 </Button>
+                                </Col>
+                                <Col xs={8} md={8} style={{ textAlign: 'end'}}>
+                                    <Link to="/" >
+                                        <Button  variant="danger"> 
+                                            Cancelar
+                                        </Button>
+                                    </Link>
                                 </Col>
                                 
                             </Row>

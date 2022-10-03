@@ -1,8 +1,3 @@
-//how to format integer to String in react js?
-//how to disable a button in react hook?
-
-
-
 import { useEffect, useState, useRef } from "react";
 import NotificationSound from "../assets/counter.wav";
 

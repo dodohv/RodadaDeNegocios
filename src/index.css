@@ -81,7 +81,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
+.mesas{
+  text-align: center;
+  justify-content:space-between
+}
 .configurador {
   top:10px;
   position:relative;
