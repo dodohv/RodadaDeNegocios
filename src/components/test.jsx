@@ -1,3 +1,6 @@
+//How fazer um random em react
+
+
 import { useEffect, useState, useRef } from "react";
 import NotificationSound from "../assets/counter.wav";
 

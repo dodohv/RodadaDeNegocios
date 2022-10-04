@@ -9,6 +9,7 @@ import Home from './components/Home'
 import NaoEncontrado from './components/NaoEncontrado'
 import ConfiguradorView from './components/ConfigurarView'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Alertas from './components/Alertas'
 import Book from './components/Book'
 function App() {
   const [count, setCount] = useState(0)
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/book">
           <Book />
+          </Route>
+          <Route path="/alertas">
+          <Alertas />
           </Route>
           <Route path="/novogrupo">
           <ApresentacaoGrupo />

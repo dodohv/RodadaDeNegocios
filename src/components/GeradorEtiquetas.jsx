@@ -33,19 +33,17 @@ const GeradorEtiquetas = () => {
 
     return ( 
         <div>
-            <h3>Gerador de Etiquetas</h3>
-            <button> Gerar em Excel</button>
-        
+
         <Container className='configurador'>
         {negocios.slice(-1).map((doc, index) => {
             return(
 
         <Form onSubmit= {handleGerarEtiqueta}>
             <Row  xs={1} md={12} className="g-4">
-                <Col xs={12}>
+                <Col xs={12} style={{ marginLeft: '10px' , textAlign: 'start'}}>
                     <Card.Body>
                         <Card.Title className='title-card'>
-                            Gerar
+                        Distribuição dos Participantes por Mesa
                         </Card.Title>
                         <Row className='row-card'>
                             <Col xs={4} md={6}>

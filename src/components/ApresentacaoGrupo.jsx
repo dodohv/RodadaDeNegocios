@@ -9,9 +9,7 @@ import MinutoDataService from "../services/minuto.services"
 import Test from '../components/test'
 const ApresentacaoGrupo = () => {
 
-    
     const [minutos, setMinutos] = useState([]);
-
     const [pause, setPause] = useState(true);
     const [disableButton, setDisableButton] = useState(false);
     const [manual, setManual] = useState(true);
@@ -148,7 +146,10 @@ const ApresentacaoGrupo = () => {
             <Row xs={1} md={12} className="">
                 <Col xs={12} md={12} style={{ marginLeft: '10px' , textAlign: 'start'}}>
                     <div>
-                        <h3>{doc.reuniao}</h3>
+                    
+                        <Card.Title className='title-card'>
+                        {doc.reuniao}
+                        </Card.Title>
                            </div>
                 </Col>
             </Row>
