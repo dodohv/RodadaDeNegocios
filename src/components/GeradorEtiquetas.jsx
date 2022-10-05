@@ -122,7 +122,7 @@ const GeradorEtiquetas = () => {
                                 </Col>
                                 <Col xs={1} md={1}>
                                 <Card.Text className="text-card">
-                                    3
+                                    {(doc.participantes / doc.numMesas )}
                                     </Card.Text>
                                 </Col>
                                 <Col xs={6} md={6}>

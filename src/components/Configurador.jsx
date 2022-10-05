@@ -13,7 +13,7 @@ const Configurador = ({id, setNegocioId}) => {
     const [partics, setPartics] = useState([]);
     const [reuniao, setReuniao] = useState('');
     const [grupo, setGrupo] = useState('');
-    const [participantes, setParticipantes] = useState(0);
+    const [participantes, setParticipantes] = useState(7);
     const [tempoPartMin, setTempoPartMin]= useState(0);
     const [tempoPartSeg, setTempoPartSeg]= useState(0);
     const [intIndMin, setIntIndMin]= useState(0);
@@ -28,7 +28,7 @@ const Configurador = ({id, setNegocioId}) => {
     const [idioma, setIdioma] = useState('');
     const [message, setMessage] = useState({error: false, msg: ""});
     const [dataRodada, setDataRodada] = useState(Date.now());
-    
+    const [newNumMesas, setNewNumMesas] = useState(0)
     
     const [auxiliar,setAuxiliar] = useState('');
     
@@ -45,9 +45,42 @@ const Configurador = ({id, setNegocioId}) => {
         
         setMinutos(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     };
-    // useEffect(() => {
-    //     getMinutos();
-    // }, []);
+
+    
+    const meusPartMesa = async () => {
+        console.log(numMesas)
+        if(numMesas != 0 ) {
+            setPartMesa((participantes) / numMesas)
+            console.log(numMesas)
+            setTempoTotal(
+                Math.floor(intGrupMin * 60) + Math.floor(intIndMin * 60)
+            )
+        } 
+
+    };
+    const calcularTempoTotal = async () => {
+
+
+        // tempoPartMin
+        // setTempoPartMin
+        // tempoPartSeg 
+        // setTempoPartSeg
+        // intIndMin
+        // setIntIndMin
+        // intIndSeg
+        // setIntIndSeg
+        // intGrupMin
+        // setIntGrupMin
+        // intGrupSeg
+        // setIntGrupSeg
+        // numMesas
+        // setNumMesas
+        // partMesa
+        // setPartMesa
+        // tempoTotal
+        // setTempoTotal
+    }
+
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -134,16 +167,17 @@ const Configurador = ({id, setNegocioId}) => {
             }
         }
         
-        useEffect( () => {
+
+        useEffect(() => {
             
             
             getPartics();
              getMinutos();
-            console.log("O id está aqui: ", id)
-            if(id !== undefined && id !== "") {
-                editHandler();
-            }
-        },[id])
+
+            meusPartMesa();
+ 
+        
+        },[numMesas, participantes, intGrupMin])
 
     return ( 
         <div>
@@ -211,11 +245,14 @@ const Configurador = ({id, setNegocioId}) => {
                                 <Col xs={8} md={6}>
                                     <Card.Text >
                                             <Form.Select value={participantes} 
-                                            onChange={(e) => setParticipantes(e.target.value) }
+                                            onChange={(e) => { setParticipantes(e.target.value);
+                                            
+
+                                            }}
                                              className="input-card" aria-label="Floating label select example">
                                              {partics.map((doc, index) => {
                                                 return(
-                                                    <option value={index}>{doc.idParticipante}</option>
+                                                    <option value={doc.idParticipante}>{doc.idParticipante}</option>
                                                 )
                                              })};
                                                 
@@ -238,7 +275,7 @@ const Configurador = ({id, setNegocioId}) => {
                                             className="input-card-se" aria-label="Floating label select example">
                                             {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={doc.id}>{doc.minuto}</option>
+                                                <option value={doc.minuto}>{doc.minuto}</option>
                                                 )
                                             })};
 
@@ -255,7 +292,7 @@ const Configurador = ({id, setNegocioId}) => {
                                             className="input-card-se" aria-label="Floating label select example">
                                             {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={doc.id}>{doc.minuto}</option>
+                                                <option value={doc.minuto}>{doc.minuto}</option>
                                                 )
                                             })};                                            </Form.Select>
                                         </Col>
@@ -281,7 +318,7 @@ const Configurador = ({id, setNegocioId}) => {
                                             className="input-card-se" aria-label="Floating label select example">
                                             {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={doc.id}>{doc.minuto}</option>
+                                                <option value={doc.minuto}>{doc.minuto}</option>
                                                 )
                                             })}; 
                                                 
@@ -297,7 +334,7 @@ const Configurador = ({id, setNegocioId}) => {
                                            className="input-card-se" aria-label="Floating label select example">
                                             {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={doc.id}>{doc.minuto}</option>
+                                                <option value={doc.minuto}>{doc.minuto}</option>
                                                 )
                                             })};                                            
                                                                                             </Form.Select>
@@ -325,7 +362,7 @@ const Configurador = ({id, setNegocioId}) => {
                                            className="input-card-se" aria-label="Floating label select example">
                                              {minutos.map((doc, index) => {
                                                 return (
-                                                <option value={doc.id}>{doc.minuto}</option>
+                                                <option value={doc.minuto}>{doc.minuto}</option>
                                                 )
                                             })};
                                                 
@@ -366,17 +403,18 @@ const Configurador = ({id, setNegocioId}) => {
                                     <Row>
                                         <Col xs={4} md={4}>
                                             <Form.Select value={numMesas} 
-                                            onChange={(e) => setNumMesas(e.target.value)}
+                                            onChange={(e) => {
+                                                setNumMesas(e.target.value); 
+                                                setNewNumMesas(e.target.value);
+                                                
+                                            } }
                                             className="input-card-se" aria-label="Floating label select example">
- 
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="55">55</option>
-                                                <option value="56">56</option>
-                                                <option value="57">57</option>
-                                                <option value="58">58</option>
-                                                <option value="59">59</option>
+                                                 {minutos.map((doc, index) => {
+                                                return (
+                                                    <option value={doc.minuto}>{doc.minuto}</option>
+                                                    )
+                                                })};               
+        
                                                 
                                             </Form.Select>
                                        </Col >
@@ -387,7 +425,12 @@ const Configurador = ({id, setNegocioId}) => {
                                         
                                         <FloatingLabel value={partMesa}
                                         
-                                        className="input-card-se" controlId="floatingInputGrid" label=" por mesa">
+                                        className="input-card-se" controlId="floatingInputGrid" label= {partMesa}>
+                                        
+                                        </FloatingLabel> 
+                                        <FloatingLabel value={partMesa}
+                                        
+                                        className="input-card-se" controlId="floatingInputGrid" label= {partMesa}>
                                         
                                         </FloatingLabel> 
                                         </Col>
@@ -405,7 +448,7 @@ const Configurador = ({id, setNegocioId}) => {
                                     <Card.Text >
                                            <Form.Control disabled   value={tempoTotal} 
                                            
-                                           className="input-card" size="sm" type="email" placeholder="00:00:00" />
+                                           className="input-card" size="sm" type="text" placeholder={tempoTotal} />
                                   
                                     </Card.Text>
                                 </Col>
