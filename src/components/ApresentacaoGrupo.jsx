@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import {FloatingLabel, Form,Container,Row, Col, Card ,Table,Button  } from 'react-bootstrap'
 import {useState, useEffect, useRef} from "react"
 import NegocioDataService from "../services/negocio.services"
-import NotificationSound from "../assets/counter.wav";
+import NotificationSound3 from "../assets/sprayer.wav";
+import NotificationSound2 from "../assets/counter.wav";
+import NotificationSound from "../assets/ctwin.ogg";
 import {BsClockHistory, BsFillPeopleFill, BsPeople, BsPlayCircle, BsPauseCircle, BsArrowLeftCircle} from 'react-icons/bs'
 import MinutoDataService from "../services/minuto.services"
 import Test from '../components/test'
@@ -13,10 +15,13 @@ const ApresentacaoGrupo = () => {
     const [pause, setPause] = useState(true);
     const [disableButton, setDisableButton] = useState(false);
     const [manual, setManual] = useState(true);
+    const [iniciar,setIniciar] = useState(true);
     const [leftright, setLeftRight] = useState(false);
     const [secondsLeft, setSecondsLeft] = useState(0);
     const [minutesLeft, setMinutesLeft] = useState(0);
     const audioPlayer = useRef(null);
+    const audioPlayer2 = useRef(null);
+    const audioPlayer3 = useRef(null);
     const [negocios, setNegocios] = useState([]);
     const [datadeHj,setDatadeHj] = useState("");
     const [reuniaocount, setReuniaoCount] = useState('');
@@ -26,34 +31,40 @@ const ApresentacaoGrupo = () => {
     const [newMinutes, setNewMinutes] = useState(0);
     const Ref = useRef(null);
 
-    const resetTime = (myminute, mysecond) => {
-        setNewSeconds(mysecond);
-        setNewMinutes(myminute);
-    
-    }
     const resetTimer = () => {
         clearInterval(timer2.current);
         timer2.current= undefined;
         setSecondsLeft(newSeconds);
         setMinutesLeft(newMinutes);
-      }
+        
+    }
 
     function playAudio() {
         audioPlayer.current.play();
+    }
+    function playAudio2() {
+        audioPlayer2.current.play();
+    }
+    function playAudio3() {
+        audioPlayer3.current.play();
     }
       
       const timer2 = () => {
         var countdown = setInterval(() => {
 
-
+            if (minutesLeft == 0 && secondsLeft == 15 && pause != true) {
+                playAudio3();
+            }
             if (minutesLeft == 0 && secondsLeft == 0 && pause != true ) {
                 playAudio()
                 pauseTimer()
+                venhainiciar()
 
             }
 
             if (secondsLeft < 1 && minutesLeft > 0 && pause != true) {
                 console.log(secondsLeft)
+                
                 setMinutesLeft((min) => min - 1);
                 setSecondsLeft(59);
             }
@@ -61,7 +72,7 @@ const ApresentacaoGrupo = () => {
             clearInterval(countdown);
             return;
           }
-    
+
           if (pause === true) {
             
             clearInterval(countdown);
@@ -92,8 +103,16 @@ const ApresentacaoGrupo = () => {
         setLeftRight((leftright) => !leftright )
         console.log("Test")
       }
+  
       const pauseTimer = () => {
+        resetTimer
         setPause((pause) => !pause);
+        setIniciar ((iniciar) => !iniciar)
+        console.log(newSeconds)
+        console.log(secondsLeft)
+        if(iniciar === true && newSeconds <= secondsLeft && newMinutes <= minutesLeft) {
+            playAudio2()
+        }
       };
       useEffect(timer2, [ minutesLeft,secondsLeft, pause]);
 
@@ -279,14 +298,14 @@ const ApresentacaoGrupo = () => {
             <>
             <BsPlayCircle className="botão" onClick={pauseTimer} /> 
            <p>
-           Pausar
+           Iniciar
            </p>
            </>
             : 
             <>  
             <BsPauseCircle className="botão" onClick={pauseTimer} />
             <p>
-            Iniciar
+            Pausar
             </p>
             </>
             }   
@@ -328,6 +347,8 @@ const ApresentacaoGrupo = () => {
         }
            
         <audio ref={audioPlayer} src={NotificationSound} />
+        <audio ref={audioPlayer2} src={NotificationSound2} />
+        <audio ref={audioPlayer3} src={NotificationSound3} />
         </Col>
 
     </Row>
