@@ -53,35 +53,11 @@ const Configurador = ({id, setNegocioId}) => {
             setPartMesa((participantes) / numMesas)
             console.log(numMesas)
             setTempoTotal(
-                Math.floor(intGrupMin * 60) + Math.floor(intIndMin * 60)
+            (Math.floor(parseInt(intGrupMin) * 60) + Math.floor(parseInt(intIndMin) * 60) + Math.floor(parseInt(tempoPartMin) * 60) + parseInt(intGrupSeg) + parseInt(intIndSeg) + parseInt(tempoPartSeg)) + " segundos corrigir para 00:00:00"
+            
             )
-        } 
-
+        }
     };
-    const calcularTempoTotal = async () => {
-
-
-        // tempoPartMin
-        // setTempoPartMin
-        // tempoPartSeg 
-        // setTempoPartSeg
-        // intIndMin
-        // setIntIndMin
-        // intIndSeg
-        // setIntIndSeg
-        // intGrupMin
-        // setIntGrupMin
-        // intGrupSeg
-        // setIntGrupSeg
-        // numMesas
-        // setNumMesas
-        // partMesa
-        // setPartMesa
-        // tempoTotal
-        // setTempoTotal
-    }
-
-
     const handleSubmit = async(e) => {
         e.preventDefault();
         setMessage("");
@@ -169,14 +145,9 @@ const Configurador = ({id, setNegocioId}) => {
         
 
         useEffect(() => {
-            
-            
             getPartics();
              getMinutos();
-
             meusPartMesa();
- 
-        
         },[numMesas, participantes, intGrupMin])
 
     return ( 
