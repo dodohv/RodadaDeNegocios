@@ -15,8 +15,8 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-      <Router>
-<Container fluid>
+  <Router>
+    <Container fluid>
       <Navbar />
         <Switch>
           <Route exact path="/">

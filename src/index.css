@@ -161,6 +161,12 @@ button:focus-visible {
   text-align: left;
   padding-top: 4px;
 }
+
+.hr-card-participantes-icon{
+  text-align: left;
+  padding-bottom: 1px;
+
+}
 .input-card{
   width:100%;
   margin-left:-4%;

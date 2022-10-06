@@ -124,7 +124,9 @@ const ApresentacaoGrupo = () => {
     ]
     return (  
     <>
-    {negocios.slice(-1).map((doc, index) => {
+    {/* <pre>datanew.sort((a,b) =>(a.data > b.data) ? 1 : -1)</pre>*/}
+    {/* negocios.slice(-1).map((doc, index) => { */}
+    {negocios.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc, index) => {
         return (
 
         <Card  key={index} style={{width:'1000px'}} 
