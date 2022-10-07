@@ -8,8 +8,8 @@ const mesaCollectionRef = collection(db, "mesas");
 
 
 class MesaDataService {
-    addMesa = (newMesa) => {
-        return addDoc(mesa2CollectionRef, newMesa);
+    addMesas = (newMesa) => {
+        return addDoc(mesaCollectionRef, newMesa);
     };
 
     updateMesa = (id, updateMesa) => {

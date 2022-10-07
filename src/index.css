@@ -83,7 +83,8 @@ button:focus-visible {
 }
 .mesas{
   text-align: center;
-  justify-content:space-between
+  justify-content:space-between;
+  margin-left: -25px;
 }
 .configurador {
   top:10px;

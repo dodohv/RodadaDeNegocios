@@ -8,6 +8,7 @@ import NotificationSound2 from "../assets/counter.wav";
 import NotificationSound from "../assets/ctwin.ogg";
 import {BsClockHistory, BsFillPeopleFill, BsPeople, BsPlayCircle, BsPauseCircle, BsArrowLeftCircle} from 'react-icons/bs'
 import MinutoDataService from "../services/minuto.services"
+import MesaDataService from "../services/mesas.service"
 import Test from '../components/test'
 const ApresentacaoGrupo = () => {
 
@@ -17,13 +18,18 @@ const ApresentacaoGrupo = () => {
     const [manual, setManual] = useState(true);
     const [iniciar,setIniciar] = useState(true);
     const [leftright, setLeftRight] = useState(false);
-    const [secondsLeft, setSecondsLeft] = useState(0);
+    const [secondsLeft, setSecondsLeft] = useState(1);
     const [minutesLeft, setMinutesLeft] = useState(0);
+    const [timer3, setTimer3] = useState(1);
+    const [tempoDecorrido, setTempoDecorrido] = useState("00:00:00");
+    const [timer3Hra,setTimer3Hra] = useState(0);
+    const [timer3Min,setTimer3Min] = useState(0);
+    const [timer3Seg, setTimer3Seg] = useState(0);
     const audioPlayer = useRef(null);
     const audioPlayer2 = useRef(null);
     const audioPlayer3 = useRef(null);
+    const [mesas, setMesas] = useState([]);
     const [negocios, setNegocios] = useState([]);
-    const [datadeHj,setDatadeHj] = useState("");
     const [reuniaocount, setReuniaoCount] = useState('');
     const [reuniaototal, setReuniaoTotal] = useState('');
     const [apresentacaoCount, setApresentacaoCount] = useState('');
@@ -39,12 +45,24 @@ const ApresentacaoGrupo = () => {
         setSecondsLeft(newSeconds);
         setMinutesLeft(newMinutes);   
     }
-    const meusContadores = async () => { 
-        if(numMesas != 0 ) {
-            setContarReuniao((participantes) / numMesas)
-                console.log(numMesas)
-        }  
-    };
+const meuTempoDecorrido = async() => {
+    setTimer3Seg(
+        (((Math.floor(timer3  % 3600)) % 60)).toFixed(0)
+    )    
+    setTimer3Hra(
+        (Math.floor(timer3 / 3600)).toFixed(0)
+    )
+    setTimer3Min(
+        (((Math.floor(timer3  % 3600)) / 60)).toFixed(0)
+    )
+
+     
+    setTempoDecorrido(
+        timer3Hra + ":" + timer3Min + ":" + timer3Seg
+        )
+
+}
+
     function playAudio() {
         audioPlayer.current.play();
     }
@@ -56,6 +74,11 @@ const ApresentacaoGrupo = () => {
     }
     const timer2 = () => {
         var countdown = setInterval(() => {
+            if (minutesLeft > 0 && secondsLeft == 0 && pause != true) {
+                
+                setMinutesLeft((min) => min - 1);
+                setSecondsLeft(59);
+            }
             if (minutesLeft == 0 && secondsLeft == 15 && pause != true) {
                 playAudio3();
             }
@@ -63,11 +86,7 @@ const ApresentacaoGrupo = () => {
                 playAudio()
                 pauseTimer()
             }
-            if (secondsLeft < 1 && minutesLeft > 0 && pause != true) {
-                console.log(secondsLeft)   
-                setMinutesLeft((min) => min - 1);
-                setSecondsLeft(59);
-            }
+
             if (secondsLeft <= 0) {
                 clearInterval(countdown);
                 return;
@@ -76,6 +95,8 @@ const ApresentacaoGrupo = () => {
                 clearInterval(countdown);
                 return;
             }
+            setTimer3((sec) => sec + 1);
+            
             setSecondsLeft((sec) => sec - 1);
         }, 1000);
             if (secondsLeft.toString().length == 1 ) {
@@ -103,10 +124,15 @@ const ApresentacaoGrupo = () => {
             }
     };
     useEffect(timer2, [ minutesLeft,secondsLeft, pause]);
+    useEffect(() => {
+        meuTempoDecorrido();
 
+    },[timer3,timer3Hra,timer3Min,timer3Seg])
     useEffect(() => {
         getMinutos();
         getNegocios();
+        getMesas();
+        
     }, []);
     const getNegocios = async () => {
         const data = await NegocioDataService.getAllNegocios();
@@ -117,6 +143,11 @@ const ApresentacaoGrupo = () => {
         const data = await MinutoDataService.getAllMinutos();    
             setMinutos(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     };
+    const getMesas = async () => {
+        const data = await MesaDataService.getAllMesas();
+        
+        setMesas(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    }
     const database = [
         {
             contador: 20
@@ -344,11 +375,11 @@ const ApresentacaoGrupo = () => {
                 </Col>
                 <Col xs={2} md={2} className="medio">
                     <Card.Text className="text-card">
-                        00:00:00
+                        {doc.tempoTotal}
                     </Card.Text>
                     
                     <Card.Text className="text-card">
-                        00:00:00
+                         {tempoDecorrido}
                     </Card.Text>
                     
                     <Card.Text className="text-card">
@@ -363,135 +394,190 @@ const ApresentacaoGrupo = () => {
                         00:00:00
                     </Card.Text>
                 </Col>
-            </Row>        
-            <Row xs={12} md={12} className="borderrow grande">
-                {minutos.slice(1,5 +1).map((doc3, index3) => {
-                    return(
-                        <>
-                        <Col xs={1} md={1} className="mesas">
-                            
-                        <Card.Text className="text-card ">{doc3.minuto} - </Card.Text>
-                        </Col>
-                        </>
-                    )
-                })}
-        
-            </Row>
-            <Row xs={12} md={12} className="borderrow grande">
-                {minutos.slice(1, (1 + parseInt(doc.participantes)) ).map((doc2, index2) => {
-                    return(
-                        <>
-                        
-                        <Col xs={1} md={1} key ={doc2.minuto} className="mesas">
-                            <Card.Text className="text-card ">{doc2.minuto} - </Card.Text>
-                        </Col>
-                        </>
-                        )
-                    })
-                }
-                <Col xs={4} md={4}  className="mesas">
-                
+            </Row>    
+
+
+            <Row xs={12} md={12} className="borderrow grande">  
+                <Col xs={3} md={3}>
+                        <img src ="" />
                 </Col>
-            </Row>
-            {database.map((contar, index) => {
-                return(
-                    <Row xs={12} md={12} className="borderrow grande">
-                        <Col xs={2} md={2}>
+                <Col xs={1} md={1}>
+                    <Card.Text>Mesa 1 </Card.Text>
+                </Col>  
+
+
+                    {mesas.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc, index) => {
+                    return(
+                        <Col xs={5} md={5} className="mesas">
                             <Card.Text className="text-card ">
-                            Mesa 1
+                            {doc.arrayMesas.slice(0, doc.partMesa ).join('-')}
                             </Card.Text>
                         </Col>
-                        <Col xs={10} md={10}>
-                            
+                        )
+                    })}    
+               
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+
+
+            </Row>
+
+            <Row xs={12} md={12} className="borderrow grande">  
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+                <Col xs={1} md={1}>
+                    <Card.Text>Mesa 2 </Card.Text>
+                </Col>  
+
+
+                    {mesas.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc, index) => {
+                    return(
+                        <Col xs={5} md={5} className="mesas">
+                            <Card.Text className="text-card ">
+                            {doc.arrayMesas.slice(5,10).join('-')}
+                            </Card.Text>
                         </Col>
-                    </Row>
-                )
-            })}
-            <Row xs={12} md={12} className="borderrow grande">
-                <Col xs={2} md={2}>
-                    <Card.Text className="text-card ">
-                        Mesa 1
-                    </Card.Text>
+                        )
+                    })}    
+               
+                <Col xs={3} md={3}>
+                        <img src ="" />
                 </Col>
-                <Col xs={10} md={10}>
-                    <Card.Text className="text-card ">
-                        1-2-3-4-5-6-7
-                    </Card.Text>
-                </Col>
-            </Row>
-            <Row xs={12} md={12} className="borderrow grande">
-                <Col xs={2} md={2}>
-                    <Card.Text className="text-card ">
-                        Mesa 2
-                    </Card.Text>
-                </Col>
-                <Col xs={10} md={10}>
-                    <Card.Text className="text-card ">
-                        8-9-10-11-12-13-14
-                    </Card.Text>
-                </Col>
-            </Row>
-            <Row xs={12} md={12} className="borderrow grande" >
-                <Col xs={2} md={2}>
-                    <Card.Text className="text-card " >
-                       Mesa 3
-                    </Card.Text>
-                </Col>
-                <Col xs={10} md={10}>
-                    <Card.Text className="text-card ">
-                        15-16-17-18-19-20-21
-                    </Card.Text>
-                </Col>
-            </Row>
-            <Row xs={12} md={12} className="borderrow grande">
-                <Col xs={2} md={2}>
-                    <Card.Text className="text-card ">
-                        Mesa 4
-                    </Card.Text>
-                </Col>
-                <Col xs={10} md={10}>
-                    <Card.Text className="text-card ">
-                        22-23-24-25-26-27-28
-                    </Card.Text>
-                </Col>
-            </Row>
-            <Row xs={12} md={12} className="borderrow grande">
-                <Col xs={2} md={2}>
-                    <Card.Text className="text-card">
-                        Mesa 5
-                    </Card.Text>
-                </Col>
-                <Col xs={10} md={10}>
-                    <Card.Text className="text-card">
-                        29-30-31-32
-                    </Card.Text>
-                </Col>
-            </Row>
-            <Row xs={12} md={12} className="borderrow grande">
-                <Col xs={2} md={2}>
-                    <Card.Text className="text-card">
-                        Mesa 6
-                    </Card.Text>
-                </Col>
-                <Col xs={10} md={10}>
-                    <Card.Text className="text-card">
 
-                    </Card.Text>
-                </Col>
-            </Row>
-            <Row xs={12} md={12} className="borderrow grande">
-                <Col xs={2} md={2}>
-                    <Card.Text className="text-card">
-                        Mesa 7
-                    </Card.Text>
-                </Col>
-                <Col xs={10} md={10}>
-                    <Card.Text className="text-card "> 
 
-                    </Card.Text>
-                </Col>
             </Row>
 
+            <Row xs={12} md={12} className="borderrow grande">  
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+                <Col xs={1} md={1}>
+                    <Card.Text>Mesa 3 </Card.Text>
+                </Col>  
+
+
+                    {mesas.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc, index) => {
+                    return(
+                        <Col xs={5} md={5} className="mesas">
+                            <Card.Text className="text-card ">
+                            {doc.arrayMesas.slice(10,15 ).join('-')}
+                            </Card.Text>
+                        </Col>
+                        )
+                    })}    
+               
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+
+
+            </Row>
+
+            <Row xs={12} md={12} className="borderrow grande">  
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+                <Col xs={1} md={1}>
+                    <Card.Text>Mesa 4 </Card.Text>
+                </Col>  
+
+
+                    {mesas.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc, index) => {
+                    return(
+                        <Col xs={5} md={5} className="mesas">
+                            <Card.Text className="text-card ">
+                            {doc.arrayMesas.slice(15,20 ).join('-')}
+                            </Card.Text>
+                        </Col>
+                        )
+                    })}    
+               
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+
+
+            </Row>
+
+            <Row xs={12} md={12} className="borderrow grande">  
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+                <Col xs={1} md={1}>
+                    <Card.Text>Mesa 5 </Card.Text>
+                </Col>  
+
+
+                    {mesas.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc, index) => {
+                    return(
+                        <Col xs={5} md={5} className="mesas">
+                            <Card.Text className="text-card ">
+                            {doc.arrayMesas.slice(20,25 ).join('-')}
+                            </Card.Text>
+                        </Col>
+                        )
+                    })}    
+               
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+
+
+            </Row>
+
+            <Row xs={12} md={12} className="borderrow grande">  
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+                <Col xs={1} md={1}>
+                    <Card.Text>Mesa 6 </Card.Text>
+                </Col>  
+
+
+                    {mesas.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc, index) => {
+                    return(
+                        <Col xs={5} md={5} className="mesas">
+                            <Card.Text className="text-card ">
+                            {doc.arrayMesas.slice(25,30 ).join('-')}
+                            </Card.Text>
+                        </Col>
+                        )
+                    })}    
+               
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+
+
+            </Row>
+            <Row xs={12} md={12} className="borderrow grande">  
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+                <Col xs={1} md={1}>
+                    <Card.Text>Mesa 7 </Card.Text>
+                </Col>  
+
+
+                    {mesas.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc, index) => {
+                    return(
+                        <Col xs={5} md={5} className="mesas">
+                            <Card.Text className="text-card ">
+                            {doc.arrayMesas.slice(30,35 ).join('-')}
+                            </Card.Text>
+                        </Col>
+                        )
+                    })}    
+               
+                <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col>
+
+
+            </Row>
+           
         </Card>
         )
     })}
