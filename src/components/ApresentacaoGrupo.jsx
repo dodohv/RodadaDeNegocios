@@ -229,7 +229,7 @@ const meuTempoDecorrido = async() => {
                     <Row xs={12} md={12} style={{marginLeft:'0px'}}>
                         <Col xs={6} md={6} style={{ textAlign: 'start'}}>
                             <Card.Text className="text-card medio">
-                                Apresentação 1/ {doc.partMesa}
+                                Apresentação 1/ {parseInt(doc.partMesa)}
                             </Card.Text>         
                         </Col>
                         <Col xs={3} md={3}> 

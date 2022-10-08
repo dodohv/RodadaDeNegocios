@@ -1,15 +1,62 @@
 //how to use a data.map in const functions in react js?
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card,Table, Button } from 'react-bootstrap'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from "react"
 import NegocioDataService from "../services/negocio.services"
 import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
+import {CSVLink , CSVDownload } from "react-csv";
+
+
+
+
+// const dataSetFirebase = [
+//   {
+//     nome: "Douglas",
+//     idade: 26,
+//     sexo: "Masculino",
+//     online: true
+//   },
+//   {
+//     nome: "Greysi",
+//     idade: 56,
+//     sexo: "Feminino",
+//     online: true
+//   },
+//   {
+//     nome: "David",
+//     idade: 62,
+//     sexo: "Masculino",
+//     online: true
+//   },
+//   {
+//     nome: "Elaine",
+//     idade: 21,
+//     sexo: "Feminino",
+//     online: true
+//   },
+// ];
+
 
 
 const NaoEncontrado = () => {
 const [reuniao, setreuniao] = useState('');
 const [negocios, setNegocios] = useState([]);
-
+const [fullName, setFullName] = useState("");
+const [age, setAge] = useState(0);
+const [occupation, setOccupation] = useState("");
+const [data, setData] = useState([
+  ["Full Name", "Age", "Occupation"],
+  ["Irakli Tchigladze", 32, "writer"],
+  ["George Abuladze", 33, "politician"],
+  ["Nick Tsereteli", 19, "public worker"]
+]);
+const handleSubmit = (e) => {
+  setData([...data, [fullName, age, occupation]]);
+  setFullName("");
+  setAge(0);
+  setOccupation("");
+};
+console.log(data);
 
 const getNegocios = async () => {
   const data = await NegocioDataService.getAllNegocios();
@@ -35,8 +82,35 @@ getNegocios();
                 <button> Voltar para Inicio</button>
 
             </Link>
-        
- 
+            <CSVLink filename={Date.now()} data={data}>Download Excel File</CSVLink>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
+        <p>Full Name</p>
+        <input
+          type="text"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+        />
+        <p>Age</p>
+        <input
+          value={age}
+          type="number"
+          onChange={(e) => setAge(e.target.value)}
+        />
+        <p>Occupation</p>
+        <input
+          type="text"
+          value={occupation}
+          onChange={(e) => setOccupation(e.target.value)}
+        />
+        <p></p>
+        <button type="submit">Submit data</button>
+      </form>
+
             <p>
             Numero
             </p>

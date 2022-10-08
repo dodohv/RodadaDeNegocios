@@ -27,26 +27,56 @@ const Configurador = ({id, setNegocioId}) => {
     const [tempoTotalHra, setTempoTotalHra] = useState(0);
     const [tempoTotalMin, setTempoTotalMin] = useState(0);
     const [tempoTotalSeg, setTempoTotalSeg] = useState(0);
-    const [imgDireita, setImgDireita] = useState('');
+    const [imgDireita, setImgDireita] = useState(''); 
     const [imgEsquerda, setImgEsquerda] = useState('');
     const [idioma, setIdioma] = useState('');
     const [message, setMessage] = useState({error: false, msg: ""});
     const [dataRodada, setDataRodada] = useState(Date.now());
-    const [newNumMesas, setNewNumMesas] = useState(0)
-    const [arrayMesas, setArrayMesas] = useState([])
+    const [newNumMesas, setNewNumMesas] = useState(0);
+    const [arrayMesas, setArrayMesas] = useState([]);
+    const [arrayMesa1, setArrayMesa1] = useState([]);
+    const [arrayMesa2, setArrayMesa2] = useState([]);
+    const [arrayMesa3, setArrayMesa3] = useState([]);
+    const [arrayMesa4, setArrayMesa4] = useState([]);
+    const [arrayMesa5, setArrayMesa5] = useState([]);
+    const [arrayMesa6, setArrayMesa6] = useState([]);
+    const [arrayMesa7, setArrayMesa7] = useState([]);
+    const [arrayMesa8, setArrayMesa8] = useState([]);
+    const [arrayMesa9, setArrayMesa9] = useState([]);
+    const [arrayMesa10, setArrayMesa10] = useState([]);
+    const [arrayMesa11, setArrayMesa11] = useState([]);
+    const [arrayMesa12, setArrayMesa12] = useState([]);
+    const [arrayMesa13, setArrayMesa13] = useState([]);
+    const [arrayMesa14, setArrayMesa14] = useState([]);
+    const [arrayMesa15, setArrayMesa15] = useState([]);
+    const [arrayMesa16, setArrayMesa16] = useState([]);
+    const [arrayMesa17, setArrayMesa17] = useState([]);
+    const [arrayMesa18, setArrayMesa18] = useState([]);
+    const [arrayMesa19, setArrayMesa19] = useState([]);
+    const [arrayMesa20, setArrayMesa20] = useState([]);
+    const [arrayMesa21, setArrayMesa21] = useState([]);
+    const [arrayMesa22, setArrayMesa22] = useState([]);
+    const [arrayMesa23, setArrayMesa23] = useState([]);
+    const [arrayMesa24, setArrayMesa24] = useState([]);
+    const [arrayMesa25, setArrayMesa25] = useState([]);
+    const [arrayMesa26, setArrayMesa26] = useState([]);
+    const [arrayMesa27, setArrayMesa27] = useState([]);
+    const [arrayMesa28, setArrayMesa28] = useState([]);
+    const [arrayMesa29, setArrayMesa29] = useState([]);
+    const [arrayMesa30, setArrayMesa30] = useState([]);
+    const [auxiliar,setAuxiliar] = useState(0);
 
     const getMesas = async () => {
         const data = await MesaDataService.getAllMesas();
         
         setMesas(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     }
-
+ 
     const getPartics = async () => {
         const data = await ParticipanteDataService.getAllParticipantes();
         
         setPartics(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     }
-
 
     const getMinutos = async () => {
         const data = await MinutoDataService.getAllMinutos();
@@ -54,21 +84,147 @@ const Configurador = ({id, setNegocioId}) => {
         setMinutos(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     }
 
-    
-    const meusPartMesa = async () => {
-
-               if(numMesas != 0 ) {
-
-         
-                for (let i = 1; i < parseInt(participantes); i++){
-                    setArrayMesas([arrayMesas.push(i)])
+    const gerarEtiquetas = () => {
+        
+        if (participantes > 7) {
+            console.log("1 vez mano")
+            console.log(participantes)
+            setArrayMesas([])
+            for (let i = 1; i <= parseInt(participantes); i++){
+                
+                setArrayMesas(arrayMesas.push(
+                     {
+                      id: i,
+                      idParticipante: `Nome ${i}`
+                     }
+                ))
+                //setArrayMesas(arrayMesas.push(i))
                    
-                    
-                }
-                console.log("agora vai")
-                console.log(arrayMesas)
-            setPartMesa((participantes / numMesas).toFixed(1))
+                if (parseInt(partMesa) <= 4) {
+                    setArrayMesa1(arrayMesa1.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa2(arrayMesa2.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa3(arrayMesa3.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                }else if (parseInt(partMesa) > 3 &&  parseInt(partMesa) <= 10) {
+                    setArrayMesa1(arrayMesa1.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa2(arrayMesa2.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa3(arrayMesa3.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa4(arrayMesa4.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa5(arrayMesa5.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa6(arrayMesa6.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa7(arrayMesa7.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa8(arrayMesa8.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa9(arrayMesa9.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setArrayMesa10(arrayMesa10.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))         
+                }                     
+            }
+            console.log(partMesa)
 
+            for (let i = parseInt(partMesa); i < participantes; i++) {
+         
+                setArrayMesa1(arrayMesa1.pop())    
+            }
+                console.log("arrayMesa1", arrayMesa1)
+                console.log("length arrayMesa1", arrayMesa1.length)
+                console.log(auxiliar)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa2(arrayMesa2.shift())
+                setArrayMesa3(arrayMesa3.shift())
+                setArrayMesa4(arrayMesa4.shift())
+            }
+            for (let i = parseInt(partMesa); i < (participantes - arrayMesa1.length); i++) {
+           
+                setArrayMesa2(arrayMesa2.pop())
+
+            }
+                console.log("arrayMesa2", arrayMesa2)
+                console.log("length arrayMesa2", arrayMesa2.length)
+            for (let i = 1 ; i < parseInt(partMesa) ; i++) {
+                    setArrayMesa3(arrayMesa3.shift())
+                    setArrayMesa4(arrayMesa4.shift())
+            }  
+            for (let i = parseInt(partMesa) ; i < (participantes - (arrayMesa1.length + arrayMesa2.length )); i++) {
+
+                setArrayMesa3(arrayMesa3.pop())
+
+            }
+            console.log("arrayMesa3", arrayMesa3)
+            console.log("length arrayMesa3", arrayMesa3.length)
+            for (let i = 1 ; i < parseInt(partMesa) ; i++) {
+                setArrayMesa4(arrayMesa4.shift())
+        }  
+            for (let i = parseInt(partMesa) ; i <= (participantes - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length )); i++) {
+
+                setArrayMesa4(arrayMesa4.pop())
+
+            }
+            console.log("arrayMesa4", arrayMesa4)
+            console.log("length arrayMesa4", arrayMesa4.length)
+    
+
+        }
+    }
+
+    const meusPartMesa = async () => {
+        setAuxiliar(parseInt(partMesa + 1))
+               if(numMesas != 0 ) {
+                
+                
+
+                // for (let j = auxiliar; j < arrayMesas.length; j++){
+                     
+                //     setArrayMesa1([arrayMesa1.push(j)])
+                    
+                // }
+                // const index = arrayMesas.indexOf(i)
+                // if (index != -1) {
+                //     arrayMesas[index] = arrayMesas.slice(-1)
+                //     console.log(arrayMesas)
+                //     console.log("loop novo acima")
+                // }
+                
+                
+                
+            setPartMesa((participantes / numMesas).toFixed(1))
+            
             setTempoTotalHra(
             ((numMesas *
                 ((Math.floor(parseInt(intGrupMin) * 60)
@@ -141,7 +297,7 @@ const Configurador = ({id, setNegocioId}) => {
         setIntIndMin(parseInt(intIndMin))
         setIntGrupMin(parseInt(intGrupMin))
         setParticipantes(parseInt(participantes))
-        console.log(arrayMesas)
+    
 
 
         if(reuniao === "" || grupo === "" || participantes === "" || tempoPartMin === "" || tempoPartSeg === "") {
@@ -177,8 +333,7 @@ const Configurador = ({id, setNegocioId}) => {
             partMesa,
             numMesas
         }
-        console.log(newNegocio)
-        console.log(newMesa)
+
         try {
             if(id !== undefined && id !== "") {
                 await NegocioDataService.updateNegocio(id, newNegocio);
@@ -216,7 +371,7 @@ const Configurador = ({id, setNegocioId}) => {
             setMessage("");
             try{
                 const docSnap = await NegocioDataService.getNegocio(id);
-                console.log("O Registro é: ", docSnap.data());
+                //console.log("O Registro é: ", docSnap.data());
                 setReuniao(docSnap.data().reuniao)
                 setGrupo(docSnap.data().grupo);
                 setParticipantes(docSnap.data().participantes);
@@ -240,12 +395,12 @@ const Configurador = ({id, setNegocioId}) => {
             }
         }
         
-
+        
         useEffect(() => {
    
-            getPartics();
-             getMinutos();
-           
+          //  getPartics();
+           //  getMinutos();
+            
             meusPartMesa();
         },[numMesas, participantes, tempoPartMin, tempoPartSeg, 
          tempoTotalHra, tempoTotalMin,tempoTotalSeg,tempoTotal])
@@ -267,6 +422,8 @@ const Configurador = ({id, setNegocioId}) => {
         </>
         <Form onSubmit= {handleSubmit}>
             <Row xs={1} md={12} className="g-4">
+                <Button onClick = {gerarEtiquetas }> Ouvir
+                </Button>
             <Col xs={12}>
                 <Card bg={'outline-primary'} >
                     <Card.Body>
@@ -328,6 +485,8 @@ const Configurador = ({id, setNegocioId}) => {
                                                     <option key={index} value={parseInt(doc.idParticipante)}>{doc.idParticipante}</option>
                                                 )
                                              })};
+                                                    <option value="30">30</option>
+                                                    <option value="50">50</option>
                                                     <option value="100">100</option>
                                                     <option value="101">101</option>
                                                     <option value="102">102</option>
@@ -1033,7 +1192,8 @@ const Configurador = ({id, setNegocioId}) => {
                                                     <option key={index} value={doc.minuto}>{doc.minuto}</option>
                                                     )
                                                 })};         
-                                                   
+                                                   <option value="10">10</option>
+                                                   <option value="11">11</option>
                                             </Form.Select>
                                        </Col >
                                         <Col xs={3} md={3} className="hr-card-p">
