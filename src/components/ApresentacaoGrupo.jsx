@@ -6661,7 +6661,7 @@ const meuTempoDecorrido = async() => {
                 } )
 
                 :
-                contarReuniao ==3 ?
+                contarReuniao == 3 ?
                 rodadas.sort((a,b)=> a.dataRodada > b.dataRodada ? 1 : -1).slice(-1).map((docrodada, indexrodada) => {
                     return(
 
@@ -6676,38 +6676,34 @@ const meuTempoDecorrido = async() => {
                              </Col>
                              <Col xs={9} md={9} style={{ textAlign: 'center'}}>    
                              <Card.Text className="text-card ">
-                             {   (docrodada.arrayMesa2[0].id) + '-' +
+                             {  (docrodada.arrayMesa1[0].id) + '-' + 
+                                (docrodada.arrayMesa2[0].id) + '-' +
                                  (docrodada.arrayMesa3[0].id) + '-' +
                                  (docrodada.arrayMesa4[0].id) + '-'} 
                              {   docrodada.arrayMesa1.length == 5 ? 
-                                 (docrodada.arrayMesa5[0].id) + '-' +
-                                 (docrodada.arrayMesa1[0].id) 
+                                 (docrodada.arrayMesa5[0].id)
                                   :
                                   docrodada.arrayMesa1.length == 6 ?
                                   (docrodada.arrayMesa5[0].id) + '-' +
-                                  (docrodada.arrayMesa6[0].id) + '-' +
-                                  (docrodada.arrayMesa1[0].id) 
+                                  (docrodada.arrayMesa6[0].id)
                                    :
                                    docrodada.arrayMesa1.length == 7 ?
                                    (docrodada.arrayMesa5[0].id) + '-' +
                                    (docrodada.arrayMesa6[0].id) + '-' +
-                                   (docrodada.arrayMesa7[0].id) + '-' +
-                                   (docrodada.arrayMesa1[0].id) 
+                                   (docrodada.arrayMesa7[0].id) 
                                     :
                                     docrodada.arrayMesa1.length == 8 ?
                                     (docrodada.arrayMesa5[0].id) + '-' +
                                     (docrodada.arrayMesa6[0].id) + '-' +
                                     (docrodada.arrayMesa7[0].id) + '-' +
-                                    (docrodada.arrayMesa8[0].id) + '-' +
-                                    (docrodada.arrayMesa1[0].id) 
+                                    (docrodada.arrayMesa8[0].id)
                                      : 
                                      docrodada.arrayMesa1.length == 9 ?
                                      (docrodada.arrayMesa5[0].id) + '-' +
                                      (docrodada.arrayMesa6[0].id) + '-' +
                                      (docrodada.arrayMesa7[0].id) + '-' +
                                      (docrodada.arrayMesa8[0].id) + '-' +
-                                     (docrodada.arrayMesa9[0].id) + '-' +
-                                     (docrodada.arrayMesa1[0].id)
+                                     (docrodada.arrayMesa9[0].id) 
                                       :
                                       docrodada.arrayMesa1.length == 10 ?
                                         (docrodada.arrayMesa5[0].id) + '-' +
@@ -6715,8 +6711,7 @@ const meuTempoDecorrido = async() => {
                                         (docrodada.arrayMesa7[0].id) + '-' +
                                         (docrodada.arrayMesa8[0].id) + '-' +
                                         (docrodada.arrayMesa9[0].id) + '-' +
-                                        (docrodada.arrayMesa10[0].id) + '-' +
-                                        (docrodada.arrayMesa1[0].id) 
+                                        (docrodada.arrayMesa10[0].id) 
                                             
                                          :
                                          docrodada.arrayMesa1.length == 11 ?
@@ -6726,8 +6721,7 @@ const meuTempoDecorrido = async() => {
                                          (docrodada.arrayMesa8[0].id) + '-' +
                                          (docrodada.arrayMesa9[0].id) + '-' +
                                          (docrodada.arrayMesa10[0].id) + '-' +
-                                         (docrodada.arrayMesa11[0].id)  + '-' +
-                                         (docrodada.arrayMesa1[0].id)
+                                         (docrodada.arrayMesa11[0].id) 
                                          :
                                          docrodada.arrayMesa1.length == 12 ?
                                          (docrodada.arrayMesa5[0].id) + '-' +
@@ -6737,8 +6731,7 @@ const meuTempoDecorrido = async() => {
                                          (docrodada.arrayMesa9[0].id) + '-' +
                                          (docrodada.arrayMesa10[0].id) + '-' +
                                          (docrodada.arrayMesa11[0].id) + '-' +
-                                         (docrodada.arrayMesa12[0].id) + '-' +
-                                         (docrodada.arrayMesa1[0].id)
+                                         (docrodada.arrayMesa12[0].id) 
                                          :
                                          docrodada.arrayMesa1.length == 13 ?
                                          (docrodada.arrayMesa5[0].id) + '-' +
@@ -6749,8 +6742,7 @@ const meuTempoDecorrido = async() => {
                                          (docrodada.arrayMesa10[0].id) + '-' +
                                          (docrodada.arrayMesa11[0].id) + '-' +
                                          (docrodada.arrayMesa12[0].id) + '-' +
-                                         (docrodada.arrayMesa13[0].id)  + '-' +
-                                         (docrodada.arrayMesa1[0].id) 
+                                         (docrodada.arrayMesa13[0].id)  
                                              :
                                              docrodada.arrayMesa1.length == 14 ?
                                              (docrodada.arrayMesa5[0].id) + '-' +
@@ -6762,8 +6754,7 @@ const meuTempoDecorrido = async() => {
                                              (docrodada.arrayMesa11[0].id) + '-' +
                                              (docrodada.arrayMesa12[0].id) + '-' +
                                              (docrodada.arrayMesa13[0].id) + '-' +
-                                             (docrodada.arrayMesa14[0].id)  + '-' +
-                                             (docrodada.arrayMesa1[0].id) 
+                                             (docrodada.arrayMesa14[0].id) 
                                              :
                                              docrodada.arrayMesa1.length == 15 ?
                                              (docrodada.arrayMesa5[0].id) + '-' +
@@ -6776,8 +6767,7 @@ const meuTempoDecorrido = async() => {
                                              (docrodada.arrayMesa12[0].id) + '-' +
                                              (docrodada.arrayMesa13[0].id) + '-' +
                                              (docrodada.arrayMesa14[0].id) + '-' +
-                                             (docrodada.arrayMesa15[0].id)  + '-' +
-                                             (docrodada.arrayMesa1[0].id) 
+                                             (docrodada.arrayMesa15[0].id) 
                                              :
                                              docrodada.arrayMesa1.length == 16 ?
                                              (docrodada.arrayMesa5[0].id) + '-' +
@@ -6791,9 +6781,8 @@ const meuTempoDecorrido = async() => {
                                              (docrodada.arrayMesa13[0].id) + '-' +
                                              (docrodada.arrayMesa14[0].id) + '-' +
                                              (docrodada.arrayMesa15[0].id) + '-' +
-                                             (docrodada.arrayMesa16[0].id) + '-' +
-                                             (docrodada.arrayMesa1[0].id) 
-                                             :
+                                             (docrodada.arrayMesa16[0].id) 
+                                             : 
                                              docrodada.arrayMesa1.length == 17 ?
                                              (docrodada.arrayMesa5[0].id) + '-' +
                                              (docrodada.arrayMesa6[0].id) + '-' +
@@ -6807,8 +6796,7 @@ const meuTempoDecorrido = async() => {
                                              (docrodada.arrayMesa14[0].id) + '-' +
                                              (docrodada.arrayMesa15[0].id) + '-' +
                                              (docrodada.arrayMesa16[0].id) + '-' +
-                                             (docrodada.arrayMesa17[0].id) + '-' +
-                                             (docrodada.arrayMesa1[0].id)
+                                             (docrodada.arrayMesa17[0].id) 
                                                  :
                                                  docrodada.arrayMesa1.length == 18 ?
                                                  (docrodada.arrayMesa5[0].id) + '-' +
@@ -6824,8 +6812,7 @@ const meuTempoDecorrido = async() => {
                                                  (docrodada.arrayMesa15[0].id) + '-' +
                                                  (docrodada.arrayMesa16[0].id) + '-' +
                                                  (docrodada.arrayMesa17[0].id) + '-' +
-                                                 (docrodada.arrayMesa18[0].id)  + '-' +
-                                                 (docrodada.arrayMesa1[0].id)
+                                                 (docrodada.arrayMesa18[0].id) 
                                                  :
                                                  docrodada.arrayMesa1.length == 19 ?
                                                  (docrodada.arrayMesa5[0].id) + '-' +
@@ -6842,8 +6829,7 @@ const meuTempoDecorrido = async() => {
                                                  (docrodada.arrayMesa17[0].id) + '-' +
                                                  (docrodada.arrayMesa18[0].id) + '-' +
                                                  (docrodada.arrayMesa19[0].id) + '-' +
-                                                 (docrodada.arrayMesa20[0].id)  + '-' +
-                                                 (docrodada.arrayMesa1[0].id) 
+                                                 (docrodada.arrayMesa20[0].id) 
                                                  :
                                                  docrodada.arrayMesa1.length == 20 ?
                                                  (docrodada.arrayMesa5[0].id) + '-' +
@@ -6861,8 +6847,7 @@ const meuTempoDecorrido = async() => {
                                                  (docrodada.arrayMesa17[0].id) + '-' +
                                                  (docrodada.arrayMesa18[0].id) + '-' +
                                                  (docrodada.arrayMesa19[0].id) + '-' +
-                                                 (docrodada.arrayMesa20[0].id) + '-' +
-                                                 (docrodada.arrayMesa1[0].id)
+                                                 (docrodada.arrayMesa20[0].id) 
                                                  :
                                                  (docrodada.arrayMesa5[0].id) + '-' +
                                                  (docrodada.arrayMesa6[0].id) + '-' +
@@ -6880,8 +6865,8 @@ const meuTempoDecorrido = async() => {
                                                  (docrodada.arrayMesa18[0].id) + '-' +
                                                  (docrodada.arrayMesa19[0].id) + '-' +
                                                  (docrodada.arrayMesa20[0].id) + '-' +
-                                                 (docrodada.arrayMesa21[0].id) + '-' +
-                                                 (docrodada.arrayMesa1[0].id)
+                                                 (docrodada.arrayMesa21[0].id)
+                                                 
                                                   
                                          }             
                              
