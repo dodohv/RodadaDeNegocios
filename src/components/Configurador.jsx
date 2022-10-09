@@ -6,7 +6,7 @@ import NegocioDataService from "../services/negocio.services"
 import MinutoDataService from "../services/minuto.services"
 import ParticipanteDataService from "../services/participante.service"
 import MesaDataService from "../services/mesas.service"
-
+import RodadaDataService from '../services/rodada.service';
 const Configurador = ({id, setNegocioId}) => {
 
     const [minutos, setMinutos] = useState([]);
@@ -22,7 +22,7 @@ const Configurador = ({id, setNegocioId}) => {
     const [intGrupMin, setIntGrupMin]= useState(0);
     const [intGrupSeg, setIntGrupSeg] = useState(0);
     const [numMesas, setNumMesas] = useState(0);
-    const [partMesa,setPartMesa] = useState("0.0");
+    const [partMesa,setPartMesa] = useState(1);
     const [tempoTotal, setTempoTotal] = useState("00:00:00");
     const [tempoTotalHra, setTempoTotalHra] = useState(0);
     const [tempoTotalMin, setTempoTotalMin] = useState(0);
@@ -32,7 +32,7 @@ const Configurador = ({id, setNegocioId}) => {
     const [idioma, setIdioma] = useState('');
     const [message, setMessage] = useState({error: false, msg: ""});
     const [dataRodada, setDataRodada] = useState(Date.now());
-    const [newNumMesas, setNewNumMesas] = useState(0);
+    const [arrayRodada,setArrayRodada]= useState([]);
     const [arrayMesas, setArrayMesas] = useState([]);
     const [arrayMesa1, setArrayMesa1] = useState([]);
     const [arrayMesa2, setArrayMesa2] = useState([]);
@@ -85,35 +85,19 @@ const Configurador = ({id, setNegocioId}) => {
     }
 
     const gerarEtiquetas = () => {
-        
+
         if (participantes > 7) {
             console.log("1 vez mano")
             console.log(participantes)
             setArrayMesas([])
             for (let i = 1; i <= parseInt(participantes); i++){
-                
-                setArrayMesas(arrayMesas.push(
-                     {
-                      id: i,
-                      idParticipante: `Nome ${i}`
-                     }
-                ))
-                //setArrayMesas(arrayMesas.push(i))
-                   
-                if (parseInt(partMesa) <= 4) {
-                    setArrayMesa1(arrayMesa1.push({
+            
+                   setArrayMesas(arrayMesas.push(
+                        {
                         id: i,
                         idParticipante: `Nome ${i}`
-                       }))
-                    setArrayMesa2(arrayMesa2.push({
-                        id: i,
-                        idParticipante: `Nome ${i}`
-                       }))
-                    setArrayMesa3(arrayMesa3.push({
-                        id: i,
-                        idParticipante: `Nome ${i}`
-                       }))
-                }else if (parseInt(partMesa) > 3 &&  parseInt(partMesa) <= 10) {
+                        }
+                        ))
                     setArrayMesa1(arrayMesa1.push({
                         id: i,
                         idParticipante: `Nome ${i}`
@@ -154,9 +138,90 @@ const Configurador = ({id, setNegocioId}) => {
                         id: i,
                         idParticipante: `Nome ${i}`
                        }))         
-                }                     
+                    setArrayMesa11(arrayMesa11.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))    
+                    setArrayMesa12(arrayMesa12.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setArrayMesa13(arrayMesa13.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setArrayMesa14(arrayMesa14.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setArrayMesa15(arrayMesa15.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))         
+                    setArrayMesa16(arrayMesa16.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))
+                    setArrayMesa17(arrayMesa17.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setArrayMesa18(arrayMesa18.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setArrayMesa19(arrayMesa19.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setArrayMesa20(arrayMesa20.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))       
+                    setArrayMesa21(arrayMesa21.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))    
+                    setArrayMesa22(arrayMesa22.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setArrayMesa23(arrayMesa23.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setArrayMesa24(arrayMesa24.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setArrayMesa25(arrayMesa25.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))         
+                    setArrayMesa26(arrayMesa26.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))
+                    setArrayMesa27(arrayMesa27.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setArrayMesa28(arrayMesa28.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setArrayMesa29(arrayMesa29.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setArrayMesa30(arrayMesa30.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))            
+                        
             }
-            console.log(partMesa)
+            console.log(arrayMesas)
+            console.log("partMesa", parseInt(partMesa))
 
             for (let i = parseInt(partMesa); i < participantes; i++) {
          
@@ -164,47 +229,1037 @@ const Configurador = ({id, setNegocioId}) => {
             }
                 console.log("arrayMesa1", arrayMesa1)
                 console.log("length arrayMesa1", arrayMesa1.length)
-                console.log(auxiliar)
+
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa2(arrayMesa2.shift())
                 setArrayMesa3(arrayMesa3.shift())
                 setArrayMesa4(arrayMesa4.shift())
+                setArrayMesa5(arrayMesa5.shift())
+                setArrayMesa6(arrayMesa6.shift())
+                setArrayMesa7(arrayMesa7.shift())
+                setArrayMesa8(arrayMesa8.shift())
+                setArrayMesa9(arrayMesa9.shift())
+                setArrayMesa10(arrayMesa10.shift())
+                setArrayMesa11(arrayMesa11.shift())
+                setArrayMesa12(arrayMesa12.shift())
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+                
             }
-            for (let i = parseInt(partMesa); i < (participantes - arrayMesa1.length); i++) {
+            for (let i = parseInt(partMesa); i < (arrayMesas.length - arrayMesa1.length); i++) {
            
                 setArrayMesa2(arrayMesa2.pop())
 
             }
                 console.log("arrayMesa2", arrayMesa2)
                 console.log("length arrayMesa2", arrayMesa2.length)
-            for (let i = 1 ; i < parseInt(partMesa) ; i++) {
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                     setArrayMesa3(arrayMesa3.shift())
                     setArrayMesa4(arrayMesa4.shift())
+                    setArrayMesa5(arrayMesa5.shift())
+                    setArrayMesa6(arrayMesa6.shift())
+                    setArrayMesa7(arrayMesa7.shift())
+                    setArrayMesa8(arrayMesa8.shift())
+
+                    setArrayMesa9(arrayMesa9.shift())
+                    setArrayMesa10(arrayMesa10.shift())
+                    setArrayMesa11(arrayMesa11.shift())
+                    setArrayMesa12(arrayMesa12.shift())
+                    setArrayMesa13(arrayMesa13.shift())
+                    setArrayMesa14(arrayMesa14.shift())
+                    setArrayMesa15(arrayMesa15.shift())
+                    setArrayMesa16(arrayMesa16.shift())
+                    setArrayMesa17(arrayMesa17.shift())
+                    setArrayMesa18(arrayMesa18.shift())
+                    setArrayMesa19(arrayMesa19.shift())
+                    setArrayMesa20(arrayMesa20.shift())
+                    setArrayMesa21(arrayMesa21.shift())
+                    setArrayMesa22(arrayMesa22.shift())
+                    setArrayMesa23(arrayMesa23.shift())
+                    setArrayMesa24(arrayMesa24.shift())
+                    setArrayMesa25(arrayMesa25.shift())
+                    setArrayMesa26(arrayMesa26.shift())
+                    setArrayMesa27(arrayMesa27.shift())
+                    setArrayMesa28(arrayMesa28.shift())
+                    setArrayMesa29(arrayMesa29.shift())
+                    setArrayMesa30(arrayMesa30.shift())
+                    
             }  
-            for (let i = parseInt(partMesa) ; i < (participantes - (arrayMesa1.length + arrayMesa2.length )); i++) {
+
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length) ); i++) {
 
                 setArrayMesa3(arrayMesa3.pop())
 
             }
             console.log("arrayMesa3", arrayMesa3)
             console.log("length arrayMesa3", arrayMesa3.length)
-            for (let i = 1 ; i < parseInt(partMesa) ; i++) {
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa4(arrayMesa4.shift())
-        }  
-            for (let i = parseInt(partMesa) ; i <= (participantes - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length )); i++) {
+                setArrayMesa5(arrayMesa5.shift())
+                setArrayMesa6(arrayMesa6.shift())
+                setArrayMesa7(arrayMesa7.shift())
+                setArrayMesa8(arrayMesa8.shift())
+                setArrayMesa9(arrayMesa9.shift())
+
+                setArrayMesa10(arrayMesa10.shift())
+                setArrayMesa11(arrayMesa11.shift())
+                setArrayMesa12(arrayMesa12.shift())
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+            }  
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length )); i++) {
 
                 setArrayMesa4(arrayMesa4.pop())
 
             }
             console.log("arrayMesa4", arrayMesa4)
             console.log("length arrayMesa4", arrayMesa4.length)
-    
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa5(arrayMesa5.shift())
+                setArrayMesa6(arrayMesa6.shift())
+                setArrayMesa7(arrayMesa7.shift())
+                setArrayMesa8(arrayMesa8.shift())
+                setArrayMesa9(arrayMesa9.shift())
+                setArrayMesa10(arrayMesa10.shift())
+                setArrayMesa11(arrayMesa11.shift())
+
+                setArrayMesa12(arrayMesa12.shift())
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+                
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length )); i++) {
+
+                setArrayMesa5(arrayMesa5.pop())
+
+            }  
+            console.log("arrayMesa5", arrayMesa5)
+            console.log("length arrayMesa5", arrayMesa5.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa6(arrayMesa6.shift())
+                setArrayMesa7(arrayMesa7.shift())
+                setArrayMesa8(arrayMesa8.shift())
+                setArrayMesa9(arrayMesa9.shift())
+                setArrayMesa10(arrayMesa10.shift())
+                setArrayMesa11(arrayMesa11.shift())
+
+                setArrayMesa12(arrayMesa12.shift())
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length )); i++) {
+
+                setArrayMesa6(arrayMesa6.pop())
+
+            }  
+
+            console.log("arrayMesa6", arrayMesa6)
+            console.log("length arrayMesa6", arrayMesa6.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa7(arrayMesa7.shift())
+                setArrayMesa8(arrayMesa8.shift())
+                setArrayMesa9(arrayMesa9.shift())
+                setArrayMesa10(arrayMesa10.shift())
+                setArrayMesa11(arrayMesa11.shift())
+
+                setArrayMesa12(arrayMesa12.shift())
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length )); i++) {
+
+                setArrayMesa7(arrayMesa7.pop())
+
+            }  
+            console.log("arrayMesa7", arrayMesa7)
+            console.log("length arrayMesa7", arrayMesa7.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa8(arrayMesa8.shift())
+                setArrayMesa9(arrayMesa9.shift())                
+                setArrayMesa10(arrayMesa10.shift())
+                setArrayMesa11(arrayMesa11.shift())
+
+                setArrayMesa12(arrayMesa12.shift())
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length )); i++) {
+
+                setArrayMesa8(arrayMesa8.pop())
+
+            }
+            console.log("arrayMesa8", arrayMesa8)
+            console.log("length arrayMesa8", arrayMesa8.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa9(arrayMesa9.shift())                
+                setArrayMesa10(arrayMesa10.shift())
+                setArrayMesa11(arrayMesa11.shift())
+
+                setArrayMesa12(arrayMesa12.shift())
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length )); i++) {
+
+                setArrayMesa9(arrayMesa9.pop())
+
+            }
+            console.log("arrayMesa9", arrayMesa9)
+            console.log("length arrayMesa9", arrayMesa9.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa10(arrayMesa10.shift())
+                setArrayMesa11(arrayMesa11.shift())
+
+                setArrayMesa12(arrayMesa12.shift())
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length )); i++) {
+
+                setArrayMesa10(arrayMesa10.pop())
+
+            }
+            console.log("arrayMesa10", arrayMesa10)
+            console.log("length arrayMesa10", arrayMesa10.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa11(arrayMesa11.shift())
+
+                setArrayMesa12(arrayMesa12.shift())
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+                
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length )); i++) {
+
+                setArrayMesa11(arrayMesa11.pop())
+
+            }
+            console.log("arrayMesa11", arrayMesa11)
+            console.log("length arrayMesa11", arrayMesa11.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa12(arrayMesa12.shift())
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length )); i++) {
+
+                setArrayMesa12(arrayMesa12.pop())
+
+            }
+            console.log("arrayMesa12", arrayMesa12)
+            console.log("length arrayMesa12", arrayMesa12.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa13(arrayMesa13.shift())
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length )); i++) {
+
+                setArrayMesa13(arrayMesa13.pop())
+
+            }
+            console.log("arrayMesa13", arrayMesa13)
+            console.log("length arrayMesa13", arrayMesa13.length)
+            
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa14(arrayMesa14.shift())
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length )); i++) {
+
+                setArrayMesa14(arrayMesa14.pop())
+
+            }
+            console.log("arrayMesa14", arrayMesa14)
+            console.log("length arrayMesa14", arrayMesa14.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa15(arrayMesa15.shift())
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length )); i++) {
+
+                setArrayMesa15(arrayMesa15.pop())
+
+            }
+            console.log("arrayMesa15", arrayMesa15)
+            console.log("length arrayMesa15", arrayMesa15.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa16(arrayMesa16.shift())
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length )); i++) {
+
+                setArrayMesa16(arrayMesa16.pop())
+
+            }
+            console.log("arrayMesa16", arrayMesa16)
+            console.log("length arrayMesa16", arrayMesa16.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa17(arrayMesa17.shift())
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length )); i++) {
+
+                setArrayMesa17(arrayMesa17.pop())
+
+            }
+            console.log("arrayMesa17", arrayMesa17)
+            console.log("length arrayMesa17", arrayMesa17.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa18(arrayMesa18.shift())
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length )); i++) {
+
+                setArrayMesa18(arrayMesa18.pop())
+
+            }
+            console.log("arrayMesa18", arrayMesa18)
+            console.log("length arrayMesa18", arrayMesa18.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa19(arrayMesa19.shift())
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length )); i++) {
+
+                setArrayMesa19(arrayMesa19.pop())
+
+            }
+            console.log("arrayMesa19", arrayMesa19)
+            console.log("length arrayMesa19", arrayMesa19.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa20(arrayMesa20.shift())
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length )); i++) {
+
+                setArrayMesa20(arrayMesa20.pop())
+
+            }
+            console.log("arrayMesa20", arrayMesa20)
+            console.log("length arrayMesa20", arrayMesa20.length)
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa21(arrayMesa21.shift())
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length )); i++) {
+
+                setArrayMesa21(arrayMesa21.pop())
+
+            }
+            console.log("arrayMesa21", arrayMesa21)
+            console.log("length arrayMesa21", arrayMesa21.length)
+
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa22(arrayMesa22.shift())
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length )); i++) {
+
+                setArrayMesa22(arrayMesa22.pop())
+
+            }
+            console.log("arrayMesa22", arrayMesa22)
+            console.log("length arrayMesa22", arrayMesa22.length)
+
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa23(arrayMesa23.shift())
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length)); i++) {
+
+                setArrayMesa23(arrayMesa23.pop())
+
+            }
+            console.log("arrayMesa23", arrayMesa23)
+            console.log("length arrayMesa23", arrayMesa23.length)
+
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa24(arrayMesa24.shift())
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length)); i++) {
+
+                setArrayMesa24(arrayMesa24.pop())
+
+            }
+            console.log("arrayMesa24", arrayMesa24)
+            console.log("length arrayMesa24", arrayMesa24.length)
+
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa25(arrayMesa25.shift())
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length )); i++) {
+
+                setArrayMesa25(arrayMesa25.pop())
+
+            }
+            console.log("arrayMesa25", arrayMesa25)
+            console.log("length arrayMesa25", arrayMesa25.length)
+
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+
+                setArrayMesa26(arrayMesa26.shift())
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length + arrayMesa25.length)); i++) {
+
+                setArrayMesa26(arrayMesa26.pop())
+
+            }
+            console.log("arrayMesa26", arrayMesa26)
+            console.log("length arrayMesa26", arrayMesa26.length)
+
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+
+                setArrayMesa27(arrayMesa27.shift())
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length  + arrayMesa25.length  + arrayMesa26.length )); i++) {
+
+                setArrayMesa27(arrayMesa27.pop())
+
+            }
+            console.log("arrayMesa27", arrayMesa27)
+            console.log("length arrayMesa27", arrayMesa27.length)
+
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa28(arrayMesa28.shift())
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length + arrayMesa25.length + arrayMesa26.length + arrayMesa27.length)); i++) {
+
+                setArrayMesa28(arrayMesa28.pop())
+
+            }
+            console.log("arrayMesa28", arrayMesa28)
+            console.log("length arrayMesa28", arrayMesa28.length)
+
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa29(arrayMesa29.shift())
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length + arrayMesa25.length + arrayMesa26.length + arrayMesa27.length + arrayMesa28.length )); i++) {
+
+                setArrayMesa29(arrayMesa29.pop())
+
+            }
+            console.log("arrayMesa29", arrayMesa29)
+            console.log("length arrayMesa29", arrayMesa29.length)
+
+            for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
+                setArrayMesa30(arrayMesa30.shift())
+
+
+            }
+            for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length + arrayMesa25.length + arrayMesa26.length + arrayMesa27.length + arrayMesa28.length + arrayMesa29.length )); i++) {
+
+                setArrayMesa30(arrayMesa30.pop())
+
+            }
+            console.log("arrayMesa30", arrayMesa30)
+            console.log("length arrayMesa30", arrayMesa30.length)
+
 
         }
+console.log(numMesas)
+        
+        if (numMesas == 6) {
+            if (arrayMesa6.length < partMesa) {
+              let poped = arrayMesa5.pop()
+              console.log("poped", poped)   
+              setArrayMesa6(arrayMesa6.unshift(poped))
+              console.log("arrayMesa6", arrayMesa6)
+              console.log("length arrayMesa6", arrayMesa6.length)
+              if( arrayMesa6.length < partMesa) {
+                let poped = arrayMesa4.pop()
+                setArrayMesa6(arrayMesa6.unshift(poped))
+              }
+            }
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5, 
+                arrayMesa6 
+                
+            ]
+            setArrayRodada(ArrayR)
+        }else if (numMesas == 7) {
+            if (arrayMesa7.length < partMesa) {
+                let poped = arrayMesa6.pop()
+                console.log("poped", poped)   
+                setArrayMesa6(arrayMesa7.unshift(poped))
+                console.log("arrayMesa7", arrayMesa7)
+                console.log("length arrayMesa7", arrayMesa7.length)
+                if( arrayMesa7.length < partMesa) {
+                  let poped = arrayMesa5.pop()
+                  setArrayMesa6(arrayMesa6.unshift(poped))
+                  let poped2 = arrayMesa6.pop()
+                console.log("poped", poped)   
+                setArrayMesa6(arrayMesa7.unshift(poped2))
+                console.log("arrayMesa7", arrayMesa7)
+                console.log("length arrayMesa7", arrayMesa7.length)
+                }
+            }
+            // const ArrayR = [
+            //     arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+            //     arrayMesa6, arrayMesa7
+                
+            // ]
+            // setArrayRodada(arrayRodada.unshift(
+            //     arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+            //     arrayMesa6, arrayMesa7
+            //     )
+                
+            // )
+            console.log("arrayRodada", arrayRodada)
+        }else if (numMesas == 8) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8
+                
+            ]
+        }else if (numMesas == 9) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9
+                
+            ]
+        }else if (numMesas == 10) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11
+                
+            ]
+        }else if (numMesas == 11) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11
+                
+            ]
+        }else if (numMesas == 12) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12
+                
+            ]
+        }else if (numMesas == 13) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13
+                
+            ]
+        }else if (numMesas == 14) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14
+                
+            ]
+        }else if (numMesas == 15) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15
+                
+            ]
+        }else if (numMesas == 16) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16
+                
+            ]
+        }else if (numMesas == 17) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17
+                
+            ]
+        }else if (numMesas == 18) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18
+                
+            ]
+        }else if (numMesas == 19) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19
+                
+            ]
+        }else if (numMesas == 20) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20
+                
+            ]
+        }else if (numMesas == 21) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
+                arrayMesa21
+                
+            ]
+        }else if (numMesas == 22) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
+                arrayMesa21, arrayMesa22
+                
+            ]
+        }else if (numMesas == 23) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
+                arrayMesa21, arrayMesa22, arrayMesa23
+                
+            ]
+        }else if (numMesas == 24) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
+                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24
+                
+            ]
+        }else if (numMesas == 25) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
+                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25
+                
+            ]
+        }else if (numMesas == 26) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
+                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25,
+                arrayMesa26
+                
+            ]
+        }else if (numMesas == 27) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
+                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25,
+                arrayMesa26, arrayMesa27
+                
+            ]
+        }else if (numMesas == 28) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
+                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25,
+                arrayMesa26, arrayMesa27, arrayMesa28
+                
+            ]
+            console.log("ArrayR", ArrayR)
+        }else if (numMesas == 29) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
+                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25,
+                arrayMesa26, arrayMesa27, arrayMesa28, arrayMesa29
+                
+            ]
+            console.log("ArrayR", ArrayR)
+        }else if (numMesas == 30) {
+            const ArrayR = [
+                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
+                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
+                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
+                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
+                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25,
+                arrayMesa26, arrayMesa27, arrayMesa28, arrayMesa29, arrayMesa30
+                
+            ]
+            console.log("ArrayR", ArrayR)
+        }
+
+
+
+
+        
     }
 
     const meusPartMesa = async () => {
-        setAuxiliar(parseInt(partMesa + 1))
+        
                if(numMesas != 0 ) {
                 
                 
@@ -222,9 +1277,11 @@ const Configurador = ({id, setNegocioId}) => {
                 // }
                 
                 
-                
-            setPartMesa((participantes / numMesas).toFixed(1))
-            
+            const roundar = Math.ceil((participantes / numMesas).toFixed(1))
+            console.log("MathRound", roundar)
+            setPartMesa(roundar)
+            console.log("Depois MathRound", partMesa)
+
             setTempoTotalHra(
             ((numMesas *
                 ((Math.floor(parseInt(intGrupMin) * 60)
@@ -255,7 +1312,7 @@ const Configurador = ({id, setNegocioId}) => {
                              + parseInt(tempoPartSeg))) % 3600) % 60).toFixed(0)
     
             )  
-            setNewNumMesas(numMesas)
+            
 
     if(tempoTotalHra.length == 2 && tempoTotalMin.length == 2 && tempoTotalSeg.length == 1) {
         setTempoTotal(
@@ -291,6 +1348,7 @@ const Configurador = ({id, setNegocioId}) => {
 }    
     ;
     const handleSubmit = async(e) => {
+        gerarEtiquetas();
         e.preventDefault();
         setMessage("");
         
@@ -305,7 +1363,29 @@ const Configurador = ({id, setNegocioId}) => {
             return;
         }
 
-        setPartMesa(parseInt(partMesa))
+        const newRodada = {
+                arrayMesa1, 
+                arrayMesa2, 
+                arrayMesa3, 
+                arrayMesa4, 
+                arrayMesa5,
+                arrayMesa6, 
+                arrayMesa7,
+                arrayMesa8,
+                arrayMesa9,
+                arrayMesa10,
+                arrayMesa11,
+                arrayMesa12,
+                arrayMesa13,
+                arrayMesa14,
+                arrayMesa15,
+                arrayMesa16,
+                arrayMesa17,
+                arrayMesa18,
+                arrayMesa19,
+                arrayMesa20,
+                dataRodada
+        }
         const newNegocio = {
             reuniao,
             grupo,
@@ -329,7 +1409,6 @@ const Configurador = ({id, setNegocioId}) => {
             dataRodada,
             reuniao,
             participantes,
-            arrayMesas,
             partMesa,
             numMesas
         }
@@ -343,6 +1422,8 @@ const Configurador = ({id, setNegocioId}) => {
             else {
                 await NegocioDataService.addNegocios(newNegocio);
                 await MesaDataService.addMesas(newMesa);
+                await RodadaDataService.addRodadas(newRodada);
+
                 setMessage({error: false, msg: "Nova Rodada de Negócios gerada!"});
                 
             }
@@ -351,21 +1432,21 @@ const Configurador = ({id, setNegocioId}) => {
             setMessage({error: true, msg:err.message})
         }
         setReuniao("");
-        setGrupo("");
-        setParticipantes("");
-        setTempoPartMin("");
-        setTempoPartSeg("");
-        setIntGrupMin("");
-        setIntGrupSeg("");
-        setIntIndMin("");
-        setIntIndSeg("");
-        setNumMesas("");
-        setPartMesa("0.0");
-        setTempoTotal("");
+        setGrupo("Grupo");
+        setParticipantes(0);
+        setTempoPartMin(0);
+        setTempoPartSeg(0);
+        setIntGrupMin(0);
+        setIntGrupSeg(0);
+        setIntIndMin(0);
+        setIntIndSeg(0);
+        setNumMesas(0);
+        setPartMesa(0);
+        setTempoTotal(0);
         setImgDireita("");
         setImgEsquerda("");
-        setIdioma("");
-        setDataRodada("");
+        setIdioma("Português");
+        setDataRodada(Date.now());
     };
         const editHandler = async(e) => {
             setMessage("");
@@ -403,7 +1484,7 @@ const Configurador = ({id, setNegocioId}) => {
             
             meusPartMesa();
         },[numMesas, participantes, tempoPartMin, tempoPartSeg, 
-         tempoTotalHra, tempoTotalMin,tempoTotalSeg,tempoTotal])
+         tempoTotalHra, tempoTotalMin,tempoTotalSeg,tempoTotal, partMesa])
         
     return ( 
  
@@ -420,10 +1501,29 @@ const Configurador = ({id, setNegocioId}) => {
         </Alert> 
         )}
         </>
-        <Form onSubmit= {handleSubmit}>
+        <Form onSubmit= {handleSubmit}  onLoadedData ={() =>
+                {
+                    setReuniao("Reunião")
+                    ;
+                    setGrupo("Grupo");
+                    setParticipantes(7);
+                    setTempoPartMin(0);
+                    setTempoPartSeg(0);
+                    setIntIndMin(0);
+                    setIntIndSeg(0);
+                    setIntGrupMin(0);
+                    setIntGrupSeg(0);
+                    setNumMesas(0);
+                    setPartMesa(0);
+                    setTempoTotal(0);
+                    setImgDireita("");
+                    setImgEsquerda("");
+                    setIdioma("Português")
+                    
+                }
+            } >
             <Row xs={1} md={12} className="g-4">
-                <Button onClick = {gerarEtiquetas }> Ouvir
-                </Button>
+
             <Col xs={12}>
                 <Card bg={'outline-primary'} >
                     <Card.Body>
@@ -485,8 +1585,99 @@ const Configurador = ({id, setNegocioId}) => {
                                                     <option key={index} value={parseInt(doc.idParticipante)}>{doc.idParticipante}</option>
                                                 )
                                              })};
+                                                   <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
                                                     <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                    <option value="32">32</option>
+                                                    <option value="33">33</option>
+                                                    <option value="34">34</option>
+                                                    <option value="35">35</option>
+                                                    <option value="36">36</option>
+                                                    <option value="37">37</option>
+                                                    <option value="38">38</option>
+                                                    <option value="39">39</option>
+                                                    <option value="40">40</option>
+                                                    <option value="41">41</option>
+                                                    <option value="42">42</option>
+                                                    <option value="43">43</option>
+                                                    <option value="44">44</option>
+                                                    <option value="45">45</option>
+                                                    <option value="46">46</option>
+                                                    <option value="47">47</option>
+                                                    <option value="48">48</option>
+                                                    <option value="49">49</option>
                                                     <option value="50">50</option>
+                                                    <option value="51">51</option>
+                                                    <option value="52">52</option>
+                                                    <option value="53">53</option>
+                                                    <option value="54">54</option>
+                                                    <option value="55">55</option>
+                                                    <option value="56">56</option>
+                                                    <option value="57">57</option>
+                                                    <option value="58">58</option>
+                                                    <option value="59">59</option>
+                                                    <option value="60">60</option>
+                                                    <option value="61">61</option>
+                                                    <option value="62">62</option>
+                                                    <option value="63">63</option>
+                                                    <option value="64">64</option>
+                                                    <option value="65">65</option>
+                                                    <option value="66">66</option>
+                                                    <option value="67">67</option>
+                                                    <option value="68">68</option>
+                                                    <option value="69">69</option>
+                                                    <option value="70">70</option>
+                                                    <option value="71">71</option>
+                                                    <option value="72">72</option>
+                                                    <option value="73">73</option>
+                                                    <option value="74">74</option>
+                                                    <option value="75">75</option>
+                                                    <option value="76">76</option>
+                                                    <option value="77">77</option>
+                                                    <option value="78">78</option>
+                                                    <option value="79">79</option>
+                                                    <option value="80">80</option>
+                                                    <option value="81">81</option>
+                                                    <option value="82">82</option>
+                                                    <option value="83">83</option>
+                                                    <option value="84">84</option>
+                                                    <option value="85">85</option>
+                                                    <option value="86">86</option>
+                                                    <option value="87">87</option>
+                                                    <option value="88">88</option>
+                                                    <option value="89">89</option>
+                                                    <option value="90">90</option>
+                                                    <option value="91">91</option>
+                                                    <option value="92">92</option>
+                                                    <option value="93">93</option>
+                                                    <option value="94">94</option>
+                                                    <option value="95">95</option>
+                                                    <option value="96">96</option>
+                                                    <option value="97">97</option>
+                                                    <option value="98">98</option>
+                                                    <option value="99">99</option>
                                                     <option value="100">100</option>
                                                     <option value="101">101</option>
                                                     <option value="102">102</option>
@@ -1182,58 +2373,82 @@ const Configurador = ({id, setNegocioId}) => {
                                             <Form.Select value={numMesas} 
                                                 onChange={(e) => {
                                                 setNumMesas(e.target.value); 
-                                                setNewNumMesas(e.target.value);    
+                                                
                                                 
                                                 } }
                                                 
                                                 className="input-card-se" aria-label="Floating label select example">
-                                                 {minutos.map((doc, index) => {
+                                                 {/* {minutos.map((doc, index) => {
                                                 return (
                                                     <option key={index} value={doc.minuto}>{doc.minuto}</option>
                                                     )
-                                                })};         
+                                                })};     */}
+                                                <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>     
                                                    <option value="10">10</option>
                                                    <option value="11">11</option>
+                                                   <option value="12">12</option>
+                                                   <option value="13">13</option>
+                                                   <option value="14">14</option>
+                                                   <option value="15">15</option>
+                                                   <option value="16">16</option>
+                                                   <option value="17">17</option>
+                                                   <option value="18">18</option>
+                                                   <option value="19">19</option>
+                                                   <option value="20">20</option>
+                                                   <option value="21">21</option>
+                                                   <option value="22">22</option>
+                                                   <option value="23">23</option>
+                                                   <option value="24">24</option>
+                                                   <option value="25">25</option>
+                                                   <option value="26">26</option>
+                                                   <option value="27">27</option>
+                                                   <option value="28">28</option>
+                                                   <option value="29">29</option>
+                                                   <option value="30">30</option>
                                             </Form.Select>
                                        </Col >
                                         <Col xs={3} md={3} className="hr-card-p">
                                             <FloatingLabel value={partMesa}
                                                 className=""
                                                 controlId="floatingInputGrid" >          
-                                                { 
-                                                partMesa !== "1.0" ?
-                                                 "~" + parseInt(partMesa)
-                                                    :
-                                                    partMesa !== "2.0" ?
-                                                     "~" + parseInt(partMesa)
-                                                    :
-                                                    partMesa !== "3.0" ?
-                                                     "~" + parseInt(partMesa)
-                                                    :
-                                                    partMesa !== "4.0" ?
-                                                    "~" + parseInt(partMesa)
-                                                    :
-                                                    partMesa !== "5.0" ?
-                                                     "~" + parseInt(partMesa)
-                                                    :
-                                                    partMesa !== "6.0" ?
-                                                    "~" + parseInt(partMesa)
-                                                    :
-                                                    partMesa !== "7.0" ?
-                                                    "~" + parseInt(partMesa)
-                                                    :
-                                                    partMesa !== "8.0" ?
-                                                    "~" + parseInt(partMesa)
-                                                    :
-                                                    partMesa !== "9.0" ?
-                                                 "~" + parseInt(partMesa)
-                                                 :
-                                                 partMesa !== "10.0" ?
-                                                 "~" + parseInt(partMesa)
-                                                 :
-                                                  parseInt(partMesa)
+                                                { partMesa
+                                                // partMesa !== "1.0" ?
+                                                //  "~" + parseInt(partMesa)
+                                                //     :
+                                                //     partMesa !== "2.0" ?
+                                                //      "~" + parseInt(partMesa)
+                                                //     :
+                                                //     partMesa !== "3.0" ?
+                                                //      "~" + parseInt(partMesa)
+                                                //     :
+                                                //     partMesa !== "4.0" ?
+                                                //     "~" + parseInt(partMesa)
+                                                //     :
+                                                //     partMesa !== "5.0" ?
+                                                //      "~" + parseInt(partMesa)
+                                                //     :
+                                                //     partMesa !== "6.0" ?
+                                                //     "~" + parseInt(partMesa)
+                                                //     :
+                                                //     partMesa !== "7.0" ?
+                                                //     "~" + parseInt(partMesa)
+                                                //     :
+                                                //     partMesa !== "8.0" ?
+                                                //     "~" + parseInt(partMesa)
+                                                //     :
+                                                //     partMesa !== "9.0" ?
+                                                //  "~" + Math.ceil(partMesa)
+                                                //  :
+                                                //  partMesa !== "10.0" ?
+                                                //  "~" + parseInt(partMesa)
+                                                //  :
+                                                //   parseInt(partMesa)
 
-                                                }      
+                                             }      
                                             
                                             </FloatingLabel> 
                                         </Col>
