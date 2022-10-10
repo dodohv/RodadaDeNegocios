@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import {Form, Alert, InputGroup, Button, ButtonGroup, FloatingLabel,Container,Row, Col, Card ,Table  } from 'react-bootstrap'
 import  React, {useState, useEffect} from 'react'
-import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
+import {BsArrowRepeat, BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 import NegocioDataService from "../services/negocio.services"
 import MinutoDataService from "../services/minuto.services"
 import ParticipanteDataService from "../services/participante.service"
 import MesaDataService from "../services/mesas.service"
 import RodadaDataService from '../services/rodada.service';
+import Rodada2DataService from '../services/rodada2.service';
 const Configurador = ({id, setNegocioId}) => {
-
+    const [rodadasMesas, setRodadasMesas] = useState([]);
     const [minutos, setMinutos] = useState([]);
     const [partics, setPartics] = useState([]);
     const [mesas, setMesas] = useState([]);
@@ -21,7 +22,7 @@ const Configurador = ({id, setNegocioId}) => {
     const [intIndSeg, setIntIndSeg]= useState(0);
     const [intGrupMin, setIntGrupMin]= useState(0);
     const [intGrupSeg, setIntGrupSeg] = useState(0);
-    const [numMesas, setNumMesas] = useState(0);
+    const [numMesas, setNumMesas] = useState(1);
     const [partMesa,setPartMesa] = useState(1);
     const [tempoTotal, setTempoTotal] = useState("00:00:00");
     const [tempoTotalHra, setTempoTotalHra] = useState(0);
@@ -33,6 +34,37 @@ const Configurador = ({id, setNegocioId}) => {
     const [message, setMessage] = useState({error: false, msg: ""});
     const [dataRodada, setDataRodada] = useState(Date.now());
     const [arrayRodada,setArrayRodada]= useState([]);
+    const [arrayRodadaMesas,setArrayRodadaMesas] = useState([]);
+    const [arrayRodada1,setArrayRodada1] = useState([]);
+    const [arrayRodada2,setArrayRodada2] = useState([]);
+    const [arrayRodada3,setArrayRodada3] = useState([]);
+    const [arrayRodada4,setArrayRodada4] = useState([]);
+    const [arrayRodada5,setArrayRodada5] = useState([]);
+    const [arrayRodada6,setArrayRodada6] = useState([]);
+    const [arrayRodada7,setArrayRodada7] = useState([]);
+    const [arrayRodada8,setArrayRodada8] = useState([]);
+    const [arrayRodada9,setArrayRodada9] = useState([]);
+    const [arrayRodada10,setArrayRodada10]= useState([]);
+    const [arrayRodada11,setArrayRodada11]= useState([]);
+    const [arrayRodada12,setArrayRodada12]= useState([]);
+    const [arrayRodada13,setArrayRodada13] = useState([]);
+    const [arrayRodada14,setArrayRodada14] = useState([]);
+    const [arrayRodada15,setArrayRodada15] = useState([]);
+    const [arrayRodada16,setArrayRodada16] = useState([]);
+    const [arrayRodada17,setArrayRodada17] = useState([]);
+    const [arrayRodada18,setArrayRodada18] = useState([]);
+    const [arrayRodada19,setArrayRodada19] = useState([]);
+    const [arrayRodada20,setArrayRodada20] = useState([]);
+    const [arrayRodada21,setArrayRodada21] = useState([]);
+    const [arrayRodada22,setArrayRodada22] = useState([]);
+    const [arrayRodada23,setArrayRodada23] = useState([]);
+    const [arrayRodada24,setArrayRodada24] = useState([]);
+    const [arrayRodada25,setArrayRodada25] = useState([]);
+    const [arrayRodada26,setArrayRodada26] = useState([]);
+    const [arrayRodada27,setArrayRodada27] = useState([]);
+    const [arrayRodada28,setArrayRodada28] = useState([]);
+    const [arrayRodada29,setArrayRodada29] = useState([]);
+    const [arrayRodada30,setArrayRodada30] = useState([]);
     const [arrayMesas, setArrayMesas] = useState([]);
     const [arrayMesa1, setArrayMesa1] = useState([]);
     const [arrayMesa2, setArrayMesa2] = useState([]);
@@ -89,15 +121,214 @@ const Configurador = ({id, setNegocioId}) => {
         if (participantes > 7) {
             console.log("1 vez mano")
             console.log(participantes)
-            setArrayMesas([])
-            for (let i = 1; i <= parseInt(participantes); i++){
             
+            setArrayMesas([])
+            // setArrayRodadaMesas([])
+            // console.log("repete não né")
+            // console.log("arrayRodadaMesas", arrayRodadaMesas)
+            // console.log("arrayRodadaMesas", arrayRodadaMesas.length)
+            // console.log("arrayRodada1", arrayRodada1)
+            // console.log("arrayRodada1", arrayRodada1.length)
+            // console.log("arrayRodada2", arrayRodada2)
+            // console.log("arrayRodada2", arrayRodada2.length)
+
+            for (let i = 1; i <= parseInt(participantes); i++){
+                // setArrayRodadaMesas(arrayRodadaMesas.push(
+                //     {   id: i,
+                //         idRodada: `Rodada ${i}`,
+                //     }
+                // ))
+
+                // setArrayRodada1(arrayRodada1.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada2(arrayRodada2.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada3(arrayRodada3.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada4(arrayRodada4.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada5(arrayRodada5.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada6(arrayRodada6.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada7(arrayRodada7.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada8(arrayRodada8.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada9(arrayRodada9.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada10(arrayRodada10.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada11(arrayRodada11.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada12(arrayRodada12.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada13(arrayRodada13.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada14(arrayRodada14.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada15(arrayRodada15.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada16(arrayRodada16.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada17(arrayRodada17.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada18(arrayRodada18.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada19(arrayRodada19.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada20(arrayRodada20.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada21(arrayRodada21.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada22(arrayRodada22.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada23(arrayRodada23.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada24(arrayRodada24.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada25(arrayRodada25.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada26(arrayRodada26.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada27(arrayRodada27.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada28(arrayRodada28.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada29(arrayRodada29.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+                // setArrayRodada30(arrayRodada30.push(
+                //         {   id:i,
+                //             idRodada: `Rodada ${i}`,
+                //         }
+                //     )
+                // )
+
+
+
                    setArrayMesas(arrayMesas.push(
                         {
                         id: i,
                         idParticipante: `Nome ${i}`
                         }
                         ))
+                    
                     setArrayMesa1(arrayMesa1.push({
                         id: i,
                         idParticipante: `Nome ${i}`
@@ -220,8 +451,313 @@ const Configurador = ({id, setNegocioId}) => {
                     }))            
                         
             }
-            console.log(arrayMesas)
-            console.log("partMesa", parseInt(partMesa))
+
+            // for (let i = parseInt(partMesa); i < participantes; i++) {
+            //     setArrayRodada1(arrayRodada1.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+            //     setArrayRodada2(arrayRodada2.shift())
+            //     setArrayRodada3(arrayRodada3.shift())
+            //     setArrayRodada4(arrayRodada4.shift())
+            //     setArrayRodada5(arrayRodada5.shift())
+            //     setArrayRodada6(arrayRodada6.shift())
+            //     setArrayRodada7(arrayRodada7.shift())
+            //     setArrayRodada8(arrayRodada8.shift())
+            //     setArrayRodada9(arrayRodada9.shift())
+            //     setArrayRodada10(arrayRodada10.shift())
+            //     setArrayRodada11(arrayRodada11.shift())
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - arrayRodada1.length); i++) {
+            //     setArrayRodada2(arrayRodada2.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada3(arrayRodada3.shift())
+            //     setArrayRodada4(arrayRodada4.shift())
+            //     setArrayRodada5(arrayRodada5.shift())
+            //     setArrayRodada6(arrayRodada6.shift())
+            //     setArrayRodada7(arrayRodada7.shift())
+            //     setArrayRodada8(arrayRodada8.shift())
+            //     setArrayRodada9(arrayRodada9.shift())
+            //     setArrayRodada10(arrayRodada10.shift())
+            //     setArrayRodada11(arrayRodada11.shift())
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length )); i++) {
+            //     setArrayRodada3(arrayRodada3.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada4(arrayRodada4.shift())
+            //     setArrayRodada5(arrayRodada5.shift())
+            //     setArrayRodada6(arrayRodada6.shift())
+            //     setArrayRodada7(arrayRodada7.shift())
+            //     setArrayRodada8(arrayRodada8.shift())
+            //     setArrayRodada9(arrayRodada9.shift())
+            //     setArrayRodada10(arrayRodada10.shift())
+            //     setArrayRodada11(arrayRodada11.shift())
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length )); i++) {
+            //     setArrayRodada4(arrayRodada4.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada5(arrayRodada5.shift())
+            //     setArrayRodada6(arrayRodada6.shift())
+            //     setArrayRodada7(arrayRodada7.shift())
+            //     setArrayRodada8(arrayRodada8.shift())
+            //     setArrayRodada9(arrayRodada9.shift())
+            //     setArrayRodada10(arrayRodada10.shift())
+            //     setArrayRodada11(arrayRodada11.shift())
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length)); i++) {
+            //     setArrayRodada5(arrayRodada5.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada6(arrayRodada6.shift())
+            //     setArrayRodada7(arrayRodada7.shift())
+            //     setArrayRodada8(arrayRodada8.shift())
+            //     setArrayRodada9(arrayRodada9.shift())
+            //     setArrayRodada10(arrayRodada10.shift())
+            //     setArrayRodada11(arrayRodada11.shift())
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length )); i++) {
+            //     setArrayRodada6(arrayRodada6.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada7(arrayRodada7.shift())
+            //     setArrayRodada8(arrayRodada8.shift())
+            //     setArrayRodada9(arrayRodada9.shift())
+            //     setArrayRodada10(arrayRodada10.shift())
+            //     setArrayRodada11(arrayRodada11.shift())
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length )); i++) {
+            //     setArrayRodada7(arrayRodada7.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada8(arrayRodada8.shift())
+            //     setArrayRodada9(arrayRodada9.shift())
+            //     setArrayRodada10(arrayRodada10.shift())
+            //     setArrayRodada11(arrayRodada11.shift())
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length )); i++) {
+            //     setArrayRodada8(arrayRodada8.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada9(arrayRodada9.shift())
+            //     setArrayRodada10(arrayRodada10.shift())
+            //     setArrayRodada11(arrayRodada11.shift())
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length )); i++) {
+            //     setArrayRodada9(arrayRodada9.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada10(arrayRodada10.shift())
+            //     setArrayRodada11(arrayRodada11.shift())
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length )); i++) {
+            //     setArrayRodada10(arrayRodada10.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+                
+            //     setArrayRodada11(arrayRodada11.shift())
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 )); i++) {
+            //     setArrayRodada11(arrayRodada11.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+             
+            //     setArrayRodada12(arrayRodada12.shift())
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 )); i++) {
+            //     setArrayRodada12(arrayRodada12.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+             
+            //     setArrayRodada13(arrayRodada13.shift())
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 )); i++) {
+            //     setArrayRodada13(arrayRodada13.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+             
+            //     setArrayRodada14(arrayRodada14.shift())
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 )); i++) {
+            //     setArrayRodada14(arrayRodada14.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+             
+            //     setArrayRodada15(arrayRodada15.shift())
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 )); i++) {
+            //     setArrayRodada15(arrayRodada15.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada16(arrayRodada16.shift())
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 - arrayRodada15 )); i++) {
+            //     setArrayRodada16(arrayRodada16.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada17(arrayRodada17.shift())
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 - arrayRodada15 - arrayRodada16 )); i++) {
+            //     setArrayRodada17(arrayRodada17.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada18(arrayRodada18.shift())
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 - arrayRodada15 - arrayRodada16 - arrayRodada17 )); i++) {
+            //     setArrayRodada18(arrayRodada18.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada19(arrayRodada19.shift())
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 - arrayRodada15 - arrayRodada16 - arrayRodada17 - arrayRodada18 )); i++) {
+            //     setArrayRodada19(arrayRodada19.pop())
+            // }
+            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
+
+            //     setArrayRodada20(arrayRodada20.shift())
+            // }
+            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 - arrayRodada15 - arrayRodada16 - arrayRodada17 - arrayRodada18 - arrayRodada19 )); i++) {
+            //     setArrayRodada20(arrayRodada20.pop())
+            // }
 
             for (let i = parseInt(partMesa); i < participantes; i++) {
          
@@ -265,7 +801,6 @@ const Configurador = ({id, setNegocioId}) => {
             for (let i = parseInt(partMesa); i < (arrayMesas.length - arrayMesa1.length); i++) {
            
                 setArrayMesa2(arrayMesa2.pop())
-
             }
                 console.log("arrayMesa2", arrayMesa2)
                 console.log("length arrayMesa2", arrayMesa2.length)
@@ -276,7 +811,6 @@ const Configurador = ({id, setNegocioId}) => {
                     setArrayMesa6(arrayMesa6.shift())
                     setArrayMesa7(arrayMesa7.shift())
                     setArrayMesa8(arrayMesa8.shift())
-
                     setArrayMesa9(arrayMesa9.shift())
                     setArrayMesa10(arrayMesa10.shift())
                     setArrayMesa11(arrayMesa11.shift())
@@ -305,7 +839,6 @@ const Configurador = ({id, setNegocioId}) => {
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length) ); i++) {
 
                 setArrayMesa3(arrayMesa3.pop())
-
             }
             console.log("arrayMesa3", arrayMesa3)
             console.log("length arrayMesa3", arrayMesa3.length)
@@ -1009,74 +1542,141 @@ const Configurador = ({id, setNegocioId}) => {
 
 
         }
-console.log(numMesas)
+
+        // console.log("arrayRodada1", arrayRodada1)
+        // console.log("arrayRodada2", arrayRodada2)
+        // console.log("arrayRodada3", arrayRodada3)
+        // console.log("arrayRodada4", arrayRodada4)
+        // console.log("arrayRodada5", arrayRodada5)
+        // console.log("arrayRodada6", arrayRodada6)
+        // console.log("arrayRodada7", arrayRodada7)
+        // console.log("arrayRodada8", arrayRodada8)
+        // console.log("arrayRodada9", arrayRodada9)
+        // console.log("arrayRodada10", arrayRodada10)
+        // console.log("arrayRodada11", arrayRodada11)
+        // console.log("arrayRodada12", arrayRodada12)
+        // console.log("arrayRodada13", arrayRodada13)
+        // console.log("arrayRodada14", arrayRodada14)
+        // console.log("arrayRodada15", arrayRodada15)
+        // console.log("arrayRodada16", arrayRodada16)
+        // console.log("arrayRodada17", arrayRodada17)
+        // console.log("arrayRodada18", arrayRodada18)
+        // console.log("arrayRodada19", arrayRodada19)
+        // console.log("arrayRodada20", arrayRodada20)
         
+        console.log("num Mesas",numMesas)
+        // if (partMesa == 6) {
+        //     if (arrayRodada6.length < numMesas) {
+        //         let poped = arrayRodada5.pop()
+        //         setArrayRodada5(arrayRodada6.unshift(poped))
+        //         if ( arrayRodada6.length < numMesas) {
+        //             let poped = arrayRodada4.pop()
+        //             setArrayRodada5(arrayRodada5.unshift(poped))
+        //             let poped2 = arrayRodada5.pop()
+        //           setArrayRodada5(arrayRodada6.unshift(poped2))
+        //         }
+        //     }
+        // }else if ( partMesa == 7) {
+        //     if (arrayRodada7.length < numMesas) {
+        //         let poped = arrayRodada6.pop()
+        //         setArrayRodada6(arrayRodada7.unshift(poped))
+        //         if(arrayRodada7.length < numMesas) {
+        //             let poped = arrayRodada5.pop()
+        //             setArrayRodada6(arrayRodada6.unshift(poped))
+        //             let poped2 = arrayRodada6.pop()
+        //             setArrayRodada6(arrayRodada7.unshift(poped2))
+        //         }
+        //     }
+        // }else if ( partMesa == 8) {
+        //     if (arrayRodada8.length < numMesas) {
+        //         let poped = arrayRodada7.pop()
+        //         setArrayRodada7(arrayRodada8.unshift(poped))
+        //         if(arrayRodada8.length < numMesas) {
+        //             let poped = arrayRodada6.pop()
+        //             setArrayRodada7(arrayRodada7.unshift(poped))
+        //             let poped2 = arrayRodada7.pop()
+        //             setArrayRodada7(arrayRodada8.unshift(poped2))
+        //         }
+        //     }
+        // }else if ( partMesa == 9) {
+        //     if (arrayRodada9.length < numMesas) {
+        //         let poped = arrayRodada7.pop()
+        //         setArrayRodada8(arrayRodada9.unshift(poped))
+        //         if(arrayRodada9.length < numMesas) {
+        //             let poped = arrayRodada7.pop()
+        //             setArrayRodada8(arrayRodada8.unshift(poped))
+        //             let poped2 = arrayRodada8.pop()
+        //             setArrayRodada8(arrayRodada9.unshift(poped2))
+        //         }
+        //     }
+        // }else if ( partMesa == 10) {
+        //     if (arrayRodada9.length < numMesas) {
+        //         let poped = arrayRodada8.pop()
+        //         setArrayRodada9(arrayRodada10.unshift(poped))
+        //         if(arrayRodada9.length < numMesas) {
+        //             let poped = arrayRodada8.pop()
+        //             setArrayRodada9(arrayRodada9.unshift(poped))
+        //             let poped2 = arrayRodada8.pop()
+        //             setArrayRodada9(arrayRodada10.unshift(poped2))
+        //         }
+        //     }
+        // }
+
         if (numMesas == 6) {
             if (arrayMesa6.length < partMesa) {
               let poped = arrayMesa5.pop()
-              console.log("poped", poped)   
-              setArrayMesa6(arrayMesa6.unshift(poped))
-              console.log("arrayMesa6", arrayMesa6)
-              console.log("length arrayMesa6", arrayMesa6.length)
+              setArrayMesa5(arrayMesa6.unshift(poped))
               if( arrayMesa6.length < partMesa) {
                 let poped = arrayMesa4.pop()
-                setArrayMesa6(arrayMesa6.unshift(poped))
-              }
+                setArrayMesa5(arrayMesa5.unshift(poped))
+                let poped2 = arrayMesa5.pop()
+              setArrayMesa5(arrayMesa6.unshift(poped2))
+                }
             }
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5, 
-                arrayMesa6 
-                
-            ]
-            setArrayRodada(ArrayR)
         }else if (numMesas == 7) {
             if (arrayMesa7.length < partMesa) {
-                let poped = arrayMesa6.pop()
-                console.log("poped", poped)   
+                let poped = arrayMesa6.pop() 
                 setArrayMesa6(arrayMesa7.unshift(poped))
-                console.log("arrayMesa7", arrayMesa7)
-                console.log("length arrayMesa7", arrayMesa7.length)
                 if( arrayMesa7.length < partMesa) {
                   let poped = arrayMesa5.pop()
                   setArrayMesa6(arrayMesa6.unshift(poped))
                   let poped2 = arrayMesa6.pop()
-                console.log("poped", poped)   
                 setArrayMesa6(arrayMesa7.unshift(poped2))
-                console.log("arrayMesa7", arrayMesa7)
-                console.log("length arrayMesa7", arrayMesa7.length)
                 }
             }
-            // const ArrayR = [
-            //     arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-            //     arrayMesa6, arrayMesa7
-                
-            // ]
-            // setArrayRodada(arrayRodada.unshift(
-            //     arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-            //     arrayMesa6, arrayMesa7
-            //     )
-                
-            // )
-            console.log("arrayRodada", arrayRodada)
         }else if (numMesas == 8) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8
-                
-            ]
+            if (arrayMesa8.length < partMesa) {
+                let poped = arrayMesa7.pop() 
+                setArrayMesa7(arrayMesa8.unshift(poped))
+                if( arrayMesa8.length < partMesa) {
+                  let poped = arrayMesa6.pop()
+                  setArrayMesa7(arrayMesa7.unshift(poped))
+                  let poped2 = arrayMesa7.pop()
+                setArrayMesa7(arrayMesa8.unshift(poped2))
+                }
+            }
         }else if (numMesas == 9) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9
-                
-            ]
+            if (arrayMesa9.length < partMesa) {
+                let poped = arrayMesa8.pop() 
+                setArrayMesa8(arrayMesa9.unshift(poped))
+                if( arrayMesa9.length < partMesa) {
+                  let poped = arrayMesa7.pop()
+                  setArrayMesa8(arrayMesa8.unshift(poped))
+                  let poped2 = arrayMesa8.pop()
+                setArrayMesa8(arrayMesa9.unshift(poped2))
+                }
+            }
         }else if (numMesas == 10) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11
-                
-            ]
+            if (arrayMesa10.length < partMesa) {
+                let poped = arrayMesa9.pop() 
+                setArrayMesa9(arrayMesa10.unshift(poped))
+                if( arrayMesa10.length < partMesa) {
+                  let poped = arrayMesa8.pop()
+                  setArrayMesa9(arrayMesa9.unshift(poped))
+                  let poped2 = arrayMesa9.pop()
+                setArrayMesa10(arrayMesa10.unshift(poped2))
+                }
+            }
         }else if (numMesas == 11) {
             const ArrayR = [
                 arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
@@ -1260,7 +1860,7 @@ console.log(numMesas)
 
     const meusPartMesa = async () => {
         
-               if(numMesas != 0 ) {
+               
                 
                 
 
@@ -1276,43 +1876,57 @@ console.log(numMesas)
                 //     console.log("loop novo acima")
                 // }
                 
-                
+                if(numMesas != 0 ) {
             const roundar = Math.ceil((participantes / numMesas).toFixed(1))
             console.log("MathRound", roundar)
             setPartMesa(roundar)
             console.log("Depois MathRound", partMesa)
+            }
+            console.log("parseInt(intGrupMin)", parseInt(intGrupMin))
+            console.log("parseInt(intIndMin)", parseInt(intIndMin))
+            console.log("parseInt(tempoPartMin)", parseInt(tempoPartMin))
+            console.log("parseInt(intGrupSeg) ", parseInt(intGrupSeg) )
+            console.log("parseInt(intIndSeg) ", parseInt(intIndSeg) )
+            console.log("parseInt(tempoPartSeg)",parseInt(tempoPartSeg))
 
             setTempoTotalHra(
             ((numMesas *
                 ((Math.floor(parseInt(intGrupMin) * 60)
                          + Math.floor(parseInt(intIndMin) * 60) 
                          + Math.floor(parseInt(tempoPartMin) * 60) 
+                         + Math.floor(parseInt(tempoPartMin) * 60)
+                         + parseInt(tempoPartSeg)
                          + parseInt(intGrupSeg) 
                          + parseInt(intIndSeg) 
                          + parseInt(tempoPartSeg)))) / 3600).toFixed(0)
             )
+            console.log("tempototalHra", tempoTotalHra)
             setTempoTotalMin(
                 ((numMesas *
                 ((Math.floor(parseInt(intGrupMin) * 60)
                          + Math.floor(parseInt(intIndMin) * 60) 
                          + Math.floor(parseInt(tempoPartMin) * 60) 
+                         + Math.floor(parseInt(tempoPartMin) * 60)
+                         + parseInt(tempoPartSeg)
                          + parseInt(intGrupSeg) 
                          + parseInt(intIndSeg) 
                          + parseInt(tempoPartSeg))) % 3600)/60).toFixed(0)
 
             )
-                   
+            console.log("TempoTotalMin", tempoTotalMin)
             setTempoTotalSeg (
                ((numMesas *
                     ((Math.floor(parseInt(intGrupMin) * 60)
                              + Math.floor(parseInt(intIndMin) * 60) 
                              + Math.floor(parseInt(tempoPartMin) * 60) 
+                             + Math.floor(parseInt(tempoPartMin) * 60)
+                             + parseInt(tempoPartSeg)
                              + parseInt(intGrupSeg) 
                              + parseInt(intIndSeg) 
                              + parseInt(tempoPartSeg))) % 3600) % 60).toFixed(0)
     
             )  
-            
+            console.log("TempoTotalSeg", tempoTotalSeg)
 
     if(tempoTotalHra.length == 2 && tempoTotalMin.length == 2 && tempoTotalSeg.length == 1) {
         setTempoTotal(
@@ -1342,27 +1956,61 @@ console.log(numMesas)
         setTempoTotal(  
         "0" + tempoTotalHra + ":" + tempoTotalMin + ":0" + tempoTotalSeg  
     )
+    }else if(tempoTotalHra.length == 1 && tempoTotalMin.length == 2 && tempoTotalSeg.length == 2) {
+        setTempoTotal(  
+        "0" + tempoTotalHra + ":" + tempoTotalMin + ":" + tempoTotalSeg  
+    )
     }
-}
+    
+    else{
+    setTempoTotal(  
+        "0" + tempoTotalHra + ":" + tempoTotalMin + ":0" + tempoTotalSeg  
+    )
+    console.log("falhou tempo corversa")
+    }
 
 }    
     ;
     const handleSubmit = async(e) => {
-        gerarEtiquetas();
-        e.preventDefault();
-        setMessage("");
         
+        e.preventDefault();
+
+        setMessage("");
+        gerarEtiquetas();
+        alert(participantes)
         setIntIndMin(parseInt(intIndMin))
         setIntGrupMin(parseInt(intGrupMin))
         setParticipantes(parseInt(participantes))
-    
+        setNumMesas(parseInt(numMesas))
 
 
         if(reuniao === "" || grupo === "" || participantes === "" || tempoPartMin === "" || tempoPartSeg === "") {
             setMessage({error: true, msg: "Todos os campos são obrigatórios!"});    
             return;
         }
-
+        const newRodada2 = {
+            arrayRodada1,
+            arrayRodada2,
+            arrayRodada3,
+            arrayRodada4,
+            arrayRodada5,
+            arrayRodada6,
+            arrayRodada7,
+            arrayRodada8,
+            arrayRodada9,
+            arrayRodada10,
+            arrayRodada11,
+            arrayRodada12,
+            arrayRodada13,
+            arrayRodada14,
+            arrayRodada15,
+            arrayRodada16,
+            arrayRodada17,
+            arrayRodada18,
+            arrayRodada19,
+            arrayRodada20,
+            dataRodada
+        }
         const newRodada = {
                 arrayMesa1, 
                 arrayMesa2, 
@@ -1414,19 +2062,23 @@ console.log(numMesas)
         }
 
         try {
-            if(id !== undefined && id !== "") {
-                await NegocioDataService.updateNegocio(id, newNegocio);
-                setNegocioId("");
-                setMessage({error: false, msg: "Atualizado com sucesso"});
-            }
-            else {
+            // if(id !== undefined && id !== "") {
+            //     await NegocioDataService.updateNegocio(id, newNegocio);
+            //     setNegocioId("");
+            //     setMessage({error: false, msg: "Atualizado com sucesso"});
+            // }
+            // else {
                 await NegocioDataService.addNegocios(newNegocio);
-                await MesaDataService.addMesas(newMesa);
+                console.log("negocio criado")
+                // await MesaDataService.addMesas(newMesa);
+                // console.log("mesa criado")
                 await RodadaDataService.addRodadas(newRodada);
-
+                console.log("participantes criados")
+                //  await Rodada2DataService.addRodadas2(newRodada2);
+                //  console.log("Rodadas criadas")
                 setMessage({error: false, msg: "Nova Rodada de Negócios gerada!"});
-                
-            }
+                console.log("Msg Rodada gerada")
+            // }
 
         } catch(err) {
             setMessage({error: true, msg:err.message})
@@ -1483,8 +2135,8 @@ console.log(numMesas)
            //  getMinutos();
             
             meusPartMesa();
-        },[numMesas, participantes, tempoPartMin, tempoPartSeg, 
-         tempoTotalHra, tempoTotalMin,tempoTotalSeg,tempoTotal, partMesa])
+        },[numMesas, participantes, tempoPartMin, tempoPartSeg, intIndMin, intIndSeg, intGrupMin, intGrupSeg, 
+         tempoTotalHra, tempoTotalMin,tempoTotalSeg,tempoTotal, partMesa,reuniao, grupo])
         
     return ( 
  
