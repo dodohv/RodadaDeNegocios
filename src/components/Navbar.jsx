@@ -44,14 +44,7 @@ const Navbar = () => {
                     marginTop:'10px',
                     marginLeft:'10px'
                 }}> Alertas</Link>
-                <Link to="/book" style={{
-                    color:"white",
-                    backgroundColor: "#264653",
-                    borderRadius: "5px",
-                    padding: '5px',
-                    marginTop:'10px',
-                    marginLeft:'10px'
-                }}> Gerador 2</Link>
+
                 
                 
             </div>

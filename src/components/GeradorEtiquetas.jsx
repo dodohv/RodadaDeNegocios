@@ -27,7 +27,7 @@ const GeradorEtiquetas = () => {
         <div>
 
         <Container className='configurador'>
-        {negocios.slice(-1).map((doc, index) => {
+        {negocios.sort((a,b)=> a.dataRodada > b.dataRodada ? 1 : -1).slice(-1).map((doc, index) => {
             return(
 
         <Form onSubmit= {handleGerarEtiqueta}>

@@ -3,13 +3,16 @@ import {Form, Alert, InputGroup, Button, ButtonGroup, FloatingLabel,Container,Ro
 import  React, {useState, useEffect, useRef} from 'react'
 import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 import NegocioDataService from "../services/negocio.services"
-import NotificationSound from "../assets/counter.wav";
-
+import NotificationSound3 from "../assets/bass.aac";
+import NotificationSound2 from "../assets/counter.wav";
+import NotificationSound from "../assets/alarm.aac";
 
 const Alertas = () => {
 
     const [negocios, setNegocios] = useState([]);
     const audioPlayer = useRef(null);
+    const audioPlayer2 = useRef(null);
+    const audioPlayer3 = useRef(null);
     const handleGerarEtiqueta = async(e) => {
         e.preventDefault();
 
@@ -17,6 +20,12 @@ const Alertas = () => {
 
     function playAudio() {
         audioPlayer.current.play();
+    }
+    function playAudio2() {
+        audioPlayer2.current.play();
+    }
+    function playAudio3() {
+        audioPlayer3.current.play();
     }
 
     const getNegocios = async () => {
@@ -59,13 +68,7 @@ const Alertas = () => {
                                             className="input-card-se" aria-label="Floating label select example">
  
                                                 <option value="1">Padrão</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="55">55</option>
-                                                <option value="56">56</option>
-                                                <option value="57">57</option>
-                                                <option value="58">58</option>
-                                                <option value="59">59</option>
+                                                
                                                 
                                             </Form.Select>
                                             
@@ -83,8 +86,9 @@ const Alertas = () => {
                             </Card.Text>
                     </Col>
                     <Col xs={1} md={1}>
-                    <audio ref={audioPlayer} src={NotificationSound} />
-                    <Button variant="success" onClick ={ () => {playAudio()} }>Ouvir</Button>
+                    <audio ref={audioPlayer2} src={NotificationSound2} />
+
+                    <Button variant="success" onClick ={ () => {playAudio2()} }>Ouvir</Button>
                     </Col>
                 </Row>
                 <Row className='row-card'>
@@ -99,13 +103,7 @@ const Alertas = () => {
                                             className="input-card-se" aria-label="Floating label select example">
  
                                                 <option value="1">Padrão</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="55">55</option>
-                                                <option value="56">56</option>
-                                                <option value="57">57</option>
-                                                <option value="58">58</option>
-                                                <option value="59">59</option>
+                                                
                                                 
                                             </Form.Select>
                     </Col>
@@ -121,8 +119,8 @@ const Alertas = () => {
                             </Card.Text>
                     </Col>
                     <Col xs={1} md={1}>
-                    <audio ref={audioPlayer} src={NotificationSound} />
-                    <Button variant="success" onClick ={ () => {playAudio()} }>Ouvir</Button>
+                    <audio ref={audioPlayer3} src={NotificationSound3} />
+                    <Button variant="success" onClick ={ () => {playAudio3()} }>Ouvir</Button>
                     </Col>
                 
                 </Row>
@@ -138,13 +136,7 @@ const Alertas = () => {
                                             className="input-card-se" aria-label="Floating label select example">
  
                                                 <option value="1">Padrão</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="55">55</option>
-                                                <option value="56">56</option>
-                                                <option value="57">57</option>
-                                                <option value="58">58</option>
-                                                <option value="59">59</option>
+                                                
                                                 
                                             </Form.Select>
                     </Col>
@@ -176,13 +168,7 @@ const Alertas = () => {
                                             className="input-card-se" aria-label="Floating label select example">
  
                                                 <option value="1">Padrão</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="55">55</option>
-                                                <option value="56">56</option>
-                                                <option value="57">57</option>
-                                                <option value="58">58</option>
-                                                <option value="59">59</option>
+                                                
                                                 
                                             </Form.Select>
                     </Col>

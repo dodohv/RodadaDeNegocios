@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import {Form,Container,Row, Col, Card ,Button  } from 'react-bootstrap'
 import {useState, useEffect, useRef} from "react"
 import NegocioDataService from "../services/negocio.services"
-import NotificationSound3 from "../assets/sprayer.wav";
+import NotificationSound3 from "../assets/bass.aac";
 import NotificationSound2 from "../assets/counter.wav";
-import NotificationSound from "../assets/ctwin.ogg";
+import NotificationSound from "../assets/alarm.aac";
 import { BsPlayCircle, BsPauseCircle} from 'react-icons/bs'
 import RodadaDataService from "../services/rodada.service";
 import RodadaBoaDataService from '../services/rodadaBoa.service';
@@ -597,7 +597,29 @@ const meuTempoDecorrido = async() => {
                     </Card.Text>
                     
                     <Card.Text className="text-card">
-                        00:00:00
+                    {
+                        doc.intGrupMin.length > 1 && doc.intGrupSeg.length > 1 ?
+                        "00:" + doc.intGrupMin + ":" + doc.intGrupSeg
+                            :
+                            doc.intGrupMin.length != 2 && doc.intGrupSeg.length != 2  ?
+                            "00:0" + doc.intGrupMin + ":0" + doc.intGrupSeg
+                                :
+                                doc.intGrupMin.length == 1 && doc.intGrupSeg.length > 1 ?
+                                "00:0" + doc.intGrupMin + ":" + doc.intGrupSeg
+                                    :
+                                    doc.intGrupMin.length == null && doc.intGrupSeg.length > 1 ?
+                                    "00:0" + doc.intGrupMin + ":" + doc.intGrupSeg
+                                    :
+                                    doc.intGrupMin.length >1 && doc.intGrupSeg.length == null ?
+                                    "00:" + doc.intGrupMin + ":0" + doc.intGrupSeg
+                                    :
+                                    doc.intGrupMin.length <2 && doc.intGrupSeg.length == null ?
+                                    "00:0" + doc.intGrupMin + ":0" + doc.intGrupSeg
+                                    :
+
+                                    "00:0" + doc.intGrupMin + ":0" + doc.intGrupSeg
+                                    
+                        }
                     </Card.Text>
                 </Col>
             </Row>    
