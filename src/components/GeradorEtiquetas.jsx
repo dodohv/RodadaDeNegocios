@@ -3,12 +3,8 @@ import {Form, Alert, InputGroup, Button, ButtonGroup, FloatingLabel,Container,Ro
 import  React, {useState, useEffect} from 'react'
 import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 import NegocioDataService from "../services/negocio.services"
-import MinutoDataService from "../services/minuto.services"
-import ParticipanteDataService from "../services/participante.service"
-
 
 const GeradorEtiquetas = () => {
-    const [minutos, setMinutos] = useState([]);
     const [negocios, setNegocios] = useState([]);
     const handleGerarEtiqueta = async(e) => {
         e.preventDefault();
@@ -21,13 +17,9 @@ const GeradorEtiquetas = () => {
         setNegocios(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
 
     };
-    const getMinutos = async () => {
-        const data = await MinutoDataService.getAllMinutos();
-        
-        setMinutos(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    };
+
     useEffect ( () => {
-        getMinutos();
+
         getNegocios();
     },[] )
 

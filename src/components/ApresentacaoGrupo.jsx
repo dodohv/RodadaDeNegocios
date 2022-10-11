@@ -7,7 +7,8 @@ import NotificationSound3 from "../assets/sprayer.wav";
 import NotificationSound2 from "../assets/counter.wav";
 import NotificationSound from "../assets/ctwin.ogg";
 import { BsPlayCircle, BsPauseCircle} from 'react-icons/bs'
-import RodadaDataService from "../services/rodada.service"
+import RodadaDataService from "../services/rodada.service";
+import RodadaBoaDataService from '../services/rodadaBoa.service';
 import Rodada2DataService from '../services/rodada2.service';
 import Rodada3DataService from '../services/rodada3.service';
 import Rodada4DataService from '../services/rodada4.service';
@@ -29,6 +30,7 @@ import Rodada19DataService from '../services/rodada19.service';
 import Rodada20DataService from '../services/rodada20.service';
 const ApresentacaoGrupo = () => {
     const [rodadas, setRodadas] = useState([]);
+    const [rodadasBoa, setRodadasBoa] = useState([]);
     const [rodadas2, setRodadas2] = useState([]);
     const [rodadas3, setRodadas3] = useState([]);
     const [rodadas4, setRodadas4] = useState([]);
@@ -184,6 +186,7 @@ const meuTempoDecorrido = async() => {
 
         getNegocios();
         getRodadas7();
+        getRodadasBoa();
         getRodadas();
         getRodadas2();
         getRodadas3();
@@ -215,7 +218,10 @@ const meuTempoDecorrido = async() => {
         const data = await RodadaDataService.getAllRodadas();
             setRodadas(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     }
-    
+    const getRodadasBoa = async () => {
+        const data = await RodadaBoaDataService.getAllRodadasBoa();
+            setRodadasBoa(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    }
     const getRodadas2 = async () => {
         const data = await Rodada2DataService.getAllRodadas2();
             setRodadas2(data.docs.map((doc) => ({...doc.data(), id: doc.id})))

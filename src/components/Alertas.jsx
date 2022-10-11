@@ -3,13 +3,11 @@ import {Form, Alert, InputGroup, Button, ButtonGroup, FloatingLabel,Container,Ro
 import  React, {useState, useEffect, useRef} from 'react'
 import {BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 import NegocioDataService from "../services/negocio.services"
-import MinutoDataService from "../services/minuto.services"
-import ParticipanteDataService from "../services/participante.service"
 import NotificationSound from "../assets/counter.wav";
 
 
 const Alertas = () => {
-    const [minutos, setMinutos] = useState([]);
+
     const [negocios, setNegocios] = useState([]);
     const audioPlayer = useRef(null);
     const handleGerarEtiqueta = async(e) => {
@@ -27,11 +25,7 @@ const Alertas = () => {
         setNegocios(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
         
     };
-    const getMinutos = async () => {
-        const data = await MinutoDataService.getAllMinutos();
-        
-        setMinutos(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    };
+
     useEffect ( () => {
         
 

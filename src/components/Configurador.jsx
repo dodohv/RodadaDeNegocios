@@ -4,6 +4,7 @@ import  React, {useState, useEffect} from 'react'
 import {BsArrowRepeat, BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 import NegocioDataService from "../services/negocio.services"
 import RodadaDataService from '../services/rodada.service';
+import RodadaBoaDataService from '../services/rodadaBoa.service';
 import Rodada2DataService from '../services/rodada2.service';
 import Rodada3DataService from '../services/rodada3.service';
 import Rodada4DataService from '../services/rodada4.service';
@@ -2245,6 +2246,34 @@ const Configurador = ({id, setNegocioId}) => {
                 arrayMesa20,
                 dataRodada
         }
+
+        
+        const newRodadaBoa = {
+
+            aarrayMesa1, 
+            aarrayMesa2, 
+            aarrayMesa3, 
+            aarrayMesa4, 
+            aarrayMesa5,
+            aarrayMesa6, 
+            aarrayMesa7,
+            aarrayMesa8,
+            aarrayMesa9,
+            aarrayMesa10,
+            aarrayMesa11,
+            aarrayMesa12,
+            aarrayMesa13,
+            aarrayMesa14,
+            aarrayMesa15,
+            aarrayMesa16,
+            aarrayMesa17,
+            aarrayMesa18,
+            aarrayMesa19,
+            aarrayMesa20,
+            dataRodada
+    }
+
+        await RodadaBoaDataService.addRodadasBoa(newRodadaBoa);
         // este Array Cria a logica de mesas da rodada 2 em diante
         var shift1 = aarrayMesa1.shift()
         aarrayMesa1.push(shift1)
