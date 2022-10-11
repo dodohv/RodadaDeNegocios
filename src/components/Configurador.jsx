@@ -3,11 +3,26 @@ import {Form, Alert, InputGroup, Button, ButtonGroup, FloatingLabel,Container,Ro
 import  React, {useState, useEffect} from 'react'
 import {BsArrowRepeat, BsClockHistory, BsFillPeopleFill, BsPeople} from 'react-icons/bs'
 import NegocioDataService from "../services/negocio.services"
-import MinutoDataService from "../services/minuto.services"
-import ParticipanteDataService from "../services/participante.service"
-import MesaDataService from "../services/mesas.service"
 import RodadaDataService from '../services/rodada.service';
 import Rodada2DataService from '../services/rodada2.service';
+import Rodada3DataService from '../services/rodada3.service';
+import Rodada4DataService from '../services/rodada4.service';
+import Rodada5DataService from '../services/rodada5.service';
+import Rodada6DataService from '../services/rodada6.service';
+import Rodada7DataService from '../services/rodada7.service';
+import Rodada8DataService from '../services/rodada8.service';
+import Rodada9DataService from '../services/rodada9.service';
+import Rodada10DataService from '../services/rodada10.service';
+import Rodada11DataService from '../services/rodada11.service';
+import Rodada12DataService from '../services/rodada12.service';
+import Rodada13DataService from '../services/rodada13.service';
+import Rodada14DataService from '../services/rodada14.service';
+import Rodada15DataService from '../services/rodada15.service';
+import Rodada16DataService from '../services/rodada16.service';
+import Rodada17DataService from '../services/rodada17.service';
+import Rodada18DataService from '../services/rodada18.service';
+import Rodada19DataService from '../services/rodada19.service';
+import Rodada20DataService from '../services/rodada20.service';
 const Configurador = ({id, setNegocioId}) => {
     const [rodadasMesas, setRodadasMesas] = useState([]);
     const [minutos, setMinutos] = useState([]);
@@ -35,36 +50,7 @@ const Configurador = ({id, setNegocioId}) => {
     const [dataRodada, setDataRodada] = useState(Date.now());
     const [arrayRodada,setArrayRodada]= useState([]);
     const [arrayRodadaMesas,setArrayRodadaMesas] = useState([]);
-    const [arrayRodada1,setArrayRodada1] = useState([]);
-    const [arrayRodada2,setArrayRodada2] = useState([]);
-    const [arrayRodada3,setArrayRodada3] = useState([]);
-    const [arrayRodada4,setArrayRodada4] = useState([]);
-    const [arrayRodada5,setArrayRodada5] = useState([]);
-    const [arrayRodada6,setArrayRodada6] = useState([]);
-    const [arrayRodada7,setArrayRodada7] = useState([]);
-    const [arrayRodada8,setArrayRodada8] = useState([]);
-    const [arrayRodada9,setArrayRodada9] = useState([]);
-    const [arrayRodada10,setArrayRodada10]= useState([]);
-    const [arrayRodada11,setArrayRodada11]= useState([]);
-    const [arrayRodada12,setArrayRodada12]= useState([]);
-    const [arrayRodada13,setArrayRodada13] = useState([]);
-    const [arrayRodada14,setArrayRodada14] = useState([]);
-    const [arrayRodada15,setArrayRodada15] = useState([]);
-    const [arrayRodada16,setArrayRodada16] = useState([]);
-    const [arrayRodada17,setArrayRodada17] = useState([]);
-    const [arrayRodada18,setArrayRodada18] = useState([]);
-    const [arrayRodada19,setArrayRodada19] = useState([]);
-    const [arrayRodada20,setArrayRodada20] = useState([]);
-    const [arrayRodada21,setArrayRodada21] = useState([]);
-    const [arrayRodada22,setArrayRodada22] = useState([]);
-    const [arrayRodada23,setArrayRodada23] = useState([]);
-    const [arrayRodada24,setArrayRodada24] = useState([]);
-    const [arrayRodada25,setArrayRodada25] = useState([]);
-    const [arrayRodada26,setArrayRodada26] = useState([]);
-    const [arrayRodada27,setArrayRodada27] = useState([]);
-    const [arrayRodada28,setArrayRodada28] = useState([]);
-    const [arrayRodada29,setArrayRodada29] = useState([]);
-    const [arrayRodada30,setArrayRodada30] = useState([]);
+    const [arrayParticipante1,setArrayParticipante1] = useState([]);
     const [arrayMesas, setArrayMesas] = useState([]);
     const [arrayMesa1, setArrayMesa1] = useState([]);
     const [arrayMesa2, setArrayMesa2] = useState([]);
@@ -96,25 +82,37 @@ const Configurador = ({id, setNegocioId}) => {
     const [arrayMesa28, setArrayMesa28] = useState([]);
     const [arrayMesa29, setArrayMesa29] = useState([]);
     const [arrayMesa30, setArrayMesa30] = useState([]);
+    const [aarrayMesa1, setAarrayMesa1] = useState([]);
+    const [aarrayMesa2, setAarrayMesa2] = useState([]);
+    const [aarrayMesa3, setAarrayMesa3] = useState([]);
+    const [aarrayMesa4, setAarrayMesa4] = useState([]);
+    const [aarrayMesa5, setAarrayMesa5] = useState([]);
+    const [aarrayMesa6, setAarrayMesa6] = useState([]);
+    const [aarrayMesa7, setAarrayMesa7] = useState([]);
+    const [aarrayMesa8, setAarrayMesa8] = useState([]);
+    const [aarrayMesa9, setAarrayMesa9] = useState([]);
+    const [aarrayMesa10, setAarrayMesa10] = useState([]);
+    const [aarrayMesa11, setAarrayMesa11] = useState([]);
+    const [aarrayMesa12, setAarrayMesa12] = useState([]);
+    const [aarrayMesa13, setAarrayMesa13] = useState([]);
+    const [aarrayMesa14, setAarrayMesa14] = useState([]);
+    const [aarrayMesa15, setAarrayMesa15] = useState([]);
+    const [aarrayMesa16, setAarrayMesa16] = useState([]);
+    const [aarrayMesa17, setAarrayMesa17] = useState([]);
+    const [aarrayMesa18, setAarrayMesa18] = useState([]);
+    const [aarrayMesa19, setAarrayMesa19] = useState([]);
+    const [aarrayMesa20, setAarrayMesa20] = useState([]);
+    const [aarrayMesa21, setAarrayMesa21] = useState([]);
+    const [aarrayMesa22, setAarrayMesa22] = useState([]);
+    const [aarrayMesa23, setAarrayMesa23] = useState([]);
+    const [aarrayMesa24, setAarrayMesa24] = useState([]);
+    const [aarrayMesa25, setAarrayMesa25] = useState([]);
+    const [aarrayMesa26, setAarrayMesa26] = useState([]);
+    const [aarrayMesa27, setAarrayMesa27] = useState([]);
+    const [aarrayMesa28, setAarrayMesa28] = useState([]);
+    const [aarrayMesa29, setAarrayMesa29] = useState([]);
+    const [aarrayMesa30, setAarrayMesa30] = useState([]);
     const [auxiliar,setAuxiliar] = useState(0);
-
-    const getMesas = async () => {
-        const data = await MesaDataService.getAllMesas();
-        
-        setMesas(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    }
- 
-    const getPartics = async () => {
-        const data = await ParticipanteDataService.getAllParticipantes();
-        
-        setPartics(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    }
-
-    const getMinutos = async () => {
-        const data = await MinutoDataService.getAllMinutos();
-        
-        setMinutos(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    }
 
     const gerarEtiquetas = () => {
 
@@ -123,203 +121,8 @@ const Configurador = ({id, setNegocioId}) => {
             console.log(participantes)
             
             setArrayMesas([])
-            // setArrayRodadaMesas([])
-            // console.log("repete não né")
-            // console.log("arrayRodadaMesas", arrayRodadaMesas)
-            // console.log("arrayRodadaMesas", arrayRodadaMesas.length)
-            // console.log("arrayRodada1", arrayRodada1)
-            // console.log("arrayRodada1", arrayRodada1.length)
-            // console.log("arrayRodada2", arrayRodada2)
-            // console.log("arrayRodada2", arrayRodada2.length)
 
             for (let i = 1; i <= parseInt(participantes); i++){
-                // setArrayRodadaMesas(arrayRodadaMesas.push(
-                //     {   id: i,
-                //         idRodada: `Rodada ${i}`,
-                //     }
-                // ))
-
-                // setArrayRodada1(arrayRodada1.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada2(arrayRodada2.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada3(arrayRodada3.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada4(arrayRodada4.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada5(arrayRodada5.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada6(arrayRodada6.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada7(arrayRodada7.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada8(arrayRodada8.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada9(arrayRodada9.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada10(arrayRodada10.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada11(arrayRodada11.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada12(arrayRodada12.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada13(arrayRodada13.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada14(arrayRodada14.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada15(arrayRodada15.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada16(arrayRodada16.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada17(arrayRodada17.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada18(arrayRodada18.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada19(arrayRodada19.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada20(arrayRodada20.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada21(arrayRodada21.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada22(arrayRodada22.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada23(arrayRodada23.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada24(arrayRodada24.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada25(arrayRodada25.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada26(arrayRodada26.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada27(arrayRodada27.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada28(arrayRodada28.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada29(arrayRodada29.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-                // setArrayRodada30(arrayRodada30.push(
-                //         {   id:i,
-                //             idRodada: `Rodada ${i}`,
-                //         }
-                //     )
-                // )
-
 
 
                    setArrayMesas(arrayMesas.push(
@@ -448,323 +251,137 @@ const Configurador = ({id, setNegocioId}) => {
                     setArrayMesa30(arrayMesa30.push({
                         id: i,
                         idParticipante: `Nome ${i}`
+                    }))
+                    
+                    setAarrayMesa1(aarrayMesa1.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setAarrayMesa2(aarrayMesa2.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setAarrayMesa3(aarrayMesa3.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setAarrayMesa4(aarrayMesa4.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setAarrayMesa5(aarrayMesa5.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setAarrayMesa6(aarrayMesa6.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setAarrayMesa7(aarrayMesa7.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setAarrayMesa8(aarrayMesa8.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setAarrayMesa9(aarrayMesa9.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))
+                    setAarrayMesa10(aarrayMesa10.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))         
+                    setAarrayMesa11(aarrayMesa11.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                       }))    
+                    setAarrayMesa12(aarrayMesa12.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setAarrayMesa13(aarrayMesa13.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setAarrayMesa14(aarrayMesa14.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setAarrayMesa15(aarrayMesa15.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))         
+                    setAarrayMesa16(aarrayMesa16.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))
+                    setAarrayMesa17(aarrayMesa17.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setAarrayMesa18(aarrayMesa18.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setAarrayMesa19(aarrayMesa19.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setAarrayMesa20(aarrayMesa20.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))       
+                    setAarrayMesa21(aarrayMesa21.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))    
+                    setAarrayMesa22(aarrayMesa22.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setAarrayMesa23(aarrayMesa23.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setAarrayMesa24(aarrayMesa24.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))    
+                    setAarrayMesa25(aarrayMesa25.push({
+                    id: i,
+                    idParticipante: `Nome ${i}`
+                    }))         
+                    setAarrayMesa26(aarrayMesa26.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))
+                    setAarrayMesa27(aarrayMesa27.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setAarrayMesa28(aarrayMesa28.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setAarrayMesa29(aarrayMesa29.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
+                    }))         
+                    setAarrayMesa30(aarrayMesa30.push({
+                        id: i,
+                        idParticipante: `Nome ${i}`
                     }))            
                         
             }
 
-            // for (let i = parseInt(partMesa); i < participantes; i++) {
-            //     setArrayRodada1(arrayRodada1.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-            //     setArrayRodada2(arrayRodada2.shift())
-            //     setArrayRodada3(arrayRodada3.shift())
-            //     setArrayRodada4(arrayRodada4.shift())
-            //     setArrayRodada5(arrayRodada5.shift())
-            //     setArrayRodada6(arrayRodada6.shift())
-            //     setArrayRodada7(arrayRodada7.shift())
-            //     setArrayRodada8(arrayRodada8.shift())
-            //     setArrayRodada9(arrayRodada9.shift())
-            //     setArrayRodada10(arrayRodada10.shift())
-            //     setArrayRodada11(arrayRodada11.shift())
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - arrayRodada1.length); i++) {
-            //     setArrayRodada2(arrayRodada2.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada3(arrayRodada3.shift())
-            //     setArrayRodada4(arrayRodada4.shift())
-            //     setArrayRodada5(arrayRodada5.shift())
-            //     setArrayRodada6(arrayRodada6.shift())
-            //     setArrayRodada7(arrayRodada7.shift())
-            //     setArrayRodada8(arrayRodada8.shift())
-            //     setArrayRodada9(arrayRodada9.shift())
-            //     setArrayRodada10(arrayRodada10.shift())
-            //     setArrayRodada11(arrayRodada11.shift())
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length )); i++) {
-            //     setArrayRodada3(arrayRodada3.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada4(arrayRodada4.shift())
-            //     setArrayRodada5(arrayRodada5.shift())
-            //     setArrayRodada6(arrayRodada6.shift())
-            //     setArrayRodada7(arrayRodada7.shift())
-            //     setArrayRodada8(arrayRodada8.shift())
-            //     setArrayRodada9(arrayRodada9.shift())
-            //     setArrayRodada10(arrayRodada10.shift())
-            //     setArrayRodada11(arrayRodada11.shift())
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length )); i++) {
-            //     setArrayRodada4(arrayRodada4.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada5(arrayRodada5.shift())
-            //     setArrayRodada6(arrayRodada6.shift())
-            //     setArrayRodada7(arrayRodada7.shift())
-            //     setArrayRodada8(arrayRodada8.shift())
-            //     setArrayRodada9(arrayRodada9.shift())
-            //     setArrayRodada10(arrayRodada10.shift())
-            //     setArrayRodada11(arrayRodada11.shift())
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length)); i++) {
-            //     setArrayRodada5(arrayRodada5.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada6(arrayRodada6.shift())
-            //     setArrayRodada7(arrayRodada7.shift())
-            //     setArrayRodada8(arrayRodada8.shift())
-            //     setArrayRodada9(arrayRodada9.shift())
-            //     setArrayRodada10(arrayRodada10.shift())
-            //     setArrayRodada11(arrayRodada11.shift())
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length )); i++) {
-            //     setArrayRodada6(arrayRodada6.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada7(arrayRodada7.shift())
-            //     setArrayRodada8(arrayRodada8.shift())
-            //     setArrayRodada9(arrayRodada9.shift())
-            //     setArrayRodada10(arrayRodada10.shift())
-            //     setArrayRodada11(arrayRodada11.shift())
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length )); i++) {
-            //     setArrayRodada7(arrayRodada7.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada8(arrayRodada8.shift())
-            //     setArrayRodada9(arrayRodada9.shift())
-            //     setArrayRodada10(arrayRodada10.shift())
-            //     setArrayRodada11(arrayRodada11.shift())
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length )); i++) {
-            //     setArrayRodada8(arrayRodada8.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada9(arrayRodada9.shift())
-            //     setArrayRodada10(arrayRodada10.shift())
-            //     setArrayRodada11(arrayRodada11.shift())
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length )); i++) {
-            //     setArrayRodada9(arrayRodada9.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada10(arrayRodada10.shift())
-            //     setArrayRodada11(arrayRodada11.shift())
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length )); i++) {
-            //     setArrayRodada10(arrayRodada10.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-                
-            //     setArrayRodada11(arrayRodada11.shift())
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 )); i++) {
-            //     setArrayRodada11(arrayRodada11.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-             
-            //     setArrayRodada12(arrayRodada12.shift())
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 )); i++) {
-            //     setArrayRodada12(arrayRodada12.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-             
-            //     setArrayRodada13(arrayRodada13.shift())
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 )); i++) {
-            //     setArrayRodada13(arrayRodada13.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-             
-            //     setArrayRodada14(arrayRodada14.shift())
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 )); i++) {
-            //     setArrayRodada14(arrayRodada14.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-             
-            //     setArrayRodada15(arrayRodada15.shift())
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 )); i++) {
-            //     setArrayRodada15(arrayRodada15.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada16(arrayRodada16.shift())
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 - arrayRodada15 )); i++) {
-            //     setArrayRodada16(arrayRodada16.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada17(arrayRodada17.shift())
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 - arrayRodada15 - arrayRodada16 )); i++) {
-            //     setArrayRodada17(arrayRodada17.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada18(arrayRodada18.shift())
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 - arrayRodada15 - arrayRodada16 - arrayRodada17 )); i++) {
-            //     setArrayRodada18(arrayRodada18.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada19(arrayRodada19.shift())
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 - arrayRodada15 - arrayRodada16 - arrayRodada17 - arrayRodada18 )); i++) {
-            //     setArrayRodada19(arrayRodada19.pop())
-            // }
-            // for(let i = 1 ; i <= parseInt(partMesa); i++) {
-
-            //     setArrayRodada20(arrayRodada20.shift())
-            // }
-            // for (let i = parseInt(partMesa); i < (arrayRodadaMesas.length - (arrayRodada1.length - arrayRodada2.length - arrayRodada3.length - arrayRodada4.length - arrayRodada5.length - arrayRodada6.length - arrayRodada7.length - arrayRodada8.length - arrayRodada9.length - arrayRodada10 - arrayRodada11 - arrayRodada12 - arrayRodada13 - arrayRodada14 - arrayRodada15 - arrayRodada16 - arrayRodada17 - arrayRodada18 - arrayRodada19 )); i++) {
-            //     setArrayRodada20(arrayRodada20.pop())
-            // }
 
             for (let i = parseInt(partMesa); i < participantes; i++) {
          
                 setArrayMesa1(arrayMesa1.pop())    
+                setAarrayMesa1(aarrayMesa1.pop())
             }
-                console.log("arrayMesa1", arrayMesa1)
-                console.log("length arrayMesa1", arrayMesa1.length)
 
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa2(arrayMesa2.shift())
@@ -796,14 +413,43 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa2(aarrayMesa2.shift())
+                setAarrayMesa3(aarrayMesa3.shift())
+                setAarrayMesa4(aarrayMesa4.shift())
+                setAarrayMesa5(aarrayMesa5.shift())
+                setAarrayMesa6(aarrayMesa6.shift())
+                setAarrayMesa7(aarrayMesa7.shift())
+                setAarrayMesa8(aarrayMesa8.shift())
+                setAarrayMesa9(aarrayMesa9.shift())
+                setAarrayMesa10(aarrayMesa10.shift())
+                setAarrayMesa11(aarrayMesa11.shift())
+                setAarrayMesa12(aarrayMesa12.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
                 
             }
             for (let i = parseInt(partMesa); i < (arrayMesas.length - arrayMesa1.length); i++) {
            
                 setArrayMesa2(arrayMesa2.pop())
+                setAarrayMesa2(aarrayMesa2.pop())
             }
-                console.log("arrayMesa2", arrayMesa2)
-                console.log("length arrayMesa2", arrayMesa2.length)
+
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                     setArrayMesa3(arrayMesa3.shift())
                     setArrayMesa4(arrayMesa4.shift())
@@ -833,15 +479,42 @@ const Configurador = ({id, setNegocioId}) => {
                     setArrayMesa28(arrayMesa28.shift())
                     setArrayMesa29(arrayMesa29.shift())
                     setArrayMesa30(arrayMesa30.shift())
+                    setAarrayMesa3(aarrayMesa3.shift())
+                    setAarrayMesa4(aarrayMesa4.shift())
+                    setAarrayMesa5(aarrayMesa5.shift())
+                    setAarrayMesa6(aarrayMesa6.shift())
+                    setAarrayMesa7(aarrayMesa7.shift())
+                    setAarrayMesa8(aarrayMesa8.shift())
+                    setAarrayMesa9(aarrayMesa9.shift())
+                    setAarrayMesa10(aarrayMesa10.shift())
+                    setAarrayMesa11(aarrayMesa11.shift())
+                    setAarrayMesa12(aarrayMesa12.shift())
+                    setAarrayMesa13(aarrayMesa13.shift())
+                    setAarrayMesa14(aarrayMesa14.shift())
+                    setAarrayMesa15(aarrayMesa15.shift())
+                    setAarrayMesa16(aarrayMesa16.shift())
+                    setAarrayMesa17(aarrayMesa17.shift())
+                    setAarrayMesa18(aarrayMesa18.shift())
+                    setAarrayMesa19(aarrayMesa19.shift())
+                    setAarrayMesa20(aarrayMesa20.shift())
+                    setAarrayMesa21(aarrayMesa21.shift())
+                    setAarrayMesa22(aarrayMesa22.shift())
+                    setAarrayMesa23(aarrayMesa23.shift())
+                    setAarrayMesa24(aarrayMesa24.shift())
+                    setAarrayMesa25(aarrayMesa25.shift())
+                    setAarrayMesa26(aarrayMesa26.shift())
+                    setAarrayMesa27(aarrayMesa27.shift())
+                    setAarrayMesa28(aarrayMesa28.shift())
+                    setAarrayMesa29(aarrayMesa29.shift())
+                    setAarrayMesa30(aarrayMesa30.shift())
                     
             }  
 
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length) ); i++) {
 
                 setArrayMesa3(arrayMesa3.pop())
+                setAarrayMesa3(aarrayMesa3.pop())
             }
-            console.log("arrayMesa3", arrayMesa3)
-            console.log("length arrayMesa3", arrayMesa3.length)
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa4(arrayMesa4.shift())
                 setArrayMesa5(arrayMesa5.shift())
@@ -849,7 +522,6 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa7(arrayMesa7.shift())
                 setArrayMesa8(arrayMesa8.shift())
                 setArrayMesa9(arrayMesa9.shift())
-
                 setArrayMesa10(arrayMesa10.shift())
                 setArrayMesa11(arrayMesa11.shift())
                 setArrayMesa12(arrayMesa12.shift())
@@ -871,15 +543,41 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa4(aarrayMesa4.shift())
+                setAarrayMesa5(aarrayMesa5.shift())
+                setAarrayMesa6(aarrayMesa6.shift())
+                setAarrayMesa7(aarrayMesa7.shift())
+                setAarrayMesa8(aarrayMesa8.shift())
+                setAarrayMesa9(aarrayMesa9.shift())
+                setAarrayMesa10(aarrayMesa10.shift())
+                setAarrayMesa11(aarrayMesa11.shift())
+                setAarrayMesa12(aarrayMesa12.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
             }  
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length )); i++) {
 
                 setArrayMesa4(arrayMesa4.pop())
+                setAarrayMesa4(aarrayMesa4.pop())
 
             }
-            console.log("arrayMesa4", arrayMesa4)
-            console.log("length arrayMesa4", arrayMesa4.length)
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa5(arrayMesa5.shift())
                 setArrayMesa6(arrayMesa6.shift())
@@ -888,7 +586,6 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa9(arrayMesa9.shift())
                 setArrayMesa10(arrayMesa10.shift())
                 setArrayMesa11(arrayMesa11.shift())
-
                 setArrayMesa12(arrayMesa12.shift())
                 setArrayMesa13(arrayMesa13.shift())
                 setArrayMesa14(arrayMesa14.shift())
@@ -908,16 +605,41 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa5(aarrayMesa5.shift())
+                setAarrayMesa6(aarrayMesa6.shift())
+                setAarrayMesa7(aarrayMesa7.shift())
+                setAarrayMesa8(aarrayMesa8.shift())
+                setAarrayMesa9(aarrayMesa9.shift())
+                setAarrayMesa10(aarrayMesa10.shift())
+                setAarrayMesa11(aarrayMesa11.shift())
+                setAarrayMesa12(aarrayMesa12.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
                 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length )); i++) {
 
                 setArrayMesa5(arrayMesa5.pop())
+                setAarrayMesa5(aarrayMesa5.pop())
 
             }  
-            console.log("arrayMesa5", arrayMesa5)
-            console.log("length arrayMesa5", arrayMesa5.length)
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa6(arrayMesa6.shift())
                 setArrayMesa7(arrayMesa7.shift())
@@ -925,7 +647,6 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa9(arrayMesa9.shift())
                 setArrayMesa10(arrayMesa10.shift())
                 setArrayMesa11(arrayMesa11.shift())
-
                 setArrayMesa12(arrayMesa12.shift())
                 setArrayMesa13(arrayMesa13.shift())
                 setArrayMesa14(arrayMesa14.shift())
@@ -945,6 +666,31 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa6(aarrayMesa6.shift())
+                setAarrayMesa7(aarrayMesa7.shift())
+                setAarrayMesa8(aarrayMesa8.shift())
+                setAarrayMesa9(aarrayMesa9.shift())
+                setAarrayMesa10(aarrayMesa10.shift())
+                setAarrayMesa11(aarrayMesa11.shift())
+                setAarrayMesa12(aarrayMesa12.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
@@ -952,18 +698,16 @@ const Configurador = ({id, setNegocioId}) => {
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length )); i++) {
 
                 setArrayMesa6(arrayMesa6.pop())
+                setAarrayMesa6(aarrayMesa6.pop())
 
             }  
 
-            console.log("arrayMesa6", arrayMesa6)
-            console.log("length arrayMesa6", arrayMesa6.length)
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa7(arrayMesa7.shift())
                 setArrayMesa8(arrayMesa8.shift())
                 setArrayMesa9(arrayMesa9.shift())
                 setArrayMesa10(arrayMesa10.shift())
                 setArrayMesa11(arrayMesa11.shift())
-
                 setArrayMesa12(arrayMesa12.shift())
                 setArrayMesa13(arrayMesa13.shift())
                 setArrayMesa14(arrayMesa14.shift())
@@ -983,22 +727,46 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa7(aarrayMesa7.shift())
+                setAarrayMesa8(aarrayMesa8.shift())
+                setAarrayMesa9(aarrayMesa9.shift())
+                setAarrayMesa10(aarrayMesa10.shift())
+                setAarrayMesa11(aarrayMesa11.shift())
+                setAarrayMesa12(aarrayMesa12.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
+
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length )); i++) {
 
                 setArrayMesa7(arrayMesa7.pop())
+                setAarrayMesa7(aarrayMesa7.pop())
 
             }  
-            console.log("arrayMesa7", arrayMesa7)
-            console.log("length arrayMesa7", arrayMesa7.length)
+
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa8(arrayMesa8.shift())
                 setArrayMesa9(arrayMesa9.shift())                
                 setArrayMesa10(arrayMesa10.shift())
                 setArrayMesa11(arrayMesa11.shift())
-
                 setArrayMesa12(arrayMesa12.shift())
                 setArrayMesa13(arrayMesa13.shift())
                 setArrayMesa14(arrayMesa14.shift())
@@ -1018,21 +786,43 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa8(aarrayMesa8.shift())
+                setAarrayMesa9(aarrayMesa9.shift())                
+                setAarrayMesa10(aarrayMesa10.shift())
+                setAarrayMesa11(aarrayMesa11.shift())
+                setAarrayMesa12(aarrayMesa12.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length )); i++) {
 
                 setArrayMesa8(arrayMesa8.pop())
+                setAarrayMesa8(aarrayMesa8.pop())
 
             }
-            console.log("arrayMesa8", arrayMesa8)
-            console.log("length arrayMesa8", arrayMesa8.length)
+
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa9(arrayMesa9.shift())                
                 setArrayMesa10(arrayMesa10.shift())
                 setArrayMesa11(arrayMesa11.shift())
-
                 setArrayMesa12(arrayMesa12.shift())
                 setArrayMesa13(arrayMesa13.shift())
                 setArrayMesa14(arrayMesa14.shift())
@@ -1052,20 +842,41 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa9(aarrayMesa9.shift())                
+                setAarrayMesa10(aarrayMesa10.shift())
+                setAarrayMesa11(aarrayMesa11.shift())
+                setAarrayMesa12(aarrayMesa12.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length )); i++) {
 
                 setArrayMesa9(arrayMesa9.pop())
+                setAarrayMesa9(aarrayMesa9.pop())
 
             }
-            console.log("arrayMesa9", arrayMesa9)
-            console.log("length arrayMesa9", arrayMesa9.length)
+
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa10(arrayMesa10.shift())
                 setArrayMesa11(arrayMesa11.shift())
-
                 setArrayMesa12(arrayMesa12.shift())
                 setArrayMesa13(arrayMesa13.shift())
                 setArrayMesa14(arrayMesa14.shift())
@@ -1085,19 +896,39 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa10(aarrayMesa10.shift())
+                setAarrayMesa11(aarrayMesa11.shift())
+                setAarrayMesa12(aarrayMesa12.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length )); i++) {
 
                 setArrayMesa10(arrayMesa10.pop())
+                setAarrayMesa10(aarrayMesa10.pop())
 
             }
-            console.log("arrayMesa10", arrayMesa10)
-            console.log("length arrayMesa10", arrayMesa10.length)
+
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa11(arrayMesa11.shift())
-
                 setArrayMesa12(arrayMesa12.shift())
                 setArrayMesa13(arrayMesa13.shift())
                 setArrayMesa14(arrayMesa14.shift())
@@ -1117,17 +948,35 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
-
+                setAarrayMesa11(aarrayMesa11.shift())
+                setAarrayMesa12(aarrayMesa12.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
                 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length )); i++) {
 
                 setArrayMesa11(arrayMesa11.pop())
+                setAarrayMesa11(aarrayMesa11.pop())
 
             }
-            console.log("arrayMesa11", arrayMesa11)
-            console.log("length arrayMesa11", arrayMesa11.length)
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa12(arrayMesa12.shift())
                 setArrayMesa13(arrayMesa13.shift())
@@ -1148,16 +997,34 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa12(aarrayMesa12.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length )); i++) {
 
                 setArrayMesa12(arrayMesa12.pop())
+                setAarrayMesa12(aarrayMesa12.pop())
 
             }
-            console.log("arrayMesa12", arrayMesa12)
-            console.log("length arrayMesa12", arrayMesa12.length)
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa13(arrayMesa13.shift())
                 setArrayMesa14(arrayMesa14.shift())
@@ -1177,17 +1044,34 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa13(aarrayMesa13.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
+                
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length )); i++) {
 
                 setArrayMesa13(arrayMesa13.pop())
+                setAarrayMesa13(aarrayMesa13.pop())
 
-            }
-            console.log("arrayMesa13", arrayMesa13)
-            console.log("length arrayMesa13", arrayMesa13.length)
-            
+            }            
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa14(arrayMesa14.shift())
                 setArrayMesa15(arrayMesa15.shift())
@@ -1206,16 +1090,33 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa14(aarrayMesa14.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length )); i++) {
 
                 setArrayMesa14(arrayMesa14.pop())
+                setAarrayMesa14(aarrayMesa14.pop())
 
             }
-            console.log("arrayMesa14", arrayMesa14)
-            console.log("length arrayMesa14", arrayMesa14.length)
+
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa15(arrayMesa15.shift())
                 setArrayMesa16(arrayMesa16.shift())
@@ -1233,16 +1134,31 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa15(aarrayMesa15.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length )); i++) {
 
                 setArrayMesa15(arrayMesa15.pop())
+                setAarrayMesa15(aarrayMesa15.pop())
 
             }
-            console.log("arrayMesa15", arrayMesa15)
-            console.log("length arrayMesa15", arrayMesa15.length)
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa16(arrayMesa16.shift())
                 setArrayMesa17(arrayMesa17.shift())
@@ -1259,16 +1175,30 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa16(aarrayMesa16.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length )); i++) {
 
                 setArrayMesa16(arrayMesa16.pop())
+                setAarrayMesa16(aarrayMesa16.pop())
 
             }
-            console.log("arrayMesa16", arrayMesa16)
-            console.log("length arrayMesa16", arrayMesa16.length)
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa17(arrayMesa17.shift())
                 setArrayMesa18(arrayMesa18.shift())
@@ -1284,16 +1214,29 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa17(aarrayMesa17.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length )); i++) {
 
                 setArrayMesa17(arrayMesa17.pop())
+                setAarrayMesa17(aarrayMesa17.pop())
 
             }
-            console.log("arrayMesa17", arrayMesa17)
-            console.log("length arrayMesa17", arrayMesa17.length)
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa18(arrayMesa18.shift())
                 setArrayMesa19(arrayMesa19.shift())
@@ -1308,12 +1251,26 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa18(aarrayMesa18.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length )); i++) {
 
                 setArrayMesa18(arrayMesa18.pop())
+                setAarrayMesa18(aarrayMesa18.pop())
 
             }
             console.log("arrayMesa18", arrayMesa18)
@@ -1331,12 +1288,25 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa19(aarrayMesa19.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length )); i++) {
 
                 setArrayMesa19(arrayMesa19.pop())
+                setAarrayMesa19(aarrayMesa19.pop())
 
             }
             console.log("arrayMesa19", arrayMesa19)
@@ -1353,12 +1323,24 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa20(aarrayMesa20.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length )); i++) {
 
                 setArrayMesa20(arrayMesa20.pop())
+                setAarrayMesa20(aarrayMesa20.pop())
 
             }
             console.log("arrayMesa20", arrayMesa20)
@@ -1374,12 +1356,23 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa21(aarrayMesa21.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length )); i++) {
 
                 setArrayMesa21(arrayMesa21.pop())
+                setAarrayMesa21(aarrayMesa21.pop())
 
             }
             console.log("arrayMesa21", arrayMesa21)
@@ -1395,12 +1388,22 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa22(aarrayMesa22.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length )); i++) {
 
                 setArrayMesa22(arrayMesa22.pop())
+                setAarrayMesa22(aarrayMesa22.pop())
 
             }
             console.log("arrayMesa22", arrayMesa22)
@@ -1415,12 +1418,21 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa23(aarrayMesa23.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length)); i++) {
 
                 setArrayMesa23(arrayMesa23.pop())
+                setAarrayMesa23(aarrayMesa23.pop())
 
             }
             console.log("arrayMesa23", arrayMesa23)
@@ -1434,12 +1446,20 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa24(aarrayMesa24.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length)); i++) {
 
                 setArrayMesa24(arrayMesa24.pop())
+                setAarrayMesa24(aarrayMesa24.pop())
 
             }
             console.log("arrayMesa24", arrayMesa24)
@@ -1452,12 +1472,20 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa25(aarrayMesa25.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
+
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length )); i++) {
 
                 setArrayMesa25(arrayMesa25.pop())
+                setAarrayMesa25(aarrayMesa25.pop())
 
             }
             console.log("arrayMesa25", arrayMesa25)
@@ -1470,12 +1498,18 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa26(aarrayMesa26.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length + arrayMesa25.length)); i++) {
 
                 setArrayMesa26(arrayMesa26.pop())
+                setAarrayMesa26(aarrayMesa26.pop())
 
             }
             console.log("arrayMesa26", arrayMesa26)
@@ -1487,12 +1521,17 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa27(aarrayMesa27.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length  + arrayMesa25.length  + arrayMesa26.length )); i++) {
 
                 setArrayMesa27(arrayMesa27.pop())
+                setAarrayMesa27(aarrayMesa27.pop())
 
             }
             console.log("arrayMesa27", arrayMesa27)
@@ -1502,12 +1541,16 @@ const Configurador = ({id, setNegocioId}) => {
                 setArrayMesa28(arrayMesa28.shift())
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa28(aarrayMesa28.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length + arrayMesa25.length + arrayMesa26.length + arrayMesa27.length)); i++) {
 
                 setArrayMesa28(arrayMesa28.pop())
+                setAarrayMesa28(aarrayMesa28.pop())
 
             }
             console.log("arrayMesa28", arrayMesa28)
@@ -1516,12 +1559,15 @@ const Configurador = ({id, setNegocioId}) => {
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa29(arrayMesa29.shift())
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa29(aarrayMesa29.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length + arrayMesa25.length + arrayMesa26.length + arrayMesa27.length + arrayMesa28.length )); i++) {
 
                 setArrayMesa29(arrayMesa29.pop())
+                setAarrayMesa29(aarrayMesa29.pop())
 
             }
             console.log("arrayMesa29", arrayMesa29)
@@ -1529,12 +1575,14 @@ const Configurador = ({id, setNegocioId}) => {
 
             for (let i = 1 ; i <= parseInt(partMesa) ; i++) {
                 setArrayMesa30(arrayMesa30.shift())
+                setAarrayMesa30(aarrayMesa30.shift())
 
 
             }
             for (let i = parseInt(partMesa) ; i < (arrayMesas.length - (arrayMesa1.length + arrayMesa2.length + arrayMesa3.length + arrayMesa4.length + arrayMesa5.length + arrayMesa6.length + arrayMesa7.length + arrayMesa8.length + arrayMesa9.length + arrayMesa10.length + arrayMesa11.length + arrayMesa12.length + arrayMesa13.length + arrayMesa14.length + arrayMesa15.length + arrayMesa16.length + arrayMesa17.length + arrayMesa18.length + arrayMesa19.length + arrayMesa20.length + arrayMesa21.length + arrayMesa22.length + arrayMesa23.length + arrayMesa24.length + arrayMesa25.length + arrayMesa26.length + arrayMesa27.length + arrayMesa28.length + arrayMesa29.length )); i++) {
 
                 setArrayMesa30(arrayMesa30.pop())
+                setAarrayMesa30(aarrayMesa30.pop())
 
             }
             console.log("arrayMesa30", arrayMesa30)
@@ -1543,318 +1591,470 @@ const Configurador = ({id, setNegocioId}) => {
 
         }
 
-        // console.log("arrayRodada1", arrayRodada1)
-        // console.log("arrayRodada2", arrayRodada2)
-        // console.log("arrayRodada3", arrayRodada3)
-        // console.log("arrayRodada4", arrayRodada4)
-        // console.log("arrayRodada5", arrayRodada5)
-        // console.log("arrayRodada6", arrayRodada6)
-        // console.log("arrayRodada7", arrayRodada7)
-        // console.log("arrayRodada8", arrayRodada8)
-        // console.log("arrayRodada9", arrayRodada9)
-        // console.log("arrayRodada10", arrayRodada10)
-        // console.log("arrayRodada11", arrayRodada11)
-        // console.log("arrayRodada12", arrayRodada12)
-        // console.log("arrayRodada13", arrayRodada13)
-        // console.log("arrayRodada14", arrayRodada14)
-        // console.log("arrayRodada15", arrayRodada15)
-        // console.log("arrayRodada16", arrayRodada16)
-        // console.log("arrayRodada17", arrayRodada17)
-        // console.log("arrayRodada18", arrayRodada18)
-        // console.log("arrayRodada19", arrayRodada19)
-        // console.log("arrayRodada20", arrayRodada20)
         
-        console.log("num Mesas",numMesas)
-        // if (partMesa == 6) {
-        //     if (arrayRodada6.length < numMesas) {
-        //         let poped = arrayRodada5.pop()
-        //         setArrayRodada5(arrayRodada6.unshift(poped))
-        //         if ( arrayRodada6.length < numMesas) {
-        //             let poped = arrayRodada4.pop()
-        //             setArrayRodada5(arrayRodada5.unshift(poped))
-        //             let poped2 = arrayRodada5.pop()
-        //           setArrayRodada5(arrayRodada6.unshift(poped2))
-        //         }
-        //     }
-        // }else if ( partMesa == 7) {
-        //     if (arrayRodada7.length < numMesas) {
-        //         let poped = arrayRodada6.pop()
-        //         setArrayRodada6(arrayRodada7.unshift(poped))
-        //         if(arrayRodada7.length < numMesas) {
-        //             let poped = arrayRodada5.pop()
-        //             setArrayRodada6(arrayRodada6.unshift(poped))
-        //             let poped2 = arrayRodada6.pop()
-        //             setArrayRodada6(arrayRodada7.unshift(poped2))
-        //         }
-        //     }
-        // }else if ( partMesa == 8) {
-        //     if (arrayRodada8.length < numMesas) {
-        //         let poped = arrayRodada7.pop()
-        //         setArrayRodada7(arrayRodada8.unshift(poped))
-        //         if(arrayRodada8.length < numMesas) {
-        //             let poped = arrayRodada6.pop()
-        //             setArrayRodada7(arrayRodada7.unshift(poped))
-        //             let poped2 = arrayRodada7.pop()
-        //             setArrayRodada7(arrayRodada8.unshift(poped2))
-        //         }
-        //     }
-        // }else if ( partMesa == 9) {
-        //     if (arrayRodada9.length < numMesas) {
-        //         let poped = arrayRodada7.pop()
-        //         setArrayRodada8(arrayRodada9.unshift(poped))
-        //         if(arrayRodada9.length < numMesas) {
-        //             let poped = arrayRodada7.pop()
-        //             setArrayRodada8(arrayRodada8.unshift(poped))
-        //             let poped2 = arrayRodada8.pop()
-        //             setArrayRodada8(arrayRodada9.unshift(poped2))
-        //         }
-        //     }
-        // }else if ( partMesa == 10) {
-        //     if (arrayRodada9.length < numMesas) {
-        //         let poped = arrayRodada8.pop()
-        //         setArrayRodada9(arrayRodada10.unshift(poped))
-        //         if(arrayRodada9.length < numMesas) {
-        //             let poped = arrayRodada8.pop()
-        //             setArrayRodada9(arrayRodada9.unshift(poped))
-        //             let poped2 = arrayRodada8.pop()
-        //             setArrayRodada9(arrayRodada10.unshift(poped2))
-        //         }
-        //     }
-        // }
-
+        if (numMesas >= 2) { 
+            for (let i = 1 ; i <= 2 ; i++) {
+                if(partMesa <= arrayMesa2.length){
+                var shift2 = aarrayMesa2.shift()
+                 aarrayMesa2.push(shift2)
+                }
+            }  
+        }
         if (numMesas == 6) {
             if (arrayMesa6.length < partMesa) {
-              let poped = arrayMesa5.pop()
-              setArrayMesa5(arrayMesa6.unshift(poped))
-              if( arrayMesa6.length < partMesa) {
-                let poped = arrayMesa4.pop()
-                setArrayMesa5(arrayMesa5.unshift(poped))
-                let poped2 = arrayMesa5.pop()
-              setArrayMesa5(arrayMesa6.unshift(poped2))
+                var poped = arrayMesa5.pop()
+                arrayMesa6.unshift(poped)
+                if( arrayMesa6.length < partMesa) {
+                    var poped = arrayMesa4.pop()
+                    arrayMesa5.unshift(poped)
+                    var poped2 = arrayMesa5.pop()
+                        arrayMesa6.unshift(poped2)
+                    if ( arrayMesa6.length < partMesa) {
+                        var poped = arrayMesa4.pop()
+                        arrayMesa15.unshift(poped)
+                        var poped2 = arrayMesa5.pop()
+                            arrayMesa6.unshift(poped2)
+                        
+                    }
                 }
             }
         }else if (numMesas == 7) {
             if (arrayMesa7.length < partMesa) {
-                let poped = arrayMesa6.pop() 
-                setArrayMesa6(arrayMesa7.unshift(poped))
+                var poped = arrayMesa6.pop() 
+                arrayMesa7.unshift(poped)
                 if( arrayMesa7.length < partMesa) {
-                  let poped = arrayMesa5.pop()
-                  setArrayMesa6(arrayMesa6.unshift(poped))
-                  let poped2 = arrayMesa6.pop()
-                setArrayMesa6(arrayMesa7.unshift(poped2))
+                    var poped = arrayMesa5.pop()
+                    arrayMesa6.unshift(poped)
+                    var poped2 = arrayMesa6.pop()
+                        arrayMesa7.unshift(poped2)
+                    if( arrayMesa7.length < partMesa) {
+                        var poped = arrayMesa5.pop()
+                        arrayMesa6.unshift(poped)
+                        var poped2 = arrayMesa6.pop()
+                            arrayMesa7.unshift(poped2)
+                        
+                    }   
                 }
             }
         }else if (numMesas == 8) {
             if (arrayMesa8.length < partMesa) {
-                let poped = arrayMesa7.pop() 
-                setArrayMesa7(arrayMesa8.unshift(poped))
+                var poped = arrayMesa7.pop() 
+                arrayMesa8.unshift(poped)
                 if( arrayMesa8.length < partMesa) {
-                  let poped = arrayMesa6.pop()
-                  setArrayMesa7(arrayMesa7.unshift(poped))
-                  let poped2 = arrayMesa7.pop()
-                setArrayMesa7(arrayMesa8.unshift(poped2))
+                    var poped = arrayMesa6.pop()
+                    arrayMesa7.unshift(poped)
+                    var poped2 = arrayMesa7.pop()
+                        arrayMesa8.unshift(poped2)
+                    if( arrayMesa8.length < partMesa) {
+                        var poped = arrayMesa6.pop()
+                        arrayMesa7.unshift(poped)
+                        var poped2 = arrayMesa7.pop()
+                            arrayMesa8.unshift(poped2)
+                        
+                    }
                 }
             }
         }else if (numMesas == 9) {
             if (arrayMesa9.length < partMesa) {
-                let poped = arrayMesa8.pop() 
-                setArrayMesa8(arrayMesa9.unshift(poped))
+                var poped = arrayMesa8.pop() 
+                arrayMesa9.unshift(poped)
                 if( arrayMesa9.length < partMesa) {
-                  let poped = arrayMesa7.pop()
-                  setArrayMesa8(arrayMesa8.unshift(poped))
-                  let poped2 = arrayMesa8.pop()
-                setArrayMesa8(arrayMesa9.unshift(poped2))
+                    var poped = arrayMesa7.pop()
+                    arrayMesa8.unshift(poped)
+                    var poped2 = arrayMesa8.pop()
+                        arrayMesa9.unshift(poped2)
+                    if( arrayMesa9.length < partMesa) {
+                        var poped = arrayMesa7.pop()
+                        arrayMesa8.unshift(poped)
+                        var poped2 = arrayMesa8.pop()
+                            arrayMesa9.unshift(poped2)
+                        
+                   }
                 }
             }
         }else if (numMesas == 10) {
             if (arrayMesa10.length < partMesa) {
-                let poped = arrayMesa9.pop() 
-                setArrayMesa9(arrayMesa10.unshift(poped))
+                var poped = arrayMesa9.pop() 
+                arrayMesa10.unshift(poped)
                 if( arrayMesa10.length < partMesa) {
-                  let poped = arrayMesa8.pop()
-                  setArrayMesa9(arrayMesa9.unshift(poped))
-                  let poped2 = arrayMesa9.pop()
-                setArrayMesa10(arrayMesa10.unshift(poped2))
+                    var poped = arrayMesa8.pop()
+                    arrayMesa9.unshift(poped)
+                    var poped2 = arrayMesa9.pop()
+                        arrayMesa10.unshift(poped2)
+                    if( arrayMesa10.length < partMesa) {
+                        var poped = arrayMesa8.pop()
+                        arrayMesa9.unshift(poped)
+                        var poped2 = arrayMesa9.pop()
+                            arrayMesa10.unshift(poped2)
+                        
+                    }
                 }
             }
         }else if (numMesas == 11) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11
-                
-            ]
+            if (arrayMesa11.length < partMesa) {
+                var poped = arrayMesa10.pop() 
+                arrayMesa11.unshift(poped)
+                if( arrayMesa11.length < partMesa) {
+                    var poped = arrayMesa9.pop()
+                    arrayMesa10.unshift(poped)
+                    var poped2 = arrayMesa10.pop()
+                        arrayMesa11.unshift(poped2)
+                    if( arrayMesa11.length < partMesa) {
+                        var poped = arrayMesa9.pop()
+                        arrayMesa10.unshift(poped)
+                        var poped2 = arrayMesa10.pop()
+                            arrayMesa11.unshift(poped2)
+                        
+                    }
+                }
+            }
+            
         }else if (numMesas == 12) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12
-                
-            ]
+            if (arrayMesa12.length < partMesa) {
+                var poped = arrayMesa11.pop() 
+                arrayMesa12.unshift(poped)
+                if( arrayMesa12.length < partMesa) {
+                    var poped = arrayMesa10.pop()
+                    arrayMesa11.unshift(poped)
+                    var poped2 = arrayMesa11.pop()
+                        arrayMesa12.unshift(poped2)
+                    if( arrayMesa12.length < partMesa) {
+                        var poped = arrayMesa10.pop()
+                        arrayMesa11.unshift(poped)
+                        var poped2 = arrayMesa11.pop()
+                            arrayMesa12.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 13) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13
-                
-            ]
+            if (arrayMesa13.length < partMesa) {
+                var poped = arrayMesa12.pop() 
+                arrayMesa13.unshift(poped)
+                if( arrayMesa13.length < partMesa) {
+                    var poped = arrayMesa11.pop()
+                    arrayMesa12.unshift(poped)
+                    var poped2 = arrayMesa12.pop()
+                        arrayMesa13.unshift(poped2)
+                    if( arrayMesa13.length < partMesa) {
+                        var poped = arrayMesa11.pop()
+                        arrayMesa12.unshift(poped)
+                        var poped2 = arrayMesa12.pop()
+                            arrayMesa13.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 14) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14
-                
-            ]
+            if (arrayMesa14.length < partMesa) {
+                var poped = arrayMesa13.pop() 
+                arrayMesa14.unshift(poped)
+                if( arrayMesa14.length < partMesa) {
+                    var poped = arrayMesa12.pop()
+                    arrayMesa13.unshift(poped)
+                    var poped2 = arrayMesa13.pop()
+                        arrayMesa14.unshift(poped2)
+                    if( arrayMesa14.length < partMesa) {
+                        var poped = arrayMesa12.pop()
+                        arrayMesa13.unshift(poped)
+                        var poped2 = arrayMesa13.pop()
+                            arrayMesa14.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 15) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15
-                
-            ]
+            if (arrayMesa15.length < partMesa) {
+                var poped = arrayMesa14.pop() 
+                arrayMesa15.unshift(poped)
+                if( arrayMesa15.length < partMesa) {
+                    var poped = arrayMesa13.pop()
+                    arrayMesa14.unshift(poped)
+                    var poped2 = arrayMesa14.pop()
+                        arrayMesa15.unshift(poped2)
+                    if( arrayMesa15.length < partMesa) {
+                        var poped = arrayMesa13.pop()
+                        arrayMesa14.unshift(poped)
+                        var poped2 = arrayMesa14.pop()
+                            arrayMesa15.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 16) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16
-                
-            ]
+            if (arrayMesa16.length < partMesa) {
+                var poped = arrayMesa15.pop() 
+                arrayMesa16.unshift(poped)
+                if( arrayMesa16.length < partMesa) {
+                    var poped = arrayMesa14.pop()
+                    arrayMesa15.unshift(poped)
+                    var poped2 = arrayMesa15.pop()
+                        arrayMesa16.unshift(poped2)
+                    if( arrayMesa16.length < partMesa) {
+                        var poped = arrayMesa14.pop()
+                        arrayMesa15.unshift(poped)
+                        var poped2 = arrayMesa15.pop()
+                            arrayMesa16.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 17) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17
-                
-            ]
+            if (arrayMesa17.length < partMesa) {
+                var poped = arrayMesa16.pop() 
+                arrayMesa17.unshift(poped)
+                if( arrayMesa17.length < partMesa) {
+                    var poped = arrayMesa15.pop()
+                    arrayMesa16.unshift(poped)
+                    var poped2 = arrayMesa16.pop()
+                        arrayMesa17.unshift(poped2)
+                    if( arrayMesa17.length < partMesa) {
+                        var poped = arrayMesa15.pop()
+                        arrayMesa16.unshift(poped)
+                        var poped2 = arrayMesa16.pop()
+                            arrayMesa17.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 18) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18
-                
-            ]
+            if (arrayMesa18.length < partMesa) {
+                var poped = arrayMesa17.pop() 
+                arrayMesa18.unshift(poped)
+                if( arrayMesa18.length < partMesa) {
+                    var poped = arrayMesa16.pop()
+                    arrayMesa17.unshift(poped)
+                    var poped2 = arrayMesa17.pop()
+                        arrayMesa18.unshift(poped2)
+                    if( arrayMesa18.length < partMesa) {
+                        var poped = arrayMesa16.pop()
+                        arrayMesa17.unshift(poped)
+                        var poped2 = arrayMesa17.pop()
+                            arrayMesa18.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 19) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19
-                
-            ]
+            if (arrayMesa19.length < partMesa) {
+                var poped = arrayMesa18.pop() 
+                arrayMesa19.unshift(poped)
+                if( arrayMesa19.length < partMesa) {
+                    var poped = arrayMesa17.pop()
+                    arrayMesa18.unshift(poped)
+                    var poped2 = arrayMesa18.pop()
+                        arrayMesa19.unshift(poped2)
+                    if( arrayMesa19.length < partMesa) {
+                        var poped = arrayMesa17.pop()
+                        arrayMesa18.unshift(poped)
+                        var poped2 = arrayMesa18.pop()
+                            arrayMesa19.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 20) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20
-                
-            ]
+            if (arrayMesa20.length < partMesa) {
+                var poped = arrayMesa19.pop() 
+                arrayMesa20.unshift(poped)
+                if( arrayMesa20.length < partMesa) {
+                    var poped = arrayMesa18.pop()
+                    arrayMesa19.unshift(poped)
+                    var poped2 = arrayMesa19.pop()
+                        arrayMesa20.unshift(poped2)
+                    if( arrayMesa20.length < partMesa) {
+                        var poped = arrayMesa18.pop()
+                        arrayMesa19.unshift(poped)
+                        var poped2 = arrayMesa19.pop()
+                            arrayMesa20.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 21) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
-                arrayMesa21
-                
-            ]
+            if (arrayMesa21.length < partMesa) {
+                var poped = arrayMesa20.pop() 
+                arrayMesa21.unshift(poped)
+                if( arrayMesa21.length < partMesa) {
+                    var poped = arrayMesa19.pop()
+                    arrayMesa20.unshift(poped)
+                    var poped2 = arrayMesa20.pop()
+                        arrayMesa21.unshift(poped2)
+                    if( arrayMesa21.length < partMesa) {
+                        var poped = arrayMesa19.pop()
+                        arrayMesa20.unshift(poped)
+                        var poped2 = arrayMesa20.pop()
+                            arrayMesa21.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 22) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
-                arrayMesa21, arrayMesa22
-                
-            ]
+            if (arrayMesa22.length < partMesa) {
+                var poped = arrayMesa21.pop() 
+                arrayMesa22.unshift(poped)
+                if( arrayMesa22.length < partMesa) {
+                    var poped = arrayMesa20.pop()
+                    arrayMesa21.unshift(poped)
+                    var poped2 = arrayMesa21.pop()
+                        arrayMesa22.unshift(poped2)
+                    if( arrayMesa22.length < partMesa) {
+                        var poped = arrayMesa20.pop()
+                        arrayMesa21.unshift(poped)
+                        var poped2 = arrayMesa21.pop()
+                            arrayMesa22.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 23) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
-                arrayMesa21, arrayMesa22, arrayMesa23
-                
-            ]
+            if (arrayMesa23.length < partMesa) {
+                var poped = arrayMesa22.pop() 
+                arrayMesa23.unshift(poped)
+                if( arrayMesa23.length < partMesa) {
+                    var poped = arrayMesa21.pop()
+                    arrayMesa22.unshift(poped)
+                    var poped2 = arrayMesa22.pop()
+                        arrayMesa23.unshift(poped2)
+                    if( arrayMesa23.length < partMesa) {
+                        var poped = arrayMesa21.pop()
+                        arrayMesa22.unshift(poped)
+                        var poped2 = arrayMesa22.pop()
+                            arrayMesa23.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 24) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
-                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24
-                
-            ]
+            if (arrayMesa24.length < partMesa) {
+                var poped = arrayMesa23.pop() 
+                arrayMesa24.unshift(poped)
+                if( arrayMesa24.length < partMesa) {
+                    var poped = arrayMesa22.pop()
+                    arrayMesa23.unshift(poped)
+                    var poped2 = arrayMesa23.pop()
+                        arrayMesa24.unshift(poped2)
+                    if( arrayMesa24.length < partMesa) {
+                        var poped = arrayMesa22.pop()
+                        arrayMesa23.unshift(poped)
+                        var poped2 = arrayMesa23.pop()
+                            arrayMesa24.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 25) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
-                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25
-                
-            ]
+            if (arrayMesa25.length < partMesa) {
+                var poped = arrayMesa24.pop() 
+                arrayMesa25.unshift(poped)
+                if( arrayMesa25.length < partMesa) {
+                    var poped = arrayMesa23.pop()
+                    arrayMesa24.unshift(poped)
+                    var poped2 = arrayMesa24.pop()
+                        arrayMesa25.unshift(poped2)
+                    if( arrayMesa25.length < partMesa) {
+                        var poped = arrayMesa23.pop()
+                        arrayMesa24.unshift(poped)
+                        var poped2 = arrayMesa24.pop()
+                            arrayMesa25.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 26) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
-                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25,
-                arrayMesa26
-                
-            ]
+            if (arrayMesa26.length < partMesa) {
+                var poped = arrayMesa25.pop() 
+                arrayMesa26.unshift(poped)
+                if( arrayMesa26.length < partMesa) {
+                    var poped = arrayMesa24.pop()
+                    arrayMesa25.unshift(poped)
+                    var poped2 = arrayMesa25.pop()
+                        arrayMesa26.unshift(poped2)
+                    if( arrayMesa26.length < partMesa) {
+                        var poped = arrayMesa24.pop()
+                        arrayMesa25.unshift(poped)
+                        var poped2 = arrayMesa25.pop()
+                            arrayMesa26.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 27) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
-                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25,
-                arrayMesa26, arrayMesa27
-                
-            ]
+            if (arrayMesa27.length < partMesa) {
+                var poped = arrayMesa26.pop() 
+                arrayMesa27.unshift(poped)
+                if( arrayMesa27.length < partMesa) {
+                    var poped = arrayMesa25.pop()
+                    arrayMesa26.unshift(poped)
+                    var poped2 = arrayMesa26.pop()
+                        arrayMesa27.unshift(poped2)
+                    if( arrayMesa27.length < partMesa) {
+                        var poped = arrayMesa25.pop()
+                        arrayMesa26.unshift(poped)
+                        var poped2 = arrayMesa26.pop()
+                            arrayMesa27.unshift(poped2)
+                        
+                    }
+                }
+            }
         }else if (numMesas == 28) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
-                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25,
-                arrayMesa26, arrayMesa27, arrayMesa28
-                
-            ]
-            console.log("ArrayR", ArrayR)
+            if (arrayMesa28.length < partMesa) {
+                var poped = arrayMesa27.pop() 
+                arrayMesa28.unshift(poped)
+                if( arrayMesa28.length < partMesa) {
+                    var poped = arrayMesa26.pop()
+                    arrayMesa27.unshift(poped)
+                    var poped2 = arrayMesa27.pop()
+                        arrayMesa28.unshift(poped2)
+                    if( arrayMesa28.length < partMesa) {
+                        var poped = arrayMesa26.pop()
+                        arrayMesa27.unshift(poped)
+                        var poped2 = arrayMesa27.pop()
+                            arrayMesa28.unshift(poped2)
+                       
+                    }
+                }
+            }
         }else if (numMesas == 29) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
-                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25,
-                arrayMesa26, arrayMesa27, arrayMesa28, arrayMesa29
-                
-            ]
-            console.log("ArrayR", ArrayR)
+            if (arrayMesa29.length < partMesa) {
+                var poped = arrayMesa28.pop() 
+                arrayMesa29.unshift(poped)
+                if( arrayMesa29.length < partMesa) {
+                    var poped = arrayMesa27.pop()
+                    arrayMesa28.unshift(poped)
+                    var poped2 = arrayMesa28.pop()
+                        arrayMesa29.unshift(poped2)
+                    if( arrayMesa29.length < partMesa) {
+                        var poped = arrayMesa27.pop()
+                        arrayMesa28.unshift(poped)
+                        var poped2 = arrayMesa28.pop()
+                            arrayMesa29.unshift(poped2)
+                        
+                    }
+                }
+            }
+          
         }else if (numMesas == 30) {
-            const ArrayR = [
-                arrayMesa1, arrayMesa2, arrayMesa3, arrayMesa4, arrayMesa5,
-                arrayMesa6, arrayMesa7, arrayMesa8, arrayMesa9, arrayMesa10,
-                arrayMesa11, arrayMesa12, arrayMesa13, arrayMesa14, arrayMesa15,
-                arrayMesa16, arrayMesa17, arrayMesa18, arrayMesa19, arrayMesa20,
-                arrayMesa21, arrayMesa22, arrayMesa23, arrayMesa24, arrayMesa25,
-                arrayMesa26, arrayMesa27, arrayMesa28, arrayMesa29, arrayMesa30
-                
-            ]
-            console.log("ArrayR", ArrayR)
+            if (arrayMesa30.length < partMesa) {
+                var poped = arrayMesa29.pop() 
+                arrayMesa30.unshift(poped)
+                if( arrayMesa30.length < partMesa) {
+                    var poped = arrayMesa28.pop()
+                    arrayMesa29.unshift(poped)
+                    var poped2 = arrayMesa29.pop()
+                        arrayMesa30.unshift(poped2)
+                    if( arrayMesa30.length < partMesa) {
+                        var poped = arrayMesa28.pop()
+                        arrayMesa29.unshift(poped)
+                        var poped2 = arrayMesa29.pop()
+                            arrayMesa30.unshift(poped2)
+                        
+                    }
+                }
+            }
+            
         }
-
-
-
-
+        
         
     }
 
@@ -1878,16 +2078,10 @@ const Configurador = ({id, setNegocioId}) => {
                 
                 if(numMesas != 0 ) {
             const roundar = Math.ceil((participantes / numMesas).toFixed(1))
-            console.log("MathRound", roundar)
             setPartMesa(roundar)
-            console.log("Depois MathRound", partMesa)
+
             }
-            console.log("parseInt(intGrupMin)", parseInt(intGrupMin))
-            console.log("parseInt(intIndMin)", parseInt(intIndMin))
-            console.log("parseInt(tempoPartMin)", parseInt(tempoPartMin))
-            console.log("parseInt(intGrupSeg) ", parseInt(intGrupSeg) )
-            console.log("parseInt(intIndSeg) ", parseInt(intIndSeg) )
-            console.log("parseInt(tempoPartSeg)",parseInt(tempoPartSeg))
+
 
             setTempoTotalHra(
             ((numMesas *
@@ -1982,36 +2176,53 @@ const Configurador = ({id, setNegocioId}) => {
         setIntGrupMin(parseInt(intGrupMin))
         setParticipantes(parseInt(participantes))
         setNumMesas(parseInt(numMesas))
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        
+        
+        // console.log("arrayMesa1", arrayMesa1)
+        // console.log("length arrayMesa1", arrayMesa1.length)
+        // console.log("arrayMesa2", arrayMesa2)
+        // console.log("length arrayMesa2", arrayMesa2.length)
+        // console.log("arrayMesa3", arrayMesa3)
+        // console.log("length arrayMesa3", arrayMesa3.length)
+        // console.log("arrayMesa4", arrayMesa4)
+        // console.log("length arrayMesa4", arrayMesa4.length)
+        // console.log("arrayMesa5", arrayMesa5)
+        // console.log("length arrayMesa5", arrayMesa5.length)
+        // console.log("arrayMesa6", arrayMesa6)
+        // console.log("length arrayMesa6", arrayMesa6.length)
+        // console.log("arrayMesa7", arrayMesa7)
+        // console.log("length arrayMesa7", arrayMesa7.length)
+        // console.log("arrayMesa8", arrayMesa8)
+        // console.log("length arrayMesa8", arrayMesa8.length)
+        // console.log("arrayMesa9", arrayMesa9)
+        // console.log("length arrayMesa9", arrayMesa9.length)
+        // console.log("arrayMesa10", arrayMesa10)
+        // console.log("length arrayMesa10", arrayMesa10.length)
+        // console.log("arrayMesa11", arrayMesa11)
+        // console.log("length arrayMesa11", arrayMesa11.length)
+        // console.log("arrayMesa13", arrayMesa12)
+        // console.log("length arrayMesa12", arrayMesa12.length)
+        // console.log("arrayMesa13", arrayMesa13)
+        // console.log("length arrayMesa13", arrayMesa13.length)
+        // console.log("arrayMesa14", arrayMesa14)
+        // console.log("length arrayMesa14", arrayMesa14.length)
+        // console.log("arrayMesa15", arrayMesa15)
+        // console.log("length arrayMesa15", arrayMesa15.length)
+        // console.log("arrayMesa16", arrayMesa16)
+        // console.log("length arrayMesa16", arrayMesa16.length)
+        // console.log("arrayMesa17", arrayMesa17)
+        // console.log("length arrayMesa17", arrayMesa17.length)
 
 
         if(reuniao === "" || grupo === "" || participantes === "" || tempoPartMin === "" || tempoPartSeg === "") {
             setMessage({error: true, msg: "Todos os campos são obrigatórios!"});    
             return;
         }
-        const newRodada2 = {
-            arrayRodada1,
-            arrayRodada2,
-            arrayRodada3,
-            arrayRodada4,
-            arrayRodada5,
-            arrayRodada6,
-            arrayRodada7,
-            arrayRodada8,
-            arrayRodada9,
-            arrayRodada10,
-            arrayRodada11,
-            arrayRodada12,
-            arrayRodada13,
-            arrayRodada14,
-            arrayRodada15,
-            arrayRodada16,
-            arrayRodada17,
-            arrayRodada18,
-            arrayRodada19,
-            arrayRodada20,
-            dataRodada
-        }
+       
         const newRodada = {
+
                 arrayMesa1, 
                 arrayMesa2, 
                 arrayMesa3, 
@@ -2034,6 +2245,199 @@ const Configurador = ({id, setNegocioId}) => {
                 arrayMesa20,
                 dataRodada
         }
+        // este Array Cria a logica de mesas da rodada 2 em diante
+        var shift1 = aarrayMesa1.shift()
+        aarrayMesa1.push(shift1)
+        console.log("aarrayMesa1", aarrayMesa1)
+        if (numMesas >= 2) { 
+            for (let i = 1 ; i <= 2 ; i++) {
+                if(partMesa <= arrayMesa2.length){
+                var shift2 = aarrayMesa2.shift()
+                 aarrayMesa2.push(shift2)
+                }
+            }
+        
+        }
+               if (numMesas >= 3) { 
+            for (let i = 1 ; i <= 3 ; i++) {
+                if(partMesa <= arrayMesa3.length){
+                var shift2 = aarrayMesa3.shift()
+                aarrayMesa3.push(shift2)
+                }
+            }
+        }
+               if (numMesas >= 4) { 
+            for (let i = 1 ; i <= 4 ; i++) {
+                if(partMesa <= arrayMesa4.length){
+                var shift2 = aarrayMesa4.shift()
+                 aarrayMesa4.push(shift2)
+                }
+            }
+        }
+               if (numMesas >= 5) { 
+            for (let i = 1 ; i <= 5 ; i++) {
+                if(partMesa <= arrayMesa5.length){
+                var shift2 = aarrayMesa5.shift()
+                 aarrayMesa5.push(shift2)
+                }
+            }
+        }
+        
+               if (numMesas >= 6) { 
+            for (let i = 1 ; i <= 6 ; i++) {
+                if(partMesa <= arrayMesa6.length){
+                var shift2 = aarrayMesa6.shift()
+                 aarrayMesa6.push(shift2)
+                }
+            }
+        }
+               if (numMesas >= 7) {  
+            for (let i = 1 ; i <= 7 ; i++) {
+                if(partMesa <= arrayMesa7.length){
+                var shift2 = aarrayMesa7.shift()
+                 aarrayMesa7.push(shift2)
+                }
+            }
+        }
+               if (numMesas >= 8) { 
+            for (let i = 1 ; i <= 8 ; i++) {
+                if(partMesa <= arrayMesa8.length){
+                var shift2 = aarrayMesa8.shift()
+                 aarrayMesa8.push(shift2)
+                }
+            }
+        }
+               if (numMesas >= 9) { 
+            for (let i = 1 ; i <= 9 ; i++) {
+                if(partMesa <= arrayMesa9.length){
+                var shift2 = aarrayMesa9.shift()
+                 aarrayMesa9.push(shift2)
+                }
+            }
+        }
+                if (numMesas >= 10) { 
+            for (let i = 1 ; i <= 10 ; i++) {
+                if(partMesa <= arrayMesa10.length){
+                var shift2 = aarrayMesa10.shift()
+                 aarrayMesa10.push(shift2)
+                }
+            }
+        }
+            
+         if (numMesas >= 11) { 
+            for (let i = 1 ; i <= 11 ; i++) {
+                if(partMesa <= aarrayMesa11.length){
+                var shift2 = aarrayMesa11.shift()
+                 aarrayMesa11.push(shift2)
+                }
+            }
+        }
+            
+         if (numMesas >= 12) { 
+            for (let i = 1 ; i <= 12 ; i++) {
+                if(partMesa <= arrayMesa12.length){
+                var shift2 = aarrayMesa12.shift()
+                 aarrayMesa12.push(shift2)
+                }
+            }
+        }
+            
+        if (numMesas >= 13) { 
+            for (let i = 1 ; i <= 13 ; i++) {
+                if(partMesa <= arrayMesa13.length){
+                var shift2 = aarrayMesa13.shift()
+                 aarrayMesa13.push(shift2)
+                }
+            }
+        }
+            
+        if (numMesas >= 14) { 
+            for (let i = 1 ; i <= 14 ; i++) {
+                if(partMesa <= arrayMesa14.length){
+                var shift2 = aarrayMesa14.shift()
+                 aarrayMesa14.push(shift2)
+                }
+            }
+        }
+            
+        if (numMesas >= 15) { 
+            for (let i = 1 ; i <= 15 ; i++) {
+                if(partMesa <= arrayMesa15.length){
+                var shift2 = aarrayMesa15.shift()
+                 aarrayMesa15.push(shift2)
+                }
+            }
+        }
+            
+        if (numMesas >= 16) { 
+            for (let i = 1 ; i <= 16 ; i++) {
+                if(partMesa <= arrayMesa16.length){
+                var shift2 = aarrayMesa16.shift()
+                 aarrayMesa16.push(shift2)
+                }
+            }
+        }
+            
+        if (numMesas >= 17) { 
+            for (let i = 1 ; i <= 17 ; i++) {
+                if(partMesa <= arrayMesa17.length){
+                var shift2 = aarrayMesa17.shift()
+                 aarrayMesa17.push(shift2)
+                }
+            }
+        }
+            
+        if (numMesas >= 18) { 
+            for (let i = 1 ; i <= 18 ; i++) {
+                if(partMesa <= arrayMesa2.length){
+                var shift2 = aarrayMesa18.shift()
+                 aarrayMesa18.push(shift2)
+                }
+            }
+        }
+            
+        if (numMesas >= 19) { 
+            for (let i = 1 ; i <= 19 ; i++) {
+                if(partMesa <= arrayMesa2.length){
+                var shift2 = aarrayMesa19.shift()
+                 aarrayMesa19.push(shift2)
+                }
+            }
+        }
+            
+        if (numMesas >= 20) { 
+            for (let i = 1 ; i <= 20 ; i++) {
+                if(partMesa <= arrayMesa2.length){
+                var shift2 = aarrayMesa20.shift()
+                 aarrayMesa20.push(shift2)
+                }
+            }
+        }   
+    
+        const newRodada2 = {
+
+            aarrayMesa1, 
+            aarrayMesa2, 
+            aarrayMesa3, 
+            aarrayMesa4, 
+            aarrayMesa5,
+            aarrayMesa6, 
+            aarrayMesa7,
+            aarrayMesa8,
+            aarrayMesa9,
+            aarrayMesa10,
+            aarrayMesa11,
+            aarrayMesa12,
+            aarrayMesa13,
+            aarrayMesa14,
+            aarrayMesa15,
+            aarrayMesa16,
+            aarrayMesa17,
+            aarrayMesa18,
+            aarrayMesa19,
+            aarrayMesa20,
+            dataRodada
+    }
         const newNegocio = {
             reuniao,
             grupo,
@@ -2052,6 +2456,7 @@ const Configurador = ({id, setNegocioId}) => {
             idioma,
             dataRodada
         }
+
 
         const newMesa = {
             dataRodada,
@@ -2074,8 +2479,2166 @@ const Configurador = ({id, setNegocioId}) => {
                 // console.log("mesa criado")
                 await RodadaDataService.addRodadas(newRodada);
                 console.log("participantes criados")
-                //  await Rodada2DataService.addRodadas2(newRodada2);
-                //  console.log("Rodadas criadas")
+                  await Rodada2DataService.addRodadas2(newRodada2);
+                  console.log("Rodadas criadas")
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+console.log("partMesa", partMesa)
+console.log("lengthArrayMesa2",aarrayMesa2.length)        
+var shift1 = aarrayMesa1.shift()
+        aarrayMesa1.push(shift1)
+           if (numMesas >= 2) { 
+        for (let i = 1 ; i <= 2 ; i++) {
+            if(partMesa <= arrayMesa2.length){
+            var shift2 = aarrayMesa2.shift()
+             aarrayMesa2.push(shift2)
+            }
+        }
+    
+    }
+           if (numMesas >= 3) { 
+        for (let i = 1 ; i <= 3 ; i++) {
+            if(partMesa <= arrayMesa3.length){
+            var shift2 = aarrayMesa3.shift()
+            aarrayMesa3.push(shift2)
+            }
+        }
+    }
+           if (numMesas >= 4) { 
+        for (let i = 1 ; i <= 4 ; i++) {
+            if(partMesa <= arrayMesa4.length){
+            var shift2 = aarrayMesa4.shift()
+             aarrayMesa4.push(shift2)
+            }
+        }
+    }
+           if (numMesas >= 5) { 
+        for (let i = 1 ; i <= 5 ; i++) {
+            if(partMesa <= arrayMesa5.length){
+            var shift2 = aarrayMesa5.shift()
+             aarrayMesa5.push(shift2)
+            }
+        }
+    }
+    
+           if (numMesas >= 6) { 
+        for (let i = 1 ; i <= 6 ; i++) {
+            if(partMesa <= arrayMesa6.length){
+            var shift2 = aarrayMesa6.shift()
+             aarrayMesa6.push(shift2)
+            }
+        }
+    }
+           if (numMesas >= 7) {  
+        for (let i = 1 ; i <= 7 ; i++) {
+            if(partMesa <= arrayMesa7.length){
+            var shift2 = aarrayMesa7.shift()
+             aarrayMesa7.push(shift2)
+            }
+        }
+    }
+           if (numMesas >= 8) { 
+        for (let i = 1 ; i <= 8 ; i++) {
+            if(partMesa <= arrayMesa8.length){
+            var shift2 = aarrayMesa8.shift()
+             aarrayMesa8.push(shift2)
+            }
+        }
+    }
+           if (numMesas >= 9) { 
+        for (let i = 1 ; i <= 9 ; i++) {
+            if(partMesa <= arrayMesa9.length){
+            var shift2 = aarrayMesa9.shift()
+             aarrayMesa9.push(shift2)
+            }
+        }
+    }
+            if (numMesas >= 10) { 
+        for (let i = 1 ; i <= 10 ; i++) {
+            if(partMesa <= arrayMesa10.length){
+            var shift2 = aarrayMesa10.shift()
+             aarrayMesa10.push(shift2)
+            }
+        }
+    }
+        
+     if (numMesas >= 11) { 
+        for (let i = 1 ; i <= 11 ; i++) {
+            if(partMesa <= aarrayMesa11.length){
+            var shift2 = aarrayMesa11.shift()
+             aarrayMesa11.push(shift2)
+            }
+        }
+    }
+        
+     if (numMesas >= 12) { 
+        for (let i = 1 ; i <= 12 ; i++) {
+            if(partMesa <= arrayMesa12.length){
+            var shift2 = aarrayMesa12.shift()
+             aarrayMesa12.push(shift2)
+            }
+        }
+    }
+        
+    if (numMesas >= 13) { 
+        for (let i = 1 ; i <= 13 ; i++) {
+            if(partMesa <= arrayMesa13.length){
+            var shift2 = aarrayMesa13.shift()
+             aarrayMesa13.push(shift2)
+            }
+        }
+    }
+        
+    if (numMesas >= 14) { 
+        for (let i = 1 ; i <= 14 ; i++) {
+            if(partMesa <= arrayMesa14.length){
+            var shift2 = aarrayMesa14.shift()
+             aarrayMesa14.push(shift2)
+            }
+        }
+    }
+        
+    if (numMesas >= 15) { 
+        for (let i = 1 ; i <= 15 ; i++) {
+            if(partMesa <= arrayMesa15.length){
+            var shift2 = aarrayMesa15.shift()
+             aarrayMesa15.push(shift2)
+            }
+        }
+    }
+        
+    if (numMesas >= 16) { 
+        for (let i = 1 ; i <= 16 ; i++) {
+            if(partMesa <= arrayMesa16.length){
+            var shift2 = aarrayMesa16.shift()
+             aarrayMesa16.push(shift2)
+            }
+        }
+    }
+        
+    if (numMesas >= 17) { 
+        for (let i = 1 ; i <= 17 ; i++) {
+            if(partMesa <= arrayMesa17.length){
+            var shift2 = aarrayMesa17.shift()
+             aarrayMesa17.push(shift2)
+            }
+        }
+    }
+        
+    if (numMesas >= 18) { 
+        for (let i = 1 ; i <= 18 ; i++) {
+            if(partMesa <= arrayMesa2.length){
+            var shift2 = aarrayMesa18.shift()
+             aarrayMesa18.push(shift2)
+            }
+        }
+    }
+        
+    if (numMesas >= 19) { 
+        for (let i = 1 ; i <= 19 ; i++) {
+            if(partMesa <= arrayMesa2.length){
+            var shift2 = aarrayMesa19.shift()
+             aarrayMesa19.push(shift2)
+            }
+        }
+    }
+        
+    if (numMesas >= 20) { 
+        for (let i = 1 ; i <= 20 ; i++) {
+            if(partMesa <= arrayMesa2.length){
+            var shift2 = aarrayMesa20.shift()
+             aarrayMesa20.push(shift2)
+            }
+        }
+    }   
+        
+        const newRodada3 = {
+
+            aarrayMesa1, 
+            aarrayMesa2, 
+            aarrayMesa3, 
+            aarrayMesa4, 
+            aarrayMesa5,
+            aarrayMesa6, 
+            aarrayMesa7,
+            aarrayMesa8,
+            aarrayMesa9,
+            aarrayMesa10,
+            aarrayMesa11,
+            aarrayMesa12,
+            aarrayMesa13,
+            aarrayMesa14,
+            aarrayMesa15,
+            aarrayMesa16,
+            aarrayMesa17,
+            aarrayMesa18,
+            aarrayMesa19,
+            aarrayMesa20,
+            dataRodada
+    }
+                  await Rodada3DataService.addRodadas3(newRodada3)
+                console.log("Array Rodada 3 enviado e aplicada logica na mesma ufa!")
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var shift1 = aarrayMesa1.shift()
+aarrayMesa1.push(shift1)
+if (numMesas >= 2) { 
+    for (let i = 1 ; i <= 2 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa2.shift()
+         aarrayMesa2.push(shift2)
+        }
+    }
+
+}
+       if (numMesas >= 3) { 
+    for (let i = 1 ; i <= 3 ; i++) {
+        if(partMesa <= arrayMesa3.length){
+        var shift2 = aarrayMesa3.shift()
+        aarrayMesa3.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 4) { 
+    for (let i = 1 ; i <= 4 ; i++) {
+        if(partMesa <= arrayMesa4.length){
+        var shift2 = aarrayMesa4.shift()
+         aarrayMesa4.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 5) { 
+    for (let i = 1 ; i <= 5 ; i++) {
+        if(partMesa <= arrayMesa5.length){
+        var shift2 = aarrayMesa5.shift()
+         aarrayMesa5.push(shift2)
+        }
+    }
+}
+
+       if (numMesas >= 6) { 
+    for (let i = 1 ; i <= 6 ; i++) {
+        if(partMesa <= arrayMesa6.length){
+        var shift2 = aarrayMesa6.shift()
+         aarrayMesa6.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 7) {  
+    for (let i = 1 ; i <= 7 ; i++) {
+        if(partMesa <= arrayMesa7.length){
+        var shift2 = aarrayMesa7.shift()
+         aarrayMesa7.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 8) { 
+    for (let i = 1 ; i <= 8 ; i++) {
+        if(partMesa <= arrayMesa8.length){
+        var shift2 = aarrayMesa8.shift()
+         aarrayMesa8.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 9) { 
+    for (let i = 1 ; i <= 9 ; i++) {
+        if(partMesa <= arrayMesa9.length){
+        var shift2 = aarrayMesa9.shift()
+         aarrayMesa9.push(shift2)
+        }
+    }
+}
+        if (numMesas >= 10) { 
+    for (let i = 1 ; i <= 10 ; i++) {
+        if(partMesa <= arrayMesa10.length){
+        var shift2 = aarrayMesa10.shift()
+         aarrayMesa10.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 11) { 
+    for (let i = 1 ; i <= 11 ; i++) {
+        if(partMesa <= aarrayMesa11.length){
+        var shift2 = aarrayMesa11.shift()
+         aarrayMesa11.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 12) { 
+    for (let i = 1 ; i <= 12 ; i++) {
+        if(partMesa <= arrayMesa12.length){
+        var shift2 = aarrayMesa12.shift()
+         aarrayMesa12.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 13) { 
+    for (let i = 1 ; i <= 13 ; i++) {
+        if(partMesa <= arrayMesa13.length){
+        var shift2 = aarrayMesa13.shift()
+         aarrayMesa13.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 14) { 
+    for (let i = 1 ; i <= 14 ; i++) {
+        if(partMesa <= arrayMesa14.length){
+        var shift2 = aarrayMesa14.shift()
+         aarrayMesa14.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 15) { 
+    for (let i = 1 ; i <= 15 ; i++) {
+        if(partMesa <= arrayMesa15.length){
+        var shift2 = aarrayMesa15.shift()
+         aarrayMesa15.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 16) { 
+    for (let i = 1 ; i <= 16 ; i++) {
+        if(partMesa <= arrayMesa16.length){
+        var shift2 = aarrayMesa16.shift()
+         aarrayMesa16.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 17) { 
+    for (let i = 1 ; i <= 17 ; i++) {
+        if(partMesa <= arrayMesa17.length){
+        var shift2 = aarrayMesa17.shift()
+         aarrayMesa17.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 18) { 
+    for (let i = 1 ; i <= 18 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa18.shift()
+         aarrayMesa18.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 19) { 
+    for (let i = 1 ; i <= 19 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa19.shift()
+         aarrayMesa19.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 20) { 
+    for (let i = 1 ; i <= 20 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa20.shift()
+         aarrayMesa20.push(shift2)
+        }
+    }
+}   
+const newRodada4 = {
+
+    aarrayMesa1, 
+    aarrayMesa2, 
+    aarrayMesa3, 
+    aarrayMesa4, 
+    aarrayMesa5,
+    aarrayMesa6, 
+    aarrayMesa7,
+    aarrayMesa8,
+    aarrayMesa9,
+    aarrayMesa10,
+    aarrayMesa11,
+    aarrayMesa12,
+    aarrayMesa13,
+    aarrayMesa14,
+    aarrayMesa15,
+    aarrayMesa16,
+    aarrayMesa17,
+    aarrayMesa18,
+    aarrayMesa19,
+    aarrayMesa20,
+    dataRodada
+}
+
+
+                await Rodada4DataService.addRodadas4(newRodada4)
+                console.log("Rodada 4 gerada e aplicada logica na mesma ufa!" )
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var shift1 = aarrayMesa1.shift()
+aarrayMesa1.push(shift1)
+if (numMesas >= 2) { 
+    for (let i = 1 ; i <= 2 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa2.shift()
+         aarrayMesa2.push(shift2)
+        }
+    }
+
+}
+       if (numMesas >= 3) { 
+    for (let i = 1 ; i <= 3 ; i++) {
+        if(partMesa <= arrayMesa3.length){
+        var shift2 = aarrayMesa3.shift()
+        aarrayMesa3.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 4) { 
+    for (let i = 1 ; i <= 4 ; i++) {
+        if(partMesa <= arrayMesa4.length){
+        var shift2 = aarrayMesa4.shift()
+         aarrayMesa4.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 5) { 
+    for (let i = 1 ; i <= 5 ; i++) {
+        if(partMesa <= arrayMesa5.length){
+        var shift2 = aarrayMesa5.shift()
+         aarrayMesa5.push(shift2)
+        }
+    }
+}
+
+       if (numMesas >= 6) { 
+    for (let i = 1 ; i <= 6 ; i++) {
+        if(partMesa <= arrayMesa6.length){
+        var shift2 = aarrayMesa6.shift()
+         aarrayMesa6.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 7) {  
+    for (let i = 1 ; i <= 7 ; i++) {
+        if(partMesa <= arrayMesa7.length){
+        var shift2 = aarrayMesa7.shift()
+         aarrayMesa7.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 8) { 
+    for (let i = 1 ; i <= 8 ; i++) {
+        if(partMesa <= arrayMesa8.length){
+        var shift2 = aarrayMesa8.shift()
+         aarrayMesa8.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 9) { 
+    for (let i = 1 ; i <= 9 ; i++) {
+        if(partMesa <= arrayMesa9.length){
+        var shift2 = aarrayMesa9.shift()
+         aarrayMesa9.push(shift2)
+        }
+    }
+}
+        if (numMesas >= 10) { 
+    for (let i = 1 ; i <= 10 ; i++) {
+        if(partMesa <= arrayMesa10.length){
+        var shift2 = aarrayMesa10.shift()
+         aarrayMesa10.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 11) { 
+    for (let i = 1 ; i <= 11 ; i++) {
+        if(partMesa <= aarrayMesa11.length){
+        var shift2 = aarrayMesa11.shift()
+         aarrayMesa11.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 12) { 
+    for (let i = 1 ; i <= 12 ; i++) {
+        if(partMesa <= arrayMesa12.length){
+        var shift2 = aarrayMesa12.shift()
+         aarrayMesa12.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 13) { 
+    for (let i = 1 ; i <= 13 ; i++) {
+        if(partMesa <= arrayMesa13.length){
+        var shift2 = aarrayMesa13.shift()
+         aarrayMesa13.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 14) { 
+    for (let i = 1 ; i <= 14 ; i++) {
+        if(partMesa <= arrayMesa14.length){
+        var shift2 = aarrayMesa14.shift()
+         aarrayMesa14.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 15) { 
+    for (let i = 1 ; i <= 15 ; i++) {
+        if(partMesa <= arrayMesa15.length){
+        var shift2 = aarrayMesa15.shift()
+         aarrayMesa15.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 16) { 
+    for (let i = 1 ; i <= 16 ; i++) {
+        if(partMesa <= arrayMesa16.length){
+        var shift2 = aarrayMesa16.shift()
+         aarrayMesa16.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 17) { 
+    for (let i = 1 ; i <= 17 ; i++) {
+        if(partMesa <= arrayMesa17.length){
+        var shift2 = aarrayMesa17.shift()
+         aarrayMesa17.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 18) { 
+    for (let i = 1 ; i <= 18 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa18.shift()
+         aarrayMesa18.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 19) { 
+    for (let i = 1 ; i <= 19 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa19.shift()
+         aarrayMesa19.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 20) { 
+    for (let i = 1 ; i <= 20 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa20.shift()
+         aarrayMesa20.push(shift2)
+        }
+    }
+}   
+
+const newRodada5 = {
+
+    aarrayMesa1, 
+    aarrayMesa2, 
+    aarrayMesa3, 
+    aarrayMesa4, 
+    aarrayMesa5,
+    aarrayMesa6, 
+    aarrayMesa7,
+    aarrayMesa8,
+    aarrayMesa9,
+    aarrayMesa10,
+    aarrayMesa11,
+    aarrayMesa12,
+    aarrayMesa13,
+    aarrayMesa14,
+    aarrayMesa15,
+    aarrayMesa16,
+    aarrayMesa17,
+    aarrayMesa18,
+    aarrayMesa19,
+    aarrayMesa20,
+    dataRodada
+}
+
+                await Rodada5DataService.addRodadas5(newRodada5)
+                console.log("Rodada 5 gerada e aplicada logica na mesma ufa!" )
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var shift1 = aarrayMesa1.shift()
+aarrayMesa1.push(shift1)
+if (numMesas >= 2) { 
+    for (let i = 1 ; i <= 2 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa2.shift()
+         aarrayMesa2.push(shift2)
+        }
+    }
+
+}
+       if (numMesas >= 3) { 
+    for (let i = 1 ; i <= 3 ; i++) {
+        if(partMesa <= arrayMesa3.length){
+        var shift2 = aarrayMesa3.shift()
+        aarrayMesa3.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 4) { 
+    for (let i = 1 ; i <= 4 ; i++) {
+        if(partMesa <= arrayMesa4.length){
+        var shift2 = aarrayMesa4.shift()
+         aarrayMesa4.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 5) { 
+    for (let i = 1 ; i <= 5 ; i++) {
+        if(partMesa <= arrayMesa5.length){
+        var shift2 = aarrayMesa5.shift()
+         aarrayMesa5.push(shift2)
+        }
+    }
+}
+
+       if (numMesas >= 6) { 
+    for (let i = 1 ; i <= 6 ; i++) {
+        if(partMesa <= arrayMesa6.length){
+        var shift2 = aarrayMesa6.shift()
+         aarrayMesa6.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 7) {  
+    for (let i = 1 ; i <= 7 ; i++) {
+        if(partMesa <= arrayMesa7.length){
+        var shift2 = aarrayMesa7.shift()
+         aarrayMesa7.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 8) { 
+    for (let i = 1 ; i <= 8 ; i++) {
+        if(partMesa <= arrayMesa8.length){
+        var shift2 = aarrayMesa8.shift()
+         aarrayMesa8.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 9) { 
+    for (let i = 1 ; i <= 9 ; i++) {
+        if(partMesa <= arrayMesa9.length){
+        var shift2 = aarrayMesa9.shift()
+         aarrayMesa9.push(shift2)
+        }
+    }
+}
+        if (numMesas >= 10) { 
+    for (let i = 1 ; i <= 10 ; i++) {
+        if(partMesa <= arrayMesa10.length){
+        var shift2 = aarrayMesa10.shift()
+         aarrayMesa10.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 11) { 
+    for (let i = 1 ; i <= 11 ; i++) {
+        if(partMesa <= aarrayMesa11.length){
+        var shift2 = aarrayMesa11.shift()
+         aarrayMesa11.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 12) { 
+    for (let i = 1 ; i <= 12 ; i++) {
+        if(partMesa <= arrayMesa12.length){
+        var shift2 = aarrayMesa12.shift()
+         aarrayMesa12.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 13) { 
+    for (let i = 1 ; i <= 13 ; i++) {
+        if(partMesa <= arrayMesa13.length){
+        var shift2 = aarrayMesa13.shift()
+         aarrayMesa13.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 14) { 
+    for (let i = 1 ; i <= 14 ; i++) {
+        if(partMesa <= arrayMesa14.length){
+        var shift2 = aarrayMesa14.shift()
+         aarrayMesa14.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 15) { 
+    for (let i = 1 ; i <= 15 ; i++) {
+        if(partMesa <= arrayMesa15.length){
+        var shift2 = aarrayMesa15.shift()
+         aarrayMesa15.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 16) { 
+    for (let i = 1 ; i <= 16 ; i++) {
+        if(partMesa <= arrayMesa16.length){
+        var shift2 = aarrayMesa16.shift()
+         aarrayMesa16.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 17) { 
+    for (let i = 1 ; i <= 17 ; i++) {
+        if(partMesa <= arrayMesa17.length){
+        var shift2 = aarrayMesa17.shift()
+         aarrayMesa17.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 18) { 
+    for (let i = 1 ; i <= 18 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa18.shift()
+         aarrayMesa18.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 19) { 
+    for (let i = 1 ; i <= 19 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa19.shift()
+         aarrayMesa19.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 20) { 
+    for (let i = 1 ; i <= 20 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa20.shift()
+         aarrayMesa20.push(shift2)
+        }
+    }
+}   
+
+const newRodada6 = {
+
+    aarrayMesa1, 
+    aarrayMesa2, 
+    aarrayMesa3, 
+    aarrayMesa4, 
+    aarrayMesa5,
+    aarrayMesa6, 
+    aarrayMesa7,
+    aarrayMesa8,
+    aarrayMesa9,
+    aarrayMesa10,
+    aarrayMesa11,
+    aarrayMesa12,
+    aarrayMesa13,
+    aarrayMesa14,
+    aarrayMesa15,
+    aarrayMesa16,
+    aarrayMesa17,
+    aarrayMesa18,
+    aarrayMesa19,
+    aarrayMesa20,
+    dataRodada
+}
+
+                await Rodada6DataService.addRodadas6(newRodada6)
+                console.log("Rodada 6 gerada e aplicada logica na mesma ufa!" )
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var shift1 = aarrayMesa1.shift()
+aarrayMesa1.push(shift1)
+if (numMesas >= 2) { 
+    for (let i = 1 ; i <= 2 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa2.shift()
+         aarrayMesa2.push(shift2)
+        }
+    }
+
+}
+       if (numMesas >= 3) { 
+    for (let i = 1 ; i <= 3 ; i++) {
+        if(partMesa <= arrayMesa3.length){
+        var shift2 = aarrayMesa3.shift()
+        aarrayMesa3.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 4) { 
+    for (let i = 1 ; i <= 4 ; i++) {
+        if(partMesa <= arrayMesa4.length){
+        var shift2 = aarrayMesa4.shift()
+         aarrayMesa4.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 5) { 
+    for (let i = 1 ; i <= 5 ; i++) {
+        if(partMesa <= arrayMesa5.length){
+        var shift2 = aarrayMesa5.shift()
+         aarrayMesa5.push(shift2)
+        }
+    }
+}
+
+       if (numMesas >= 6) { 
+    for (let i = 1 ; i <= 6 ; i++) {
+        if(partMesa <= arrayMesa6.length){
+        var shift2 = aarrayMesa6.shift()
+         aarrayMesa6.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 7) {  
+    for (let i = 1 ; i <= 7 ; i++) {
+        if(partMesa <= arrayMesa7.length){
+        var shift2 = aarrayMesa7.shift()
+         aarrayMesa7.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 8) { 
+    for (let i = 1 ; i <= 8 ; i++) {
+        if(partMesa <= arrayMesa8.length){
+        var shift2 = aarrayMesa8.shift()
+         aarrayMesa8.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 9) { 
+    for (let i = 1 ; i <= 9 ; i++) {
+        if(partMesa <= arrayMesa9.length){
+        var shift2 = aarrayMesa9.shift()
+         aarrayMesa9.push(shift2)
+        }
+    }
+}
+        if (numMesas >= 10) { 
+    for (let i = 1 ; i <= 10 ; i++) {
+        if(partMesa <= arrayMesa10.length){
+        var shift2 = aarrayMesa10.shift()
+         aarrayMesa10.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 11) { 
+    for (let i = 1 ; i <= 11 ; i++) {
+        if(partMesa <= aarrayMesa11.length){
+        var shift2 = aarrayMesa11.shift()
+         aarrayMesa11.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 12) { 
+    for (let i = 1 ; i <= 12 ; i++) {
+        if(partMesa <= arrayMesa12.length){
+        var shift2 = aarrayMesa12.shift()
+         aarrayMesa12.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 13) { 
+    for (let i = 1 ; i <= 13 ; i++) {
+        if(partMesa <= arrayMesa13.length){
+        var shift2 = aarrayMesa13.shift()
+         aarrayMesa13.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 14) { 
+    for (let i = 1 ; i <= 14 ; i++) {
+        if(partMesa <= arrayMesa14.length){
+        var shift2 = aarrayMesa14.shift()
+         aarrayMesa14.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 15) { 
+    for (let i = 1 ; i <= 15 ; i++) {
+        if(partMesa <= arrayMesa15.length){
+        var shift2 = aarrayMesa15.shift()
+         aarrayMesa15.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 16) { 
+    for (let i = 1 ; i <= 16 ; i++) {
+        if(partMesa <= arrayMesa16.length){
+        var shift2 = aarrayMesa16.shift()
+         aarrayMesa16.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 17) { 
+    for (let i = 1 ; i <= 17 ; i++) {
+        if(partMesa <= arrayMesa17.length){
+        var shift2 = aarrayMesa17.shift()
+         aarrayMesa17.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 18) { 
+    for (let i = 1 ; i <= 18 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa18.shift()
+         aarrayMesa18.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 19) { 
+    for (let i = 1 ; i <= 19 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa19.shift()
+         aarrayMesa19.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 20) { 
+    for (let i = 1 ; i <= 20 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa20.shift()
+         aarrayMesa20.push(shift2)
+        }
+    }
+}   
+
+const newRodada7 = {
+    dataRodada,
+    aarrayMesa1, 
+    aarrayMesa2, 
+    aarrayMesa3, 
+    aarrayMesa4, 
+    aarrayMesa5,
+    aarrayMesa6, 
+    aarrayMesa7,
+    aarrayMesa8,
+    aarrayMesa9,
+    aarrayMesa10,
+    aarrayMesa11,
+    aarrayMesa12,
+    aarrayMesa13,
+    aarrayMesa14,
+    aarrayMesa15,
+    aarrayMesa16,
+    aarrayMesa17,
+    aarrayMesa18,
+    aarrayMesa19,
+    aarrayMesa20
+}
+
+                await Rodada7DataService.addRodadas7(newRodada7)
+                console.log("Rodada 7 gerada e aplicada logica na mesma ufa!" )
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var shift1 = aarrayMesa1.shift()
+aarrayMesa1.push(shift1)
+if (numMesas >= 2) { 
+    for (let i = 1 ; i <= 2 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa2.shift()
+         aarrayMesa2.push(shift2)
+        }
+    }
+
+}
+       if (numMesas >= 3) { 
+    for (let i = 1 ; i <= 3 ; i++) {
+        if(partMesa <= arrayMesa3.length){
+        var shift2 = aarrayMesa3.shift()
+        aarrayMesa3.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 4) { 
+    for (let i = 1 ; i <= 4 ; i++) {
+        if(partMesa <= arrayMesa4.length){
+        var shift2 = aarrayMesa4.shift()
+         aarrayMesa4.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 5) { 
+    for (let i = 1 ; i <= 5 ; i++) {
+        if(partMesa <= arrayMesa5.length){
+        var shift2 = aarrayMesa5.shift()
+         aarrayMesa5.push(shift2)
+        }
+    }
+}
+
+       if (numMesas >= 6) { 
+    for (let i = 1 ; i <= 6 ; i++) {
+        if(partMesa <= arrayMesa6.length){
+        var shift2 = aarrayMesa6.shift()
+         aarrayMesa6.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 7) {  
+    for (let i = 1 ; i <= 7 ; i++) {
+        if(partMesa <= arrayMesa7.length){
+        var shift2 = aarrayMesa7.shift()
+         aarrayMesa7.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 8) { 
+    for (let i = 1 ; i <= 8 ; i++) {
+        if(partMesa <= arrayMesa8.length){
+        var shift2 = aarrayMesa8.shift()
+         aarrayMesa8.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 9) { 
+    for (let i = 1 ; i <= 9 ; i++) {
+        if(partMesa <= arrayMesa9.length){
+        var shift2 = aarrayMesa9.shift()
+         aarrayMesa9.push(shift2)
+        }
+    }
+}
+        if (numMesas >= 10) { 
+    for (let i = 1 ; i <= 10 ; i++) {
+        if(partMesa <= arrayMesa10.length){
+        var shift2 = aarrayMesa10.shift()
+         aarrayMesa10.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 11) { 
+    for (let i = 1 ; i <= 11 ; i++) {
+        if(partMesa <= aarrayMesa11.length){
+        var shift2 = aarrayMesa11.shift()
+         aarrayMesa11.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 12) { 
+    for (let i = 1 ; i <= 12 ; i++) {
+        if(partMesa <= arrayMesa12.length){
+        var shift2 = aarrayMesa12.shift()
+         aarrayMesa12.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 13) { 
+    for (let i = 1 ; i <= 13 ; i++) {
+        if(partMesa <= arrayMesa13.length){
+        var shift2 = aarrayMesa13.shift()
+         aarrayMesa13.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 14) { 
+    for (let i = 1 ; i <= 14 ; i++) {
+        if(partMesa <= arrayMesa14.length){
+        var shift2 = aarrayMesa14.shift()
+         aarrayMesa14.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 15) { 
+    for (let i = 1 ; i <= 15 ; i++) {
+        if(partMesa <= arrayMesa15.length){
+        var shift2 = aarrayMesa15.shift()
+         aarrayMesa15.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 16) { 
+    for (let i = 1 ; i <= 16 ; i++) {
+        if(partMesa <= arrayMesa16.length){
+        var shift2 = aarrayMesa16.shift()
+         aarrayMesa16.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 17) { 
+    for (let i = 1 ; i <= 17 ; i++) {
+        if(partMesa <= arrayMesa17.length){
+        var shift2 = aarrayMesa17.shift()
+         aarrayMesa17.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 18) { 
+    for (let i = 1 ; i <= 18 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa18.shift()
+         aarrayMesa18.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 19) { 
+    for (let i = 1 ; i <= 19 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa19.shift()
+         aarrayMesa19.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 20) { 
+    for (let i = 1 ; i <= 20 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa20.shift()
+         aarrayMesa20.push(shift2)
+        }
+    }
+}   
+
+const newRodada8 = {
+
+    aarrayMesa1, 
+    aarrayMesa2, 
+    aarrayMesa3, 
+    aarrayMesa4, 
+    aarrayMesa5,
+    aarrayMesa6, 
+    aarrayMesa7,
+    aarrayMesa8,
+    aarrayMesa9,
+    aarrayMesa10,
+    aarrayMesa11,
+    aarrayMesa12,
+    aarrayMesa13,
+    aarrayMesa14,
+    aarrayMesa15,
+    aarrayMesa16,
+    aarrayMesa17,
+    aarrayMesa18,
+    aarrayMesa19,
+    aarrayMesa20,
+    dataRodada
+}
+
+                await Rodada8DataService.addRodadas8(newRodada8)
+                console.log("Rodada 8 gerada e aplicada logica na mesma ufa!" )
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var shift1 = aarrayMesa1.shift()
+aarrayMesa1.push(shift1)
+if (numMesas >= 2) { 
+    for (let i = 1 ; i <= 2 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa2.shift()
+         aarrayMesa2.push(shift2)
+        }
+    }
+
+}
+       if (numMesas >= 3) { 
+    for (let i = 1 ; i <= 3 ; i++) {
+        if(partMesa <= arrayMesa3.length){
+        var shift2 = aarrayMesa3.shift()
+        aarrayMesa3.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 4) { 
+    for (let i = 1 ; i <= 4 ; i++) {
+        if(partMesa <= arrayMesa4.length){
+        var shift2 = aarrayMesa4.shift()
+         aarrayMesa4.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 5) { 
+    for (let i = 1 ; i <= 5 ; i++) {
+        if(partMesa <= arrayMesa5.length){
+        var shift2 = aarrayMesa5.shift()
+         aarrayMesa5.push(shift2)
+        }
+    }
+}
+
+       if (numMesas >= 6) { 
+    for (let i = 1 ; i <= 6 ; i++) {
+        if(partMesa <= arrayMesa6.length){
+        var shift2 = aarrayMesa6.shift()
+         aarrayMesa6.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 7) {  
+    for (let i = 1 ; i <= 7 ; i++) {
+        if(partMesa <= arrayMesa7.length){
+        var shift2 = aarrayMesa7.shift()
+         aarrayMesa7.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 8) { 
+    for (let i = 1 ; i <= 8 ; i++) {
+        if(partMesa <= arrayMesa8.length){
+        var shift2 = aarrayMesa8.shift()
+         aarrayMesa8.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 9) { 
+    for (let i = 1 ; i <= 9 ; i++) {
+        if(partMesa <= arrayMesa9.length){
+        var shift2 = aarrayMesa9.shift()
+         aarrayMesa9.push(shift2)
+        }
+    }
+}
+        if (numMesas >= 10) { 
+    for (let i = 1 ; i <= 10 ; i++) {
+        if(partMesa <= arrayMesa10.length){
+        var shift2 = aarrayMesa10.shift()
+         aarrayMesa10.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 11) { 
+    for (let i = 1 ; i <= 11 ; i++) {
+        if(partMesa <= aarrayMesa11.length){
+        var shift2 = aarrayMesa11.shift()
+         aarrayMesa11.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 12) { 
+    for (let i = 1 ; i <= 12 ; i++) {
+        if(partMesa <= arrayMesa12.length){
+        var shift2 = aarrayMesa12.shift()
+         aarrayMesa12.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 13) { 
+    for (let i = 1 ; i <= 13 ; i++) {
+        if(partMesa <= arrayMesa13.length){
+        var shift2 = aarrayMesa13.shift()
+         aarrayMesa13.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 14) { 
+    for (let i = 1 ; i <= 14 ; i++) {
+        if(partMesa <= arrayMesa14.length){
+        var shift2 = aarrayMesa14.shift()
+         aarrayMesa14.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 15) { 
+    for (let i = 1 ; i <= 15 ; i++) {
+        if(partMesa <= arrayMesa15.length){
+        var shift2 = aarrayMesa15.shift()
+         aarrayMesa15.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 16) { 
+    for (let i = 1 ; i <= 16 ; i++) {
+        if(partMesa <= arrayMesa16.length){
+        var shift2 = aarrayMesa16.shift()
+         aarrayMesa16.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 17) { 
+    for (let i = 1 ; i <= 17 ; i++) {
+        if(partMesa <= arrayMesa17.length){
+        var shift2 = aarrayMesa17.shift()
+         aarrayMesa17.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 18) { 
+    for (let i = 1 ; i <= 18 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa18.shift()
+         aarrayMesa18.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 19) { 
+    for (let i = 1 ; i <= 19 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa19.shift()
+         aarrayMesa19.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 20) { 
+    for (let i = 1 ; i <= 20 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa20.shift()
+         aarrayMesa20.push(shift2)
+        }
+    }
+}   
+
+const newRodada9 = {
+
+    aarrayMesa1, 
+    aarrayMesa2, 
+    aarrayMesa3, 
+    aarrayMesa4, 
+    aarrayMesa5,
+    aarrayMesa6, 
+    aarrayMesa7,
+    aarrayMesa8,
+    aarrayMesa9,
+    aarrayMesa10,
+    aarrayMesa11,
+    aarrayMesa12,
+    aarrayMesa13,
+    aarrayMesa14,
+    aarrayMesa15,
+    aarrayMesa16,
+    aarrayMesa17,
+    aarrayMesa18,
+    aarrayMesa19,
+    aarrayMesa20,
+    dataRodada
+}
+
+                await Rodada9DataService.addRodadas9(newRodada9)
+                console.log("Rodada 9 gerada e aplicada logica na mesma ufa!" )
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var shift1 = aarrayMesa1.shift()
+aarrayMesa1.push(shift1)
+if (numMesas >= 2) { 
+    for (let i = 1 ; i <= 2 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa2.shift()
+         aarrayMesa2.push(shift2)
+        }
+    }
+
+}
+       if (numMesas >= 3) { 
+    for (let i = 1 ; i <= 3 ; i++) {
+        if(partMesa <= arrayMesa3.length){
+        var shift2 = aarrayMesa3.shift()
+        aarrayMesa3.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 4) { 
+    for (let i = 1 ; i <= 4 ; i++) {
+        if(partMesa <= arrayMesa4.length){
+        var shift2 = aarrayMesa4.shift()
+         aarrayMesa4.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 5) { 
+    for (let i = 1 ; i <= 5 ; i++) {
+        if(partMesa <= arrayMesa5.length){
+        var shift2 = aarrayMesa5.shift()
+         aarrayMesa5.push(shift2)
+        }
+    }
+}
+
+       if (numMesas >= 6) { 
+    for (let i = 1 ; i <= 6 ; i++) {
+        if(partMesa <= arrayMesa6.length){
+        var shift2 = aarrayMesa6.shift()
+         aarrayMesa6.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 7) {  
+    for (let i = 1 ; i <= 7 ; i++) {
+        if(partMesa <= arrayMesa7.length){
+        var shift2 = aarrayMesa7.shift()
+         aarrayMesa7.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 8) { 
+    for (let i = 1 ; i <= 8 ; i++) {
+        if(partMesa <= arrayMesa8.length){
+        var shift2 = aarrayMesa8.shift()
+         aarrayMesa8.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 9) { 
+    for (let i = 1 ; i <= 9 ; i++) {
+        if(partMesa <= arrayMesa9.length){
+        var shift2 = aarrayMesa9.shift()
+         aarrayMesa9.push(shift2)
+        }
+    }
+}
+        if (numMesas >= 10) { 
+    for (let i = 1 ; i <= 10 ; i++) {
+        if(partMesa <= arrayMesa10.length){
+        var shift2 = aarrayMesa10.shift()
+         aarrayMesa10.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 11) { 
+    for (let i = 1 ; i <= 11 ; i++) {
+        if(partMesa <= aarrayMesa11.length){
+        var shift2 = aarrayMesa11.shift()
+         aarrayMesa11.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 12) { 
+    for (let i = 1 ; i <= 12 ; i++) {
+        if(partMesa <= arrayMesa12.length){
+        var shift2 = aarrayMesa12.shift()
+         aarrayMesa12.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 13) { 
+    for (let i = 1 ; i <= 13 ; i++) {
+        if(partMesa <= arrayMesa13.length){
+        var shift2 = aarrayMesa13.shift()
+         aarrayMesa13.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 14) { 
+    for (let i = 1 ; i <= 14 ; i++) {
+        if(partMesa <= arrayMesa14.length){
+        var shift2 = aarrayMesa14.shift()
+         aarrayMesa14.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 15) { 
+    for (let i = 1 ; i <= 15 ; i++) {
+        if(partMesa <= arrayMesa15.length){
+        var shift2 = aarrayMesa15.shift()
+         aarrayMesa15.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 16) { 
+    for (let i = 1 ; i <= 16 ; i++) {
+        if(partMesa <= arrayMesa16.length){
+        var shift2 = aarrayMesa16.shift()
+         aarrayMesa16.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 17) { 
+    for (let i = 1 ; i <= 17 ; i++) {
+        if(partMesa <= arrayMesa17.length){
+        var shift2 = aarrayMesa17.shift()
+         aarrayMesa17.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 18) { 
+    for (let i = 1 ; i <= 18 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa18.shift()
+         aarrayMesa18.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 19) { 
+    for (let i = 1 ; i <= 19 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa19.shift()
+         aarrayMesa19.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 20) { 
+    for (let i = 1 ; i <= 20 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa20.shift()
+         aarrayMesa20.push(shift2)
+        }
+    }
+}   
+
+const newRodada10 = {
+
+    aarrayMesa1, 
+    aarrayMesa2, 
+    aarrayMesa3, 
+    aarrayMesa4, 
+    aarrayMesa5,
+    aarrayMesa6, 
+    aarrayMesa7,
+    aarrayMesa8,
+    aarrayMesa9,
+    aarrayMesa10,
+    aarrayMesa11,
+    aarrayMesa12,
+    aarrayMesa13,
+    aarrayMesa14,
+    aarrayMesa15,
+    aarrayMesa16,
+    aarrayMesa17,
+    aarrayMesa18,
+    aarrayMesa19,
+    aarrayMesa20,
+    dataRodada
+}
+
+                await Rodada10DataService.addRodadas10(newRodada10)
+                console.log("Rodada 10 gerada e aplicada logica na mesma ufa!" )
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var shift1 = aarrayMesa1.shift()
+aarrayMesa1.push(shift1)
+if (numMesas >= 2) { 
+    for (let i = 1 ; i <= 2 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa2.shift()
+         aarrayMesa2.push(shift2)
+        }
+    }
+
+}
+       if (numMesas >= 3) { 
+    for (let i = 1 ; i <= 3 ; i++) {
+        if(partMesa <= arrayMesa3.length){
+        var shift2 = aarrayMesa3.shift()
+        aarrayMesa3.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 4) { 
+    for (let i = 1 ; i <= 4 ; i++) {
+        if(partMesa <= arrayMesa4.length){
+        var shift2 = aarrayMesa4.shift()
+         aarrayMesa4.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 5) { 
+    for (let i = 1 ; i <= 5 ; i++) {
+        if(partMesa <= arrayMesa5.length){
+        var shift2 = aarrayMesa5.shift()
+         aarrayMesa5.push(shift2)
+        }
+    }
+}
+
+       if (numMesas >= 6) { 
+    for (let i = 1 ; i <= 6 ; i++) {
+        if(partMesa <= arrayMesa6.length){
+        var shift2 = aarrayMesa6.shift()
+         aarrayMesa6.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 7) {  
+    for (let i = 1 ; i <= 7 ; i++) {
+        if(partMesa <= arrayMesa7.length){
+        var shift2 = aarrayMesa7.shift()
+         aarrayMesa7.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 8) { 
+    for (let i = 1 ; i <= 8 ; i++) {
+        if(partMesa <= arrayMesa8.length){
+        var shift2 = aarrayMesa8.shift()
+         aarrayMesa8.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 9) { 
+    for (let i = 1 ; i <= 9 ; i++) {
+        if(partMesa <= arrayMesa9.length){
+        var shift2 = aarrayMesa9.shift()
+         aarrayMesa9.push(shift2)
+        }
+    }
+}
+        if (numMesas >= 10) { 
+    for (let i = 1 ; i <= 10 ; i++) {
+        if(partMesa <= arrayMesa10.length){
+        var shift2 = aarrayMesa10.shift()
+         aarrayMesa10.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 11) { 
+    for (let i = 1 ; i <= 11 ; i++) {
+        if(partMesa <= aarrayMesa11.length){
+        var shift2 = aarrayMesa11.shift()
+         aarrayMesa11.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 12) { 
+    for (let i = 1 ; i <= 12 ; i++) {
+        if(partMesa <= arrayMesa12.length){
+        var shift2 = aarrayMesa12.shift()
+         aarrayMesa12.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 13) { 
+    for (let i = 1 ; i <= 13 ; i++) {
+        if(partMesa <= arrayMesa13.length){
+        var shift2 = aarrayMesa13.shift()
+         aarrayMesa13.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 14) { 
+    for (let i = 1 ; i <= 14 ; i++) {
+        if(partMesa <= arrayMesa14.length){
+        var shift2 = aarrayMesa14.shift()
+         aarrayMesa14.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 15) { 
+    for (let i = 1 ; i <= 15 ; i++) {
+        if(partMesa <= arrayMesa15.length){
+        var shift2 = aarrayMesa15.shift()
+         aarrayMesa15.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 16) { 
+    for (let i = 1 ; i <= 16 ; i++) {
+        if(partMesa <= arrayMesa16.length){
+        var shift2 = aarrayMesa16.shift()
+         aarrayMesa16.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 17) { 
+    for (let i = 1 ; i <= 17 ; i++) {
+        if(partMesa <= arrayMesa17.length){
+        var shift2 = aarrayMesa17.shift()
+         aarrayMesa17.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 18) { 
+    for (let i = 1 ; i <= 18 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa18.shift()
+         aarrayMesa18.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 19) { 
+    for (let i = 1 ; i <= 19 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa19.shift()
+         aarrayMesa19.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 20) { 
+    for (let i = 1 ; i <= 20 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa20.shift()
+         aarrayMesa20.push(shift2)
+        }
+    }
+}   
+
+const newRodada11 = {
+
+    aarrayMesa1, 
+    aarrayMesa2, 
+    aarrayMesa3, 
+    aarrayMesa4, 
+    aarrayMesa5,
+    aarrayMesa6, 
+    aarrayMesa7,
+    aarrayMesa8,
+    aarrayMesa9,
+    aarrayMesa10,
+    aarrayMesa11,
+    aarrayMesa12,
+    aarrayMesa13,
+    aarrayMesa14,
+    aarrayMesa15,
+    aarrayMesa16,
+    aarrayMesa17,
+    aarrayMesa18,
+    aarrayMesa19,
+    aarrayMesa20,
+    dataRodada
+}
+
+                await Rodada11DataService.addRodadas11(newRodada11)
+                console.log("Rodada 11 gerada e aplicada logica na mesma ufa!" )
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var shift1 = aarrayMesa1.shift()
+aarrayMesa1.push(shift1)
+if (numMesas >= 2) { 
+    for (let i = 1 ; i <= 2 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa2.shift()
+         aarrayMesa2.push(shift2)
+        }
+    }
+
+}
+       if (numMesas >= 3) { 
+    for (let i = 1 ; i <= 3 ; i++) {
+        if(partMesa <= arrayMesa3.length){
+        var shift2 = aarrayMesa3.shift()
+        aarrayMesa3.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 4) { 
+    for (let i = 1 ; i <= 4 ; i++) {
+        if(partMesa <= arrayMesa4.length){
+        var shift2 = aarrayMesa4.shift()
+         aarrayMesa4.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 5) { 
+    for (let i = 1 ; i <= 5 ; i++) {
+        if(partMesa <= arrayMesa5.length){
+        var shift2 = aarrayMesa5.shift()
+         aarrayMesa5.push(shift2)
+        }
+    }
+}
+
+       if (numMesas >= 6) { 
+    for (let i = 1 ; i <= 6 ; i++) {
+        if(partMesa <= arrayMesa6.length){
+        var shift2 = aarrayMesa6.shift()
+         aarrayMesa6.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 7) {  
+    for (let i = 1 ; i <= 7 ; i++) {
+        if(partMesa <= arrayMesa7.length){
+        var shift2 = aarrayMesa7.shift()
+         aarrayMesa7.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 8) { 
+    for (let i = 1 ; i <= 8 ; i++) {
+        if(partMesa <= arrayMesa8.length){
+        var shift2 = aarrayMesa8.shift()
+         aarrayMesa8.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 9) { 
+    for (let i = 1 ; i <= 9 ; i++) {
+        if(partMesa <= arrayMesa9.length){
+        var shift2 = aarrayMesa9.shift()
+         aarrayMesa9.push(shift2)
+        }
+    }
+}
+        if (numMesas >= 10) { 
+    for (let i = 1 ; i <= 10 ; i++) {
+        if(partMesa <= arrayMesa10.length){
+        var shift2 = aarrayMesa10.shift()
+         aarrayMesa10.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 11) { 
+    for (let i = 1 ; i <= 11 ; i++) {
+        if(partMesa <= aarrayMesa11.length){
+        var shift2 = aarrayMesa11.shift()
+         aarrayMesa11.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 12) { 
+    for (let i = 1 ; i <= 12 ; i++) {
+        if(partMesa <= arrayMesa12.length){
+        var shift2 = aarrayMesa12.shift()
+         aarrayMesa12.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 13) { 
+    for (let i = 1 ; i <= 13 ; i++) {
+        if(partMesa <= arrayMesa13.length){
+        var shift2 = aarrayMesa13.shift()
+         aarrayMesa13.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 14) { 
+    for (let i = 1 ; i <= 14 ; i++) {
+        if(partMesa <= arrayMesa14.length){
+        var shift2 = aarrayMesa14.shift()
+         aarrayMesa14.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 15) { 
+    for (let i = 1 ; i <= 15 ; i++) {
+        if(partMesa <= arrayMesa15.length){
+        var shift2 = aarrayMesa15.shift()
+         aarrayMesa15.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 16) { 
+    for (let i = 1 ; i <= 16 ; i++) {
+        if(partMesa <= arrayMesa16.length){
+        var shift2 = aarrayMesa16.shift()
+         aarrayMesa16.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 17) { 
+    for (let i = 1 ; i <= 17 ; i++) {
+        if(partMesa <= arrayMesa17.length){
+        var shift2 = aarrayMesa17.shift()
+         aarrayMesa17.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 18) { 
+    for (let i = 1 ; i <= 18 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa18.shift()
+         aarrayMesa18.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 19) { 
+    for (let i = 1 ; i <= 19 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa19.shift()
+         aarrayMesa19.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 20) { 
+    for (let i = 1 ; i <= 20 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa20.shift()
+         aarrayMesa20.push(shift2)
+        }
+    }
+}   
+
+const newRodada12 = {
+
+    aarrayMesa1, 
+    aarrayMesa2, 
+    aarrayMesa3, 
+    aarrayMesa4, 
+    aarrayMesa5,
+    aarrayMesa6, 
+    aarrayMesa7,
+    aarrayMesa8,
+    aarrayMesa9,
+    aarrayMesa10,
+    aarrayMesa11,
+    aarrayMesa12,
+    aarrayMesa13,
+    aarrayMesa14,
+    aarrayMesa15,
+    aarrayMesa16,
+    aarrayMesa17,
+    aarrayMesa18,
+    aarrayMesa19,
+    aarrayMesa20,
+    dataRodada
+}
+
+                await Rodada12DataService.addRodadas12(newRodada12)
+                console.log("Rodada 12 gerada e aplicada logica na mesma ufa!" )
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var shift1 = aarrayMesa1.shift()
+aarrayMesa1.push(shift1)
+if (numMesas >= 2) { 
+    for (let i = 1 ; i <= 2 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa2.shift()
+         aarrayMesa2.push(shift2)
+        }
+    }
+
+}
+       if (numMesas >= 3) { 
+    for (let i = 1 ; i <= 3 ; i++) {
+        if(partMesa <= arrayMesa3.length){
+        var shift2 = aarrayMesa3.shift()
+        aarrayMesa3.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 4) { 
+    for (let i = 1 ; i <= 4 ; i++) {
+        if(partMesa <= arrayMesa4.length){
+        var shift2 = aarrayMesa4.shift()
+         aarrayMesa4.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 5) { 
+    for (let i = 1 ; i <= 5 ; i++) {
+        if(partMesa <= arrayMesa5.length){
+        var shift2 = aarrayMesa5.shift()
+         aarrayMesa5.push(shift2)
+        }
+    }
+}
+
+       if (numMesas >= 6) { 
+    for (let i = 1 ; i <= 6 ; i++) {
+        if(partMesa <= arrayMesa6.length){
+        var shift2 = aarrayMesa6.shift()
+         aarrayMesa6.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 7) {  
+    for (let i = 1 ; i <= 7 ; i++) {
+        if(partMesa <= arrayMesa7.length){
+        var shift2 = aarrayMesa7.shift()
+         aarrayMesa7.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 8) { 
+    for (let i = 1 ; i <= 8 ; i++) {
+        if(partMesa <= arrayMesa8.length){
+        var shift2 = aarrayMesa8.shift()
+         aarrayMesa8.push(shift2)
+        }
+    }
+}
+       if (numMesas >= 9) { 
+    for (let i = 1 ; i <= 9 ; i++) {
+        if(partMesa <= arrayMesa9.length){
+        var shift2 = aarrayMesa9.shift()
+         aarrayMesa9.push(shift2)
+        }
+    }
+}
+        if (numMesas >= 10) { 
+    for (let i = 1 ; i <= 10 ; i++) {
+        if(partMesa <= arrayMesa10.length){
+        var shift2 = aarrayMesa10.shift()
+         aarrayMesa10.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 11) { 
+    for (let i = 1 ; i <= 11 ; i++) {
+        if(partMesa <= aarrayMesa11.length){
+        var shift2 = aarrayMesa11.shift()
+         aarrayMesa11.push(shift2)
+        }
+    }
+}
+    
+ if (numMesas >= 12) { 
+    for (let i = 1 ; i <= 12 ; i++) {
+        if(partMesa <= arrayMesa12.length){
+        var shift2 = aarrayMesa12.shift()
+         aarrayMesa12.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 13) { 
+    for (let i = 1 ; i <= 13 ; i++) {
+        if(partMesa <= arrayMesa13.length){
+        var shift2 = aarrayMesa13.shift()
+         aarrayMesa13.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 14) { 
+    for (let i = 1 ; i <= 14 ; i++) {
+        if(partMesa <= arrayMesa14.length){
+        var shift2 = aarrayMesa14.shift()
+         aarrayMesa14.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 15) { 
+    for (let i = 1 ; i <= 15 ; i++) {
+        if(partMesa <= arrayMesa15.length){
+        var shift2 = aarrayMesa15.shift()
+         aarrayMesa15.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 16) { 
+    for (let i = 1 ; i <= 16 ; i++) {
+        if(partMesa <= arrayMesa16.length){
+        var shift2 = aarrayMesa16.shift()
+         aarrayMesa16.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 17) { 
+    for (let i = 1 ; i <= 17 ; i++) {
+        if(partMesa <= arrayMesa17.length){
+        var shift2 = aarrayMesa17.shift()
+         aarrayMesa17.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 18) { 
+    for (let i = 1 ; i <= 18 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa18.shift()
+         aarrayMesa18.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 19) { 
+    for (let i = 1 ; i <= 19 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa19.shift()
+         aarrayMesa19.push(shift2)
+        }
+    }
+}
+    
+if (numMesas >= 20) { 
+    for (let i = 1 ; i <= 20 ; i++) {
+        if(partMesa <= arrayMesa2.length){
+        var shift2 = aarrayMesa20.shift()
+         aarrayMesa20.push(shift2)
+        }
+    }
+}   
+
+const newRodada13 = {
+
+    aarrayMesa1, 
+    aarrayMesa2, 
+    aarrayMesa3, 
+    aarrayMesa4, 
+    aarrayMesa5,
+    aarrayMesa6, 
+    aarrayMesa7,
+    aarrayMesa8,
+    aarrayMesa9,
+    aarrayMesa10,
+    aarrayMesa11,
+    aarrayMesa12,
+    aarrayMesa13,
+    aarrayMesa14,
+    aarrayMesa15,
+    aarrayMesa16,
+    aarrayMesa17,
+    aarrayMesa18,
+    aarrayMesa19,
+    aarrayMesa20,
+    dataRodada
+}
+
+                await Rodada13DataService.addRodadas13(newRodada13)
+                console.log("Rodada 13 gerada e aplicada logica na mesma ufa!" )
+
+
+
                 setMessage({error: false, msg: "Nova Rodada de Negócios gerada!"});
                 console.log("Msg Rodada gerada")
             // }
@@ -2131,8 +4694,6 @@ const Configurador = ({id, setNegocioId}) => {
         
         useEffect(() => {
    
-          //  getPartics();
-           //  getMinutos();
             
             meusPartMesa();
         },[numMesas, participantes, tempoPartMin, tempoPartSeg, intIndMin, intIndSeg, intGrupMin, intGrupSeg, 
@@ -2232,11 +4793,6 @@ const Configurador = ({id, setNegocioId}) => {
                                             defaultValue={"0"}
                                              className="input-card" aria-label="Floating label select example">
                                             
-                                             {partics.sort((a,b) =>(a.idParticipante > b.idParticipante) ? 1 : -1 ).map((doc, index) => {
-                                                return(
-                                                    <option key={index} value={parseInt(doc.idParticipante)}>{doc.idParticipante}</option>
-                                                )
-                                             })};
                                                    <option value="7">7</option>
                                                     <option value="8">8</option>
                                                     <option value="9">9</option>
