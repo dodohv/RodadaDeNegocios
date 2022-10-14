@@ -96,6 +96,8 @@ button:focus-visible {
   margin-top: 5px;
   text-align: start;
 }
+
+
 .title-card{
   color:#535bf2
 }
@@ -170,11 +172,11 @@ button:focus-visible {
 }
 .input-card{
   width:100%;
-  margin-left:-4%;
+  margin-left:-8%;
 }
 .input-card-se{
-  width:100%;
-  margin-left:-14%;
+  width:140%;
+  margin-left:-30%;
   text-align: center;
 
 }

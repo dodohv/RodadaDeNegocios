@@ -4,7 +4,7 @@ import {Form,Container,Row, Col, Card ,Button  } from 'react-bootstrap'
 import {useState, useEffect, useRef} from "react"
 import NegocioDataService from "../services/negocio.services"
 import NotificationSound3 from "../assets/bass.aac";
-import NotificationSound2 from "../assets/counter.wav";
+import NotificationSound2 from "../assets/alarm.aac";
 import NotificationSound from "../assets/alarm.aac";
 import { BsPlayCircle, BsPauseCircle} from 'react-icons/bs'
 import RodadaDataService from "../services/rodada.service";
@@ -67,17 +67,56 @@ const ApresentacaoGrupo = () => {
     const [negocios, setNegocios] = useState([]);
     const [newSeconds, setNewSeconds] = useState(0);
     const [newMinutes, setNewMinutes] = useState(0);
+    const [newSecondsWait, setNewSecondsWait] = useState(0);
+    const [newMinutesWait, setNewMinutesWait] = useState(0);
     const [contarReuniao, setContarReuniao] = useState(1);
     const [contarApresentacao, setContarApresentacao] = useState(1);
+    const [flagTempo, setFlagTempo] = useState(true);
+    const [meuNumMesas, setMeuNumMesas] = useState(0);
+    const [meuPartMesas, setMeuPartMesas] = useState(0);
+    const [meuIntIndMin, setMeuIntIndMin] = useState(0);
+    const [meuIntIndSeg, setMeuIntIndSeg] = useState(0);
+    const [meuIntGrupoMin, setMeuIntGrupoMin] = useState(0);
+    const [meuIntGrupoSeg, setMeuIntGrupoSeg] = useState(0);
+    const [meuTempoPartMin, setMeuTempoPartMin] = useState(0);
+    const [meuTempoPartSeg, setMeuTempoPartSeg] = useState(0);
     const Ref = useRef(null);
 
     
+    const resetTimerEspera = () => {
+    if (flagTempo == true) {
+        clearInterval(timer2.current);
+        timer2.current= undefined;
+        setSecondsLeft(newSecondsWait);
+        setMinutesLeft(newMinutesWait);
+    } else {
+        clearInterval(timer2.current);
+        timer2.current= undefined;
+        setSecondsLeft(newSecondsWait);
+        setMinutesLeft(newMinutesWait);
+    }
     
+   
+    }
     const resetTimer = () => {
+        if (flagTempo == true) {
+
+            console.log("Tempo false",flagTempo);
         clearInterval(timer2.current);
         timer2.current= undefined;
         setSecondsLeft(newSeconds);
-        setMinutesLeft(newMinutes);   
+        setMinutesLeft(newMinutes);
+
+        }
+        else {
+
+            console.log("Tempo true",flagTempo);
+            clearInterval(timer2.current);
+            timer2.current= undefined;
+            setSecondsLeft(newSecondsWait);
+            setMinutesLeft(newMinutesWait);         
+    }
+     
     }
 const meuTempoDecorrido = async() => {
     setTimer3Seg(
@@ -134,12 +173,37 @@ const meuTempoDecorrido = async() => {
             if (minutesLeft == 0 && secondsLeft == 16 && pause != true) {
                 playAudio3();
             }
-            if (minutesLeft == 0 && secondsLeft == 0 && pause != true ) {
-                playAudio()
-                pauseTimer()
-                alert(intIndMin)
-                alert(intIndSeg)
+            if (minutesLeft == 0 && secondsLeft == 1 && pause != true ) {
+                console.log(newSecondsWait) 
             
+                newSecondsWait == parseInt(meuIntGrupoSeg) & newMinutesWait == parseInt(meuIntGrupoMin) ?
+                setFlagTempo((flagTempo) => flagTempo)
+                :
+                setFlagTempo((flagTempo) => !flagTempo)
+                
+
+                
+            }
+            if (minutesLeft == 0 && secondsLeft == 0 && pause != true ) {
+
+ 
+                        contarApresentacao !== parseInt(meuPartMesas) ?
+                        setContarApresentacao( contarApresentacao !== parseInt(meuPartMesas) && flagTempo == true ? 
+                        contarApresentacao + 1 : contarApresentacao) & setNewSecondsWait(parseInt(meuIntIndSeg)) & setNewMinutesWait(meuIntIndMin)
+                        :
+                        setContarReuniao( contarReuniao !== (parseInt(meuNumMesas)) ? contarReuniao + 1: contarReuniao )
+                         & setContarApresentacao( contarApresentacao !== parseInt(meuPartMesas) && flagTempo == true ? 
+                         parseInt(meuPartMesas) : (contarApresentacao - contarApresentacao)) & 
+                         setNewSecondsWait(parseInt(meuIntGrupoSeg)) & setNewMinutesWait(meuIntGrupoMin)
+
+
+        
+                playAudio()
+                
+                resetTimer()
+                
+
+
             }
 
             if (secondsLeft <= 0) {
@@ -169,6 +233,8 @@ const meuTempoDecorrido = async() => {
         setDisableButton((disable) => !disable);
     }
     const pauseTimer = () => {
+
+        console.log("pause ",flagTempo);
         resetTimer
         setPause((pause) => !pause);
         setIniciar ((iniciar) => !iniciar)
@@ -176,6 +242,8 @@ const meuTempoDecorrido = async() => {
         console.log(secondsLeft)
             if(iniciar === true && newSeconds <= secondsLeft && newMinutes <= minutesLeft) {
                 playAudio2()
+                
+                console.log("pause inicio if",flagTempo);
             }
     };
     useEffect(timer2, [ minutesLeft,secondsLeft, pause]);
@@ -207,7 +275,19 @@ const meuTempoDecorrido = async() => {
         getRodadas18();
         getRodadas19();
         getRodadas20();
-        
+        negocios.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc,index) => {
+            return( 
+                setMeuNumMesas(doc.numMesas) &
+                setMeuPartMesas(doc.partMesa) & 
+
+                setMeuIntIndMin(doc.intIndMin) &
+                setMeuIntIndSeg(doc.intIndSeg) &
+                setMeuIntGrupoMin(doc.intGrupMin) &
+                setMeuIntGrupoSeg(doc.intGrupSeg)             
+
+            )
+            } )
+
     }, []);
     const getNegocios = async () => {
         const data = await NegocioDataService.getAllNegocios();
@@ -314,13 +394,13 @@ const meuTempoDecorrido = async() => {
         <Card  key={index} style={{width:'1000px'}} 
            onLoadedData ={() =>
                 {
-                setMinutesLeft(doc.tempoPartMin) 
+                setMinutesLeft(parseInt(doc.tempoPartMin)) 
                 ;
-                setNewSeconds(doc.tempoPartSeg)
+                setNewSeconds(parseInt(doc.tempoPartSeg))
                 ;
-                setSecondsLeft(doc.tempoPartSeg) 
+                setSecondsLeft(parseInt(doc.tempoPartSeg)) 
                 ;
-                setNewMinutes(doc.tempoPartMin)
+                setNewMinutes(parseInt(doc.tempoPartMin))
                 }
             } 
            

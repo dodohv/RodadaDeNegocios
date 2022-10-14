@@ -2172,7 +2172,7 @@ const Configurador = ({id, setNegocioId}) => {
 
         setMessage("");
         gerarEtiquetas();
-        alert(participantes)
+      
         setIntIndMin(parseInt(intIndMin))
         setIntGrupMin(parseInt(intGrupMin))
         setParticipantes(parseInt(participantes))
@@ -2277,7 +2277,7 @@ const Configurador = ({id, setNegocioId}) => {
         // este Array Cria a logica de mesas da rodada 2 em diante
         var shift1 = aarrayMesa1.shift()
         aarrayMesa1.push(shift1)
-        console.log("aarrayMesa1", aarrayMesa1)
+        
         if (numMesas >= 2) { 
             for (let i = 1 ; i <= 2 ; i++) {
                 if(partMesa <= arrayMesa2.length){
@@ -2511,8 +2511,7 @@ const Configurador = ({id, setNegocioId}) => {
                   await Rodada2DataService.addRodadas2(newRodada2);
                   console.log("Rodadas criadas")
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-console.log("partMesa", partMesa)
-console.log("lengthArrayMesa2",aarrayMesa2.length)        
+  
 var shift1 = aarrayMesa1.shift()
         aarrayMesa1.push(shift1)
            if (numMesas >= 2) { 
@@ -4731,7 +4730,7 @@ const newRodada13 = {
     return ( 
  
     
-        <Container className='configurador'>
+        <Container className='configurador w-100 p-3'>
         <>
         {message?.msg && (
         <Alert 
@@ -4764,7 +4763,7 @@ const newRodada13 = {
                     
                 }
             } >
-            <Row xs={1} md={12} className="g-4">
+            <Row xs={12} md={12} className="g-4 ">
 
             <Col xs={12}>
                 <Card bg={'outline-primary'} >
@@ -4802,7 +4801,7 @@ const newRodada13 = {
                                             className="input-card" aria-label="Floating label select example">
                                                <option value="Selecione">Selecione</option>
                                                 <option value="Grupo">Grupo</option>
-                                                <option value="Individual">Individual</option>
+                                                
                                             </Form.Select>
                                     </Card.Text>
                                 </Col>
@@ -5718,7 +5717,7 @@ const newRodada13 = {
                                     </Card.Text>
                                 </Col>
                             </Row>
-                            <Row className='row-card'>
+                            <Row className='row-card d-none'>
                                 <Col xs={4} md={6}>
                                     <Card.Text className="text-card">
                                     Imagem Direita:
@@ -5732,7 +5731,7 @@ const newRodada13 = {
                                     </Card.Text>
                                 </Col>
                             </Row>
-                            <Row className='row-card'>
+                            <Row className='row-card d-none'>
                                 <Col xs={4} md={6}>
                                     <Card.Text className="text-card">
                                     Imagem Esquerda:
@@ -5749,7 +5748,7 @@ const newRodada13 = {
                                     </Card.Text>
                                 </Col>
                             </Row>
-                            <Row className='row-card'>
+                            <Row className='row-card d-none' >
                                 <Col xs={4} md={6}>
                                     <Card.Text className="text-card">
                                     Idioma:
