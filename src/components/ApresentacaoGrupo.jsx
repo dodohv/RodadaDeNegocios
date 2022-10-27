@@ -275,6 +275,7 @@ const meuTempoDecorrido = async() => {
         getRodadas18();
         getRodadas19();
         getRodadas20();
+
         negocios.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc,index) => {
             return( 
                 setMeuNumMesas(doc.numMesas) &
@@ -289,6 +290,9 @@ const meuTempoDecorrido = async() => {
             } )
 
     }, []);
+
+    
+
     const getNegocios = async () => {
         const data = await NegocioDataService.getAllNegocios();
         console.log(data.docs);
@@ -706,8 +710,13 @@ const meuTempoDecorrido = async() => {
          
             
             <Row xs={12} md={12}>  
-                <Col xs={3} md={3}>
+                {/* <Col xs={3} md={3}>
                         <img src ="" />
+                </Col> */}
+                <Col xs={3} md={3}>
+                <Col>
+
+    </Col>
                 </Col>
                 
                 {contarReuniao == 1 ?
@@ -4791,7 +4800,7 @@ const meuTempoDecorrido = async() => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 contarReuniao == 2 ?
                 
-                rodadas.sort((a,b)=> a.dataRodada > b.dataRodada ? 1 : -1).slice(-1).map((docrodada, indexrodada) => {
+                rodadasBoa.sort((a,b)=> a.dataRodada > b.dataRodada ? 1 : -1).slice(-1).map((docrodada, indexrodada) => {
                     return(
 
                          

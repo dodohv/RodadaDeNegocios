@@ -71,12 +71,14 @@ const deleteHandler = async(id) => {
 
 
 useEffect(() => {
-  
+
 getNegocios();
 
  }, []);
     return ( 
+      
         <div>
+
             <h2> 404, Página não encontrada!</h2>
             <Link to="/" >
                 <button> Voltar para Inicio</button>
@@ -234,7 +236,8 @@ getNegocios();
 
       </tbody>
     </Table>
- 
+      
+
         </div>
      );
 }

@@ -24,7 +24,10 @@ import Rodada17DataService from '../services/rodada17.service';
 import Rodada18DataService from '../services/rodada18.service';
 import Rodada19DataService from '../services/rodada19.service';
 import Rodada20DataService from '../services/rodada20.service';
+
+
 const Configurador = ({id, setNegocioId}) => {
+    
     const [rodadasMesas, setRodadasMesas] = useState([]);
     const [minutos, setMinutos] = useState([]);
     const [partics, setPartics] = useState([]);
@@ -44,9 +47,11 @@ const Configurador = ({id, setNegocioId}) => {
     const [tempoTotalHra, setTempoTotalHra] = useState(0);
     const [tempoTotalMin, setTempoTotalMin] = useState(0);
     const [tempoTotalSeg, setTempoTotalSeg] = useState(0);
-    const [imgDireita, setImgDireita] = useState(''); 
-    const [imgEsquerda, setImgEsquerda] = useState('');
+    const [imgDireita, setImgDireita] = useState(null); 
+    const [imgEsquerda, setImgEsquerda] = useState(null);
     const [idioma, setIdioma] = useState('');
+    const types = ['image/png', 'image/jpeg'];
+    const [url, setUrl] = useState(null);
     const [message, setMessage] = useState({error: false, msg: ""});
     const [dataRodada, setDataRodada] = useState(Date.now());
     const [arrayRodada,setArrayRodada]= useState([]);
@@ -114,6 +119,23 @@ const Configurador = ({id, setNegocioId}) => {
     const [aarrayMesa29, setAarrayMesa29] = useState([]);
     const [aarrayMesa30, setAarrayMesa30] = useState([]);
     const [auxiliar,setAuxiliar] = useState(0);
+    const [error, setError] = useState(null);
+
+    const handleChange = (e) => {
+        e.preventDefault()
+        if(e.target.files[0]){
+            var selected = e.target.files[0];
+            if (selected && types.includes(selected.type)) {
+                setImgEsquerda(selected);
+                setError('')
+            }else {
+                setImgEsquerda(null);
+                setError('Por favor coloque uma imagem png ou jpeg!')
+            }
+        }
+
+    };
+    
 
     const gerarEtiquetas = () => {
 
@@ -1593,468 +1615,318 @@ const Configurador = ({id, setNegocioId}) => {
         }
 
         
-        if (numMesas >= 2) { 
-            for (let i = 1 ; i <= 2 ; i++) {
-                if(partMesa <= arrayMesa2.length){
-                var shift2 = aarrayMesa2.shift()
-                 aarrayMesa2.push(shift2)
-                }
-            }  
-        }
-        if (numMesas == 6) {
-            if (arrayMesa6.length < partMesa) {
-                var poped = arrayMesa5.pop()
-                arrayMesa6.unshift(poped)
-                if( arrayMesa6.length < partMesa) {
-                    var poped = arrayMesa4.pop()
-                    arrayMesa5.unshift(poped)
-                    var poped2 = arrayMesa5.pop()
-                        arrayMesa6.unshift(poped2)
-                    if ( arrayMesa6.length < partMesa) {
-                        var poped = arrayMesa4.pop()
-                        arrayMesa15.unshift(poped)
-                        var poped2 = arrayMesa5.pop()
-                            arrayMesa6.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 7) {
-            if (arrayMesa7.length < partMesa) {
-                var poped = arrayMesa6.pop() 
-                arrayMesa7.unshift(poped)
-                if( arrayMesa7.length < partMesa) {
-                    var poped = arrayMesa5.pop()
-                    arrayMesa6.unshift(poped)
-                    var poped2 = arrayMesa6.pop()
-                        arrayMesa7.unshift(poped2)
-                    if( arrayMesa7.length < partMesa) {
-                        var poped = arrayMesa5.pop()
-                        arrayMesa6.unshift(poped)
-                        var poped2 = arrayMesa6.pop()
-                            arrayMesa7.unshift(poped2)
-                        
-                    }   
-                }
-            }
-        }else if (numMesas == 8) {
-            if (arrayMesa8.length < partMesa) {
-                var poped = arrayMesa7.pop() 
-                arrayMesa8.unshift(poped)
-                if( arrayMesa8.length < partMesa) {
-                    var poped = arrayMesa6.pop()
-                    arrayMesa7.unshift(poped)
-                    var poped2 = arrayMesa7.pop()
-                        arrayMesa8.unshift(poped2)
-                    if( arrayMesa8.length < partMesa) {
-                        var poped = arrayMesa6.pop()
-                        arrayMesa7.unshift(poped)
-                        var poped2 = arrayMesa7.pop()
-                            arrayMesa8.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 9) {
-            if (arrayMesa9.length < partMesa) {
-                var poped = arrayMesa8.pop() 
-                arrayMesa9.unshift(poped)
-                if( arrayMesa9.length < partMesa) {
-                    var poped = arrayMesa7.pop()
-                    arrayMesa8.unshift(poped)
-                    var poped2 = arrayMesa8.pop()
-                        arrayMesa9.unshift(poped2)
-                    if( arrayMesa9.length < partMesa) {
-                        var poped = arrayMesa7.pop()
-                        arrayMesa8.unshift(poped)
-                        var poped2 = arrayMesa8.pop()
-                            arrayMesa9.unshift(poped2)
-                        
-                   }
-                }
-            }
-        }else if (numMesas == 10) {
-            if (arrayMesa10.length < partMesa) {
-                var poped = arrayMesa9.pop() 
-                arrayMesa10.unshift(poped)
-                if( arrayMesa10.length < partMesa) {
-                    var poped = arrayMesa8.pop()
-                    arrayMesa9.unshift(poped)
-                    var poped2 = arrayMesa9.pop()
-                        arrayMesa10.unshift(poped2)
-                    if( arrayMesa10.length < partMesa) {
-                        var poped = arrayMesa8.pop()
-                        arrayMesa9.unshift(poped)
-                        var poped2 = arrayMesa9.pop()
-                            arrayMesa10.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 11) {
-            if (arrayMesa11.length < partMesa) {
-                var poped = arrayMesa10.pop() 
-                arrayMesa11.unshift(poped)
-                if( arrayMesa11.length < partMesa) {
-                    var poped = arrayMesa9.pop()
-                    arrayMesa10.unshift(poped)
-                    var poped2 = arrayMesa10.pop()
-                        arrayMesa11.unshift(poped2)
-                    if( arrayMesa11.length < partMesa) {
-                        var poped = arrayMesa9.pop()
-                        arrayMesa10.unshift(poped)
-                        var poped2 = arrayMesa10.pop()
-                            arrayMesa11.unshift(poped2)
-                        
-                    }
-                }
-            }
+        // if (numMesas >= 2) { 
+        //     for (let i = 1 ; i <= 2 ; i++) {
+        //         if(partMesa <= arrayMesa2.length){
+        //         var shift2 = aarrayMesa2.shift()
+        //          aarrayMesa2.push(shift2)
+        //         }
+        //     }  
+        // }
+        // if (numMesas == 6) {
+        //     if (arrayMesa6.length < partMesa) {
+        //         var poped = arrayMesa5.pop()
+        //         arrayMesa6.unshift(poped)
+        //         if( arrayMesa6.length < partMesa) {
+        //             var poped = arrayMesa4.pop()
+        //             arrayMesa5.unshift(poped)
+        //             var poped2 = arrayMesa5.pop()
+        //                 arrayMesa6.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 7) {
+        //     if (arrayMesa7.length < partMesa) {
+        //         var poped = arrayMesa6.pop() 
+        //         arrayMesa7.unshift(poped)
+        //         if( arrayMesa7.length < partMesa) {
+        //             var poped = arrayMesa5.pop()
+        //             arrayMesa6.unshift(poped)
+        //             var poped2 = arrayMesa6.pop()
+        //                 arrayMesa7.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 8) {
+        //     if (arrayMesa8.length < partMesa) {
+        //         var poped = arrayMesa7.pop() 
+        //         arrayMesa8.unshift(poped)
+        //         if( arrayMesa8.length < partMesa) {
+        //             var poped = arrayMesa6.pop()
+        //             arrayMesa7.unshift(poped)
+        //             var poped2 = arrayMesa7.pop()
+        //                 arrayMesa8.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 9) {
+        //     if (arrayMesa9.length < partMesa) {
+        //         var poped = arrayMesa8.pop() 
+        //         arrayMesa9.unshift(poped)
+        //         if( arrayMesa9.length < partMesa) {
+        //             var poped = arrayMesa7.pop()
+        //             arrayMesa8.unshift(poped)
+        //             var poped2 = arrayMesa8.pop()
+        //                 arrayMesa9.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 10) {
+        //     if (arrayMesa10.length < partMesa) {
+        //         var poped = arrayMesa9.pop() 
+        //         arrayMesa10.unshift(poped)
+        //         if( arrayMesa10.length < partMesa) {
+        //             var poped = arrayMesa8.pop()
+        //             arrayMesa9.unshift(poped)
+        //             var poped2 = arrayMesa9.pop()
+        //                 arrayMesa10.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 11) {
+        //     if (arrayMesa11.length < partMesa) {
+        //         var poped = arrayMesa10.pop() 
+        //         arrayMesa11.unshift(poped)
+        //         if( arrayMesa11.length < partMesa) {
+        //             var poped = arrayMesa9.pop()
+        //             arrayMesa10.unshift(poped)
+        //             var poped2 = arrayMesa10.pop()
+        //                 arrayMesa11.unshift(poped2)
+
+        //         }
+        //     }
             
-        }else if (numMesas == 12) {
-            if (arrayMesa12.length < partMesa) {
-                var poped = arrayMesa11.pop() 
-                arrayMesa12.unshift(poped)
-                if( arrayMesa12.length < partMesa) {
-                    var poped = arrayMesa10.pop()
-                    arrayMesa11.unshift(poped)
-                    var poped2 = arrayMesa11.pop()
-                        arrayMesa12.unshift(poped2)
-                    if( arrayMesa12.length < partMesa) {
-                        var poped = arrayMesa10.pop()
-                        arrayMesa11.unshift(poped)
-                        var poped2 = arrayMesa11.pop()
-                            arrayMesa12.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 13) {
-            if (arrayMesa13.length < partMesa) {
-                var poped = arrayMesa12.pop() 
-                arrayMesa13.unshift(poped)
-                if( arrayMesa13.length < partMesa) {
-                    var poped = arrayMesa11.pop()
-                    arrayMesa12.unshift(poped)
-                    var poped2 = arrayMesa12.pop()
-                        arrayMesa13.unshift(poped2)
-                    if( arrayMesa13.length < partMesa) {
-                        var poped = arrayMesa11.pop()
-                        arrayMesa12.unshift(poped)
-                        var poped2 = arrayMesa12.pop()
-                            arrayMesa13.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 14) {
-            if (arrayMesa14.length < partMesa) {
-                var poped = arrayMesa13.pop() 
-                arrayMesa14.unshift(poped)
-                if( arrayMesa14.length < partMesa) {
-                    var poped = arrayMesa12.pop()
-                    arrayMesa13.unshift(poped)
-                    var poped2 = arrayMesa13.pop()
-                        arrayMesa14.unshift(poped2)
-                    if( arrayMesa14.length < partMesa) {
-                        var poped = arrayMesa12.pop()
-                        arrayMesa13.unshift(poped)
-                        var poped2 = arrayMesa13.pop()
-                            arrayMesa14.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 15) {
-            if (arrayMesa15.length < partMesa) {
-                var poped = arrayMesa14.pop() 
-                arrayMesa15.unshift(poped)
-                if( arrayMesa15.length < partMesa) {
-                    var poped = arrayMesa13.pop()
-                    arrayMesa14.unshift(poped)
-                    var poped2 = arrayMesa14.pop()
-                        arrayMesa15.unshift(poped2)
-                    if( arrayMesa15.length < partMesa) {
-                        var poped = arrayMesa13.pop()
-                        arrayMesa14.unshift(poped)
-                        var poped2 = arrayMesa14.pop()
-                            arrayMesa15.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 16) {
-            if (arrayMesa16.length < partMesa) {
-                var poped = arrayMesa15.pop() 
-                arrayMesa16.unshift(poped)
-                if( arrayMesa16.length < partMesa) {
-                    var poped = arrayMesa14.pop()
-                    arrayMesa15.unshift(poped)
-                    var poped2 = arrayMesa15.pop()
-                        arrayMesa16.unshift(poped2)
-                    if( arrayMesa16.length < partMesa) {
-                        var poped = arrayMesa14.pop()
-                        arrayMesa15.unshift(poped)
-                        var poped2 = arrayMesa15.pop()
-                            arrayMesa16.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 17) {
-            if (arrayMesa17.length < partMesa) {
-                var poped = arrayMesa16.pop() 
-                arrayMesa17.unshift(poped)
-                if( arrayMesa17.length < partMesa) {
-                    var poped = arrayMesa15.pop()
-                    arrayMesa16.unshift(poped)
-                    var poped2 = arrayMesa16.pop()
-                        arrayMesa17.unshift(poped2)
-                    if( arrayMesa17.length < partMesa) {
-                        var poped = arrayMesa15.pop()
-                        arrayMesa16.unshift(poped)
-                        var poped2 = arrayMesa16.pop()
-                            arrayMesa17.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 18) {
-            if (arrayMesa18.length < partMesa) {
-                var poped = arrayMesa17.pop() 
-                arrayMesa18.unshift(poped)
-                if( arrayMesa18.length < partMesa) {
-                    var poped = arrayMesa16.pop()
-                    arrayMesa17.unshift(poped)
-                    var poped2 = arrayMesa17.pop()
-                        arrayMesa18.unshift(poped2)
-                    if( arrayMesa18.length < partMesa) {
-                        var poped = arrayMesa16.pop()
-                        arrayMesa17.unshift(poped)
-                        var poped2 = arrayMesa17.pop()
-                            arrayMesa18.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 19) {
-            if (arrayMesa19.length < partMesa) {
-                var poped = arrayMesa18.pop() 
-                arrayMesa19.unshift(poped)
-                if( arrayMesa19.length < partMesa) {
-                    var poped = arrayMesa17.pop()
-                    arrayMesa18.unshift(poped)
-                    var poped2 = arrayMesa18.pop()
-                        arrayMesa19.unshift(poped2)
-                    if( arrayMesa19.length < partMesa) {
-                        var poped = arrayMesa17.pop()
-                        arrayMesa18.unshift(poped)
-                        var poped2 = arrayMesa18.pop()
-                            arrayMesa19.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 20) {
-            if (arrayMesa20.length < partMesa) {
-                var poped = arrayMesa19.pop() 
-                arrayMesa20.unshift(poped)
-                if( arrayMesa20.length < partMesa) {
-                    var poped = arrayMesa18.pop()
-                    arrayMesa19.unshift(poped)
-                    var poped2 = arrayMesa19.pop()
-                        arrayMesa20.unshift(poped2)
-                    if( arrayMesa20.length < partMesa) {
-                        var poped = arrayMesa18.pop()
-                        arrayMesa19.unshift(poped)
-                        var poped2 = arrayMesa19.pop()
-                            arrayMesa20.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 21) {
-            if (arrayMesa21.length < partMesa) {
-                var poped = arrayMesa20.pop() 
-                arrayMesa21.unshift(poped)
-                if( arrayMesa21.length < partMesa) {
-                    var poped = arrayMesa19.pop()
-                    arrayMesa20.unshift(poped)
-                    var poped2 = arrayMesa20.pop()
-                        arrayMesa21.unshift(poped2)
-                    if( arrayMesa21.length < partMesa) {
-                        var poped = arrayMesa19.pop()
-                        arrayMesa20.unshift(poped)
-                        var poped2 = arrayMesa20.pop()
-                            arrayMesa21.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 22) {
-            if (arrayMesa22.length < partMesa) {
-                var poped = arrayMesa21.pop() 
-                arrayMesa22.unshift(poped)
-                if( arrayMesa22.length < partMesa) {
-                    var poped = arrayMesa20.pop()
-                    arrayMesa21.unshift(poped)
-                    var poped2 = arrayMesa21.pop()
-                        arrayMesa22.unshift(poped2)
-                    if( arrayMesa22.length < partMesa) {
-                        var poped = arrayMesa20.pop()
-                        arrayMesa21.unshift(poped)
-                        var poped2 = arrayMesa21.pop()
-                            arrayMesa22.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 23) {
-            if (arrayMesa23.length < partMesa) {
-                var poped = arrayMesa22.pop() 
-                arrayMesa23.unshift(poped)
-                if( arrayMesa23.length < partMesa) {
-                    var poped = arrayMesa21.pop()
-                    arrayMesa22.unshift(poped)
-                    var poped2 = arrayMesa22.pop()
-                        arrayMesa23.unshift(poped2)
-                    if( arrayMesa23.length < partMesa) {
-                        var poped = arrayMesa21.pop()
-                        arrayMesa22.unshift(poped)
-                        var poped2 = arrayMesa22.pop()
-                            arrayMesa23.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 24) {
-            if (arrayMesa24.length < partMesa) {
-                var poped = arrayMesa23.pop() 
-                arrayMesa24.unshift(poped)
-                if( arrayMesa24.length < partMesa) {
-                    var poped = arrayMesa22.pop()
-                    arrayMesa23.unshift(poped)
-                    var poped2 = arrayMesa23.pop()
-                        arrayMesa24.unshift(poped2)
-                    if( arrayMesa24.length < partMesa) {
-                        var poped = arrayMesa22.pop()
-                        arrayMesa23.unshift(poped)
-                        var poped2 = arrayMesa23.pop()
-                            arrayMesa24.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 25) {
-            if (arrayMesa25.length < partMesa) {
-                var poped = arrayMesa24.pop() 
-                arrayMesa25.unshift(poped)
-                if( arrayMesa25.length < partMesa) {
-                    var poped = arrayMesa23.pop()
-                    arrayMesa24.unshift(poped)
-                    var poped2 = arrayMesa24.pop()
-                        arrayMesa25.unshift(poped2)
-                    if( arrayMesa25.length < partMesa) {
-                        var poped = arrayMesa23.pop()
-                        arrayMesa24.unshift(poped)
-                        var poped2 = arrayMesa24.pop()
-                            arrayMesa25.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 26) {
-            if (arrayMesa26.length < partMesa) {
-                var poped = arrayMesa25.pop() 
-                arrayMesa26.unshift(poped)
-                if( arrayMesa26.length < partMesa) {
-                    var poped = arrayMesa24.pop()
-                    arrayMesa25.unshift(poped)
-                    var poped2 = arrayMesa25.pop()
-                        arrayMesa26.unshift(poped2)
-                    if( arrayMesa26.length < partMesa) {
-                        var poped = arrayMesa24.pop()
-                        arrayMesa25.unshift(poped)
-                        var poped2 = arrayMesa25.pop()
-                            arrayMesa26.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 27) {
-            if (arrayMesa27.length < partMesa) {
-                var poped = arrayMesa26.pop() 
-                arrayMesa27.unshift(poped)
-                if( arrayMesa27.length < partMesa) {
-                    var poped = arrayMesa25.pop()
-                    arrayMesa26.unshift(poped)
-                    var poped2 = arrayMesa26.pop()
-                        arrayMesa27.unshift(poped2)
-                    if( arrayMesa27.length < partMesa) {
-                        var poped = arrayMesa25.pop()
-                        arrayMesa26.unshift(poped)
-                        var poped2 = arrayMesa26.pop()
-                            arrayMesa27.unshift(poped2)
-                        
-                    }
-                }
-            }
-        }else if (numMesas == 28) {
-            if (arrayMesa28.length < partMesa) {
-                var poped = arrayMesa27.pop() 
-                arrayMesa28.unshift(poped)
-                if( arrayMesa28.length < partMesa) {
-                    var poped = arrayMesa26.pop()
-                    arrayMesa27.unshift(poped)
-                    var poped2 = arrayMesa27.pop()
-                        arrayMesa28.unshift(poped2)
-                    if( arrayMesa28.length < partMesa) {
-                        var poped = arrayMesa26.pop()
-                        arrayMesa27.unshift(poped)
-                        var poped2 = arrayMesa27.pop()
-                            arrayMesa28.unshift(poped2)
-                       
-                    }
-                }
-            }
-        }else if (numMesas == 29) {
-            if (arrayMesa29.length < partMesa) {
-                var poped = arrayMesa28.pop() 
-                arrayMesa29.unshift(poped)
-                if( arrayMesa29.length < partMesa) {
-                    var poped = arrayMesa27.pop()
-                    arrayMesa28.unshift(poped)
-                    var poped2 = arrayMesa28.pop()
-                        arrayMesa29.unshift(poped2)
-                    if( arrayMesa29.length < partMesa) {
-                        var poped = arrayMesa27.pop()
-                        arrayMesa28.unshift(poped)
-                        var poped2 = arrayMesa28.pop()
-                            arrayMesa29.unshift(poped2)
-                        
-                    }
-                }
-            }
+        // }else if (numMesas == 12) {
+        //     if (arrayMesa12.length < partMesa) {
+        //         var poped = arrayMesa11.pop() 
+        //         arrayMesa12.unshift(poped)
+        //         if( arrayMesa12.length < partMesa) {
+        //             var poped = arrayMesa10.pop()
+        //             arrayMesa11.unshift(poped)
+        //             var poped2 = arrayMesa11.pop()
+        //                 arrayMesa12.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 13) {
+        //     if (arrayMesa13.length < partMesa) {
+        //         var poped = arrayMesa12.pop() 
+        //         arrayMesa13.unshift(poped)
+        //         if( arrayMesa13.length < partMesa) {
+        //             var poped = arrayMesa11.pop()
+        //             arrayMesa12.unshift(poped)
+        //             var poped2 = arrayMesa12.pop()
+        //                 arrayMesa13.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 14) {
+        //     if (arrayMesa14.length < partMesa) {
+        //         var poped = arrayMesa13.pop() 
+        //         arrayMesa14.unshift(poped)
+        //         if( arrayMesa14.length < partMesa) {
+        //             var poped = arrayMesa12.pop()
+        //             arrayMesa13.unshift(poped)
+        //             var poped2 = arrayMesa13.pop()
+        //                 arrayMesa14.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 15) {
+        //     if (arrayMesa15.length < partMesa) {
+        //         var poped = arrayMesa14.pop() 
+        //         arrayMesa15.unshift(poped)
+        //         if( arrayMesa15.length < partMesa) {
+        //             var poped = arrayMesa13.pop()
+        //             arrayMesa14.unshift(poped)
+        //             var poped2 = arrayMesa14.pop()
+        //                 arrayMesa15.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 16) {
+        //     if (arrayMesa16.length < partMesa) {
+        //         var poped = arrayMesa15.pop() 
+        //         arrayMesa16.unshift(poped)
+        //         if( arrayMesa16.length < partMesa) {
+        //             var poped = arrayMesa14.pop()
+        //             arrayMesa15.unshift(poped)
+        //             var poped2 = arrayMesa15.pop()
+        //                 arrayMesa16.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 17) {
+        //     if (arrayMesa17.length < partMesa) {
+        //         var poped = arrayMesa16.pop() 
+        //         arrayMesa17.unshift(poped)
+        //         if( arrayMesa17.length < partMesa) {
+        //             var poped = arrayMesa15.pop()
+        //             arrayMesa16.unshift(poped)
+        //             var poped2 = arrayMesa16.pop()
+        //                 arrayMesa17.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 18) {
+        //     if (arrayMesa18.length < partMesa) {
+        //         var poped = arrayMesa17.pop() 
+        //         arrayMesa18.unshift(poped)
+        //         if( arrayMesa18.length < partMesa) {
+        //             var poped = arrayMesa16.pop()
+        //             arrayMesa17.unshift(poped)
+        //             var poped2 = arrayMesa17.pop()
+        //                 arrayMesa18.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 19) {
+        //     if (arrayMesa19.length < partMesa) {
+        //         var poped = arrayMesa18.pop() 
+        //         arrayMesa19.unshift(poped)
+        //         if( arrayMesa19.length < partMesa) {
+        //             var poped = arrayMesa17.pop()
+        //             arrayMesa18.unshift(poped)
+        //             var poped2 = arrayMesa18.pop()
+        //                 arrayMesa19.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 20) {
+        //     if (arrayMesa20.length < partMesa) {
+        //         var poped = arrayMesa19.pop() 
+        //         arrayMesa20.unshift(poped)
+        //         if( arrayMesa20.length < partMesa) {
+        //             var poped = arrayMesa18.pop()
+        //             arrayMesa19.unshift(poped)
+        //             var poped2 = arrayMesa19.pop()
+        //                 arrayMesa20.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 21) {
+        //     if (arrayMesa21.length < partMesa) {
+        //         var poped = arrayMesa20.pop() 
+        //         arrayMesa21.unshift(poped)
+        //         if( arrayMesa21.length < partMesa) {
+        //             var poped = arrayMesa19.pop()
+        //             arrayMesa20.unshift(poped)
+        //             var poped2 = arrayMesa20.pop()
+        //                 arrayMesa21.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 22) {
+        //     if (arrayMesa22.length < partMesa) {
+        //         var poped = arrayMesa21.pop() 
+        //         arrayMesa22.unshift(poped)
+        //         if( arrayMesa22.length < partMesa) {
+        //             var poped = arrayMesa20.pop()
+        //             arrayMesa21.unshift(poped)
+        //             var poped2 = arrayMesa21.pop()
+        //                 arrayMesa22.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 23) {
+        //     if (arrayMesa23.length < partMesa) {
+        //         var poped = arrayMesa22.pop() 
+        //         arrayMesa23.unshift(poped)
+        //         if( arrayMesa23.length < partMesa) {
+        //             var poped = arrayMesa21.pop()
+        //             arrayMesa22.unshift(poped)
+        //             var poped2 = arrayMesa22.pop()
+        //                 arrayMesa23.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 24) {
+        //     if (arrayMesa24.length < partMesa) {
+        //         var poped = arrayMesa23.pop() 
+        //         arrayMesa24.unshift(poped)
+        //         if( arrayMesa24.length < partMesa) {
+        //             var poped = arrayMesa22.pop()
+        //             arrayMesa23.unshift(poped)
+        //             var poped2 = arrayMesa23.pop()
+        //                 arrayMesa24.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 25) {
+        //     if (arrayMesa25.length < partMesa) {
+        //         var poped = arrayMesa24.pop() 
+        //         arrayMesa25.unshift(poped)
+        //         if( arrayMesa25.length < partMesa) {
+        //             var poped = arrayMesa23.pop()
+        //             arrayMesa24.unshift(poped)
+        //             var poped2 = arrayMesa24.pop()
+        //                 arrayMesa25.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 26) {
+        //     if (arrayMesa26.length < partMesa) {
+        //         var poped = arrayMesa25.pop() 
+        //         arrayMesa26.unshift(poped)
+        //         if( arrayMesa26.length < partMesa) {
+        //             var poped = arrayMesa24.pop()
+        //             arrayMesa25.unshift(poped)
+        //             var poped2 = arrayMesa25.pop()
+        //                 arrayMesa26.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 27) {
+        //     if (arrayMesa27.length < partMesa) {
+        //         var poped = arrayMesa26.pop() 
+        //         arrayMesa27.unshift(poped)
+        //         if( arrayMesa27.length < partMesa) {
+        //             var poped = arrayMesa25.pop()
+        //             arrayMesa26.unshift(poped)
+        //             var poped2 = arrayMesa26.pop()
+        //                 arrayMesa27.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 28) {
+        //     if (arrayMesa28.length < partMesa) {
+        //         var poped = arrayMesa27.pop() 
+        //         arrayMesa28.unshift(poped)
+        //         if( arrayMesa28.length < partMesa) {
+        //             var poped = arrayMesa26.pop()
+        //             arrayMesa27.unshift(poped)
+        //             var poped2 = arrayMesa27.pop()
+        //                 arrayMesa28.unshift(poped2)
+
+        //         }
+        //     }
+        // }else if (numMesas == 29) {
+        //     if (arrayMesa29.length < partMesa) {
+        //         var poped = arrayMesa28.pop() 
+        //         arrayMesa29.unshift(poped)
+        //         if( arrayMesa29.length < partMesa) {
+        //             var poped = arrayMesa27.pop()
+        //             arrayMesa28.unshift(poped)
+        //             var poped2 = arrayMesa28.pop()
+        //                 arrayMesa29.unshift(poped2)
+
+        //         }
+        //     }
           
-        }else if (numMesas == 30) {
-            if (arrayMesa30.length < partMesa) {
-                var poped = arrayMesa29.pop() 
-                arrayMesa30.unshift(poped)
-                if( arrayMesa30.length < partMesa) {
-                    var poped = arrayMesa28.pop()
-                    arrayMesa29.unshift(poped)
-                    var poped2 = arrayMesa29.pop()
-                        arrayMesa30.unshift(poped2)
-                    if( arrayMesa30.length < partMesa) {
-                        var poped = arrayMesa28.pop()
-                        arrayMesa29.unshift(poped)
-                        var poped2 = arrayMesa29.pop()
-                            arrayMesa30.unshift(poped2)
-                        
-                    }
-                }
-            }
+        // }else if (numMesas == 30) {
+        //     if (arrayMesa30.length < partMesa) {
+        //         var poped = arrayMesa29.pop() 
+        //         arrayMesa30.unshift(poped)
+        //         if( arrayMesa30.length < partMesa) {
+        //             var poped = arrayMesa28.pop()
+        //             arrayMesa29.unshift(poped)
+        //             var poped2 = arrayMesa29.pop()
+        //                 arrayMesa30.unshift(poped2)
+
+        //         }
+        //     }
             
-        }
+        // }
         
         
     }
@@ -2480,8 +2352,7 @@ const Configurador = ({id, setNegocioId}) => {
             numMesas,
             partMesa,
             tempoTotal,
-            imgDireita,
-            imgEsquerda,
+
             idioma,
             dataRodada
         }
@@ -2705,7 +2576,7 @@ var shift1 = aarrayMesa1.shift()
     }
                   await Rodada3DataService.addRodadas3(newRodada3)
                 console.log("Array Rodada 3 enviado e aplicada logica na mesma ufa!")
-
+                
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var shift1 = aarrayMesa1.shift()
 aarrayMesa1.push(shift1)
@@ -4708,8 +4579,8 @@ const newRodada13 = {
                 setNumMesas(docSnap.data().numMesas);
                 setPartMesa(docSnap.data().partMesa);
                 setTempoTotal(docSnap.data().tempoTotal);
-                setImgDireita(docSnap.data().imgDireita);
-                setImgEsquerda(docSnap.data().imgEsquerda);
+        //        setImgDireita(docSnap.data().imgDireita);
+        //        setImgEsquerda(docSnap.data().imgEsquerda);
                 setIdioma(docSnap.data().idioma);
                 setDataRodada(docSnap.data().dataRodada);
 
@@ -4727,6 +4598,9 @@ const newRodada13 = {
         },[numMesas, participantes, tempoPartMin, tempoPartSeg, intIndMin, intIndSeg, intGrupMin, intGrupSeg, 
          tempoTotalHra, tempoTotalMin,tempoTotalSeg,tempoTotal, partMesa,reuniao, grupo])
         
+
+
+
     return ( 
  
     
@@ -4757,8 +4631,8 @@ const newRodada13 = {
                     setNumMesas(0);
                     setPartMesa(0);
                     setTempoTotal(0);
-                    setImgDireita("");
-                    setImgEsquerda("");
+                    setImgDireita(null);
+                    setImgEsquerda(null);
                     setIdioma("Português")
                     
                 }
@@ -5727,11 +5601,11 @@ const newRodada13 = {
                                     <Card.Text >
                                         <Form.Control value={imgDireita}
                                         onChange={(e)   => setImgDireita(e.target.value)}
-                                        className="mb-0 input-card" type="file"  />
+                                        className="mb-0 input-card" type="file"   />
                                     </Card.Text>
                                 </Col>
                             </Row>
-                            <Row className='row-card d-none'>
+                            <Row className='row-card'>
                                 <Col xs={4} md={6}>
                                     <Card.Text className="text-card">
                                     Imagem Esquerda:
@@ -5739,12 +5613,13 @@ const newRodada13 = {
                                 </Col>
                                 <Col xs={8} md={6}>
                                     <Card.Text >
-                                        <Form.Control value={imgEsquerda} 
-                                        onChange={(e)   => setImgEsquerda(e.target.value)}
+                                        <Form.Control 
+                                        onChange={handleChange}
                                         className="mb-0 input-card" type="file"  />
                                      {/* <Form.Group controlId="formFileSm" className="mb-3 input-card">
                                         <Form.Control type="file" size="sm" />
                                     </Form.Group> */}
+                                    {error && <div className="error" >{error}</div>}
                                     </Card.Text>
                                 </Col>
                             </Row>
