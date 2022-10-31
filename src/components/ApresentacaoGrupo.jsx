@@ -32,6 +32,8 @@ const ApresentacaoGrupo = () => {
     const [dodohvbr, setDodohvbr] = useState(null)
     const [dodohv, setDodohv] = useState(undefined)
     const [rodadas, setRodadas] = useState([]);
+    const [rodadasFlat, setRodadasFlat] = useState([]);
+    
     const [rodadasBoa, setRodadasBoa] = useState([]);
     const [rodadas2, setRodadas2] = useState([]);
     const [rodadas3, setRodadas3] = useState([]);
@@ -66,6 +68,7 @@ const ApresentacaoGrupo = () => {
     const audioPlayer = useRef(null);
     const audioPlayer2 = useRef(null);
     const audioPlayer3 = useRef(null);
+    const[minhaReuniao,setMinhaReuniao] = useState('');
     const [negocios, setNegocios] = useState([]);
     const [newSeconds, setNewSeconds] = useState(0);
     const [newMinutes, setNewMinutes] = useState(0);
@@ -254,7 +257,6 @@ const meuTempoDecorrido = async() => {
     },[timer3,timer3Hra,timer3Min,timer3Seg])
     useEffect(() => {
 
-
         getNegocios();
         getRodadas7();
         getRodadasBoa();
@@ -279,19 +281,7 @@ const meuTempoDecorrido = async() => {
         getRodadas19();
         getRodadas20();
 
-        negocios.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc,index) => {
-            return( 
-                setMeuNumMesas(doc.numMesas) &
-                setMeuPartMesas(doc.partMesa) & 
-                setMeuTempoPartMin(doc.tempoPartMin) &
-                setMeuTempoPartSeg(doc.tempoPartSeg) &
-                setMeuIntIndMin(doc.intIndMin) &
-                setMeuIntIndSeg(doc.intIndSeg) &
-                setMeuIntGrupoMin(doc.intGrupMin) &
-                setMeuIntGrupoSeg(doc.intGrupSeg)             
-
-            )
-            } )
+        
 
     }, []);
 
@@ -299,12 +289,89 @@ const meuTempoDecorrido = async() => {
 
     const getNegocios = async () => {
         const data = await NegocioDataService.getAllNegocios();
-        console.log(data.docs);
+        console.log("data.docs",data.docs);
             setNegocios(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+            const meuNegocios = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+            if (negocios != ""){
+
+                console.log("Puxando negocios")             
+            negocios.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc,index) => {
+                return( 
+                    console.log("Chamou negocios") &
+                    setMeuNumMesas(doc.numMesas) &
+                    setMeuPartMesas(doc.partMesa) & 
+                    setMeuTempoPartMin(doc.tempoPartMin) &
+                    setMeuTempoPartSeg(doc.tempoPartSeg) &
+                    setMeuIntIndMin(doc.intIndMin) &
+                    setMeuIntIndSeg(doc.intIndSeg) &
+                    setMeuIntGrupoMin(doc.intGrupMin) &
+                    setMeuIntGrupoSeg(doc.intGrupSeg) &
+                    setMinhaReuniao(doc.reuniao) &
+                    console.log("Chamou negocios numMesas", meuNumMesas) &
+                    console.log("Chamou negocios partMesas", meuPartMesas) &
+                    console.log("Chamou negocios tempoPartMin", meuTempoPartMin) &
+                    console.log("Chamou negocios tempoPartSeg", meuTempoPartSeg) &
+                    console.log("Chamou negocios meuIntGrupoMin", meuIntGrupoMin) &    
+                    console.log("Chamou negocios meuIntIndSeg", meuIntIndSeg) &
+                    console.log("Chamou negocios meuIntGrupoMin", meuIntGrupoMin) &
+                    console.log("Chamou negocios meuIntGrupoSeg", meuIntGrupoSeg) &
+                    setMinutesLeft(doc.tempoPartMin) 
+                    &
+                    setNewSeconds(parseInt(doc.tempoPartSeg))
+                    &
+                    setSecondsLeft(parseInt(doc.tempoPartSeg)) 
+                    &
+                    setNewMinutes(parseInt(doc.tempoPartMin))
+                )
+                } )
+            }
+            else {
+                console.log("não puxou negocios")
+                meuNegocios.sort((a,b) =>(a.dataRodada > b.dataRodada) ? 1 : -1).slice(-1).map((doc,index) => {
+                    return( 
+                        console.log("Chamou negocios") &
+                        setMeuNumMesas(doc.numMesas) &
+                        setMeuPartMesas(doc.partMesa) & 
+                        setMeuTempoPartMin(doc.tempoPartMin) &
+                        setMeuTempoPartSeg(doc.tempoPartSeg) &
+                        setMeuIntIndMin(doc.intIndMin) &
+                        setMeuIntIndSeg(doc.intIndSeg) &
+                        setMeuIntGrupoMin(doc.intGrupMin) &
+                        setMeuIntGrupoSeg(doc.intGrupSeg) &
+                        setMinhaReuniao(doc.reuniao) &
+                        console.log("Chamou negocios numMesas", meuNumMesas) &
+                        console.log("Chamou negocios partMesas", meuPartMesas) &
+                        console.log("Chamou negocios tempoPartMin", meuTempoPartMin) &
+                        console.log("Chamou negocios tempoPartSeg", meuTempoPartSeg) &
+                        console.log("Chamou negocios meuIntGrupoMin", meuIntGrupoMin) &    
+                        console.log("Chamou negocios meuIntIndSeg", meuIntIndSeg) &
+                        console.log("Chamou negocios meuIntGrupoMin", meuIntGrupoMin) &
+                        console.log("Chamou negocios meuIntGrupoSeg", meuIntGrupoSeg) &
+                        setMinutesLeft(doc.tempoPartMin) 
+                        &
+                        setNewSeconds(parseInt(doc.tempoPartSeg))
+                        &
+                        setSecondsLeft(parseInt(doc.tempoPartSeg)) 
+                        &
+                        setNewMinutes(parseInt(doc.tempoPartMin))
+                    )
+                    } )
+            
+            }
+
     };
     const getRodadas = async () => {
         const data = await RodadaDataService.getAllRodadas();
             setRodadas(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+            const minhaRodadas = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+            if (rodadas != ""){
+                console.log("não puxou rodadas")
+                setRodadasFlat(minhaRodadas)
+            }else {
+                console.log("Puxou rodadas")
+                setRodadasFlat(minhaRodadas.flat(4))
+
+            }
     }
     const getRodadasBoa = async () => {
         const data = await RodadaBoaDataService.getAllRodadasBoa();
@@ -400,24 +467,19 @@ const meuTempoDecorrido = async() => {
         return (
 
         <Card  key={index} style={{width:'1000px'}} 
-           onLoadedData ={() =>
-                {
-                setMinutesLeft(parseInt(meuTempoPartMin)) 
-                ;
-                setNewSeconds(parseInt(meuTempoPartSeg))
-                ;
-                setSecondsLeft(parseInt(meuTempoPartSeg)) 
-                ;
-                setNewMinutes(parseInt(meuTempoPartMin))
-                }
-            } 
+           onLoad={() =>
+            {
+                getNegocios;
+                
+            }
+        } 
            
            > 
             <Row xs={12} md={12} className="">
                 <Col xs={12} md={12} style={{ marginLeft: '10px' , textAlign: 'start'}}>
                     <div>
                         <Card.Title className='title-card'>
-                            {doc.reuniao}
+                            {minhaReuniao}
                         </Card.Title>
                     </div>
                 </Col>
@@ -718,9 +780,9 @@ const meuTempoDecorrido = async() => {
                         <img src ="" />
                 </Col> */}
                 <Col xs={3} md={3}>
-                <Col>
-                <pre>{ JSON.stringify(rodadas, undefined, 2) }</pre>      
-    </Col>
+               
+                <pre>{ JSON.stringify(rodadasFlat, undefined, 2) }</pre>      
+                
                 </Col>
                 
                 {
@@ -728,16 +790,19 @@ const meuTempoDecorrido = async() => {
 
    
 
-                    rodadas.flat(3).sort((a,b)=> a.dataRodada > b.dataRodada ? 1 : -1).slice(-1).map((docrodada, indexrodada) => {
+                    rodadasFlat.sort((a,b)=> a.dataRodada > b.dataRodada ? 1 : -1).slice(-1).map((docrodada, indexrodada) => {
                         return(
-                            <Col xs={6} md={6} className="mesas">
+                            <Col xs={6} md={6} key={indexrodada} className="mesas">
                                 <Row xs={12} md={12} className="borderrow grande">
                                     <Col xs={2} md={2} style={{ textAlign: 'start'}} >
                                         <Card.Text>Mesa 1 </Card.Text>
                                     </Col>
                                     <Col xs={9} md={9} style={{ textAlign: 'center'}}>
                                     <Card.Text className="text-card ">
-                                    {docrodada.id}
+                                        {docrodada.arrayMesa1[0].id}
+                                    {/* { `${docrodada.arrayMesa1[0].id}`}
+                                    { docrodada.arrayMesa2[indexrodada].id}
+                                    { docrodada.arrayMesa1[indexrodada].idParticipante} */}
                                     </Card.Text>
                                     </Col>
                                 </Row>
@@ -753,8 +818,11 @@ const meuTempoDecorrido = async() => {
 
           
                 <Col xs={3} md={3}>
-                        <img src ="" />
+                <pre>{ JSON.stringify(rodadas3, undefined, 4) }</pre>  
                 </Col>
+                {/* <Col xs={3} md={3}>
+                        <img src ="" />
+                </Col> */}
             </Row>
 
 

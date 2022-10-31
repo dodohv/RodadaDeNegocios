@@ -120,6 +120,7 @@ const Configurador = ({id, setNegocioId}) => {
     const [aarrayMesa30, setAarrayMesa30] = useState([]);
     const [auxiliar,setAuxiliar] = useState(0);
     const [error, setError] = useState(null);
+    const [newRodadaFlat, setNewRodadaFlat] = useState([]);
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -136,6 +137,7 @@ const Configurador = ({id, setNegocioId}) => {
 
     };
     
+
 
     const gerarEtiquetas = () => {
 
@@ -1611,7 +1613,30 @@ const Configurador = ({id, setNegocioId}) => {
             console.log("arrayMesa30", arrayMesa30)
             console.log("length arrayMesa30", arrayMesa30.length)
 
-
+            console.log("arrayMesa1", arrayMesa1)
+            console.log("arrayMesa2", arrayMesa2)
+            console.log("arrayMesa3", arrayMesa3)
+            console.log("arrayMesa4", arrayMesa4)
+            console.log("arrayMesa5", arrayMesa5)
+            console.log("arrayMesa6", arrayMesa6)
+            console.log("arrayMesa7", arrayMesa7)
+            console.log("arrayMesa8", arrayMesa8)
+            const minharodadaMesa1 = arrayMesa1.flat(2)
+            console.log("minharodadaMesa1", minharodadaMesa1)
+            const minharodadaMesa2 = arrayMesa2.flat(2)
+            console.log("minharodadaMesa2", minharodadaMesa2)
+            const minharodadaMesa3 = arrayMesa3.flat(2)
+            console.log("minharodadaMesa3", minharodadaMesa3)
+            const minharodadaMesa4 = arrayMesa4.flat(2)
+            console.log("minharodadaMesa4", minharodadaMesa4)
+            const minharodadaMesa5 = arrayMesa5.flat(2)
+            console.log("minharodadaMesa5", minharodadaMesa5)
+            const minharodadaMesa6 = arrayMesa6.flat(2)
+            console.log("minharodadaMesa6", minharodadaMesa6)
+            const minharodadaMesa7 = arrayMesa7.flat(2)
+            console.log("minharodadaMesa7", minharodadaMesa7)
+            const minharodadaMesa8 = arrayMesa8.flat(2)
+            console.log("minharodadaMesa8", minharodadaMesa8)
         }
 
         
@@ -1967,7 +1992,7 @@ const Configurador = ({id, setNegocioId}) => {
                          + parseInt(intIndSeg) 
                          + parseInt(tempoPartSeg)))) / 3600).toFixed(0)
             )
-            console.log("tempototalHra", tempoTotalHra)
+          //  console.log("tempototalHra", tempoTotalHra)
             setTempoTotalMin(
                 ((numMesas *
                 ((Math.floor(parseInt(intGrupMin) * 60)
@@ -1980,7 +2005,7 @@ const Configurador = ({id, setNegocioId}) => {
                          + parseInt(tempoPartSeg))) % 3600)/60).toFixed(0)
 
             )
-            console.log("TempoTotalMin", tempoTotalMin)
+            //console.log("TempoTotalMin", tempoTotalMin)
             setTempoTotalSeg (
                ((numMesas *
                     ((Math.floor(parseInt(intGrupMin) * 60)
@@ -1993,7 +2018,7 @@ const Configurador = ({id, setNegocioId}) => {
                              + parseInt(tempoPartSeg))) % 3600) % 60).toFixed(0)
     
             )  
-            console.log("TempoTotalSeg", tempoTotalSeg)
+          //  console.log("TempoTotalSeg", tempoTotalSeg)
 
     if(tempoTotalHra.length == 2 && tempoTotalMin.length == 2 && tempoTotalSeg.length == 1) {
         setTempoTotal(
@@ -2046,54 +2071,58 @@ const Configurador = ({id, setNegocioId}) => {
         gerarEtiquetas();
       
         setIntIndMin(parseInt(intIndMin))
+        setIntIndSeg(parseInt(intIndSeg))
         setIntGrupMin(parseInt(intGrupMin))
+        setIntGrupSeg(parseInt(intGrupSeg))
+        setTempoPartMin(parseInt(tempoPartMin))
+        setTempoPartSeg(parseInt(tempoPartMin))
         setParticipantes(parseInt(participantes))
         setNumMesas(parseInt(numMesas))
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         
         
-        // console.log("arrayMesa1", arrayMesa1)
-        // console.log("length arrayMesa1", arrayMesa1.length)
-        // console.log("arrayMesa2", arrayMesa2)
-        // console.log("length arrayMesa2", arrayMesa2.length)
-        // console.log("arrayMesa3", arrayMesa3)
-        // console.log("length arrayMesa3", arrayMesa3.length)
-        // console.log("arrayMesa4", arrayMesa4)
-        // console.log("length arrayMesa4", arrayMesa4.length)
-        // console.log("arrayMesa5", arrayMesa5)
-        // console.log("length arrayMesa5", arrayMesa5.length)
-        // console.log("arrayMesa6", arrayMesa6)
-        // console.log("length arrayMesa6", arrayMesa6.length)
-        // console.log("arrayMesa7", arrayMesa7)
-        // console.log("length arrayMesa7", arrayMesa7.length)
-        // console.log("arrayMesa8", arrayMesa8)
-        // console.log("length arrayMesa8", arrayMesa8.length)
-        // console.log("arrayMesa9", arrayMesa9)
-        // console.log("length arrayMesa9", arrayMesa9.length)
-        // console.log("arrayMesa10", arrayMesa10)
-        // console.log("length arrayMesa10", arrayMesa10.length)
-        // console.log("arrayMesa11", arrayMesa11)
-        // console.log("length arrayMesa11", arrayMesa11.length)
-        // console.log("arrayMesa13", arrayMesa12)
-        // console.log("length arrayMesa12", arrayMesa12.length)
-        // console.log("arrayMesa13", arrayMesa13)
-        // console.log("length arrayMesa13", arrayMesa13.length)
-        // console.log("arrayMesa14", arrayMesa14)
-        // console.log("length arrayMesa14", arrayMesa14.length)
-        // console.log("arrayMesa15", arrayMesa15)
-        // console.log("length arrayMesa15", arrayMesa15.length)
-        // console.log("arrayMesa16", arrayMesa16)
-        // console.log("length arrayMesa16", arrayMesa16.length)
-        // console.log("arrayMesa17", arrayMesa17)
-        // console.log("length arrayMesa17", arrayMesa17.length)
+        console.log("arrayMesa1", arrayMesa1)
+        console.log("length arrayMesa1", arrayMesa1.length)
+        console.log("arrayMesa2", arrayMesa2)
+        console.log("length arrayMesa2", arrayMesa2.length)
+        console.log("arrayMesa3", arrayMesa3)
+        console.log("length arrayMesa3", arrayMesa3.length)
+        console.log("arrayMesa4", arrayMesa4)
+        console.log("length arrayMesa4", arrayMesa4.length)
+        console.log("arrayMesa5", arrayMesa5)
+        console.log("length arrayMesa5", arrayMesa5.length)
+        console.log("arrayMesa6", arrayMesa6)
+        console.log("length arrayMesa6", arrayMesa6.length)
+        console.log("arrayMesa7", arrayMesa7)
+        console.log("length arrayMesa7", arrayMesa7.length)
+        console.log("arrayMesa8", arrayMesa8)
+        console.log("length arrayMesa8", arrayMesa8.length)
+        console.log("arrayMesa9", arrayMesa9)
+        console.log("length arrayMesa9", arrayMesa9.length)
+        console.log("arrayMesa10", arrayMesa10)
+        console.log("length arrayMesa10", arrayMesa10.length)
+        console.log("arrayMesa11", arrayMesa11)
+        console.log("length arrayMesa11", arrayMesa11.length)
+        console.log("arrayMesa13", arrayMesa12)
+        console.log("length arrayMesa12", arrayMesa12.length)
+        console.log("arrayMesa13", arrayMesa13)
+        console.log("length arrayMesa13", arrayMesa13.length)
+        console.log("arrayMesa14", arrayMesa14)
+        console.log("length arrayMesa14", arrayMesa14.length)
+        console.log("arrayMesa15", arrayMesa15)
+        console.log("length arrayMesa15", arrayMesa15.length)
+        console.log("arrayMesa16", arrayMesa16)
+        console.log("length arrayMesa16", arrayMesa16.length)
+        console.log("arrayMesa17", arrayMesa17)
+        console.log("length arrayMesa17", arrayMesa17.length)
 
 
         if(reuniao === "" || grupo === "" || participantes === "" || tempoPartMin === "" || tempoPartSeg === "") {
             setMessage({error: true, msg: "Todos os campos são obrigatórios!"});    
             return;
         }
-       
+
         const newRodada = {
 
                 arrayMesa1, 
@@ -2120,6 +2149,8 @@ const Configurador = ({id, setNegocioId}) => {
         }
 
         
+
+        
         const newRodadaBoa = {
 
             aarrayMesa1, 
@@ -2144,7 +2175,8 @@ const Configurador = ({id, setNegocioId}) => {
             aarrayMesa20,
             dataRodada
     }
-
+        
+        
         await RodadaBoaDataService.addRodadasBoa(newRodadaBoa);
         // este Array Cria a logica de mesas da rodada 2 em diante
         var shift1 = aarrayMesa1.shift()
@@ -2352,7 +2384,6 @@ const Configurador = ({id, setNegocioId}) => {
             numMesas,
             partMesa,
             tempoTotal,
-
             idioma,
             dataRodada
         }
@@ -2366,6 +2397,7 @@ const Configurador = ({id, setNegocioId}) => {
             numMesas
         }
 
+
         try {
             // if(id !== undefined && id !== "") {
             //     await NegocioDataService.updateNegocio(id, newNegocio);
@@ -2373,10 +2405,14 @@ const Configurador = ({id, setNegocioId}) => {
             //     setMessage({error: false, msg: "Atualizado com sucesso"});
             // }
             // else {
+                setNewRodadaFlat(newRodada)
+                console.log(newRodadaFlat)
+                console.log(newRodadaFlat.flat())
                 await NegocioDataService.addNegocios(newNegocio);
                 console.log("negocio criado")
                 // await MesaDataService.addMesas(newMesa);
                 // console.log("mesa criado")
+                
                 await RodadaDataService.addRodadas(newRodada);
                 console.log("participantes criados")
                   await Rodada2DataService.addRodadas2(newRodada2);
