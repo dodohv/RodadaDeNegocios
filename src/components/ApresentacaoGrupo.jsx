@@ -28,6 +28,7 @@ import Rodada17DataService from '../services/rodada17.service';
 import Rodada18DataService from '../services/rodada18.service';
 import Rodada19DataService from '../services/rodada19.service';
 import Rodada20DataService from '../services/rodada20.service';
+import { map } from '@firebase/util';
 const ApresentacaoGrupo = () => {
     const [dodohvbr, setDodohvbr] = useState(null)
     const [dodohv, setDodohv] = useState(undefined)
@@ -369,7 +370,7 @@ const meuTempoDecorrido = async() => {
                 setRodadasFlat(minhaRodadas)
             }else {
                 console.log("Puxou rodadas")
-                setRodadasFlat(minhaRodadas.flat(4))
+                setRodadasFlat(minhaRodadas.flatMap((flatrodada) => ({...flatrodada.data(), id: flatrodada.id})))
 
             }
     }
@@ -788,9 +789,7 @@ const meuTempoDecorrido = async() => {
                 {
                  contarReuniao == 1 ?
 
-   
-
-                    rodadasFlat.sort((a,b)=> a.dataRodada > b.dataRodada ? 1 : -1).slice(-1).map((docrodada, indexrodada) => {
+                    rodadasFlat.sort((a,b)=> a.dataRodada > b.dataRodada ? 1 : -1).slice(-1).flatMap((docrodada, indexrodada) => {
                         return(
                             <Col xs={6} md={6} key={indexrodada} className="mesas">
                                 <Row xs={12} md={12} className="borderrow grande">
@@ -798,12 +797,16 @@ const meuTempoDecorrido = async() => {
                                         <Card.Text>Mesa 1 </Card.Text>
                                     </Col>
                                     <Col xs={9} md={9} style={{ textAlign: 'center'}}>
-                                    <Card.Text className="text-card ">
-                                        {docrodada.arrayMesa1[0].id}
-                                    {/* { `${docrodada.arrayMesa1[0].id}`}
-                                    { docrodada.arrayMesa2[indexrodada].id}
-                                    { docrodada.arrayMesa1[indexrodada].idParticipante} */}
-                                    </Card.Text>
+                                      <Card.Text className="text-card ">
+                                         {/*{docrodada.arrayMesa1[0].id}*/}
+                                         { JSON.stringify(docrodada, undefined, 2)}
+                                         {
+                                            
+                                         }
+                                         {/* { `${docrodada.arrayMesa1[0].id}`}
+                                         { docrodada.arrayMesa2[indexrodada].id}
+                                         { docrodada.arrayMesa1[indexrodada].idParticipante} */}
+                                      </Card.Text>
                                     </Col>
                                 </Row>
                             </Col>
@@ -818,7 +821,7 @@ const meuTempoDecorrido = async() => {
 
           
                 <Col xs={3} md={3}>
-                <pre>{ JSON.stringify(rodadas3, undefined, 4) }</pre>  
+                <pre>{ JSON.stringify(rodadasFlat, undefined, 4) }</pre>  
                 </Col>
                 {/* <Col xs={3} md={3}>
                         <img src ="" />
